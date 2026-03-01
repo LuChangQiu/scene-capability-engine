@@ -497,6 +497,7 @@ Stage guardrails are enforced by default:
 - `apply` requires `generate`
 - `verify` requires `apply`
 - `release` requires `verify`
+- `verify` / `release` reports and failure auto-records inherit `spec_id + domain-chain` context for better root-cause traceability
 
 Studio gate execution defaults:
 - `verify --profile standard` runs executable gates (unit test script when available, interactive governance report when present, scene package publish-batch dry-run when handoff manifest exists)

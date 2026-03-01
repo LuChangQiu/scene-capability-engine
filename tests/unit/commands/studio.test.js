@@ -68,7 +68,7 @@ describe('studio command workflow', () => {
     expect(await fs.pathExists(jobPath)).toBe(true);
   });
 
-  test('plan with --spec ingests domain-chain and generate writes chain-aware metadata/report', async () => {
+  test('plan with --spec ingests domain-chain and carries it through generate/verify/release reports', async () => {
     const specId = '01-00-domain-aware';
     const specRoot = path.join(tempDir, '.sce', 'specs', specId);
     await fs.ensureDir(specRoot);
@@ -114,6 +114,50 @@ describe('studio command workflow', () => {
       spec_id: specId
     }));
     expect(generatedJob.artifacts.generate_report).toContain(`generate-${planned.job_id}.json`);
+    const generateReport = await fs.readJson(path.join(tempDir, generatedJob.artifacts.generate_report));
+    expect(generateReport.domain_chain).toEqual(expect.objectContaining({
+      resolved: true,
+      source: 'explicit-spec',
+      spec_id: specId
+    }));
+
+    await runStudioApplyCommand({
+      job: planned.job_id,
+      json: true
+    }, {
+      projectPath: tempDir
+    });
+    await runStudioVerifyCommand({
+      job: planned.job_id,
+      profile: 'standard',
+      json: true
+    }, {
+      projectPath: tempDir,
+      commandRunner: successRunner
+    });
+    await runStudioReleaseCommand({
+      job: planned.job_id,
+      profile: 'standard',
+      channel: 'dev',
+      json: true
+    }, {
+      projectPath: tempDir,
+      commandRunner: successRunner
+    });
+
+    const releasedJob = await fs.readJson(path.join(paths.jobsDir, `${planned.job_id}.json`));
+    const verifyReport = await fs.readJson(path.join(tempDir, releasedJob.artifacts.verify_report));
+    const releaseReport = await fs.readJson(path.join(tempDir, releasedJob.artifacts.release_report));
+    expect(verifyReport.domain_chain).toEqual(expect.objectContaining({
+      resolved: true,
+      source: 'explicit-spec',
+      spec_id: specId
+    }));
+    expect(releaseReport.domain_chain).toEqual(expect.objectContaining({
+      resolved: true,
+      source: 'explicit-spec',
+      spec_id: specId
+    }));
   });
 
   test('plan without --spec auto-binds latest scene domain-chain candidate', async () => {
