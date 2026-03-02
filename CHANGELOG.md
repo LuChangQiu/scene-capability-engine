@@ -14,6 +14,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New script gate:
   - `node scripts/errorbook-registry-health-gate.js`
   - supports strict mode via `SCE_REGISTRY_HEALTH_STRICT=1`
+- Local project timeline snapshot system:
+  - new command group: `sce timeline ...`
+  - supports manual save/list/show/restore/config and `timeline push` (pre-push checkpoint + git push)
+  - snapshots are retained under `.sce/timeline/snapshots/` with configurable retention policy
+  - key-stage checkpoint integration for `studio` and `session` command flows
 
 ### Changed
 - `prepublishOnly` now runs `gate:errorbook-registry-health` in advisory mode before `errorbook-release` gate.
@@ -46,6 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - new command: `sce spec-related` (alias route: `sce spec related`)
   - supports query/scene/spec-seeded lookup and relevance ranking
   - `sce studio plan` now auto-loads related historical specs into job metadata (`source.related_specs`)
+- SCE now captures timeline checkpoints by default on `studio`/`session` key operations, and performs interval auto-check in the same checkpoint pipeline to reduce local history-loss risk.
 
 ## [3.3.23] - 2026-02-27
 

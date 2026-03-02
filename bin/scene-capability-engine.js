@@ -21,6 +21,7 @@ const { registerSpecPipelineCommand } = require('../lib/commands/spec-pipeline')
 const { registerSpecGateCommand } = require('../lib/commands/spec-gate');
 const { registerSpecDomainCommand } = require('../lib/commands/spec-domain');
 const { registerSpecRelatedCommand } = require('../lib/commands/spec-related');
+const { registerTimelineCommands } = require('../lib/commands/timeline');
 const { registerValueCommands } = require('../lib/commands/value');
 const VersionChecker = require('../lib/version/version-checker');
 const {
@@ -820,6 +821,7 @@ registerCollabCommands(program);
 // Universal steering and runtime session commands
 registerSteeringCommands(program);
 registerSessionCommands(program);
+registerTimelineCommands(program);
 
 // Autonomous control commands
 const { registerAutoCommands } = require('../lib/commands/auto');

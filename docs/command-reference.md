@@ -2,7 +2,7 @@
 
 > Quick reference for all `sce` commands
 
-**Version**: 3.3.23
+**Version**: 3.3.25
 **Last Updated**: 2026-02-27
 
 ---
@@ -95,6 +95,37 @@ Spec session governance:
   - `.sce/specs/<spec>/custom/problem-domain-map.md`
   - `.sce/specs/<spec>/custom/scene-spec.md`
   - `.sce/specs/<spec>/custom/problem-domain-chain.json`
+
+### Timeline Snapshots
+
+```bash
+# Manual checkpoint
+sce timeline save --summary "before large refactor" --json
+
+# Auto interval checkpoint tick (skips when interval is not reached)
+sce timeline auto --json
+
+# List and inspect snapshots
+sce timeline list --limit 20 --json
+sce timeline show <snapshot-id> --json
+
+# Restore workspace to a snapshot (safe mode keeps extra files)
+sce timeline restore <snapshot-id> --json
+
+# Hard restore (also prune files not in snapshot)
+sce timeline restore <snapshot-id> --prune --json
+
+# Update timeline policy
+sce timeline config --enabled true --interval 30 --max-entries 120 --json
+
+# Push with pre-push snapshot
+sce timeline push origin main
+```
+
+Timeline policy:
+- default enabled with local retention under `.sce/timeline/snapshots/`
+- stage/key-event checkpoints are automatically captured for `studio` and `session` commands
+- interval auto-checkpoints are integrated in the same flow via timeline checkpoint capture
 
 ### Value Metrics
 
