@@ -20,6 +20,7 @@ const { registerSpecBootstrapCommand } = require('../lib/commands/spec-bootstrap
 const { registerSpecPipelineCommand } = require('../lib/commands/spec-pipeline');
 const { registerSpecGateCommand } = require('../lib/commands/spec-gate');
 const { registerSpecDomainCommand } = require('../lib/commands/spec-domain');
+const { registerSpecRelatedCommand } = require('../lib/commands/spec-related');
 const { registerValueCommands } = require('../lib/commands/value');
 const VersionChecker = require('../lib/version/version-checker');
 const {
@@ -57,6 +58,7 @@ const program = new Command();
  * - `sce spec pipeline ...` -> `sce spec-pipeline ...`
  * - `sce spec gate ...` -> `sce spec-gate ...`
  * - `sce spec domain ...` -> `sce spec-domain ...`
+ * - `sce spec related ...` -> `sce spec-related ...`
  * - `sce spec create <name> ...` -> `sce create-spec <name> ...`
  * - `sce spec <name> ...` -> `sce create-spec <name> ...` (legacy)
  *
@@ -93,6 +95,11 @@ function normalizeSpecCommandArgs(argv) {
 
   if (commandToken === 'domain') {
     normalized.splice(commandIndex, 2, 'spec-domain');
+    return normalized;
+  }
+
+  if (commandToken === 'related') {
+    normalized.splice(commandIndex, 2, 'spec-related');
     return normalized;
   }
 
@@ -341,6 +348,9 @@ registerSpecGateCommand(program);
 
 // Spec domain modeling command
 registerSpecDomainCommand(program);
+
+// Spec related lookup command
+registerSpecRelatedCommand(program);
 
 // 系统诊断命令
 program

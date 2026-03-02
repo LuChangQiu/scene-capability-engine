@@ -162,10 +162,26 @@ describe('studio command workflow', () => {
 
   test('plan without --spec auto-binds latest scene domain-chain candidate', async () => {
     const specId = '01-01-domain-auto';
+    const relatedSpecId = '01-02-domain-auto-related';
     const specRoot = path.join(tempDir, '.sce', 'specs', specId);
+    const relatedSpecRoot = path.join(tempDir, '.sce', 'specs', relatedSpecId);
     await fs.ensureDir(specRoot);
+    await fs.ensureDir(relatedSpecRoot);
     await ensureSpecDomainArtifacts(tempDir, specId, {
       fileSystem: fs,
+      sceneId: 'scene.auto-bind',
+      problemStatement: 'Auto bind domain chain for scene',
+      verificationPlan: 'Smoke checks'
+    });
+    await ensureSpecDomainArtifacts(tempDir, relatedSpecId, {
+      fileSystem: fs,
+      sceneId: 'scene.auto-bind',
+      problemStatement: 'Related scene spec for lookup',
+      verificationPlan: 'Regression checks'
+    });
+    await ensureSpecDomainArtifacts(tempDir, specId, {
+      fileSystem: fs,
+      force: true,
       sceneId: 'scene.auto-bind',
       problemStatement: 'Auto bind domain chain for scene',
       verificationPlan: 'Smoke checks'
@@ -183,9 +199,13 @@ describe('studio command workflow', () => {
     const plannedJob = await fs.readJson(path.join(paths.jobsDir, `${planned.job_id}.json`));
     expect(plannedJob.source.domain_chain).toEqual(expect.objectContaining({
       resolved: true,
-      source: 'scene-auto-single',
+      source: 'scene-auto-latest',
       spec_id: specId
     }));
+    expect(plannedJob.source.related_specs.total_candidates).toBeGreaterThanOrEqual(1);
+    expect(
+      plannedJob.source.related_specs.items.some((item) => item.spec_id === relatedSpecId)
+    ).toBe(true);
   });
 
   test('supports end-to-end stage flow from generate to release', async () => {

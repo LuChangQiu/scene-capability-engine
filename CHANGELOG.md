@@ -42,6 +42,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - when `--spec` is omitted, `plan` auto-selects the latest scene-matching chain (`scene_id`)
   - `sce studio generate` writes chain-aware metadata and `generate` stage report at `.sce/reports/studio/generate-<job-id>.json`
   - `sce studio verify` / `sce studio release` now include domain-chain metadata in reports and pass `spec_id` into auto errorbook failure capture
+- Added historical related-spec retrieval for faster new-problem analysis:
+  - new command: `sce spec-related` (alias route: `sce spec related`)
+  - supports query/scene/spec-seeded lookup and relevance ranking
+  - `sce studio plan` now auto-loads related historical specs into job metadata (`source.related_specs`)
 
 ## [3.3.23] - 2026-02-27
 

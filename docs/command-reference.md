@@ -73,6 +73,10 @@ sce spec domain init --spec 01-00-feature-name --scene scene.customer-order-inve
 sce spec domain validate --spec 01-00-feature-name --fail-on-error --json
 sce spec domain refresh --spec 01-00-feature-name --scene scene.customer-order-inventory --json
 
+# Find related historical specs before starting a new analysis
+sce spec related --query "customer order inventory reconciliation drift" --scene scene.customer-order-inventory --json
+sce spec related --spec 01-00-feature-name --limit 8 --json
+
 # Multi-Spec mode defaults to orchestrate routing
 sce spec bootstrap --specs "spec-a,spec-b" --max-parallel 3
 sce spec pipeline run --specs "spec-a,spec-b" --max-parallel 3
@@ -491,6 +495,7 @@ Stage guardrails are enforced by default:
 - `plan` requires `--scene`; SCE binds one active primary session per scene
 - `plan --spec <id>` (recommended) ingests `.sce/specs/<spec>/custom/problem-domain-chain.json` into studio job context
 - when `--spec` is omitted, `plan` auto-resolves the latest matching spec chain by `scene_id` when available
+- `plan` auto-searches related historical specs by `scene + goal` and writes top candidates into job metadata (`source.related_specs`)
 - successful `release` auto-archives current scene session and auto-opens the next scene cycle session
 - `generate` requires `plan`
 - `generate` consumes the plan-stage domain-chain context and writes chain-aware metadata/report (`.sce/reports/studio/generate-<job-id>.json`)
