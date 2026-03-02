@@ -8,12 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Errorbook incident closed-loop staging for all issues:
-  - every `sce errorbook record` now writes a staging incident attempt under `.sce/errorbook/staging/incidents/`
-  - new incident inspection commands:
-    - `sce errorbook incident list [--state open|resolved] [--json]`
-    - `sce errorbook incident show <id> [--json]`
-  - resolved incident snapshots are archived under `.sce/errorbook/staging/resolved/`
 - Errorbook registry health command for centralized registry governance:
   - `sce errorbook health-registry`
   - validates registry config readability, source/index reachability, and index bucket-to-shard resolution
@@ -33,7 +27,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `sce spec domain validate` now reports coverage summary and supports `--fail-on-gap`
 
 ### Changed
-- Error handling policy now defaults to full-loop management for all issues (not only hard cases): try/fail rounds are retained in staging until final resolution, then consolidated into curated errorbook flow.
 - `prepublishOnly` now runs `gate:errorbook-registry-health` in advisory mode before `errorbook-release` gate.
 - Autonomous execution defaults are now hard-set to autonomous progression:
   - `lib/auto/config-schema.js` default mode changed to `aggressive`
@@ -65,6 +58,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - supports query/scene/spec-seeded lookup and relevance ranking
   - `sce studio plan` now auto-loads related historical specs into job metadata (`source.related_specs`)
 - SCE now captures timeline checkpoints by default on `studio`/`session` key operations, and performs interval auto-check in the same checkpoint pipeline to reduce local history-loss risk.
+
+## [3.4.2] - 2026-03-02
+
+### Added
+- Errorbook incident closed-loop staging for all issues:
+  - every `sce errorbook record` now writes a staging incident attempt under `.sce/errorbook/staging/incidents/`
+  - new incident inspection commands:
+    - `sce errorbook incident list [--state open|resolved] [--json]`
+    - `sce errorbook incident show <id> [--json]`
+  - resolved incident snapshots are archived under `.sce/errorbook/staging/resolved/`
+
+### Changed
+- Error handling policy now defaults to full-loop management for all issues (not only hard cases): try/fail rounds are retained in staging until final resolution, then consolidated into curated errorbook flow.
 
 ## [3.4.1] - 2026-03-02
 
