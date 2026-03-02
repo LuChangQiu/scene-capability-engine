@@ -110,6 +110,16 @@ SCE 对工具无锁定，可接入 Codex、Claude Code、Cursor、Windsurf、VS 
 
 ---
 
+## 重要版本变更
+
+- `3.4.5`：`git-managed-gate` 在默认 CI 放宽模式下（`CI/GITHUB_ACTIONS` 且非 strict）对工作区变更改为告警，不再误阻断发布。
+- `3.4.4`：新增 `SCE_GIT_MANAGEMENT_ALLOW_UNTRACKED=1` / `--allow-untracked`；发布工作流在 npm publish 前生成证据资产时可放行未跟踪文件。
+- `3.4.3`：Studio 全阶段接入强制问题评估（`plan/generate/apply/verify/release`），并引入策略文件 `.sce/config/problem-eval-policy.json` 与评估报告落盘。
+- `3.4.2`：Errorbook 升级为完整 incident staging 闭环（尝试记录、incident 查询、resolved 归档）。
+- `3.4.1`：新增 workspace takeover baseline 自动化（`takeover-audit` / `takeover-apply`）与启动对齐能力。
+
+---
+
 ## 文档导航
 
 建议先看：

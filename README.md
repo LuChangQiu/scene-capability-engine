@@ -110,6 +110,16 @@ SCE is tool-agnostic and works with Codex, Claude Code, Cursor, Windsurf, VS Cod
 
 ---
 
+## Important Version Changes
+
+- `3.4.5`: `git-managed-gate` now treats worktree checks as advisory in default relaxed CI mode (`CI/GITHUB_ACTIONS`, non-strict), preventing false release blocking.
+- `3.4.4`: Added `SCE_GIT_MANAGEMENT_ALLOW_UNTRACKED=1` / `--allow-untracked`; release workflow uses it for npm publish after generating release evidence artifacts.
+- `3.4.3`: Introduced mandatory problem evaluation across Studio stages (`plan/generate/apply/verify/release`) with policy file `.sce/config/problem-eval-policy.json` and stage report artifacts.
+- `3.4.2`: Errorbook incident flow moved to full staging closed-loop (attempt history, incident inspection, resolved archive).
+- `3.4.1`: Added workspace takeover baseline automation (`takeover-audit` / `takeover-apply`) and startup alignment defaults.
+
+---
+
 ## Documentation Map
 
 Start here:
