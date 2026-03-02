@@ -26,8 +26,8 @@ describe('spec-gate command', () => {
     await fs.writeFile(path.join(specPath, 'design.md'), '# Design\n## Requirement Mapping\n', 'utf8');
     await fs.writeFile(path.join(specPath, 'tasks.md'), '- [ ] 1. Test task\n  - **Requirement**: Requirement 1\n  - **Design**: Design 1\n  - **Validation**: Acceptance Criteria\n', 'utf8');
     await fs.ensureDir(path.join(specPath, 'custom'));
-    await fs.writeFile(path.join(specPath, 'custom', 'problem-domain-map.md'), '# Problem Domain Mind Map\n## Root Problem\n## Domain Mind Map\n```mermaid\nmindmap\n  root((test))\n```\n## Layered Exploration Chain\n## Correction Loop\n', 'utf8');
-    await fs.writeFile(path.join(specPath, 'custom', 'scene-spec.md'), '# Scene Spec\n## Scene Definition\n## Ontology Coverage\n## Decision & Execution Path\n## Acceptance & Gate\n', 'utf8');
+    await fs.writeFile(path.join(specPath, 'custom', 'problem-domain-map.md'), '# Problem Domain Mind Map\n## Root Problem\n## Domain Mind Map\n```mermaid\nmindmap\n  root((test))\n```\n## Layered Exploration Chain\n## Closed-Loop Research Coverage Matrix\n## Correction Loop\n', 'utf8');
+    await fs.writeFile(path.join(specPath, 'custom', 'scene-spec.md'), '# Scene Spec\n## Scene Definition\n## Ontology Coverage\n## Decision & Execution Path\n## Closed-Loop Research Contract\n## Acceptance & Gate\n', 'utf8');
     await fs.writeJson(path.join(specPath, 'custom', 'problem-domain-chain.json'), {
       api_version: 'sce.problem-domain-chain/v0.1',
       scene_id: 'scene.test-default',
@@ -43,6 +43,32 @@ describe('spec-gate command', () => {
       hypotheses: [{ id: 'H1', statement: 'lock issue' }],
       risks: [{ id: 'R1', type: 'wrong-direction', statement: 'scope drift' }],
       decision_execution_path: [{ step: 1 }, { step: 2 }, { step: 3 }],
+      research_coverage: {
+        mode: 'scene-closed-loop',
+        required_dimensions: [
+          'scene_boundary',
+          'entity',
+          'relation',
+          'business_rule',
+          'decision_policy',
+          'execution_flow',
+          'failure_signal',
+          'debug_evidence_plan',
+          'verification_gate'
+        ],
+        checklist: {
+          scene_boundary: true,
+          entity: true,
+          relation: true,
+          business_rule: true,
+          decision_policy: true,
+          execution_flow: true,
+          failure_signal: true,
+          debug_evidence_plan: true,
+          verification_gate: true
+        },
+        status: 'draft'
+      },
       correction_loop: { triggers: ['gate failure'], actions: ['refresh map'] },
       verification: { gates: ['spec-gate'] }
     }, { spaces: 2 });
@@ -50,8 +76,8 @@ describe('spec-gate command', () => {
     await fs.writeFile(path.join(specPath2, 'design.md'), '# Design\n## Requirement Mapping\n', 'utf8');
     await fs.writeFile(path.join(specPath2, 'tasks.md'), '- [ ] 1. Test task\n  - **Requirement**: Requirement 1\n  - **Design**: Design 1\n  - **Validation**: Acceptance Criteria\n', 'utf8');
     await fs.ensureDir(path.join(specPath2, 'custom'));
-    await fs.writeFile(path.join(specPath2, 'custom', 'problem-domain-map.md'), '# Problem Domain Mind Map\n## Root Problem\n## Domain Mind Map\n```mermaid\nmindmap\n  root((test))\n```\n## Layered Exploration Chain\n## Correction Loop\n', 'utf8');
-    await fs.writeFile(path.join(specPath2, 'custom', 'scene-spec.md'), '# Scene Spec\n## Scene Definition\n## Ontology Coverage\n## Decision & Execution Path\n## Acceptance & Gate\n', 'utf8');
+    await fs.writeFile(path.join(specPath2, 'custom', 'problem-domain-map.md'), '# Problem Domain Mind Map\n## Root Problem\n## Domain Mind Map\n```mermaid\nmindmap\n  root((test))\n```\n## Layered Exploration Chain\n## Closed-Loop Research Coverage Matrix\n## Correction Loop\n', 'utf8');
+    await fs.writeFile(path.join(specPath2, 'custom', 'scene-spec.md'), '# Scene Spec\n## Scene Definition\n## Ontology Coverage\n## Decision & Execution Path\n## Closed-Loop Research Contract\n## Acceptance & Gate\n', 'utf8');
     await fs.writeJson(path.join(specPath2, 'custom', 'problem-domain-chain.json'), {
       api_version: 'sce.problem-domain-chain/v0.1',
       scene_id: 'scene.test-default',
@@ -67,6 +93,32 @@ describe('spec-gate command', () => {
       hypotheses: [{ id: 'H1', statement: 'lock issue' }],
       risks: [{ id: 'R1', type: 'wrong-direction', statement: 'scope drift' }],
       decision_execution_path: [{ step: 1 }, { step: 2 }, { step: 3 }],
+      research_coverage: {
+        mode: 'scene-closed-loop',
+        required_dimensions: [
+          'scene_boundary',
+          'entity',
+          'relation',
+          'business_rule',
+          'decision_policy',
+          'execution_flow',
+          'failure_signal',
+          'debug_evidence_plan',
+          'verification_gate'
+        ],
+        checklist: {
+          scene_boundary: true,
+          entity: true,
+          relation: true,
+          business_rule: true,
+          decision_policy: true,
+          execution_flow: true,
+          failure_signal: true,
+          debug_evidence_plan: true,
+          verification_gate: true
+        },
+        status: 'draft'
+      },
       correction_loop: { triggers: ['gate failure'], actions: ['refresh map'] },
       verification: { gates: ['spec-gate'] }
     }, { spaces: 2 });
@@ -221,8 +273,8 @@ describe('spec-gate command', () => {
     await fs.writeFile(path.join(specPath, 'design.md'), '# Design\n## Requirement Mapping\n', 'utf8');
     await fs.writeFile(path.join(specPath, 'tasks.md'), '- [ ] 1. Test task\n  - **Validation**: Acceptance Criteria\n', 'utf8');
     await fs.ensureDir(path.join(specPath, 'custom'));
-    await fs.writeFile(path.join(specPath, 'custom', 'problem-domain-map.md'), '# Problem Domain Mind Map\n## Root Problem\n## Domain Mind Map\n```mermaid\nmindmap\n  root((test))\n```\n## Layered Exploration Chain\n## Correction Loop\n', 'utf8');
-    await fs.writeFile(path.join(specPath, 'custom', 'scene-spec.md'), '# Scene Spec\n## Scene Definition\n## Ontology Coverage\n## Decision & Execution Path\n## Acceptance & Gate\n', 'utf8');
+    await fs.writeFile(path.join(specPath, 'custom', 'problem-domain-map.md'), '# Problem Domain Mind Map\n## Root Problem\n## Domain Mind Map\n```mermaid\nmindmap\n  root((test))\n```\n## Layered Exploration Chain\n## Closed-Loop Research Coverage Matrix\n## Correction Loop\n', 'utf8');
+    await fs.writeFile(path.join(specPath, 'custom', 'scene-spec.md'), '# Scene Spec\n## Scene Definition\n## Ontology Coverage\n## Decision & Execution Path\n## Closed-Loop Research Contract\n## Acceptance & Gate\n', 'utf8');
 
     const result = await runSpecGate({
       spec: specId,

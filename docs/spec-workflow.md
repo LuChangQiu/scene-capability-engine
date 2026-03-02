@@ -4,8 +4,8 @@
 
 ---
 
-**Version**: 1.42.0  
-**Last Updated**: 2026-02-11  
+**Version**: 3.3.26  
+**Last Updated**: 2026-03-02  
 **Audience**: Intermediate  
 **Estimated Time**: 10 minutes
 
@@ -83,6 +83,37 @@ graph LR
 5. **Implementation** - Actual coding (often AI-assisted)
 6. **Completion** - All tasks done, feature working
 7. **Archive/Document** - Spec serves as documentation
+
+---
+
+## Stage 0: Scene-Closed-Loop Research (Mandatory)
+
+Before implementation, SCE enforces a closed-loop scene research baseline under `.sce/specs/<spec>/custom/`:
+
+- `problem-domain-map.md`
+- `scene-spec.md`
+- `problem-domain-chain.json`
+
+These artifacts must cover:
+
+1. Scene boundary
+2. Entity / relation
+3. Business rule
+4. Decision policy
+5. Execution flow
+6. Failure signals
+7. Debug evidence plan
+8. Verification gates
+
+Commands:
+
+```bash
+sce spec domain init --spec <spec-id> --scene <scene-id>
+sce spec domain coverage --spec <spec-id> --json
+sce spec domain validate --spec <spec-id> --fail-on-gap --json
+```
+
+This is the default way to avoid wrong-direction implementation and to force evidence-based correction loops.
 
 ---
 
@@ -514,6 +545,6 @@ sce spec bootstrap --name 02-00-your-feature --non-interactive
 
 ---
 
-**Version**: 1.42.0  
-**Last Updated**: 2026-02-11
+**Version**: 3.3.26  
+**Last Updated**: 2026-03-02
 

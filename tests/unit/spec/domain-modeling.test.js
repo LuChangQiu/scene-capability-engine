@@ -11,7 +11,8 @@ const {
   buildSceneSpec,
   buildProblemDomainChain,
   ensureSpecDomainArtifacts,
-  validateSpecDomainArtifacts
+  validateSpecDomainArtifacts,
+  analyzeSpecDomainCoverage
 } = require('../../../lib/spec/domain-modeling');
 
 describe('spec domain modeling', () => {
@@ -40,8 +41,10 @@ describe('spec domain modeling', () => {
     expect(map).toContain('# Problem Domain Mind Map');
     expect(map).toContain('```mermaid');
     expect(map).toContain('mindmap');
+    expect(map).toContain('## Closed-Loop Research Coverage Matrix');
     expect(sceneSpec).toContain('# Scene Spec');
     expect(sceneSpec).toContain('## Ontology Coverage');
+    expect(sceneSpec).toContain('## Closed-Loop Research Contract');
   });
 
   test('builds deterministic domain chain payload', () => {
@@ -53,6 +56,10 @@ describe('spec domain modeling', () => {
     expect(chain.spec_id).toBe('120-01-domain-test');
     expect(Array.isArray(chain.decision_execution_path)).toBe(true);
     expect(chain.decision_execution_path.length).toBeGreaterThanOrEqual(3);
+    expect(chain.research_coverage).toEqual(expect.objectContaining({
+      mode: 'scene-closed-loop',
+      status: 'draft'
+    }));
   });
 
   test('ensures required artifacts under spec custom directory', async () => {
@@ -84,5 +91,23 @@ describe('spec domain modeling', () => {
     expect(validated.passed).toBe(false);
     expect(validated.ratio).toBe(0);
     expect(validated.warnings.length).toBeGreaterThanOrEqual(1);
+  });
+
+  test('analyzes closed-loop domain coverage with uncovered dimensions', async () => {
+    await ensureSpecDomainArtifacts(tempDir, '120-01-domain-test', {
+      sceneId: 'scene.customer-order'
+    });
+
+    const coverage = await analyzeSpecDomainCoverage(tempDir, '120-01-domain-test');
+    expect(coverage.passed).toBe(false);
+    expect(coverage.coverage_ratio).toBeGreaterThan(0);
+    expect(coverage.uncovered).toEqual(expect.arrayContaining([
+      'scene_boundary',
+      'entity',
+      'relation',
+      'business_rule',
+      'decision_policy',
+      'execution_flow'
+    ]));
   });
 });

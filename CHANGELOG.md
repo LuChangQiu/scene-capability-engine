@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - supports manual save/list/show/restore/config and `timeline push` (pre-push checkpoint + git push)
   - snapshots are retained under `.sce/timeline/snapshots/` with configurable retention policy
   - key-stage checkpoint integration for `studio` and `session` command flows
+- Scene-closed-loop domain research reinforcement:
+  - `problem-domain-map.md` now includes mandatory `Closed-Loop Research Coverage Matrix`
+  - `scene-spec.md` now includes mandatory `Closed-Loop Research Contract`
+  - `problem-domain-chain.json` now includes `research_coverage` contract
+  - new command: `sce spec domain coverage --spec <id> [--fail-on-gap]`
+  - `sce spec domain validate` now reports coverage summary and supports `--fail-on-gap`
 
 ### Changed
 - `prepublishOnly` now runs `gate:errorbook-registry-health` in advisory mode before `errorbook-release` gate.

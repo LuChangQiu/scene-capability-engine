@@ -67,6 +67,7 @@ sce auto close-loop "deliver customer + order + inventory baseline"
 ```bash
 sce studio plan --scene scene.customer-order --from-chat session-20260302 --goal "optimize checkout"
 sce spec bootstrap --name 02-00-checkout-optimization --scene scene.customer-order --non-interactive
+sce spec domain coverage --spec 02-00-checkout-optimization --json
 sce spec gate run --spec 02-00-checkout-optimization --scene scene.customer-order --json
 ```
 

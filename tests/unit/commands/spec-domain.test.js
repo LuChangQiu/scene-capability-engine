@@ -5,7 +5,8 @@ const path = require('path');
 const {
   runSpecDomainInitCommand,
   runSpecDomainRefreshCommand,
-  runSpecDomainValidateCommand
+  runSpecDomainValidateCommand,
+  runSpecDomainCoverageCommand
 } = require('../../../lib/commands/spec-domain');
 
 describe('spec-domain command', () => {
@@ -77,5 +78,41 @@ describe('spec-domain command', () => {
     }, {
       projectPath: tempDir
     })).rejects.toThrow('spec domain validation failed');
+  });
+
+  test('coverage reports gaps by default and supports failOnGap', async () => {
+    await runSpecDomainRefreshCommand({
+      spec: '130-01-domain-command',
+      scene: 'scene.domain-command',
+      json: true
+    }, {
+      projectPath: tempDir
+    });
+
+    const coverage = await runSpecDomainCoverageCommand({
+      spec: '130-01-domain-command',
+      json: true
+    }, {
+      projectPath: tempDir
+    });
+
+    expect(coverage.mode).toBe('spec-domain-coverage');
+    expect(coverage.passed).toBe(false);
+    expect(coverage.uncovered).toEqual(expect.arrayContaining([
+      'scene_boundary',
+      'entity',
+      'relation',
+      'business_rule',
+      'decision_policy',
+      'execution_flow'
+    ]));
+
+    await expect(runSpecDomainCoverageCommand({
+      spec: '130-01-domain-command',
+      failOnGap: true,
+      json: true
+    }, {
+      projectPath: tempDir
+    })).rejects.toThrow('spec domain coverage has gaps');
   });
 });

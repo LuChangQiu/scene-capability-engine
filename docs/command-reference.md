@@ -2,8 +2,8 @@
 
 > Quick reference for all `sce` commands
 
-**Version**: 3.3.25
-**Last Updated**: 2026-02-27
+**Version**: 3.3.26
+**Last Updated**: 2026-03-02
 
 ---
 
@@ -71,6 +71,8 @@ sce spec gate run --spec 01-00-feature-name --scene scene.customer-order-invento
 # Maintain domain modeling artifacts explicitly
 sce spec domain init --spec 01-00-feature-name --scene scene.customer-order-inventory --json
 sce spec domain validate --spec 01-00-feature-name --fail-on-error --json
+sce spec domain validate --spec 01-00-feature-name --fail-on-gap --json
+sce spec domain coverage --spec 01-00-feature-name --json
 sce spec domain refresh --spec 01-00-feature-name --scene scene.customer-order-inventory --json
 
 # Find related historical specs before starting a new analysis
@@ -95,6 +97,11 @@ Spec session governance:
   - `.sce/specs/<spec>/custom/problem-domain-map.md`
   - `.sce/specs/<spec>/custom/scene-spec.md`
   - `.sce/specs/<spec>/custom/problem-domain-chain.json`
+- Closed-loop scene research baseline is now part of domain modeling artifacts:
+  - `problem-domain-map.md` must include `Closed-Loop Research Coverage Matrix`
+  - `scene-spec.md` must include `Closed-Loop Research Contract`
+  - `problem-domain-chain.json` must include `research_coverage` contract
+- `sce spec domain coverage` reports coverage dimensions (scene boundary, entity/relation/rules/policy/flow, failure signals, debug evidence plan, verification gate).
 
 ### Timeline Snapshots
 
