@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.5.1] - 2026-03-03
+
 ### Added
 - Studio historical scene backfill command:
   - `sce studio backfill-spec-scenes`

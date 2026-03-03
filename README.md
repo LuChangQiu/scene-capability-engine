@@ -132,6 +132,7 @@ SCE is tool-agnostic and works with Codex, Claude Code, Cursor, Windsurf, VS Cod
 
 ## Important Version Changes
 
+- `3.5.1`: Enforced stricter Studio intake defaults (`--manual-spec` and `--no-spec-governance` blocked unless policy override), added historical spec scene backfill command (`sce studio backfill-spec-scenes`) and persisted override mapping (`.sce/spec-governance/spec-scene-overrides.json`) for portfolio/related-spec alignment.
 - `3.5.0`: Added Studio automatic goal intake + scene spec portfolio governance (`sce studio intake`, `sce studio portfolio`), including default intake policy baseline and governance artifacts for bounded scene spec growth.
 - `3.4.6`: Added default `problem-closure-gate` + `problem-contract` baseline and strengthened mandatory problem evaluation dimensions (`problem_contract`/`ontology_alignment`/`convergence`) for verify/release convergence control.
 - `3.4.5`: `git-managed-gate` now treats worktree checks as advisory in default relaxed CI mode (`CI/GITHUB_ACTIONS`, non-strict), preventing false release blocking.
@@ -179,5 +180,5 @@ MIT. See [LICENSE](LICENSE).
 
 ---
 
-**Version**: 3.5.0  
-**Last Updated**: 2026-03-02
+**Version**: 3.5.1  
+**Last Updated**: 2026-03-03
