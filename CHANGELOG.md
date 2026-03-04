@@ -7,11 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.2] - 2026-03-04
+
 ### Changed
 - Release default test gate now runs integration tests only (`npm run test:release`) for faster online publish verification.
 - `prepublishOnly` now uses `test:release` instead of `test:full`.
 - GitHub `release.yml` test job now runs integration-only release tests and skips coverage in release path.
 - Studio task-stream schema now includes normalized task-intent fields (`title_norm`, `raw_request`, `sub_goals`, `acceptance_criteria`, `needs_split`, `confidence`) while preserving existing task fields for compatibility.
+- Added version CLI integration coverage (`tests/integration/version-cli.integration.test.js`) to ensure `--version` output remains deterministic and package-aligned.
 
 ## [3.6.0] - 2026-03-04
 

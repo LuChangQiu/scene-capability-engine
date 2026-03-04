@@ -150,6 +150,7 @@ Studio task-stream output contract (default):
 
 ## Important Version Changes
 
+- `3.6.2`: Added release-level version integration tests (`tests/integration/version-cli.integration.test.js`) and switched release default verification to integration-only gate (`npm run test:release`) for faster publish feedback.
 - `3.6.0`: Added hierarchical task references (`taskRef`, format `SS.PP.TT`) backed by SQLite state store `.sce/state/sce-state.sqlite`, plus new task commands (`sce task ref/show/rerun`) for reference lookup and deterministic rerun.
 - `3.5.2`: Introduced task-stream output contract for Studio commands (`sessionId/sceneId/specId/taskId/eventId`, structured `task.*` fields, `event[]` audit stream) and added OpenHands raw-event bridge via `sce studio events --openhands-events <path>`.
 - `3.5.1`: Enforced stricter Studio intake defaults (`--manual-spec` and `--no-spec-governance` blocked unless policy override), added historical spec scene backfill command (`sce studio backfill-spec-scenes`) and persisted override mapping (`.sce/spec-governance/spec-scene-overrides.json`) for portfolio/related-spec alignment.
@@ -200,5 +201,5 @@ MIT. See [LICENSE](LICENSE).
 
 ---
 
-**Version**: 3.6.0  
+**Version**: 3.6.2  
 **Last Updated**: 2026-03-04

@@ -150,6 +150,7 @@ Studio 任务流输出契约（默认）：
 
 ## 重要版本变更
 
+- `3.6.2`：新增发布版本号集成测试（`tests/integration/version-cli.integration.test.js`），并将发布默认验证切换为仅 integration 门禁（`npm run test:release`），加速发布反馈。
 - `3.6.0`：新增分层任务引用（`taskRef`，格式 `SS.PP.TT`），持久化到 SQLite 状态库 `.sce/state/sce-state.sqlite`；新增 `sce task ref/show/rerun` 用于引用查询与可重放执行。
 - `3.5.2`：新增 Studio 任务流输出契约（`sessionId/sceneId/specId/taskId/eventId`、结构化 `task.*` 字段、`event[]` 审计流），并新增 OpenHands 原始事件桥接能力：`sce studio events --openhands-events <path>`。
 - `3.5.1`：默认强化 Studio intake 治理（`--manual-spec`、`--no-spec-governance` 在未显式放开策略时会被阻断），新增历史 spec 场景回填命令 `sce studio backfill-spec-scenes`，并写入 `.sce/spec-governance/spec-scene-overrides.json` 以统一 portfolio 与 related-spec 的场景映射。
@@ -200,5 +201,5 @@ MIT，见 [LICENSE](LICENSE)。
 
 ---
 
-**版本**：3.6.0  
+**版本**：3.6.2  
 **最后更新**：2026-03-04
