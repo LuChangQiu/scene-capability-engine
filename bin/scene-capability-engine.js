@@ -26,6 +26,7 @@ const { registerValueCommands } = require('../lib/commands/value');
 const { registerTaskCommands } = require('../lib/commands/task');
 const { registerAuthCommands } = require('../lib/commands/auth');
 const { registerStateCommands } = require('../lib/commands/state');
+const { registerCapabilityCommands } = require('../lib/commands/capability');
 const VersionChecker = require('../lib/version/version-checker');
 const {
   findLegacyKiroDirectories,
@@ -976,6 +977,7 @@ registerValueCommands(program);
 registerTaskCommands(program);
 registerAuthCommands(program);
 registerStateCommands(program);
+registerCapabilityCommands(program);
 
 // Template management commands
 const templatesCommand = require('../lib/commands/templates');

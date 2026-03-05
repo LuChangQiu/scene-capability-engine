@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Capability iteration CLI for scene/spec/task history:
+  - `sce capability extract`
+  - `sce capability score`
+  - `sce capability map`
+  - `sce capability register`
+- Extracted capability candidates now include task summaries and scene/spec provenance for UI governance workflows.
+
 ## [3.6.9] - 2026-03-05
 
 ### Added

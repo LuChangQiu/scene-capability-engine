@@ -1847,6 +1847,23 @@ sce scene template-render --package <name> --values <json-or-path> --out <dir>
 sce scene template-render --package scene-erp --values '{"entity_name":"Order"}' --out ./output --json
 ```
 
+### Capability Iteration (scene -> template -> ontology)
+
+```bash
+# 1) Extract capability candidate from scene history
+sce capability extract --scene scene.customer-order --json
+
+# 2) Score candidate value/reuse/risk
+sce capability score --input .sce/reports/capability-iteration/scene.customer-order.candidate.json --json
+
+# 3) Attach ontology mapping
+sce capability map --input .sce/reports/capability-iteration/scene.customer-order.candidate.json \
+  --mapping .sce/ontology/capability-mapping.json --json
+
+# 4) Export registry-ready capability template package
+sce capability register --input .sce/reports/capability-iteration/scene.customer-order.template.json --json
+```
+
 ### Scene Package Batch Publish
 
 ```bash
