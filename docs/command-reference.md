@@ -1864,6 +1864,10 @@ sce capability map --input .sce/reports/capability-iteration/scene.customer-orde
 sce capability register --input .sce/reports/capability-iteration/scene.customer-order.template.json --json
 ```
 
+Schema references:
+- UI contract: `docs/agent-runtime/capability-iteration-ui.schema.json`
+- Ontology mapping: `docs/ontology/capability-mapping.schema.json`
+
 ### Scene Package Batch Publish
 
 ```bash

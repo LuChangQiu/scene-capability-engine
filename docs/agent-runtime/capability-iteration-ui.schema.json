@@ -1,0 +1,226 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://scene-capability-engine.dev/contracts/capability-iteration-ui.schema.json",
+  "title": "Capability Iteration UI Contract",
+  "type": "object",
+  "required": [
+    "candidate",
+    "score",
+    "mapping",
+    "registry"
+  ],
+  "properties": {
+    "candidate": {
+      "$ref": "#/definitions/candidate"
+    },
+    "score": {
+      "$ref": "#/definitions/score"
+    },
+    "mapping": {
+      "$ref": "#/definitions/mapping"
+    },
+    "registry": {
+      "$ref": "#/definitions/registry"
+    }
+  },
+  "definitions": {
+    "candidate": {
+      "type": "object",
+      "required": [
+        "mode",
+        "scene_id",
+        "generated_at",
+        "source",
+        "specs",
+        "summary"
+      ],
+      "properties": {
+        "mode": {
+          "const": "capability-extract"
+        },
+        "scene_id": { "type": "string" },
+        "generated_at": { "type": "string" },
+        "output_file": { "type": "string" },
+        "source": {
+          "type": "object",
+          "required": ["scene_index_source", "spec_count"],
+          "properties": {
+            "scene_index_source": { "type": "string" },
+            "spec_count": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "specs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["spec_id", "tasks_path", "task_summary"],
+            "properties": {
+              "spec_id": { "type": "string" },
+              "tasks_path": { "type": "string" },
+              "task_error": { "type": "string" },
+              "task_summary": {
+                "type": "object",
+                "required": [
+                  "total",
+                  "completed",
+                  "in_progress",
+                  "queued",
+                  "not_started",
+                  "unknown"
+                ],
+                "properties": {
+                  "total": { "type": "integer", "minimum": 0 },
+                  "completed": { "type": "integer", "minimum": 0 },
+                  "in_progress": { "type": "integer", "minimum": 0 },
+                  "queued": { "type": "integer", "minimum": 0 },
+                  "not_started": { "type": "integer", "minimum": 0 },
+                  "unknown": { "type": "integer", "minimum": 0 }
+                },
+                "additionalProperties": false
+              },
+              "task_sample": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["id", "title", "status"],
+                  "properties": {
+                    "id": { "type": "string" },
+                    "title": { "type": "string" },
+                    "status": { "type": "string" }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "summary": {
+          "type": "object",
+          "required": ["spec_count", "task_total", "task_completed", "task_pending"],
+          "properties": {
+            "spec_count": { "type": "integer", "minimum": 0 },
+            "task_total": { "type": "integer", "minimum": 0 },
+            "task_completed": { "type": "integer", "minimum": 0 },
+            "task_pending": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "score": {
+      "type": "object",
+      "required": [
+        "mode",
+        "scene_id",
+        "generated_at",
+        "input",
+        "scores"
+      ],
+      "properties": {
+        "mode": { "const": "capability-score" },
+        "scene_id": { "type": "string" },
+        "generated_at": { "type": "string" },
+        "input": { "type": "string" },
+        "output_file": { "type": "string" },
+        "scores": {
+          "type": "object",
+          "required": [
+            "completion_rate",
+            "reuse_score",
+            "stability_score",
+            "risk_score",
+            "value_score"
+          ],
+          "properties": {
+            "completion_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+            "reuse_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+            "stability_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+            "risk_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+            "value_score": { "type": "integer", "minimum": 0, "maximum": 100 }
+          },
+          "additionalProperties": false
+        },
+        "summary": { "type": ["object", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "mapping": {
+      "type": "object",
+      "required": [
+        "mode",
+        "scene_id",
+        "generated_at",
+        "input",
+        "template"
+      ],
+      "properties": {
+        "mode": { "const": "capability-map" },
+        "scene_id": { "type": "string" },
+        "generated_at": { "type": "string" },
+        "input": { "type": "string" },
+        "mapping": { "type": ["string", "null"] },
+        "output_file": { "type": "string" },
+        "template": {
+          "type": "object",
+          "required": [
+            "mode",
+            "template_id",
+            "name",
+            "description",
+            "category",
+            "template_type",
+            "scene_id",
+            "ontology_scope",
+            "created_at"
+          ],
+          "properties": {
+            "mode": { "const": "capability-template" },
+            "template_id": { "type": "string" },
+            "name": { "type": "string" },
+            "description": { "type": "string" },
+            "category": { "type": "string" },
+            "template_type": { "const": "capability-template" },
+            "scene_id": { "type": "string" },
+            "tags": { "type": "array", "items": { "type": "string" } },
+            "ontology_scope": {
+              "type": "object",
+              "required": ["domains", "entities", "relations", "business_rules", "decisions"],
+              "properties": {
+                "domains": { "type": "array", "items": { "type": "string" } },
+                "entities": { "type": "array", "items": { "type": "string" } },
+                "relations": { "type": "array", "items": { "type": "string" } },
+                "business_rules": { "type": "array", "items": { "type": "string" } },
+                "decisions": { "type": "array", "items": { "type": "string" } }
+              },
+              "additionalProperties": false
+            },
+            "created_at": { "type": "string" },
+            "source_candidate": { "type": ["object", "null"] }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "registry": {
+      "type": "object",
+      "required": [
+        "mode",
+        "template_id",
+        "output_dir",
+        "files"
+      ],
+      "properties": {
+        "mode": { "const": "capability-register" },
+        "template_id": { "type": "string" },
+        "output_dir": { "type": "string" },
+        "files": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

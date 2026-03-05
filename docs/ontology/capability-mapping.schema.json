@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://scene-capability-engine.dev/contracts/capability-mapping.schema.json",
+  "title": "Capability Ontology Mapping",
+  "type": "object",
+  "required": [
+    "ontology_scope"
+  ],
+  "properties": {
+    "ontology_scope": {
+      "type": "object",
+      "required": [
+        "domains",
+        "entities",
+        "relations",
+        "business_rules",
+        "decisions"
+      ],
+      "properties": {
+        "domains": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "entities": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "relations": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "business_rules": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "decisions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "notes": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
