@@ -25,6 +25,7 @@ const { registerTimelineCommands } = require('../lib/commands/timeline');
 const { registerValueCommands } = require('../lib/commands/value');
 const { registerTaskCommands } = require('../lib/commands/task');
 const { registerAuthCommands } = require('../lib/commands/auth');
+const { registerStateCommands } = require('../lib/commands/state');
 const VersionChecker = require('../lib/version/version-checker');
 const {
   findLegacyKiroDirectories,
@@ -947,6 +948,7 @@ registerOrchestrateCommands(program);
 registerValueCommands(program);
 registerTaskCommands(program);
 registerAuthCommands(program);
+registerStateCommands(program);
 
 // Template management commands
 const templatesCommand = require('../lib/commands/templates');

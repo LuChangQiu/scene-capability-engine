@@ -700,6 +700,39 @@ Default policy file (recommended to commit): `.sce/config/studio-security.json`
 }
 ```
 
+State migration commands (gradual file -> sqlite indexing):
+
+```bash
+# inspect migratable file-based registries
+sce state plan --json
+
+# diagnose sqlite readiness and file/sqlite index sync
+sce state doctor --json
+
+# dry-run migration (default no write)
+sce state migrate --all --json
+
+# apply migration writes into sqlite index tables
+sce state migrate --all --apply --json
+
+# migrate specific components
+sce state migrate --component collab.agent-registry --component runtime.timeline-index --apply --json
+
+# export sqlite migration tables for audit/debug
+sce state export --out .sce/reports/state-migration/state-export.latest.json --json
+```
+
+Current migratable components:
+- `collab.agent-registry` (`.sce/config/agent-registry.json`)
+- `runtime.timeline-index` (`.sce/timeline/index.json`)
+- `runtime.scene-session-index` (`.sce/session-governance/scene-index.json`)
+
+SQLite index tables introduced for gradual migration:
+- `agent_runtime_registry`
+- `timeline_snapshot_registry`
+- `scene_session_cycle_registry`
+- `state_migration_registry`
+
 Write lease model (optional, policy-driven, SQLite-backed):
 - Policy file: `.sce/config/authorization-policy.json`
 - Lease/event persistence: `.sce/state/sce-state.sqlite` (`auth_lease_registry`, `auth_event_stream`)

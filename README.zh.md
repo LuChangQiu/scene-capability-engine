@@ -145,6 +145,11 @@ Studio 任务流输出契约（默认）：
   - 仅支持 SQLite 后端（`.sce/state/sce-state.sqlite`）
   - 仅在 `NODE_ENV=test` 或 `SCE_STATE_ALLOW_MEMORY_FALLBACK=1` 时允许内存回退
   - 在上述条件之外若 SQLite 不可用，任务引用/事件持久化会快速失败
+- 渐进式文件到 SQLite 迁移工具：
+  - `sce state plan --json`
+  - `sce state doctor --json`
+  - `sce state migrate --all --apply --json`
+  - `sce state export --out .sce/reports/state-migration/state-export.latest.json --json`
 - 写入授权租约模型（SQLite 持久化）：
   - 策略文件：`.sce/config/authorization-policy.json`
   - 申请租约：`sce auth grant --scope studio:* --reason "<原因>" --auth-password <密码> --json`

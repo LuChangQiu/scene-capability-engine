@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Gradual state migration command group:
+  - `sce state plan`
+  - `sce state doctor`
+  - `sce state migrate` (dry-run default, `--apply` to write)
+  - `sce state export`
+- New migration manager module: `lib/state/state-migration-manager.js`.
+- SQLite index tables for staged migration of file-based registries:
+  - `agent_runtime_registry`
+  - `timeline_snapshot_registry`
+  - `scene_session_cycle_registry`
+  - `state_migration_registry`
+- Unit tests for state migration planning/execution/export:
+  - `tests/unit/state/state-migration-manager.test.js`
+  - `tests/unit/commands/state.test.js`
+
 ## [3.6.3] - 2026-03-05
 
 ### Added
