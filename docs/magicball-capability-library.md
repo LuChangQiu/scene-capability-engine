@@ -38,6 +38,12 @@ sce capability use --template <template-id> --spec <spec-id> --json
 
 输出：`capability-use-plan`（用于 UI 展示和后续手工应用）。
 
+如需直接写入 spec 任务：
+
+```bash
+sce capability use --template <template-id> --spec <spec-id> --apply --json
+```
+
 ## 3. API 封装建议（CLI -> HTTP）
 
 建议 Magicball 后端封装为：

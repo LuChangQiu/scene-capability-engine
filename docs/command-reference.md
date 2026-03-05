@@ -1906,6 +1906,9 @@ sce capability match --spec 01-02-customer-order --query "订单 库存" --limit
 
 # Generate a usage plan for a spec
 sce capability use --template customer-order-core --spec 01-02-customer-order --json
+
+# Generate usage plan + append tasks to tasks.md
+sce capability use --template customer-order-core --spec 01-02-customer-order --apply --json
 ```
 
 ### Scene Package Batch Publish
