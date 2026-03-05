@@ -1,0 +1,154 @@
+# Magicball 能力迭代 API 封装建议（基于 SCE CLI）
+
+> 目标：把 SCE CLI 统一封装成 Magicball 内部 API，方便前端用标准 JSON 调用。
+
+---
+
+## 1. API 设计原则
+
+- **一处封装**：统一执行 CLI，屏蔽差异
+- **JSON 输出**：所有调用带 `--json`
+- **可回放**：每一步的输出落盘并在 UI 可复用
+- **错误可读**：将 stderr 错误结构化返回
+
+---
+
+## 2. 建议 API 列表
+
+### 2.1 Extract
+
+```
+POST /api/capability/extract
+```
+
+请求：
+```json
+{
+  "scene_id": "scene.customer-order",
+  "specs": ["01-00-order", "01-01-inventory"],
+  "sample_limit": 5
+}
+```
+
+执行 CLI：
+```bash
+sce capability extract --scene <scene_id> --specs <specs> --sample-limit <n> --json
+```
+
+响应：
+- 返回 `capability-extract` payload
+
+---
+
+### 2.2 Score
+
+```
+POST /api/capability/score
+```
+
+请求：
+```json
+{
+  "candidate_file": ".sce/reports/capability-iteration/scene.customer-order.candidate.json"
+}
+```
+
+执行 CLI：
+```bash
+sce capability score --input <candidate_file> --json
+```
+
+响应：
+- 返回 `capability-score` payload
+
+---
+
+### 2.3 Map
+
+```
+POST /api/capability/map
+```
+
+请求：
+```json
+{
+  "candidate_file": ".sce/reports/capability-iteration/scene.customer-order.candidate.json",
+  "ontology_file": ".sce/ontology/capability-mapping.json",
+  "template_id": "scene.customer-order",
+  "name": "Capability template: scene.customer-order",
+  "description": "Derived from scene.customer-order"
+}
+```
+
+执行 CLI：
+```bash
+sce capability map --input <candidate_file> --mapping <ontology_file> \
+  --template-id <template_id> --name "<name>" --description "<desc>" --json
+```
+
+响应：
+- 返回 `capability-map` payload
+
+---
+
+### 2.4 Register
+
+```
+POST /api/capability/register
+```
+
+请求：
+```json
+{
+  "template_file": ".sce/reports/capability-iteration/scene.customer-order.template.json",
+  "risk_level": "medium",
+  "difficulty": "intermediate"
+}
+```
+
+执行 CLI：
+```bash
+sce capability register --input <template_file> --risk-level <level> --difficulty <level> --json
+```
+
+响应：
+- 返回 `capability-register` payload
+
+---
+
+## 3. 通用返回结构（建议）
+
+```json
+{
+  "success": true,
+  "data": { ...sce_payload },
+  "stderr": null
+}
+```
+
+失败：
+```json
+{
+  "success": false,
+  "data": null,
+  "stderr": "error message from sce"
+}
+```
+
+---
+
+## 4. 前端调用建议
+
+- 每一步 UI 都展示对应 `data.output_file`（如有）
+- 支持“重新执行”按钮（调用同一 API）
+- 失败时提示 `stderr`，并保留上一步数据可继续
+
+---
+
+## 5. 推荐顺序
+
+1. `/api/capability/extract`
+2. `/api/capability/score`
+3. `/api/capability/map`
+4. `/api/capability/register`
+
