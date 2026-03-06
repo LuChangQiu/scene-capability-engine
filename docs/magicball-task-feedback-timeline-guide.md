@@ -121,3 +121,14 @@ SCE 现在在时间线命令中增加：
 - 时间线优先展示“可恢复、可比较、可追踪”的节点信息
 - 所有字段都以 SCE 输出为准，Magicball 不自行推断
 
+
+## 6. Magicball 统一状态语言
+
+SCE 现在会在任务反馈模型中提供 `mb_status`：
+- `attention_level`
+- `status_tone`
+- `status_label`
+- `blocking_summary`
+- `recommended_action`
+
+Magicball 可直接用这组字段控制颜色、图标、提示文案。

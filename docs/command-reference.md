@@ -627,7 +627,7 @@ Studio JSON output now includes a stable UI-oriented task stream contract (in ad
 - `task.commands[]`: `cmd`, `exit_code`, `stdout`, `stderr`, `log_path`
 - `task.errors[]`: `message`, `error_bundle` (copy-ready diagnostic bundle)
 - `task.evidence[]`: structured evidence references
-- `task.feedback_model`: human-facing task feedback (`problem`, `execution`, `diagnosis`, `evidence`, `next_step`)
+- `task.feedback_model`: human-facing task feedback (`problem`, `execution`, `diagnosis`, `evidence`, `next_step`, `mb_status`)
 - `event[]`: raw audit event stream (`studio events` also keeps legacy `events[]` for compatibility)
 - `studio events --openhands-events <path>` switches `source_stream=openhands` and maps OpenHands raw events to the same task contract fields.
 - hierarchical task reference lookup/rerun:

@@ -179,3 +179,14 @@ sce capability use --template <template-id> --spec <spec-id> --apply --json
   ]
 }
 ```
+
+### mb_status（统一状态语言）
+```json
+{
+  "attention_level": "critical",
+  "status_tone": "danger",
+  "status_label": "blocked",
+  "blocking_summary": "缺决策策略，暂不可发布",
+  "recommended_action": "补齐决策策略"
+}
+```

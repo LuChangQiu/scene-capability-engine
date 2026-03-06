@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.28] - 2026-03-06
+
+### Added
+- Added shared `mb_status` language across studio task feedback and capability inventory scene advice for Magicball UI rendering.
+- Magicball docs now define the shared status-language contract for task cards and capability cards.
+
 ## [3.6.27] - 2026-03-06
 
 ### Added

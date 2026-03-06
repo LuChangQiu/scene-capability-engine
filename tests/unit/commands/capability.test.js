@@ -279,7 +279,8 @@ describe('capability commands', () => {
       attention_level: 'critical',
       recommended_action: '补齐决策策略',
       blocking_summary: '缺决策策略，暂不可发布',
-      next_action: 'fill_decision_strategy'
+      next_action: 'fill_decision_strategy',
+      mb_status: expect.objectContaining({ status_label: 'blocked' })
     }));
   });
 

@@ -227,3 +227,9 @@ sce capability register --input <template.json> --json
 
 - `summary_recommendations[]`：顶部全局建议
 - `quick_filters[]`：推荐快捷筛选
+
+## 15. Magicball 统一状态语言
+
+- Scene 卡片统一消费 `mb_status`
+- 任务卡统一消费 `task.feedback_model.mb_status`
+- 颜色建议：`danger / warning / info / success`

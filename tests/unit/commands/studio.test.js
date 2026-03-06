@@ -642,7 +642,8 @@ describe('studio command workflow', () => {
       version: '1.0',
       problem: expect.objectContaining({ action: 'rollback' }),
       execution: expect.objectContaining({ stage: 'rollback' }),
-      next_step: expect.objectContaining({ next_action: expect.any(String) })
+      next_step: expect.objectContaining({ next_action: expect.any(String) }),
+      mb_status: expect.objectContaining({ status_tone: expect.any(String) })
     }));
     expect(eventsPayload.events.length).toBeGreaterThanOrEqual(4);
     expect(eventsPayload.events[eventsPayload.events.length - 1].event_type).toBe('job.rolled_back');
@@ -730,7 +731,8 @@ describe('studio command workflow', () => {
     expect(payload.task.feedback_model).toEqual(expect.objectContaining({
       diagnosis: expect.objectContaining({ chain_checkpoint: 'command-execution' }),
       evidence: expect.objectContaining({ error_count: expect.any(Number), file_count: expect.any(Number) }),
-      next_step: expect.objectContaining({ recommended_action: '处理阻断后重试' })
+      next_step: expect.objectContaining({ recommended_action: '处理阻断后重试' }),
+      mb_status: expect.objectContaining({ blocking_summary: expect.any(String) })
     }));
   });
 
