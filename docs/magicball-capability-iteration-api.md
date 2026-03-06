@@ -188,5 +188,7 @@ sce capability register --input <template_file> --risk-level <level> --difficult
 - `query.filters.missing_triad`：triad 缺口过滤
 - `summary_stats.publish_ready_count` / `summary_stats.blocked_count`：顶部统计卡
 - `summary_stats.missing_triads.*`：triad 缺口计数卡
+- `summary_recommendations[]`：首页总览建议
+- `quick_filters[]`：首页快捷筛选配置
 - `sort.strategy`：默认排序策略说明
 - `sort.triad_priority`：triad 优先级数组

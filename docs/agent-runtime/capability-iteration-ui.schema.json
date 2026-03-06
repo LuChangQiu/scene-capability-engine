@@ -668,7 +668,9 @@
         "scene_count",
         "sort",
         "scenes",
-        "summary_stats"
+        "summary_stats",
+        "summary_recommendations",
+        "quick_filters"
       ],
       "properties": {
         "mode": {
@@ -769,7 +771,12 @@
               "ontology_core_ui",
               "release_readiness",
               "release_readiness_ui",
-              "score_preview"
+              "score_preview",
+              "attention_level",
+              "recommended_action",
+              "blocking_summary",
+              "next_action",
+              "next_command"
             ],
             "properties": {
               "scene_id": {
@@ -798,6 +805,21 @@
               },
               "score_preview": {
                 "type": "object"
+              },
+              "attention_level": {
+                "type": "string"
+              },
+              "recommended_action": {
+                "type": "string"
+              },
+              "blocking_summary": {
+                "type": "string"
+              },
+              "next_action": {
+                "type": "string"
+              },
+              "next_command": {
+                "type": "string"
               }
             },
             "additionalProperties": false
@@ -844,6 +866,54 @@
             }
           },
           "additionalProperties": false
+        },
+        "summary_recommendations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "quick_filters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "label",
+              "query"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "query": {
+                "type": "object",
+                "required": [
+                  "release_ready",
+                  "missing_triad"
+                ],
+                "properties": {
+                  "release_ready": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "missing_triad": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
         }
       },
       "additionalProperties": false

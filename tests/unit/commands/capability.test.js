@@ -11,7 +11,10 @@ const {
   enrichCapabilityTemplateForUi,
   filterCapabilityCatalogEntries,
   sortCapabilityInventoryEntries,
-  buildCapabilityInventorySummaryStats
+  buildCapabilityInventorySceneAdvice,
+  buildCapabilityInventorySummaryStats,
+  buildCapabilityInventorySummaryRecommendations,
+  buildCapabilityInventoryQuickFilters
 } = require('../../../lib/commands/capability');
 
 describe('capability commands', () => {
@@ -242,6 +245,16 @@ describe('capability commands', () => {
         entity_relation: 0
       }
     });
+    expect(inventory.summary_recommendations).toEqual(expect.arrayContaining([
+      '优先处理缺决策策略的 scene（1）',
+      '其次处理缺业务规则的 scene（1）',
+      '可优先推进可发布 scene 进入模板构建（1）'
+    ]));
+    expect(inventory.quick_filters).toEqual(expect.arrayContaining([
+      expect.objectContaining({ id: 'blocked' }),
+      expect.objectContaining({ id: 'missing_decision_strategy' }),
+      expect.objectContaining({ id: 'ready' })
+    ]));
     expect(inventory.query).toEqual(expect.objectContaining({
       protocol_version: '1.0',
       scene_id: null,
@@ -255,12 +268,48 @@ describe('capability commands', () => {
     expect(inventory.scenes.map((item) => item.scene_id)).toEqual(['scene.partial', 'scene.demo']);
     expect(inventory.scenes.find((item) => item.scene_id === 'scene.demo')).toEqual(expect.objectContaining({
       ontology_core_ui: expect.objectContaining({ ready: true }),
-      release_readiness_ui: expect.objectContaining({ publish_ready: true })
+      release_readiness_ui: expect.objectContaining({ publish_ready: true }),
+      attention_level: 'medium',
+      recommended_action: '继续补充任务证据',
+      next_action: 'strengthen_evidence'
     }));
     expect(inventory.scenes.find((item) => item.scene_id === 'scene.partial')).toEqual(expect.objectContaining({
       ontology_core_ui: expect.objectContaining({ ready: false }),
-      release_readiness_ui: expect.objectContaining({ publish_ready: false })
+      release_readiness_ui: expect.objectContaining({ publish_ready: false }),
+      attention_level: 'critical',
+      recommended_action: '补齐决策策略',
+      blocking_summary: '缺决策策略，暂不可发布',
+      next_action: 'fill_decision_strategy'
     }));
+  });
+
+  test('builds scene advice and summary recommendation helpers', () => {
+    const blockedScene = { scene_id: 'scene.partial', release_readiness_ui: { publish_ready: false, blocking_missing: ['decision_strategy', 'business_rules'] }, score_preview: { value_score: 40 } };
+    expect(buildCapabilityInventorySceneAdvice(blockedScene)).toEqual(expect.objectContaining({
+      attention_level: 'critical',
+      recommended_action: '补齐决策策略',
+      next_action: 'fill_decision_strategy'
+    }));
+
+    const recommendations = buildCapabilityInventorySummaryRecommendations([
+      blockedScene,
+      { scene_id: 'scene.ready', release_readiness_ui: { publish_ready: true, blocking_missing: [] }, score_preview: { value_score: 80 } }
+    ]);
+    expect(recommendations).toEqual(expect.arrayContaining([
+      '优先处理缺决策策略的 scene（1）',
+      '可优先推进可发布 scene 进入模板构建（1）'
+    ]));
+
+    const quickFilters = buildCapabilityInventoryQuickFilters({
+      publish_ready_count: 1,
+      blocked_count: 1,
+      missing_triads: { decision_strategy: 1, business_rules: 0, entity_relation: 0 }
+    });
+    expect(quickFilters).toEqual(expect.arrayContaining([
+      expect.objectContaining({ id: 'blocked' }),
+      expect.objectContaining({ id: 'missing_decision_strategy' }),
+      expect.objectContaining({ id: 'ready' })
+    ]));
   });
 
   test('summarizes capability inventory stats', () => {

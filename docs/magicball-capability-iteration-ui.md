@@ -214,3 +214,16 @@ sce capability register --input <template.json> --json
 - `summary_stats.missing_triads.decision_strategy`：缺决策策略数量
 - `summary_stats.missing_triads.business_rules`：缺业务规则数量
 - `summary_stats.missing_triads.entity_relation`：缺实体关系数量
+
+## 13. Scene 卡片建议字段
+
+- `attention_level`：critical/high/medium/low
+- `recommended_action`：卡片主建议
+- `blocking_summary`：一行摘要
+- `next_action`：前端动作 key
+- `next_command`：默认 CLI 建议
+
+## 14. 首页总览建议字段
+
+- `summary_recommendations[]`：顶部全局建议
+- `quick_filters[]`：推荐快捷筛选
