@@ -56,6 +56,7 @@ describe('RegistryParser', () => {
     expect(parsed.templates[0].template_type).toBe('capability-template');
     expect(parsed.templates[0].min_sce_version).toBe('3.3.13');
     expect(parsed.templates[0].ontology_core.ready).toBe(true);
+    expect(parsed.templates[0].ontology_core.coverage_ratio).toBe(1);
   });
 
   test('rejects spec-scaffold missing required triad file', () => {

@@ -90,6 +90,14 @@ sce capability use --template <template-id> --spec <spec-id> --apply --json
 
 ## 5. 输出结构（关键字段）
 
+列表、详情、匹配、使用计划里的模板对象都应直接消费：
+- `ontology_core`
+- `ontology_core_ui.ready`
+- `ontology_core_ui.coverage_percent`
+- `ontology_core_ui.missing`
+- `ontology_core_ui.triads.entity_relation|business_rules|decision_strategy`
+
+
 ### capability-match
 ```json
 {
@@ -100,6 +108,16 @@ sce capability use --template <template-id> --spec <spec-id> --apply --json
   "matches": [
     {
       "template_id": "customer-order-core",
+      "ontology_core_ui": {
+        "ready": true,
+        "coverage_percent": 100,
+        "missing": [],
+        "triads": {
+          "entity_relation": true,
+          "business_rules": true,
+          "decision_strategy": true
+        }
+      },
       "score": 82,
       "score_components": {
         "ontology": 0.72,
