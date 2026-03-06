@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.32] - 2026-03-07
+
+### Fixed
+- Restored auto session/governance retention and stats CLI paths after refactor, including full integration coverage for version/legacy/takeover/auto flows.
+
+## [3.6.31] - 2026-03-07
+
+### Added
+- Continued refactor pass: extracted command-adjacent Magicball, capability, studio, scene, and auto helper/service modules to reduce top-heavy command files.
+- Added Magicball contract index to make schema discovery and frontend adaptation deterministic.
+
 ## [3.6.30] - 2026-03-07
 
 ### Added
