@@ -177,3 +177,14 @@ sce capability register --input <template_file> --risk-level <level> --difficult
 4. `/api/capability/map`
 5. `/api/capability/register`
 
+
+## 6. Inventory 固定查询协议
+
+- `query.protocol_version`：前后端协议版本
+- `query.scene_id`：单场景盘点时使用，否则为 `null`
+- `query.limit`：场景返回上限
+- `query.sample_limit`：每个 spec 抽样任务上限
+- `query.filters.release_ready`：发布可用性过滤
+- `query.filters.missing_triad`：triad 缺口过滤
+- `sort.strategy`：默认排序策略说明
+- `sort.triad_priority`：triad 优先级数组

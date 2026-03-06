@@ -21,6 +21,9 @@
     },
     "registry": {
       "$ref": "#/definitions/registry"
+    },
+    "inventory": {
+      "$ref": "#/definitions/inventory"
     }
   },
   "definitions": {
@@ -651,6 +654,153 @@
             }
           },
           "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "inventory": {
+      "type": "object",
+      "required": [
+        "mode",
+        "generated_at",
+        "query",
+        "scene_total",
+        "scene_count",
+        "sort",
+        "scenes"
+      ],
+      "properties": {
+        "mode": {
+          "const": "capability-inventory"
+        },
+        "generated_at": {
+          "type": "string"
+        },
+        "query": {
+          "type": "object",
+          "required": [
+            "protocol_version",
+            "scene_id",
+            "limit",
+            "sample_limit",
+            "filters"
+          ],
+          "properties": {
+            "protocol_version": {
+              "type": "string"
+            },
+            "scene_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sample_limit": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "filters": {
+              "type": "object",
+              "required": [
+                "release_ready",
+                "missing_triad"
+              ],
+              "properties": {
+                "release_ready": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "missing_triad": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "scene_total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "scene_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sort": {
+          "type": "object",
+          "required": [
+            "strategy",
+            "triad_priority"
+          ],
+          "properties": {
+            "strategy": {
+              "type": "string"
+            },
+            "triad_priority": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "scenes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "scene_id",
+              "summary",
+              "source",
+              "ontology_scope",
+              "ontology_core",
+              "ontology_core_ui",
+              "release_readiness",
+              "release_readiness_ui",
+              "score_preview"
+            ],
+            "properties": {
+              "scene_id": {
+                "type": "string"
+              },
+              "summary": {
+                "type": "object"
+              },
+              "source": {
+                "type": "object"
+              },
+              "ontology_scope": {
+                "$ref": "#/definitions/ontology_scope"
+              },
+              "ontology_core": {
+                "$ref": "#/definitions/ontology_core"
+              },
+              "ontology_core_ui": {
+                "$ref": "#/definitions/ontology_core_ui"
+              },
+              "release_readiness": {
+                "type": "object"
+              },
+              "release_readiness_ui": {
+                "type": "object"
+              },
+              "score_preview": {
+                "type": "object"
+              }
+            },
+            "additionalProperties": false
+          }
         }
       },
       "additionalProperties": false

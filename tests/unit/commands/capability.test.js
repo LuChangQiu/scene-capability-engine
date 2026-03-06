@@ -230,7 +230,15 @@ describe('capability commands', () => {
       fileSystem: fs
     });
     expect(inventory.mode).toBe('capability-inventory');
+    expect(inventory.scene_total).toBe(2);
     expect(inventory.scene_count).toBe(2);
+    expect(inventory.query).toEqual(expect.objectContaining({
+      protocol_version: '1.0',
+      scene_id: null,
+      limit: 2,
+      sample_limit: 5,
+      filters: { release_ready: null, missing_triad: null }
+    }));
     expect(inventory.sort).toEqual(expect.objectContaining({
       strategy: 'publish_ready -> missing_triad_priority -> value_score_desc -> scene_id'
     }));
@@ -263,6 +271,7 @@ describe('capability commands', () => {
       projectPath: tempDir,
       fileSystem: fs
     });
+    expect(inventory.query.filters).toEqual({ release_ready: false, missing_triad: 'decision_strategy' });
     expect(inventory.scenes.map((item) => item.scene_id)).toEqual(['scene.partial']);
   });
 

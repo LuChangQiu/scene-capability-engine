@@ -199,3 +199,10 @@ sce capability register --input <template.json> --json
 - 再按 triad 缺口优先级排序：`decision_strategy` -> `business_rules` -> `entity_relation`
 - 再按 `score_preview.value_score` 降序
 - 最后按 `scene_id` 升序
+
+## 11. 首页固定查询协议
+
+- 使用 `capability-inventory` 返回的 `query` 作为首页请求回显
+- 使用 `sort` 作为排序策略展示来源
+- 首页筛选器应直接映射：`query.filters.release_ready`、`query.filters.missing_triad`
+- 首页顶部可显示：`scene_total` / `scene_count`

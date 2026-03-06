@@ -1875,6 +1875,8 @@ sce capability inventory --json
 sce capability inventory --release-ready false --missing-triad decision_strategy --json
 ```
 
+`capability inventory` returns fixed homepage query metadata in `query` and sorting metadata in `sort`.
+
 
 Capability candidates are now evaluated against the ontology core triad by default:
 - entity + relation
