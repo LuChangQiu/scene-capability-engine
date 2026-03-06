@@ -6,7 +6,8 @@ const {
   runCapabilityExtractCommand,
   runCapabilityScoreCommand,
   runCapabilityMapCommand,
-  runCapabilityRegisterCommand
+  runCapabilityRegisterCommand,
+  enrichCapabilityTemplateForUi
 } = require('../../../lib/commands/capability');
 
 describe('capability commands', () => {
@@ -146,6 +147,38 @@ describe('capability commands', () => {
     expect(registered.mode).toBe('capability-register');
     expect(registered.ontology_core.ready).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, registered.files[0]))).toBe(true);
+  });
+
+  test('exposes publish readiness UI state for capability templates', () => {
+    const readyTemplate = enrichCapabilityTemplateForUi({
+      id: 'ready-template',
+      ontology_scope: {
+        entities: ['Order'],
+        relations: ['Order->Customer'],
+        business_rules: ['OrderApproval'],
+        decisions: ['RiskPolicy']
+      }
+    });
+    expect(readyTemplate.release_readiness_ui).toEqual(expect.objectContaining({
+      publish_ready: true,
+      blocking_count: 0
+    }));
+
+    const blockedTemplate = enrichCapabilityTemplateForUi({
+      id: 'blocked-template',
+      ontology_scope: {
+        entities: ['Order'],
+        relations: ['Order->Customer'],
+        business_rules: [],
+        decisions: []
+      }
+    });
+    expect(blockedTemplate.release_readiness_ui).toEqual(expect.objectContaining({
+      publish_ready: false,
+      blocking_count: 1,
+      blocking_ids: expect.arrayContaining(['ontology-core-triads']),
+      blocking_missing: expect.arrayContaining(['business_rules', 'decision_strategy'])
+    }));
   });
 
   test('blocks register when ontology triads are incomplete', async () => {

@@ -146,6 +146,17 @@ sce capability use --template <template-id> --spec <spec-id> --apply --json
 
 若需要“自动落地写入 spec 任务”的强制执行模式，可以在后续版本加 `--apply` 开关。
 
+### release_readiness_ui（列表状态）
+```json
+{
+  "publish_ready": false,
+  "blocking_count": 1,
+  "blocking_ids": ["ontology-core-triads"],
+  "blocking_reasons": ["missing required ontology triads"],
+  "blocking_missing": ["decision_strategy"]
+}
+```
+
 ### release_readiness（发布阻断原因）
 ```json
 {

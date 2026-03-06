@@ -1898,6 +1898,7 @@ Schema references:
 
 `catalog/list/search/show/match/use` responses now include `ontology_core` and `ontology_core_ui` so UI can render triad readiness directly.
 `capability map/register` responses now include `release_readiness` so UI can render blocking reasons before publish.
+Catalog payloads also expose `release_readiness_ui` for pre-publish sorting and status badges.
 
 ```bash
 # List capability templates
