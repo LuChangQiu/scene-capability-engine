@@ -8,6 +8,7 @@ Schema references:
 - `docs/agent-runtime/magicball-status.schema.json`
 - `docs/agent-runtime/magicball-task-feedback.schema.json`
 - `docs/agent-runtime/magicball-timeline-view.schema.json`
+- `docs/agent-runtime/magicball-contract-index.md`
 
 
 SCE 现在在 `task` 下增加：
@@ -138,3 +139,10 @@ SCE 现在会在任务反馈模型中提供 `mb_status`：
 - `recommended_action`
 
 Magicball 可直接用这组字段控制颜色、图标、提示文案。
+
+## 7. 维护说明
+
+- 共享实现位于 `lib/magicball/*`
+- `studio` 命令只负责任务流编排与事件产出
+- `timeline` 命令只负责快照读写与 view model 挂载
+- 共享契约入口：`docs/agent-runtime/magicball-contract-index.md`

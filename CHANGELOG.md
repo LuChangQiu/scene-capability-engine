@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.30] - 2026-03-07
+
+### Added
+- Continued internal refactor: extracted shared Magicball modules, capability services, studio task envelope/intents, scene doctor helpers, and auto session metrics helpers.
+- Added Magicball contract index for schema/discovery entrypoint.
+
 ## [3.6.29] - 2026-03-06
 
 ### Added

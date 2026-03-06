@@ -1905,6 +1905,8 @@ Schema references:
 - Magicball shared status: `docs/agent-runtime/magicball-status.schema.json`
 - Magicball task feedback: `docs/agent-runtime/magicball-task-feedback.schema.json`
 - Magicball timeline view: `docs/agent-runtime/magicball-timeline-view.schema.json`
+- Magicball contract index: `docs/agent-runtime/magicball-contract-index.md`
+  Implementation modules are listed in the contract index for internal maintainers.
 - Ontology mapping: `docs/ontology/capability-mapping.schema.json`
 
 ### Capability Library Reuse (query -> match -> use)
