@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.21] - 2026-03-06
+
+### Added
+- Capability catalog list/search now supports `--release-ready` and `--missing-triad` filters for pre-publish triage.
+- Magicball capability library docs now show list-level triage filter examples.
+
 ## [3.6.20] - 2026-03-06
 
 ### Added

@@ -1903,6 +1903,8 @@ Catalog payloads also expose `release_readiness_ui` for pre-publish sorting and 
 ```bash
 # List capability templates
 sce capability catalog list --json
+sce capability catalog list --release-ready true --json
+sce capability catalog list --missing-triad decision_strategy --json
 
 # Search capability templates
 sce capability catalog search "customer order" --json

@@ -20,7 +20,9 @@
 
 ```bash
 sce capability catalog list --json
-sce capability catalog search "customer order" --json
+sce capability catalog list --release-ready true --json
+sce capability catalog list --missing-triad decision_strategy --json
+sce capability catalog search "customer order" --release-ready false --json
 sce capability catalog show <template-id> --json
 ```
 

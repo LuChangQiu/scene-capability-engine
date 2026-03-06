@@ -7,7 +7,8 @@ const {
   runCapabilityScoreCommand,
   runCapabilityMapCommand,
   runCapabilityRegisterCommand,
-  enrichCapabilityTemplateForUi
+  enrichCapabilityTemplateForUi,
+  filterCapabilityCatalogEntries
 } = require('../../../lib/commands/capability');
 
 describe('capability commands', () => {
@@ -179,6 +180,32 @@ describe('capability commands', () => {
       blocking_ids: expect.arrayContaining(['ontology-core-triads']),
       blocking_missing: expect.arrayContaining(['business_rules', 'decision_strategy'])
     }));
+  });
+
+  test('filters capability catalog entries by publish readiness and missing triad', () => {
+    const templates = [
+      enrichCapabilityTemplateForUi({
+        id: 'ready-template',
+        ontology_scope: {
+          entities: ['Order'],
+          relations: ['Order->Customer'],
+          business_rules: ['OrderApproval'],
+          decisions: ['RiskPolicy']
+        }
+      }),
+      enrichCapabilityTemplateForUi({
+        id: 'missing-decision',
+        ontology_scope: {
+          entities: ['Order'],
+          relations: ['Order->Customer'],
+          business_rules: ['OrderApproval'],
+          decisions: []
+        }
+      })
+    ];
+
+    expect(filterCapabilityCatalogEntries(templates, { releaseReady: 'true' }).map((item) => item.id)).toEqual(['ready-template']);
+    expect(filterCapabilityCatalogEntries(templates, { missingTriad: 'decision_strategy' }).map((item) => item.id)).toEqual(['missing-decision']);
   });
 
   test('blocks register when ontology triads are incomplete', async () => {
