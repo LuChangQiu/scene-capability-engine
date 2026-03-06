@@ -1897,6 +1897,7 @@ Schema references:
 ### Capability Library Reuse (query -> match -> use)
 
 `catalog/list/search/show/match/use` responses now include `ontology_core` and `ontology_core_ui` so UI can render triad readiness directly.
+`capability map/register` responses now include `release_readiness` so UI can render blocking reasons before publish.
 
 ```bash
 # List capability templates

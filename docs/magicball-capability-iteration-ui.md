@@ -180,3 +180,9 @@ sce capability register --input <template.json> --json
 - `ontology_core_ui.missing`
 - `summary.ontology_triads_ready`
 - `summary.ontology_missing_triads`
+
+## 9. 发布阻断提示
+
+- 发布页直接消费 `release_readiness.ready`
+- 若为 `false`，展示 `blockers[].reason`、`blockers[].missing`、`blockers[].remediation`
+- 默认阻断文案：`能力模板未达到发布条件`

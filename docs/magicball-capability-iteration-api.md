@@ -87,7 +87,7 @@ sce capability map --input <candidate_file> --mapping <ontology_file> \
 ```
 
 响应：
-- 返回 `capability-map` payload，重点消费 `template.ontology_core`
+- 返回 `capability-map` payload，重点消费 `template.ontology_core` 与 `release_readiness`
 
 ---
 
@@ -112,7 +112,7 @@ sce capability register --input <template_file> --risk-level <level> --difficult
 ```
 
 响应：
-- 返回 `capability-register` payload，重点消费 `ontology_core`（入库 triad 审核结果）
+- 返回 `capability-register` payload，重点消费 `ontology_core` 与 `release_readiness`（入库 triad 审核结果）
 
 ---
 

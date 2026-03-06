@@ -145,3 +145,24 @@ sce capability use --template <template-id> --spec <spec-id> --apply --json
 ---
 
 若需要“自动落地写入 spec 任务”的强制执行模式，可以在后续版本加 `--apply` 开关。
+
+### release_readiness（发布阻断原因）
+```json
+{
+  "ready": false,
+  "blockers": [
+    {
+      "id": "ontology-core-triads",
+      "severity": "blocking",
+      "reason": "missing required ontology triads",
+      "missing": ["decision_strategy"],
+      "missing_labels": ["decision_strategy"],
+      "remediation": [
+        "补齐实体关系（entities + relations）",
+        "补齐业务规则（business_rules）",
+        "补齐决策策略（decisions)"
+      ]
+    }
+  ]
+}
+```

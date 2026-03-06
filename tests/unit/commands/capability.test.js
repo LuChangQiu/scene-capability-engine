@@ -134,6 +134,7 @@ describe('capability commands', () => {
     });
     expect(mapped.mode).toBe('capability-map');
     expect(mapped.template.ontology_scope.entities).toContain('Order');
+    expect(mapped.release_readiness.ready).toBe(true);
 
     const registered = await runCapabilityRegisterCommand({
       input: mapped.output_file,
@@ -172,6 +173,20 @@ describe('capability commands', () => {
     }, {
       projectPath: tempDir,
       fileSystem: fs
-    })).rejects.toThrow('missing required ontology triads: decision_strategy');
+    })).rejects.toMatchObject({
+      code: 'CAPABILITY_REGISTER_BLOCKED',
+      details: {
+        release_readiness: expect.objectContaining({
+          ready: false,
+          blockers: expect.arrayContaining([
+            expect.objectContaining({
+              id: 'ontology-core-triads',
+              severity: 'blocking',
+              missing: expect.arrayContaining(['decision_strategy'])
+            })
+          ])
+        })
+      }
+    });
   });
 });

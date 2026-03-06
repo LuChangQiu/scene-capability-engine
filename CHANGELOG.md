@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.19] - 2026-03-06
+
+### Added
+- Capability map/register payloads now expose `release_readiness` with structured blocking reasons for publish UI.
+- Magicball capability docs now define release blocker rendering for capability publish pages.
+
 ## [3.6.18] - 2026-03-06
 
 ### Added
