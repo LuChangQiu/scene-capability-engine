@@ -4,6 +4,12 @@
 
 ## 1. 能力库复用流程
 
+能力模板进入能力库前，默认要求补齐本体三项核心能力：
+- 实体关系
+- 业务规则
+- 决策策略
+
+
 1. **查询**能力库（列表/搜索）
 2. **匹配**当前 spec 的问题域（基于 problem-domain-chain 里的 ontology）
 3. **使用**能力模板（生成可执行的 usage plan）
@@ -72,10 +78,10 @@ sce capability use --template <template-id> --spec <spec-id> --apply --json
 
 ### 4.2 能力库列表
 - 支持筛选：category / risk / source
-- 展示关键信息：`name` / `description` / `ontology_scope`
+- 展示关键信息：`name` / `description` / `ontology_scope` / `ontology_core`
 
 ### 4.3 匹配结果
-- 展示 `score` + `score_components`
+- 展示 `score` + `score_components` + `ontology_core.ready`
 - 支持一键生成 usage plan
 
 ### 4.4 使用计划

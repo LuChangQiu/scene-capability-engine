@@ -1869,6 +1869,12 @@ sce scene template-render --package scene-erp --values '{"entity_name":"Order"}'
 
 ### Capability Iteration (scene -> template -> ontology)
 
+Capability candidates are now evaluated against the ontology core triad by default:
+- entity + relation
+- business rule
+- decision strategy
+
+
 ```bash
 # 1) Extract capability candidate from scene history
 sce capability extract --scene scene.customer-order --json
@@ -1889,6 +1895,8 @@ Schema references:
 - Ontology mapping: `docs/ontology/capability-mapping.schema.json`
 
 ### Capability Library Reuse (query -> match -> use)
+
+`catalog/show/match/use` responses now include `ontology_core` so UI can render triad readiness directly.
 
 ```bash
 # List capability templates

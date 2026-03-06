@@ -19,7 +19,7 @@ describe('RegistryParser', () => {
     await fs.remove(tempDir);
   });
 
-  test('accepts capability-template without spec triad files', async () => {
+  test('accepts capability-template with complete ontology triads', async () => {
     const registryPath = path.join(tempDir, 'template-registry.json');
     await fs.writeJson(registryPath, {
       version: '2.0.0',
@@ -37,7 +37,10 @@ describe('RegistryParser', () => {
           min_sce_version: '3.3.13',
           ontology_scope: {
             domains: ['erp'],
-            entities: ['OrderHeader']
+            entities: ['OrderHeader'],
+            relations: ['OrderHeader->Customer'],
+            business_rules: ['order-total-required'],
+            decisions: ['order-risk-routing']
           },
           risk_level: 'medium',
           rollback_contract: {
@@ -52,6 +55,7 @@ describe('RegistryParser', () => {
     expect(parsed.templates).toHaveLength(1);
     expect(parsed.templates[0].template_type).toBe('capability-template');
     expect(parsed.templates[0].min_sce_version).toBe('3.3.13');
+    expect(parsed.templates[0].ontology_core.ready).toBe(true);
   });
 
   test('rejects spec-scaffold missing required triad file', () => {
@@ -106,6 +110,46 @@ describe('RegistryParser', () => {
     };
 
     expect(() => parser.validateRegistrySchema(registry)).toThrow(ValidationError);
+  });
+
+  test('rejects capability-template missing ontology triads', () => {
+    const registry = {
+      version: '2.0.0',
+      templates: [
+        {
+          id: 'moqui/order-capability',
+          name: 'Order Capability Template',
+          template_type: 'capability-template',
+          category: 'moqui',
+          description: 'Capability template',
+          difficulty: 'advanced',
+          tags: ['moqui', 'order'],
+          applicable_scenarios: ['order-management'],
+          files: ['capability.yaml'],
+          min_sce_version: '3.3.13',
+          ontology_scope: {
+            domains: ['erp'],
+            entities: ['OrderHeader'],
+            relations: ['OrderHeader->Customer'],
+            business_rules: []
+          },
+          risk_level: 'medium',
+          rollback_contract: {
+            supported: true,
+            strategy: 'compensating-action'
+          }
+        }
+      ]
+    };
+
+    expect(() => parser.validateRegistrySchema(registry)).toThrow(ValidationError);
+    try {
+      parser.validateRegistrySchema(registry);
+    } catch (error) {
+      expect(error.details.errors).toEqual(expect.arrayContaining([
+        expect.stringContaining('missing required ontology triads: business_rules, decision_strategy')
+      ]));
+    }
   });
 
   test('normalizes legacy entry with default template type', () => {

@@ -7,10 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.16] - 2026-03-06
+
+### Added
+- Capability registry validation now enforces ontology core triads for all capability templates.
+- Capability catalog, match, and use payloads now expose `ontology_core` for direct UI rendering.
+- Capability extract now reports triad readiness in candidate summaries.
+
 ## [3.6.15] - 2026-03-06
 
 ### Added
 - Capability plan apply result now includes preview lines + skipped titles for UI feedback.
+- Capability iteration now enforces ontology core triads by default and exposes triad readiness in catalog/match/use payloads:
+  - entity + relation
+  - business rule
+  - decision strategy
 
 ## [3.6.14] - 2026-03-06
 

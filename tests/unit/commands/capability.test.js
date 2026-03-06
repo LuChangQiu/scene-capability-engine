@@ -43,6 +43,19 @@ describe('capability commands', () => {
       ].join('\n'),
       'utf8'
     );
+
+    await fs.ensureDir(path.join(tempDir, '.sce', 'specs', '01-00-demo', 'custom'));
+    await fs.writeJson(path.join(tempDir, '.sce', 'specs', '01-00-demo', 'custom', 'problem-domain-chain.json'), {
+      api_version: 'sce.problem-domain-chain/v0.1',
+      scene_id: 'scene.demo',
+      spec_id: '01-00-demo',
+      ontology: {
+        entity: ['Order'],
+        relation: ['Order->Customer'],
+        business_rule: ['OrderApproval'],
+        decision_policy: ['RiskPolicy']
+      }
+    }, { spaces: 2 });
   });
 
   afterEach(async () => {
@@ -65,7 +78,14 @@ describe('capability commands', () => {
     expect(result.summary).toEqual(expect.objectContaining({
       spec_count: 1,
       task_total: 3,
-      task_completed: 1
+      task_completed: 1,
+      ontology_triads_ready: true
+    }));
+    expect(result.ontology_scope).toEqual(expect.objectContaining({
+      entities: ['Order'],
+      relations: ['Order->Customer'],
+      business_rules: ['OrderApproval'],
+      decisions: ['RiskPolicy']
     }));
   });
 
@@ -88,8 +108,10 @@ describe('capability commands', () => {
     });
     expect(score.mode).toBe('capability-score');
     expect(score.scores).toEqual(expect.objectContaining({
-      value_score: expect.any(Number)
+      value_score: expect.any(Number),
+      ontology_core_score: 100
     }));
+    expect(score.scores.ontology_core.ready).toBe(true);
 
     await fs.ensureDir(path.join(tempDir, '.sce', 'ontology'));
     await fs.writeJson(path.join(tempDir, '.sce', 'ontology', 'mapping.json'), {
@@ -121,6 +143,35 @@ describe('capability commands', () => {
       fileSystem: fs
     });
     expect(registered.mode).toBe('capability-register');
+    expect(registered.ontology_core.ready).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, registered.files[0]))).toBe(true);
+  });
+
+  test('blocks register when ontology triads are incomplete', async () => {
+    const incompletePath = path.join(tempDir, '.sce', 'reports', 'capability-iteration', 'incomplete.template.json');
+    await fs.ensureDir(path.dirname(incompletePath));
+    await fs.writeJson(incompletePath, {
+      template: {
+        template_id: 'incomplete-demo',
+        name: 'Incomplete Demo',
+        description: 'Missing decision strategy',
+        category: 'capability',
+        scene_id: 'scene.demo',
+        ontology_scope: {
+          entities: ['Order'],
+          relations: ['Order->Customer'],
+          business_rules: ['OrderApproval'],
+          decisions: []
+        }
+      }
+    }, { spaces: 2 });
+
+    await expect(runCapabilityRegisterCommand({
+      input: '.sce/reports/capability-iteration/incomplete.template.json',
+      json: true
+    }, {
+      projectPath: tempDir,
+      fileSystem: fs
+    })).rejects.toThrow('missing required ontology triads: decision_strategy');
   });
 });
