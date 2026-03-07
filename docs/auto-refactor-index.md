@@ -135,6 +135,7 @@ Integration guardrails:
 
 - Phase 1 mainline cutover is complete for the planned `auto.js` shadow modules.
 - Governance summary logic is also extracted into `lib/auto/governance-summary.js`.
+- Phase 2 has started with `lib/auto/governance-maintenance-service.js` as the first orchestration service extraction.
 - Next phase should focus on service-layer extraction for session/archive/governance orchestration.
 
 ## Current Policy

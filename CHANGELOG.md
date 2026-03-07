@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `docs/auto-refactor-index.md` to track safe `auto.js` shadow-module and cutover order.
 ### Changed
 - Cut over shared `archive-summary` helpers into `lib/commands/auto.js` mainline after passing unit and guarded integration validation.
+- Started service-layer extraction by moving `runAutoGovernanceMaintenance` into `lib/auto/governance-maintenance-service.js` with dedicated unit coverage.
 - Completed the planned `auto.js` governance cutover set: `governance-signals`, governance session/stats presenters, `governance-maintenance-presenter`, `program-diagnostics`, and extracted `governance-summary` from command mainline.
 - Cut over shared `retention-policy`, `spec-protection`, and `session-presenter` helpers into `lib/commands/auto.js` mainline after passing unit and guarded integration validation.
 
