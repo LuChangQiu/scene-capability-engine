@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `docs/auto-refactor-index.md` to track safe `auto.js` shadow-module and cutover order.
 ### Changed
 - Cut over shared `archive-summary` helpers into `lib/commands/auto.js` mainline after passing unit and guarded integration validation.
+- Added a unit-validated shadow `close-loop-controller-service` to prepare the next controller orchestration cutover without destabilizing mainline.
 - Added controller groundwork modules for queue/lock/output handling ahead of the next controller orchestration cutover.
 - Continued service-layer extraction by moving recovery-cycle orchestration into `lib/auto/close-loop-recovery-service.js` with dedicated unit coverage.
 - Continued service-layer extraction by moving latest recoverable summary/controller selection into `lib/auto/recovery-selection-service.js` with dedicated unit coverage.
