@@ -1,203 +1,183 @@
-# SCE - Scene Capability Engine
+﻿# SCE - Scene Capability Engine
 
 [![npm version](https://badge.fury.io/js/scene-capability-engine.svg)](https://badge.fury.io/js/scene-capability-engine)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**SCE is a scene capability orchestration engine for AI-native software delivery.**  
-It provides a deterministic path from `goal -> scene -> spec -> patch -> verify -> release`.
+**SCE is a scene-governed execution and governance engine for AI-native software delivery.**
+It turns open-ended agent work into a controlled path from `goal -> scene -> spec -> task -> patch -> verify -> release`.
 
 English | [简体中文](README.zh.md)
 
 ---
 
-## Why SCE
+## What SCE Solves
 
-SCE is designed for teams that want AI agents to deliver software end-to-end without losing control.
+AI agents can generate code quickly, but they also drift, over-create context, lose execution history, and hide risky decisions inside long sessions.
 
-- Keep delivery aligned to requirements through Spec-first workflows.
-- Scale from single-task execution to multi-agent program orchestration.
-- Prevent silent drift with mandatory gates, ontology checks, and release evidence.
-- Preserve local work history with timeline snapshots, not just Git pushes.
+SCE provides the missing control layer:
 
----
-
-## Core Capabilities
-
-| Capability | What SCE Provides | Outcome |
-| --- | --- | --- |
-| Scene + Spec model | Scene-governed sessions and Spec lifecycle (`requirements/design/tasks`) | Stable context across long AI runs |
-| Auto intake + Spec governance | Goal intent detection, auto spec bind/create, scene portfolio governance | Automatic scene-to-spec tracking with bounded spec growth |
-| Studio workflow | `studio plan -> generate -> apply -> verify -> release` | Structured chat-to-release execution |
-| Autonomous delivery | `auto close-loop`, `close-loop-program`, `close-loop-controller` | Unattended bounded convergence |
-| Multi-agent orchestration | DAG scheduling, retries, 429 adaptive parallel control | Reliable parallel execution at scale |
-| Domain/ontology governance | problem-domain chain + scene template + gate validation | Fewer semantic regressions |
-| Problem closure loop | problem-domain map + chain + `problem-contract` + closure gate | Root-cause-first fixes with bounded convergence |
-| Problem evaluation routing | Stage-level risk/evidence/readiness scoring with mandatory policy | Adaptive execution strategy with guarded apply/release |
-| Local timeline safety | `timeline save/auto/list/show/restore/push` + key-event auto checkpoints | Recoverable local history |
-| Errorbook-driven repair | Local + registry-backed error patterns and release gates | Faster diagnosis and safer fixes |
-| Release governance | Git-managed gate, errorbook gate, handoff preflight, tag pipeline | Auditable, reproducible releases |
+- `Scene-governed context`: one primary session per scene, many specs per scene, many tasks per spec.
+- `Spec-first execution`: requirements, design, tasks, and gates stay attached to the work, not buried in chat history.
+- `Bounded autonomous delivery`: agents can run `close-loop`, `close-loop-program`, and `close-loop-controller` with retry, fallback, and governance policies.
+- `Recoverable local history`: timeline snapshots, task refs, and SQLite-backed state keep work recoverable even before Git push.
+- `Release-grade governance`: validation gates, handoff evidence, git management checks, and errorbook-driven learning prevent silent regressions.
 
 ---
 
-## 3-Minute Quick Start
+## Core Model
 
+SCE organizes agent work using one stable hierarchy:
+
+- `session -> scene -> spec -> task -> event`
+- `scene` is the continuity boundary
+- `spec` is the governed work package
+- `task` is the smallest user-facing execution unit
+- `event` remains the raw audit stream behind the task view
+
+This gives you a predictable way to manage long-running agent work without relying on fragile chat context alone.
+
+---
+
+## Major Capabilities
+
+### 1. Scene + Spec Governance
+- Automatic goal intake and spec binding/creation during `studio plan`
+- Scene portfolio governance for existing and new specs
+- Scene/spec/task contracts stored under `.sce/`
+- Historical spec-scene backfill for older projects
+
+### 2. Studio Execution Flow
+- `studio plan -> generate -> apply -> verify -> release`
+- Structured task stream for frontend or IDE integration
+- Task refs (`SS.PP.TT`) for lookup and rerun
+- Auth lease model for protected write operations
+
+### 3. Autonomous Delivery
+- `sce auto close-loop`
+- `sce auto close-loop-batch`
+- `sce auto close-loop-program`
+- `sce auto close-loop-controller`
+- Built-in retry, fallback-chain, governance replay, and anomaly-aware adaptation
+
+### 4. Problem Closure and Errorbook
+- Problem-domain map, chain, contract, and closure gate
+- Incident staging before promotion to the long-term errorbook
+- Local + registry-backed errorbook workflow
+- Default rule: after repeated failed attempts, debug evidence is required
+
+### 5. Local Timeline and SQLite State
+- Timeline save/list/show/restore/push commands
+- SQLite-backed task/event/session state
+- Deterministic task references and rerun support
+- File-to-SQLite migration and reconciliation tooling
+
+### 6. Capability and Scene Assetization
+- Scene/capability inventory and governance views
+- Capability extraction, evaluation, and publication workflow
+- Scene runtime and ontology-oriented execution support
+- Moqui-oriented capability validation and handoff baselines
+
+---
+
+## Quick Start
+
+### Install
 ```bash
-# 1) Install
 npm install -g scene-capability-engine
+```
 
-# 2) Adopt in your project
+### Adopt into a project
+```bash
 sce adopt
+```
 
-# 3) Open a primary scene session
+### Start a scene-governed workflow
+```bash
 sce studio plan --scene scene.demo --from-chat session-demo --goal "bootstrap first feature" --json
-
-# 4) Bootstrap and run one Spec
 sce spec bootstrap --name 01-00-first-feature --scene scene.demo --non-interactive
 sce spec pipeline run --spec 01-00-first-feature --scene scene.demo
 ```
 
-For autonomous execution:
-
+### Run autonomous delivery
 ```bash
 sce auto close-loop "deliver customer + order + inventory baseline"
 ```
 
 ---
 
-## Recommended Workflows
+## Recommended Usage Paths
 
-### 1) Feature Delivery (default)
+### Feature Delivery
 ```bash
-sce studio plan --scene scene.customer-order --from-chat session-20260302 --goal "optimize checkout"
+sce studio plan --scene scene.customer-order --from-chat session-20260308 --goal "optimize checkout" --json
 sce spec bootstrap --name 02-00-checkout-optimization --scene scene.customer-order --non-interactive
-sce spec domain coverage --spec 02-00-checkout-optimization --json
 sce spec gate run --spec 02-00-checkout-optimization --scene scene.customer-order --json
 ```
 
-### 2) Program-Scale Autonomous Delivery
+### Program-Scale Autonomous Delivery
 ```bash
 sce auto close-loop-program "stabilize order lifecycle and release governance" --program-govern-until-stable --json
 ```
 
-### 3) Local History Safety (timeline)
+### Timeline Safety
 ```bash
 sce timeline save --summary "before risky refactor"
 sce timeline list --limit 20
 sce timeline restore <snapshot-id>
-sce timeline push origin main
 ```
 
-### 4) Release Baseline
+### Protected Write Flow
 ```bash
-sce auto handoff preflight-check --require-pass --json
-git tag -a vX.Y.Z -m "vX.Y.Z"
-git push origin vX.Y.Z
+sce auth grant --scope studio:* --reason "apply approved patch" --auth-password <password> --json
+sce auth status --json
 ```
 
 ---
 
-## Default Problem-Solving Loop
+## Default Governance Behavior
 
-SCE now enforces a domain-closed diagnosis and repair route by default:
+SCE is opinionated by default.
 
-1. Scope the problem first with scene artifacts (`problem-domain-map.md`, `scene-spec.md`, `problem-domain-chain.json`, `problem-contract.json`).
-2. Keep trial-and-error history in incident staging (`.sce/errorbook/staging/incidents/`) to avoid repeating failed attempts.
-3. Use problem evaluation to prioritize likely impact areas before applying/releasing changes.
-
-Hard rule defaults:
-- After two failed rounds on the same problem fingerprint, debug evidence is required in subsequent attempts.
-- `studio verify/release` run `problem-closure-gate` by default when a spec is bound.
-- `studio plan` auto-runs goal intake (`bind existing spec` or `create spec`) and writes scene portfolio governance snapshots by default.
-- `studio plan --manual-spec` and `--no-spec-governance` are blocked by default policy; use policy overrides only when absolutely necessary.
-- Historical specs can be scene-governed incrementally via `sce studio backfill-spec-scenes --apply` (writes `.sce/spec-governance/spec-scene-overrides.json`).
+- `studio plan` runs intake and scene/spec governance unless policy explicitly allows bypass.
+- `verify` and `release` enforce problem-closure and related gates when a spec is bound.
+- Autonomous program execution applies gate evaluation, fallback-chain logic, governance replay, and auto-remediation.
+- State persistence prefers SQLite, not ad hoc local caches.
+- Release validation defaults to integration test coverage via `npm run test:release` for faster publish feedback.
 
 ---
 
-## AI Agent Compatibility
+## Key Integration Points
 
-SCE is tool-agnostic and works with Codex, Claude Code, Cursor, Windsurf, VS Code Copilot, and other CLI-capable agents.
+For IDEs, AI shells, or custom frontends, the most important SCE surfaces are:
 
-- Runtime context is managed by `.sce/` (not IDE-specific hidden folders).
-- Session governance is scene-first: `1 scene = 1 primary session`.
-- Spec work is attached as child sessions and auto-archived.
-- Startup now auto-detects adopted projects and aligns takeover baseline defaults automatically.
-- Multi-agent anti-429 runtime now supports deterministic retry spread and machine-readable `rate-limit:decision` telemetry (`rateLimitRetrySpreadMs`, `rateLimitLaunchHoldPollMs`, `rateLimitDecisionEventThrottleMs`).
-- Problem evaluation policy is enabled by default (`.sce/config/problem-eval-policy.json`) and evaluates every Studio stage.
-- Problem closure policy is enabled by default (`.sce/config/problem-closure-policy.json`) and blocks verify/release bypass when required domain/problem evidence is missing.
-- Error handling now follows a full incident loop by default: every record attempt is staged first and auto-closed on verified/promoted outcomes.
-- You can inspect or force-align baseline explicitly:
-  - `sce workspace takeover-audit --json`
-  - `sce workspace takeover-apply --json`
-
-Studio task-stream output contract (default):
-- IDs: `sessionId`, `sceneId`, `specId`, `taskId`, `taskRef`, `eventId`
-- Task: `task.task_ref`, `task.title_norm`, `task.raw_request`, `task.goal`, `task.sub_goals`, `task.acceptance_criteria`, `task.needs_split`, `task.confidence`, `task.status`, `task.summary` (3-line), `task.handoff`, `task.next_action`
-- File refs: `task.file_changes[]` with `path`, `line`, `diffRef`
-- Command logs: `task.commands[]` with `cmd`, `exit_code`, `stdout`, `stderr`, `log_path`
-- Errors: `task.errors[]` with `message`, `error_bundle` (copy-ready)
-- Evidence: `task.evidence[]`
-- Raw audit stream: `event[]` (and `studio events` keeps `events[]` compatibility field)
-- OpenHands bridge: `sce studio events --openhands-events <path>` maps OpenHands raw events into the same task contract (`source_stream=openhands`)
-- Hierarchical task reference operations:
-  - `sce task ref --scene <scene-id> --spec <spec-id> --task <task-id> --json`
-  - `sce task show --ref <SS.PP.TT> --json`
-  - `sce task rerun --ref <SS.PP.TT> [--dry-run] --json`
-- Runtime governance state store policy:
-  - SQLite-only backend (`.sce/state/sce-state.sqlite`)
-  - In-memory fallback only in `NODE_ENV=test` or when `SCE_STATE_ALLOW_MEMORY_FALLBACK=1`
-  - Outside those conditions, unavailable SQLite support fails fast for task-ref/event persistence
-- Gradual file-to-sqlite migration tooling:
-  - `sce state plan --json`
-  - `sce state doctor --json`
-  - `sce state migrate --all --apply --json`
-  - `sce state reconcile --all --apply --json` (doctor -> migrate -> doctor one-shot)
-  - `sce state export --out .sce/reports/state-migration/state-export.latest.json --json`
-  - reconciliation gate: `npm run gate:state-migration-reconciliation`
-  - release workflow defaults to enforce mode for state reconciliation gate and runs reconcile before publish
-  - runtime reads now prefer sqlite indexes for timeline/scene-session views when indexed data exists
-  - `state doctor` now emits `summary` and runtime diagnostics (`runtime.timeline`, `runtime.scene_session`) with read-source and consistency status
-  - migratable components now include runtime + errorbook + spec-governance + release evidence indexes (`errorbook.entry-index`, `errorbook.incident-index`, `governance.spec-scene-overrides`, `governance.scene-index`, `release.evidence-runs-index`, `release.gate-history-index`)
-- Write authorization lease model (SQLite-backed):
-  - policy file: `.sce/config/authorization-policy.json`
-  - grant lease: `sce auth grant --scope studio:* --reason "<reason>" --auth-password <password> --json`
-  - inspect/revoke: `sce auth status --json` / `sce auth revoke --lease <lease-id> --json`
-  - protected writes accept `--auth-lease <lease-id>` on `studio apply/release/rollback` and `task rerun`
+- `sce studio plan|generate|apply|verify|release`
+- `sce studio events --openhands-events <path>`
+- `sce task ref|show|rerun`
+- `sce timeline save|list|show|restore`
+- `sce capability inventory`
+- `sce auth grant|status|revoke`
+- SQLite state at `.sce/state/sce-state.sqlite`
 
 ---
 
-## Important Version Changes
-
-- `3.6.2`: Added release-level version integration tests (`tests/integration/version-cli.integration.test.js`) and switched release default verification to integration-only gate (`npm run test:release`) for faster publish feedback.
-- `3.6.0`: Added hierarchical task references (`taskRef`, format `SS.PP.TT`) backed by SQLite state store `.sce/state/sce-state.sqlite`, plus new task commands (`sce task ref/show/rerun`) for reference lookup and deterministic rerun.
-- `3.5.2`: Introduced task-stream output contract for Studio commands (`sessionId/sceneId/specId/taskId/eventId`, structured `task.*` fields, `event[]` audit stream) and added OpenHands raw-event bridge via `sce studio events --openhands-events <path>`.
-- `3.5.1`: Enforced stricter Studio intake defaults (`--manual-spec` and `--no-spec-governance` blocked unless policy override), added historical spec scene backfill command (`sce studio backfill-spec-scenes`) and persisted override mapping (`.sce/spec-governance/spec-scene-overrides.json`) for portfolio/related-spec alignment.
-- `3.5.0`: Added Studio automatic goal intake + scene spec portfolio governance (`sce studio intake`, `sce studio portfolio`), including default intake policy baseline and governance artifacts for bounded scene spec growth.
-- `3.4.6`: Added default `problem-closure-gate` + `problem-contract` baseline and strengthened mandatory problem evaluation dimensions (`problem_contract`/`ontology_alignment`/`convergence`) for verify/release convergence control.
-- `3.4.5`: `git-managed-gate` now treats worktree checks as advisory in default relaxed CI mode (`CI/GITHUB_ACTIONS`, non-strict), preventing false release blocking.
-- `3.4.4`: Added `SCE_GIT_MANAGEMENT_ALLOW_UNTRACKED=1` / `--allow-untracked`; release workflow uses it for npm publish after generating release evidence artifacts.
-- `3.4.3`: Introduced mandatory problem evaluation across Studio stages (`plan/generate/apply/verify/release`) with policy file `.sce/config/problem-eval-policy.json` and stage report artifacts.
-- `3.4.2`: Errorbook incident flow moved to full staging closed-loop (attempt history, incident inspection, resolved archive).
-- `3.4.1`: Added workspace takeover baseline automation (`takeover-audit` / `takeover-apply`) and startup alignment defaults.
-
----
-
-## Documentation Map
+## Documentation
 
 Start here:
 
 - [Quick Start](docs/quick-start.md)
+- [Quick Start with AI Tools](docs/quick-start-with-ai-tools.md)
 - [Command Reference](docs/command-reference.md)
 - [Autonomous Control Guide](docs/autonomous-control-guide.md)
 - [Scene Runtime Guide](docs/scene-runtime-guide.md)
-- [Value Observability Guide](docs/value-observability-guide.md)
 - [Multi-Agent Coordination Guide](docs/multi-agent-coordination-guide.md)
 - [Errorbook Registry Guide](docs/errorbook-registry.md)
 - [Documentation Hub](docs/README.md)
 
-Moqui-focused:
+Moqui and capability-focused docs:
 
 - [Moqui Template Core Library Playbook](docs/moqui-template-core-library-playbook.md)
 - [Moqui Standard Rebuild Guide](docs/moqui-standard-rebuild-guide.md)
+- [SCE Capability Matrix Roadmap](docs/sce-capability-matrix-roadmap.md)
 
 ---
 
@@ -218,5 +198,5 @@ MIT. See [LICENSE](LICENSE).
 
 ---
 
-**Version**: 3.6.32  
-**Last Updated**: 2026-03-05
+**Version**: 3.6.32
+**Last Updated**: 2026-03-08

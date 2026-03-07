@@ -8,31 +8,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Added `docs/auto-refactor-index.md` to track safe `auto.js` shadow-module and cutover order.
+- Added 'docs/auto-refactor-index.md' to track safe 'auto.js' extraction boundaries, cutover status, and validation gates.
+
 ### Changed
-- Cut over shared `archive-summary` helpers into `lib/commands/auto.js` mainline after passing unit and guarded integration validation.
-- Wired controller queue/lock/output groundwork into mainline helpers while keeping controller orchestration cutover deferred until its final wrapper is stable.
-- Wired controller queue/lock/output groundwork back into mainline helpers while keeping controller orchestration cutover deferred until its final wrapper is stable.
-- Added a unit-validated shadow `close-loop-controller-service` to prepare the next controller orchestration cutover without destabilizing mainline.
-- Added controller groundwork modules for queue/lock/output handling ahead of the next controller orchestration cutover.
-- Continued service-layer extraction by moving recovery-cycle orchestration into `lib/auto/close-loop-recovery-service.js` with dedicated unit coverage.
-- Continued service-layer extraction by moving latest recoverable summary/controller selection into `lib/auto/recovery-selection-service.js` with dedicated unit coverage.
-- Continued service-layer extraction by moving archive schema check/migrate logic into `lib/auto/archive-schema-service.js` with dedicated unit coverage.
-- Continued service-layer extraction by moving close-loop session read logic into `lib/auto/close-loop-session-storage-service.js` with dedicated unit coverage.
-- Continued service-layer extraction by moving batch summary read/load logic into `lib/auto/batch-summary-storage-service.js` with dedicated unit coverage.
-- Continued service-layer extraction by moving controller session read/load logic into `lib/auto/controller-session-storage-service.js` with dedicated unit coverage.
-- Continued service-layer extraction by moving governance session read/load/persist logic into `lib/auto/governance-session-storage-service.js` with dedicated unit coverage.
-- Continued service-layer extraction by moving batch/controller session persistence into `lib/auto/session-persistence-service.js` with dedicated unit coverage.
-- Continued service-layer extraction by moving close-loop/batch/controller prune orchestration into `lib/auto/session-prune-service.js` with dedicated unit coverage.
-- Continued service-layer extraction by moving close-loop/controller/governance session query orchestration into `lib/auto/session-query-service.js` with dedicated unit coverage.
-- Continued service-layer extraction by moving governance advisory recovery/controller execution into `lib/auto/governance-advisory-service.js` with dedicated unit coverage.
-- Continued service-layer extraction by moving `buildAutoGovernanceStats` into `lib/auto/governance-stats-service.js` with dedicated unit coverage.
-- Continued service-layer extraction by moving `runAutoGovernanceCloseLoop` into `lib/auto/governance-close-loop-service.js` with dedicated unit coverage.
-- Started service-layer extraction by moving `runAutoGovernanceMaintenance` into `lib/auto/governance-maintenance-service.js` with dedicated unit coverage.
-- Completed the planned `auto.js` governance cutover set: `governance-signals`, governance session/stats presenters, `governance-maintenance-presenter`, `program-diagnostics`, and extracted `governance-summary` from command mainline.
-- Cut over shared `retention-policy`, `spec-protection`, and `session-presenter` helpers into `lib/commands/auto.js` mainline after passing unit and guarded integration validation.
-
-
+- Cut over mainline 'runCloseLoopController' to 'lib/auto/close-loop-controller-service.js' through dependency injection from 'lib/commands/auto.js'.
+- Cut over mainline 'executeCloseLoopBatch' to 'lib/auto/close-loop-batch-service.js' through dependency injection from 'lib/commands/auto.js'.
+- Cut over mainline 'buildAutoObservabilitySnapshot' to 'lib/auto/observability-service.js' through dependency injection from 'lib/commands/auto.js'.
+- Cut over mainline 'executeCloseLoopProgramGoal' to 'lib/auto/close-loop-program-service.js' through dependency injection from 'lib/commands/auto.js'.
+- Cut over program summary helpers (`KPI`, coordination, recovery merge, failure-source indexing) to 'lib/auto/program-summary.js'.
+- Cut over program KPI/audit writers to 'lib/auto/program-output.js'.
+- Cut over batch/program/recover summary console presenter to 'lib/auto/batch-output.js'.
+- Cut over program gate policy/fallback evaluation, anomaly patching, and failure-signature normalization to 'lib/auto/program-governance-helpers.js'.
+- Cut over program governance replay/recover orchestration to 'lib/auto/program-governance-loop-service.js'.
+- Cut over program gate auto-remediation and spec-prune side effects to 'lib/auto/program-auto-remediation-service.js'.
+- Cut over shared JSON/text output writers to 'lib/auto/output-writer.js'.
+- Removed dead duplicate controller queue helper definitions from 'lib/commands/auto.js' after the controller cutover stabilized.
+- Wired controller queue/lock/output helpers into stable command and service boundaries with dedicated controller unit coverage and guarded integration validation.
+- Added dedicated batch-service unit coverage for summary assembly, program-mode diagnostics, and spec-session budget hard-fail handling.
+- Added dedicated observability-service unit coverage and kept command-layer observability snapshot behavior under existing auto command tests.
+- Added dedicated close-loop-program-service unit coverage for recovery, gate, output, and governance-disabled flow behavior.
+- Added dedicated program-summary unit coverage for KPI snapshots, coordination summaries, recovery merge behavior, and failure-source indexing.
+- Added dedicated program-output unit coverage for KPI/audit payload persistence while keeping command-level file output tests green.
+- Added dedicated batch-output unit coverage and kept command-level close-loop presentation flows green.
+- Added dedicated program-governance-helper unit coverage and kept command/integration gate-fallback behavior green.
+- Added dedicated program-governance-loop unit coverage and kept command/integration governance replay behavior green.
+- Added dedicated program-auto-remediation unit coverage and kept command/integration remediation behavior green.
+- Added dedicated output-writer unit coverage and kept command/integration output-file behavior green.
+- Continued service-layer extraction by moving recovery-cycle orchestration into 'lib/auto/close-loop-recovery-service.js' with dedicated unit coverage.
+- Continued service-layer extraction by moving latest recoverable summary/controller selection into 'lib/auto/recovery-selection-service.js' with dedicated unit coverage.
+- Continued service-layer extraction by moving archive schema check/migrate logic into 'lib/auto/archive-schema-service.js' with dedicated unit coverage.
+- Continued service-layer extraction by moving close-loop session read logic into 'lib/auto/close-loop-session-storage-service.js' with dedicated unit coverage.
+- Continued service-layer extraction by moving batch summary read/load logic into 'lib/auto/batch-summary-storage-service.js' with dedicated unit coverage.
+- Continued service-layer extraction by moving controller session read/load logic into 'lib/auto/controller-session-storage-service.js' with dedicated unit coverage.
+- Continued service-layer extraction by moving governance session read/load/persist logic into 'lib/auto/governance-session-storage-service.js' with dedicated unit coverage.
+- Continued service-layer extraction by moving batch/controller session persistence into 'lib/auto/session-persistence-service.js' with dedicated unit coverage.
+- Continued service-layer extraction by moving close-loop/batch/controller prune orchestration into 'lib/auto/session-prune-service.js' with dedicated unit coverage.
+- Continued service-layer extraction by moving close-loop/controller/governance session query orchestration into 'lib/auto/session-query-service.js' with dedicated unit coverage.
+- Continued service-layer extraction by moving governance advisory recovery/controller execution into 'lib/auto/governance-advisory-service.js' with dedicated unit coverage.
+- Continued service-layer extraction by moving 'buildAutoGovernanceStats' into 'lib/auto/governance-stats-service.js' with dedicated unit coverage.
+- Continued service-layer extraction by moving 'runAutoGovernanceCloseLoop' into 'lib/auto/governance-close-loop-service.js' with dedicated unit coverage.
+- Started service-layer extraction by moving 'runAutoGovernanceMaintenance' into 'lib/auto/governance-maintenance-service.js' with dedicated unit coverage.
+- Completed the planned 'auto.js' governance cutover set: 'governance-signals', governance session/stats presenters, 'governance-maintenance-presenter', 'program-diagnostics', and extracted 'governance-summary' from command mainline.
+- Cut over shared 'retention-policy', 'spec-protection', and 'session-presenter' helpers into 'lib/commands/auto.js' mainline after passing unit and guarded integration validation.
+- Cut over shared 'archive-summary' helpers into 'lib/commands/auto.js' mainline after passing unit and guarded integration validation.
 
 ## [3.6.32] - 2026-03-07
 

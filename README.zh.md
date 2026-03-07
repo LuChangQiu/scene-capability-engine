@@ -1,63 +1,109 @@
-# SCE - Scene Capability Engine
+﻿# SCE - Scene Capability Engine
 
 [![npm version](https://badge.fury.io/js/scene-capability-engine.svg)](https://badge.fury.io/js/scene-capability-engine)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**SCE 是面向 AI 原生软件交付的场景能力引擎。**  
-它提供从 `goal -> scene -> spec -> patch -> verify -> release` 的可控闭环。
+**SCE 是面向 AI 原生软件交付的场景治理与执行引擎。**
+它把开放式的 Agent 工作，收敛为一条可治理的路径：`goal -> scene -> spec -> task -> patch -> verify -> release`。
 
 [English](README.md) | 简体中文
 
 ---
 
-## 为什么用 SCE
+## SCE 解决什么问题
 
-SCE 面向希望让 AI Agent 端到端推进交付、同时保持治理可控的团队。
+AI Agent 可以很快生成代码，但也很容易出现这些问题：
 
-- 以 Spec 先行，减少需求漂移和返工。
-- 从单任务执行扩展到多 Agent 程序级编排。
-- 通过强制门禁、ontology 校验、发布证据避免“看起来完成”。
-- 通过本地时间线快照保护过程资产，不只依赖 Git 推送。
+- 上下文漂移，越聊越散
+- 需求、设计、任务混在会话里，难以治理
+- 过程资产只存在本地会话中，没推 Git 就容易丢
+- 自动执行虽然快，但缺少稳定门禁和发布证据
 
----
+SCE 提供的就是这一层控制能力：
 
-## 核心能力矩阵
-
-| 能力 | SCE 提供什么 | 结果 |
-| --- | --- | --- |
-| Scene + Spec 模型 | 场景主会话治理 + Spec 生命周期（需求/设计/任务） | 长周期 AI 上下文稳定 |
-| 自动 intake + Spec 治理 | 目标意图识别、自动绑定/创建 spec、按 scene 组合治理 | 场景需求自动纳管，spec 增长可控 |
-| Studio 工作流 | `studio plan -> generate -> apply -> verify -> release` | 对话到发布路径结构化 |
-| 自动闭环交付 | `auto close-loop`、`close-loop-program`、`close-loop-controller` | 无人值守有界收敛 |
-| 多 Agent 编排 | DAG 调度、重试、429 自适应并行 | 并行执行稳定可控 |
-| 领域/本体治理 | problem-domain chain + scene template + gate 校验 | 降低语义回归 |
-| 问题闭环治理 | problem-domain map + chain + `problem-contract` + closure gate | 根因优先修复，过程有界收敛 |
-| 问题评估路由 | 分阶段风险/证据/就绪度评分 + 强制策略 | `apply/release` 可控阻断，执行路径自适应 |
-| 本地时间线安全 | `timeline save/auto/list/show/restore/push` + 关键节点自动打点 | 本地历史可回放可恢复 |
-| Errorbook 修复体系 | 本地 + 注册表错题库 + 发布门禁 | 定位更快、修复更稳 |
-| 发布治理 | git 管理门禁、errorbook 门禁、handoff preflight、tag 发布链路 | 可审计、可复现发布 |
+- `Scene 主导上下文`：一个 scene 对应一个主会话，多个 spec 挂在 scene 下持续推进
+- `Spec 先行治理`：需求、设计、任务、门禁都绑定到 spec，而不是散落在聊天记录里
+- `自动闭环可控`：`close-loop`、`close-loop-program`、`close-loop-controller` 都能在边界内自动收敛
+- `本地历史可恢复`：timeline、task ref、SQLite 状态让过程资产可回看、可恢复、可重跑
+- `发布级治理`：handoff 证据、git 管理门禁、errorbook 学习闭环，让“看起来完成”变成“可验证完成”
 
 ---
 
-## 3 分钟快速上手
+## 核心对象模型
 
+SCE 用一条稳定层级来管理 Agent 工作：
+
+- `session -> scene -> spec -> task -> event`
+- `scene` 是业务连续性的主边界
+- `spec` 是被治理的工作包
+- `task` 是面向人的最小执行单元
+- `event` 保留原始审计流，作为 task 背后的底层记录
+
+这让长周期 Agent 执行不再依赖脆弱的聊天上下文，而是依赖可治理的结构化对象。
+
+---
+
+## 主要能力
+
+### 1. Scene + Spec 治理
+- `studio plan` 自动做目标 intake，并绑定或创建 spec
+- scene 维度的 spec 组合治理与历史 spec 回填
+- 场景/规格/任务契约统一落在 `.sce/` 下
+- 支持按 scene 组织长期连续交付
+
+### 2. Studio 执行流
+- `studio plan -> generate -> apply -> verify -> release`
+- 面向 IDE / 前端的结构化 task 流
+- 任务引用 `SS.PP.TT`，支持查询和重跑
+- 写操作支持 auth lease 保护
+
+### 3. 自动闭环交付
+- `sce auto close-loop`
+- `sce auto close-loop-batch`
+- `sce auto close-loop-program`
+- `sce auto close-loop-controller`
+- 内建 retry、fallback-chain、governance replay、异常感知调度
+
+### 4. 问题闭环与 Errorbook
+- problem-domain map / chain / contract / closure gate
+- incident staging，先保留试错过程，再沉淀高价值错题
+- 本地错题本 + 远程注册表联动
+- 默认规则：重复失败后必须补充 debug 证据
+
+### 5. 时间线与 SQLite 状态
+- timeline save/list/show/restore/push
+- SQLite 持久化 task/event/session 状态
+- task ref 与 rerun 具备可追踪性和可重放性
+- 支持文件到 SQLite 的渐进迁移与对账
+
+### 6. 能力资产化与场景化能力
+- scene/capability inventory 与治理视图
+- 能力抽取、评估、发布闭环
+- 支持 scene runtime 与 ontology 驱动执行
+- 支持面向 Moqui 的能力校验与 handoff 基线
+
+---
+
+## 快速开始
+
+### 安装
 ```bash
-# 1) 安装
 npm install -g scene-capability-engine
+```
 
-# 2) 在项目中启用
+### 在项目中启用
+```bash
 sce adopt
+```
 
-# 3) 打开主场景会话
+### 启动一个 scene 治理流程
+```bash
 sce studio plan --scene scene.demo --from-chat session-demo --goal "bootstrap first feature" --json
-
-# 4) 生成并执行一个 Spec
 sce spec bootstrap --name 01-00-first-feature --scene scene.demo --non-interactive
 sce spec pipeline run --spec 01-00-first-feature --scene scene.demo
 ```
 
-需要全自动推进时：
-
+### 自动闭环推进
 ```bash
 sce auto close-loop "deliver customer + order + inventory baseline"
 ```
@@ -66,138 +112,77 @@ sce auto close-loop "deliver customer + order + inventory baseline"
 
 ## 推荐使用路径
 
-### 1) 功能交付（默认路径）
+### 功能交付
 ```bash
-sce studio plan --scene scene.customer-order --from-chat session-20260302 --goal "optimize checkout"
+sce studio plan --scene scene.customer-order --from-chat session-20260308 --goal "optimize checkout" --json
 sce spec bootstrap --name 02-00-checkout-optimization --scene scene.customer-order --non-interactive
-sce spec domain coverage --spec 02-00-checkout-optimization --json
 sce spec gate run --spec 02-00-checkout-optimization --scene scene.customer-order --json
 ```
 
-### 2) 程序级自动交付
+### 程序级自动交付
 ```bash
 sce auto close-loop-program "stabilize order lifecycle and release governance" --program-govern-until-stable --json
 ```
 
-### 3) 本地历史安全（时间线）
+### 时间线保护
 ```bash
 sce timeline save --summary "before risky refactor"
 sce timeline list --limit 20
 sce timeline restore <snapshot-id>
-sce timeline push origin main
 ```
 
-### 4) 发布基线
+### 受保护写入
 ```bash
-sce auto handoff preflight-check --require-pass --json
-git tag -a vX.Y.Z -m "vX.Y.Z"
-git push origin vX.Y.Z
+sce auth grant --scope studio:* --reason "apply approved patch" --auth-password <password> --json
+sce auth status --json
 ```
 
 ---
 
-## 默认问题解决闭环
+## 默认治理行为
 
-SCE 默认按“问题域闭环”推进诊断与修复：
+SCE 默认是强治理的。
 
-1. 先收敛问题域边界：`problem-domain-map.md`、`scene-spec.md`、`problem-domain-chain.json`、`problem-contract.json`。
-2. 试错过程进入 incident staging（`.sce/errorbook/staging/incidents/`），避免重复犯错。
-3. 由 problem evaluation 在变更前优先排序高相关区域，再进入 apply/release。
-
-默认硬规则：
-- 同一问题指纹失败两轮后，后续尝试必须补充 debug 证据。
-- 当 spec 绑定时，`studio verify/release` 默认执行 `problem-closure-gate`。
-- `studio plan` 默认执行目标 intake（自动绑定已有 spec 或新建 spec），并自动写入 scene 维度的 spec 治理快照。
-- 默认策略会阻断 `studio plan --manual-spec` 与 `--no-spec-governance`（仅在确有必要且策略显式放开时可绕过）。
-- 历史 spec 可通过 `sce studio backfill-spec-scenes --apply` 分批回填到 scene 治理映射（写入 `.sce/spec-governance/spec-scene-overrides.json`）。
+- `studio plan` 默认执行 intake 与 scene/spec 治理，除非策略显式允许绕过
+- 当 spec 绑定时，`verify` 和 `release` 默认执行 problem-closure 等相关门禁
+- `close-loop-program` 默认带 gate 评估、fallback-chain、governance replay、auto-remediation
+- 状态持久化默认优先走 SQLite，而不是零散本地缓存
+- 发布默认验证走 integration gate：`npm run test:release`
 
 ---
 
-## AI Agent 适配
+## 关键集成点
 
-SCE 对工具无锁定，可接入 Codex、Claude Code、Cursor、Windsurf、VS Code Copilot 等。
+如果你要对接 IDE、AI 助手或前端，优先关注这些接口面：
 
-- 运行时上下文统一由 `.sce/` 管理（不依赖特定 IDE 隐藏目录）。
-- 会话治理默认场景优先：`1 scene = 1 primary session`。
-- Spec 执行作为子会话自动归档，支持跨轮次追踪。
-- 启动时会自动识别已接管项目并对齐接管基线默认配置。
-- 多 Agent 抗 429 运行时新增“确定性重试错峰 + 机器可读 `rate-limit:decision` 事件”，可通过 `rateLimitRetrySpreadMs`、`rateLimitLaunchHoldPollMs`、`rateLimitDecisionEventThrottleMs` 调优。
-- 问题评估策略默认启用（`.sce/config/problem-eval-policy.json`），Studio 各阶段都会执行评估。
-- 问题闭环策略默认启用（`.sce/config/problem-closure-policy.json`），缺失必要问题/领域证据时会在 verify/release 阶段阻断。
-- 错误处理默认进入完整 incident 闭环：每次记录先落到 staging 试错链路，verified/promoted 后自动收束归档。
-- 也可显式审计/修正接管基线：
-  - `sce workspace takeover-audit --json`
-  - `sce workspace takeover-apply --json`
-
-Studio 任务流输出契约（默认）：
-- ID 字段：`sessionId`、`sceneId`、`specId`、`taskId`、`taskRef`、`eventId`
-- 任务主体：`task.task_ref`、`task.title_norm`、`task.raw_request`、`task.goal`、`task.sub_goals`、`task.acceptance_criteria`、`task.needs_split`、`task.confidence`、`task.status`、`task.summary`（固定三行）、`task.handoff`、`task.next_action`
-- 文件引用：`task.file_changes[]`（`path`、`line`、`diffRef`）
-- 命令执行：`task.commands[]`（`cmd`、`exit_code`、`stdout`、`stderr`、`log_path`）
-- 错误复制：`task.errors[]`（`message`、`error_bundle`，可直接复制给 AI 修复）
-- 证据引用：`task.evidence[]`
-- 原始审计流：`event[]`（`studio events` 同时保留 `events[]` 兼容字段）
-- OpenHands 桥接：`sce studio events --openhands-events <path>` 可将 OpenHands 原始事件映射为同一 task 契约（`source_stream=openhands`）
-- 分层任务引用操作：
-  - `sce task ref --scene <scene-id> --spec <spec-id> --task <task-id> --json`
-  - `sce task show --ref <SS.PP.TT> --json`
-  - `sce task rerun --ref <SS.PP.TT> [--dry-run] --json`
-- 运行时治理状态库策略：
-  - 仅支持 SQLite 后端（`.sce/state/sce-state.sqlite`）
-  - 仅在 `NODE_ENV=test` 或 `SCE_STATE_ALLOW_MEMORY_FALLBACK=1` 时允许内存回退
-  - 在上述条件之外若 SQLite 不可用，任务引用/事件持久化会快速失败
-- 渐进式文件到 SQLite 迁移工具：
-  - `sce state plan --json`
-  - `sce state doctor --json`
-  - `sce state migrate --all --apply --json`
-  - `sce state reconcile --all --apply --json`（一键执行 doctor -> migrate -> doctor）
-  - `sce state export --out .sce/reports/state-migration/state-export.latest.json --json`
-  - 对账门禁：`npm run gate:state-migration-reconciliation`
-  - 发布工作流默认对 state reconciliation 启用 enforce，并在发布前执行 reconcile
-  - 运行时读取在存在索引数据时优先使用 SQLite（timeline/scene-session 视图）
-  - `state doctor` 新增 `summary` 与运行时诊断（`runtime.timeline`、`runtime.scene_session`），可直接读取读源与一致性状态
-  - 可迁移组件扩展到 runtime + errorbook + spec-governance + release evidence 索引（`errorbook.entry-index`、`errorbook.incident-index`、`governance.spec-scene-overrides`、`governance.scene-index`、`release.evidence-runs-index`、`release.gate-history-index`）
-- 写入授权租约模型（SQLite 持久化）：
-  - 策略文件：`.sce/config/authorization-policy.json`
-  - 申请租约：`sce auth grant --scope studio:* --reason "<原因>" --auth-password <密码> --json`
-  - 查看/撤销：`sce auth status --json` / `sce auth revoke --lease <lease-id> --json`
-  - 受保护写操作支持 `--auth-lease <lease-id>`：`studio apply/release/rollback`、`task rerun`
+- `sce studio plan|generate|apply|verify|release`
+- `sce studio events --openhands-events <path>`
+- `sce task ref|show|rerun`
+- `sce timeline save|list|show|restore`
+- `sce capability inventory`
+- `sce auth grant|status|revoke`
+- SQLite 状态库：`.sce/state/sce-state.sqlite`
 
 ---
 
-## 重要版本变更
-
-- `3.6.2`：新增发布版本号集成测试（`tests/integration/version-cli.integration.test.js`），并将发布默认验证切换为仅 integration 门禁（`npm run test:release`），加速发布反馈。
-- `3.6.0`：新增分层任务引用（`taskRef`，格式 `SS.PP.TT`），持久化到 SQLite 状态库 `.sce/state/sce-state.sqlite`；新增 `sce task ref/show/rerun` 用于引用查询与可重放执行。
-- `3.5.2`：新增 Studio 任务流输出契约（`sessionId/sceneId/specId/taskId/eventId`、结构化 `task.*` 字段、`event[]` 审计流），并新增 OpenHands 原始事件桥接能力：`sce studio events --openhands-events <path>`。
-- `3.5.1`：默认强化 Studio intake 治理（`--manual-spec`、`--no-spec-governance` 在未显式放开策略时会被阻断），新增历史 spec 场景回填命令 `sce studio backfill-spec-scenes`，并写入 `.sce/spec-governance/spec-scene-overrides.json` 以统一 portfolio 与 related-spec 的场景映射。
-- `3.5.0`：新增 Studio 目标自动 intake + 场景 spec 组合治理（`sce studio intake`、`sce studio portfolio`），并默认启用 intake 策略基线与治理快照产物，控制场景内 spec 无序增长。
-- `3.4.6`：新增默认 `problem-closure-gate` + `problem-contract` 基线，并强化问题评估强制维度（`problem_contract`/`ontology_alignment`/`convergence`），提升 verify/release 收敛控制。
-- `3.4.5`：`git-managed-gate` 在默认 CI 放宽模式下（`CI/GITHUB_ACTIONS` 且非 strict）对工作区变更改为告警，不再误阻断发布。
-- `3.4.4`：新增 `SCE_GIT_MANAGEMENT_ALLOW_UNTRACKED=1` / `--allow-untracked`；发布工作流在 npm publish 前生成证据资产时可放行未跟踪文件。
-- `3.4.3`：Studio 全阶段接入强制问题评估（`plan/generate/apply/verify/release`），并引入策略文件 `.sce/config/problem-eval-policy.json` 与评估报告落盘。
-- `3.4.2`：Errorbook 升级为完整 incident staging 闭环（尝试记录、incident 查询、resolved 归档）。
-- `3.4.1`：新增 workspace takeover baseline 自动化（`takeover-audit` / `takeover-apply`）与启动对齐能力。
-
----
-
-## 文档导航
+## 文档入口
 
 建议先看：
 
 - [快速开始](docs/zh/quick-start.md)
+- [AI 工具快速开始](docs/quick-start-with-ai-tools.md)
 - [命令参考](docs/command-reference.md)
 - [自动闭环指南](docs/autonomous-control-guide.md)
 - [场景运行时指南](docs/scene-runtime-guide.md)
-- [Value 可观测指南](docs/zh/value-observability-guide.md)
 - [多 Agent 协同指南](docs/multi-agent-coordination-guide.md)
 - [Errorbook 注册表指南](docs/errorbook-registry.md)
 - [文档总览](docs/zh/README.md)
 
-Moqui 方向：
+Moqui 与能力矩阵相关：
 
 - [Moqui 模板核心库 Playbook](docs/moqui-template-core-library-playbook.md)
 - [Moqui 标准重建指南](docs/moqui-standard-rebuild-guide.md)
+- [SCE 能力矩阵路线图](docs/sce-capability-matrix-roadmap.md)
 
 ---
 
@@ -218,5 +203,5 @@ MIT，见 [LICENSE](LICENSE)。
 
 ---
 
-**版本**：3.6.32  
-**最后更新**：2026-03-05
+**版本**：3.6.32
+**最后更新**：2026-03-08

@@ -1,6 +1,6 @@
 ﻿# SCE Documentation Hub
 
-This hub focuses on high-value paths for adopting and scaling SCE.
+This hub keeps only the high-value entry points for adopting, integrating, and scaling SCE.
 
 ---
 
@@ -14,19 +14,28 @@ This hub focuses on high-value paths for adopting and scaling SCE.
 
 ---
 
-## Delivery Workflows
+## Core Delivery Paths
 
 - [Spec Workflow](spec-workflow.md)
 - [Autonomous Control Guide](autonomous-control-guide.md)
 - [Multi-Agent Coordination Guide](multi-agent-coordination-guide.md)
-- [Spec Collaboration Guide](spec-collaboration-guide.md)
-- [Spec Locking Guide](spec-locking-guide.md)
+- [Scene Runtime Guide](scene-runtime-guide.md)
+- [Value Observability Guide](value-observability-guide.md)
 
 ---
 
-## Scene, Ontology, and Moqui
+## Governance and Release
 
-- [Scene Runtime Guide](scene-runtime-guide.md)
+- [Errorbook Registry Guide](errorbook-registry.md)
+- [Security Governance Default Baseline](security-governance-default-baseline.md)
+- [Document Governance](document-governance.md)
+- [Release Checklist](release-checklist.md)
+- [Release Archive](releases/README.md)
+
+---
+
+## Scene, Capability, and Moqui
+
 - [Moqui Template Core Library Playbook](moqui-template-core-library-playbook.md)
 - [Moqui Capability Matrix](moqui-capability-matrix.md)
 - [Moqui Standard Rebuild Guide](moqui-standard-rebuild-guide.md)
@@ -34,27 +43,12 @@ This hub focuses on high-value paths for adopting and scaling SCE.
 
 ---
 
-## Governance, Quality, and Release
-
-- [Document Governance](document-governance.md)
-- [Security Governance Default Baseline](security-governance-default-baseline.md)
-- [Errorbook Registry Guide](errorbook-registry.md)
-- [Release Checklist](release-checklist.md)
-- [Release Archive](releases/README.md)
-
----
-
-## Ops and Platform Management
+## Platform and Integrations
 
 - [Environment Management Guide](environment-management-guide.md)
 - [Multi-Repository Management Guide](multi-repo-management-guide.md)
 - [Team Collaboration Guide](team-collaboration-guide.md)
 - [Manual Workflows Guide](manual-workflows-guide.md)
-
----
-
-## Integrations
-
 - [Cursor Guide](tools/cursor-guide.md)
 - [Claude Code Guide](tools/claude-guide.md)
 - [Windsurf Guide](tools/windsurf-guide.md)
@@ -63,11 +57,9 @@ This hub focuses on high-value paths for adopting and scaling SCE.
 
 ---
 
-## Value and Observability
+## Language
 
-- [Value Observability Guide](value-observability-guide.md)
-- [Architecture](architecture.md)
-- [Developer Guide](developer-guide.md)
+- [中文文档索引](zh/README.md)
 
 ---
 
@@ -79,11 +71,5 @@ This hub focuses on high-value paths for adopting and scaling SCE.
 
 ---
 
-## Language
-
-- [中文文档索引](zh/README.md)
-
----
-
-**Version**: 3.3.26  
-**Last Updated**: 2026-03-02
+**Version**: 3.6.32
+**Last Updated**: 2026-03-08
