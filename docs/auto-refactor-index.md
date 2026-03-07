@@ -1,7 +1,9 @@
 ﻿# Auto Refactor Index
 - Phase 2 now also includes `lib/auto/archive-schema-service.js` for archive schema compatibility, inspection, and migration orchestration.
 
+- Phase 2 now also includes `lib/auto/recovery-selection-service.js` for latest recoverable summary/controller-session selection.
 ## Goal
+- Phase 2 now also includes `lib/auto/close-loop-recovery-service.js` for recovery-cycle orchestration.
 
 Reduce `lib/commands/auto.js` by extracting pure helper, presenter, summary, service, and storage logic into stable modules before final command-layer slimming.
 
