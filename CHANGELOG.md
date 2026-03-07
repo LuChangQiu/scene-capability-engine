@@ -1,4 +1,4 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to this project will be documented in this file.
 
@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `docs/auto-refactor-index.md` to track safe `auto.js` shadow-module and cutover order.
 ### Changed
 - Cut over shared `archive-summary` helpers into `lib/commands/auto.js` mainline after passing unit and guarded integration validation.
+- Cut over shared `retention-policy`, `spec-protection`, and `session-presenter` helpers into `lib/commands/auto.js` mainline after passing unit and guarded integration validation.
+
 
 
 ## [3.6.32] - 2026-03-07

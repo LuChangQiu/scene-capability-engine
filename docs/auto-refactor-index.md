@@ -1,4 +1,4 @@
-﻿# Auto Refactor Index
+# Auto Refactor Index
 
 ## Goal
 
@@ -99,17 +99,17 @@ Integration guardrails:
 - Shared status classification and percent calculation.
 - Verified via all session list/stats and governance archive integration coverage.
 
-3. `retention-policy`
+3. `retention-policy` [completed]
 - Shared retention/prune argument normalization.
-- Must verify: `session/spec-session/batch-session/controller-session/governance-session prune`.
+- Verified via session/spec-session/batch-session/controller-session/governance-session prune integration coverage.
 
-4. `spec-protection`
+4. `spec-protection` [completed]
 - Shared spec protection and reason ranking.
-- Must verify: `spec-session prune` and `close-loop-batch` budget guard.
+- Verified via spec-session prune protection ranking and close-loop-batch budget-guard integration coverage.
 
-5. `session-presenter`
+5. `session-presenter` [completed]
 - Shared result payload builders for session list/stats.
-- Must verify: all session list/stats commands and `auto governance stats`.
+- Verified via all session list/stats commands and governance archive integration coverage.
 
 6. `governance-signals`
 - Shared release gate / weekly ops normalization.
@@ -146,4 +146,3 @@ Integration guardrails:
 ## Stop Condition
 
 Do not continue cutover if any single-cluster change causes broad `auto-close-loop` integration failures. Revert that cutover and keep only the shadow module + unit tests.
-
