@@ -209,6 +209,11 @@ Reduce `lib/commands/auto.js` by extracting helper, presenter, policy, service, 
 - `buildAutoHandoffCapabilityMatrixRecommendations`
 - `buildAutoHandoffCapabilityMatrix`
 
+41. `lib/auto/handoff-release-evidence-service.js`
+- `loadAutoHandoffReleaseEvidence`
+- `mergeAutoHandoffRunIntoReleaseEvidence`
+- `writeAutoHandoffRunReport`
+
 ## Validation Coverage
 
 Unit tests:
@@ -226,6 +231,7 @@ Unit tests:
 - `tests/unit/auto/program-auto-remediation-service.test.js`
 - `tests/unit/auto/output-writer.test.js`
 - `tests/unit/auto/handoff-capability-matrix-service.test.js`
+- `tests/unit/auto/handoff-release-evidence-service.test.js`
 - `tests/unit/auto/close-loop-controller-service.test.js`
 - `tests/unit/auto/close-loop-recovery-service.test.js`
 - `tests/unit/auto/controller-lock-service.test.js`
@@ -273,9 +279,10 @@ Integration guardrails:
 - Program gate auto-remediation and spec-prune side effects now delegate to `lib/auto/program-auto-remediation-service.js`.
 - Shared JSON/text output writers now delegate to `lib/auto/output-writer.js`.
 - Handoff capability matrix policy/recommendation/build flow now delegates to `lib/auto/handoff-capability-matrix-service.js`.
+- Handoff release-evidence load/merge/report flow now delegates to `lib/auto/handoff-release-evidence-service.js`.
 - Controller queue, lock, and output helpers are extracted and wired into the controller service and command wrapper.
 - Dead duplicate controller queue helper definitions were removed from `lib/commands/auto.js` after cutover.
-- Remaining heavy boundaries are now concentrated in deeper auto-handoff evidence/history services and final release closure after controller, batch, observability, program, governance, output, and handoff capability-matrix cutover stabilized.
+- Remaining heavy boundaries are now concentrated in auto-handoff evidence review, release draft, release gate history entry/index, and final release closure after controller, batch, observability, program, governance, output, handoff capability-matrix, and handoff release-evidence cutover stabilized.
 
 ## Working Rules
 

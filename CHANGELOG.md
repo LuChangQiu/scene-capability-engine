@@ -38,6 +38,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added dedicated output-writer unit coverage and kept command/integration output-file behavior green.
 - Cut over handoff capability matrix policy/recommendation/build flow to 'lib/auto/handoff-capability-matrix-service.js'.
 - Added dedicated handoff-capability-matrix-service unit coverage and kept command/integration handoff matrix flows green.
+- Cut over handoff release-evidence load/merge/report flow to 'lib/auto/handoff-release-evidence-service.js'.
+- Added dedicated handoff-release-evidence-service unit coverage and kept command/integration evidence flows green.
 - Continued service-layer extraction by moving recovery-cycle orchestration into 'lib/auto/close-loop-recovery-service.js' with dedicated unit coverage.
 - Continued service-layer extraction by moving latest recoverable summary/controller selection into 'lib/auto/recovery-selection-service.js' with dedicated unit coverage.
 - Continued service-layer extraction by moving archive schema check/migrate logic into 'lib/auto/archive-schema-service.js' with dedicated unit coverage.
