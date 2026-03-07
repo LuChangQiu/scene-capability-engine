@@ -141,6 +141,7 @@ Integration guardrails:
 
 - Phase 2 now also includes `lib/auto/governance-stats-service.js` for governance archive aggregation and health synthesis.
 ## Current Policy
+- Phase 2 now also includes `lib/auto/governance-advisory-service.js` for recovery/controller advisory execution and latest-source selection.
 
 - Shadow modules may be added freely if they are pure and unit-tested.
 - Mainline cutover is allowed only one cluster at a time.
