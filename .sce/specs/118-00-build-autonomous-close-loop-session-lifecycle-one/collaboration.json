@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "type": "master",
+  "subSpecs": [
+    "118-01-closed-loop-autonomous-execution",
+    "118-02-master-sub-spec-decomposition",
+    "118-03-parallel-orchestration-runtime"
+  ],
+  "dependencies": [
+    {
+      "spec": "118-01-closed-loop-autonomous-execution",
+      "type": "requires-completion"
+    },
+    {
+      "spec": "118-02-master-sub-spec-decomposition",
+      "type": "requires-completion"
+    },
+    {
+      "spec": "118-03-parallel-orchestration-runtime",
+      "type": "requires-completion"
+    }
+  ],
+  "status": {
+    "current": "in-progress",
+    "updatedAt": "2026-03-06T17:44:26.101Z"
+  },
+  "interfaces": {
+    "provides": [],
+    "consumes": []
+  },
+  "assignment": {
+    "kiroInstance": "agent-master",
+    "assignedAt": "2026-03-06T17:44:26.095Z"
+  }
+}

@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Added `docs/auto-refactor-index.md` to track safe `auto.js` shadow-module and cutover order.
+
 ## [3.6.32] - 2026-03-07
 
 ### Fixed

@@ -1,0 +1,78 @@
+{
+  "mode": "auto-close-loop-dod-report",
+  "generated_at": "2026-03-06T17:44:26.111Z",
+  "goal": "build autonomous close loop session lifecycle one",
+  "status": "prepared",
+  "portfolio": {
+    "prefix": 118,
+    "master_spec": "118-00-build-autonomous-close-loop-session-lifecycle-one",
+    "sub_specs": [
+      "118-01-closed-loop-autonomous-execution",
+      "118-02-master-sub-spec-decomposition",
+      "118-03-parallel-orchestration-runtime"
+    ]
+  },
+  "replan": {
+    "enabled": true,
+    "max_attempts": 1,
+    "strategy": "adaptive",
+    "effective_max_attempts": 1,
+    "no_progress_window": 3,
+    "performed": 0,
+    "attempts": [],
+    "exhausted": false,
+    "stalled_signature": null,
+    "stalled_no_progress_cycles": 0
+  },
+  "dod": {
+    "enabled": true,
+    "passed": true,
+    "failed_checks": [],
+    "checks": [
+      {
+        "id": "docs-complete",
+        "status": "passed",
+        "message": "All spec docs are present (requirements/design/tasks)."
+      },
+      {
+        "id": "orchestration-completed",
+        "status": "skipped",
+        "message": "Orchestration gate skipped (--no-run)."
+      },
+      {
+        "id": "risk-level-threshold",
+        "status": "skipped",
+        "message": "Risk threshold gate disabled."
+      },
+      {
+        "id": "kpi-completion-rate-threshold",
+        "status": "skipped",
+        "message": "Completion KPI threshold gate disabled."
+      },
+      {
+        "id": "kpi-baseline-drop-threshold",
+        "status": "skipped",
+        "message": "Baseline KPI drop threshold gate disabled."
+      },
+      {
+        "id": "collaboration-completed",
+        "status": "skipped",
+        "message": "Collaboration completion gate skipped because orchestration did not run."
+      },
+      {
+        "id": "tasks-checklist-closed",
+        "status": "skipped",
+        "message": "Tasks checklist closure gate disabled."
+      },
+      {
+        "id": "tests-command",
+        "status": "skipped",
+        "message": "No DoD test command configured."
+      }
+    ]
+  },
+  "orchestration": null,
+  "next_actions": [
+    "Run `sce orchestrate status` to observe runtime progress."
+  ]
+}

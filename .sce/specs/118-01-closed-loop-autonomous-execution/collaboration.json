@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "type": "sub",
+  "masterSpec": "118-00-build-autonomous-close-loop-session-lifecycle-one",
+  "dependencies": [],
+  "status": {
+    "current": "not-started",
+    "updatedAt": "2026-03-06T17:44:26.060Z"
+  },
+  "interfaces": {
+    "provides": [],
+    "consumes": []
+  },
+  "assignment": {
+    "kiroInstance": "agent-sub-01",
+    "assignedAt": "2026-03-06T17:44:26.097Z"
+  }
+}

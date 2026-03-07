@@ -119,3 +119,4 @@ tests/fixtures/moqui-core-regression/workspace/.sce/reports/
 *.credentials
 .env.local
 .env.*.local
+.tmp-*/
