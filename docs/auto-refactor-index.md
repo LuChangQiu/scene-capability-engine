@@ -214,6 +214,12 @@ Reduce `lib/commands/auto.js` by extracting helper, presenter, policy, service, 
 - `mergeAutoHandoffRunIntoReleaseEvidence`
 - `writeAutoHandoffRunReport`
 
+42. `lib/auto/handoff-evidence-review-service.js`
+- `buildAutoHandoffEvidenceSnapshot`
+- `buildAutoHandoffEvidenceStatusCounts`
+- `resolveAutoHandoffReleaseDraftContext`
+- `buildAutoHandoffEvidenceReviewReport`
+
 ## Validation Coverage
 
 Unit tests:
@@ -232,6 +238,7 @@ Unit tests:
 - `tests/unit/auto/output-writer.test.js`
 - `tests/unit/auto/handoff-capability-matrix-service.test.js`
 - `tests/unit/auto/handoff-release-evidence-service.test.js`
+- `tests/unit/auto/handoff-evidence-review-service.test.js`
 - `tests/unit/auto/close-loop-controller-service.test.js`
 - `tests/unit/auto/close-loop-recovery-service.test.js`
 - `tests/unit/auto/controller-lock-service.test.js`
@@ -280,9 +287,10 @@ Integration guardrails:
 - Shared JSON/text output writers now delegate to `lib/auto/output-writer.js`.
 - Handoff capability matrix policy/recommendation/build flow now delegates to `lib/auto/handoff-capability-matrix-service.js`.
 - Handoff release-evidence load/merge/report flow now delegates to `lib/auto/handoff-release-evidence-service.js`.
+- Handoff evidence snapshot/review-report/draft-context flow now delegates to `lib/auto/handoff-evidence-review-service.js`.
 - Controller queue, lock, and output helpers are extracted and wired into the controller service and command wrapper.
 - Dead duplicate controller queue helper definitions were removed from `lib/commands/auto.js` after cutover.
-- Remaining heavy boundaries are now concentrated in auto-handoff evidence review, release draft, release gate history entry/index, and final release closure after controller, batch, observability, program, governance, output, handoff capability-matrix, and handoff release-evidence cutover stabilized.
+- Remaining heavy boundaries are now concentrated in auto-handoff renderers and release gate history entry/index plus final release closure after controller, batch, observability, program, governance, output, handoff capability-matrix, handoff release-evidence, and handoff evidence-review cutover stabilized.
 
 ## Working Rules
 
