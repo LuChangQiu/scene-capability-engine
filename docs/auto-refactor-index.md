@@ -224,6 +224,11 @@ Reduce `lib/commands/auto.js` by extracting helper, presenter, policy, service, 
 - `buildAutoHandoffReleaseGateHistoryIndex`
 - `renderAutoHandoffReleaseGateHistoryMarkdown`
 
+44. `lib/auto/handoff-snapshots-service.js`
+- `buildAutoHandoffMoquiBaselineSnapshot`
+- `buildAutoHandoffScenePackageBatchSnapshot`
+- `buildAutoHandoffCapabilityCoverageSnapshot`
+
 ## Validation Coverage
 
 Unit tests:
@@ -244,6 +249,7 @@ Unit tests:
 - `tests/unit/auto/handoff-release-evidence-service.test.js`
 - `tests/unit/auto/handoff-evidence-review-service.test.js`
 - `tests/unit/auto/handoff-release-gate-history-service.test.js`
+- `tests/unit/auto/handoff-snapshots-service.test.js`
 - `tests/unit/auto/close-loop-controller-service.test.js`
 - `tests/unit/auto/close-loop-recovery-service.test.js`
 - `tests/unit/auto/controller-lock-service.test.js`
@@ -294,9 +300,10 @@ Integration guardrails:
 - Handoff release-evidence load/merge/report flow now delegates to `lib/auto/handoff-release-evidence-service.js`.
 - Handoff evidence snapshot/review-report/draft-context flow now delegates to `lib/auto/handoff-evidence-review-service.js`.
 - Handoff release gate history index/markdown flow now delegates to `lib/auto/handoff-release-gate-history-service.js`.
+- Handoff baseline / scene-batch / capability-coverage snapshots now delegate to `lib/auto/handoff-snapshots-service.js`.
 - Controller queue, lock, and output helpers are extracted and wired into the controller service and command wrapper.
 - Dead duplicate controller queue helper definitions were removed from `lib/commands/auto.js` after cutover.
-- Remaining heavy boundaries are now concentrated in auto-handoff release-note / evidence markdown renderers, release gate history entry parsing/loaders, baseline/coverage snapshot services, and final release closure after the current handoff subdomains stabilized.
+- Remaining heavy boundaries are now concentrated in `runAutoHandoff` orchestration plus a small set of handoff renderers/loaders after the handoff snapshot, evidence, review, and history subdomains stabilized.
 
 ## Working Rules
 

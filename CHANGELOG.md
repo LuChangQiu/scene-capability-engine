@@ -57,6 +57,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added dedicated handoff-evidence-review-service unit coverage and kept command/integration review flows green.
 - Cut over handoff release gate history index/markdown flow to 'lib/auto/handoff-release-gate-history-service.js'.
 - Added dedicated handoff-release-gate-history-service unit coverage and kept command/integration gate-index flows green.
+- Cut over handoff baseline / scene-batch / capability-coverage snapshots to 'lib/auto/handoff-snapshots-service.js'.
+- Added dedicated handoff-snapshots-service unit coverage and kept command/integration handoff run and matrix flows green.
 - Continued service-layer extraction by moving recovery-cycle orchestration into 'lib/auto/close-loop-recovery-service.js' with dedicated unit coverage.
 - Continued service-layer extraction by moving latest recoverable summary/controller selection into 'lib/auto/recovery-selection-service.js' with dedicated unit coverage.
 - Continued service-layer extraction by moving archive schema check/migrate logic into 'lib/auto/archive-schema-service.js' with dedicated unit coverage.
