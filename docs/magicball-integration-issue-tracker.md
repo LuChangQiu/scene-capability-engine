@@ -51,13 +51,14 @@ SCE changes completed and now available for MagicBall:
   - `fallback + optional seed apply` as the recommended default for fresh-project ontology UX under `Issue 003`
 
 ### Next Needed From MagicBall
-1. continue real integration against `customer-order-demo` for all three `mode * home` pages
-2. keep `mode home` requests serialized during current verification window
-3. keep fresh-ontology UX on `fallback + optional seed apply`:
+1. treat the current doc set as stable and move into feedback-driven integration using the current entry docs
+2. continue real integration against `customer-order-demo` for all three `mode * home` pages
+3. keep `mode home` requests serialized during current verification window
+4. keep fresh-ontology UX on `fallback + optional seed apply`:
    - MagicBall local UI now renders starter seed guidance + preview + explicit apply
    - `ontology seed apply` is wired through shared write auth using scope `ontology:seed:apply`
    - keep this item open only for wider field verification, not for strategy selection
-4. if any new integration mismatch appears, record it in `Open Items` with:
+5. if any new integration mismatch appears, record it in `Open Items` with:
    - exact command
    - workspace path
    - current payload

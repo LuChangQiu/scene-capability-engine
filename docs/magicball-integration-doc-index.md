@@ -133,3 +133,5 @@ As of the current tracker state:
 When a new MagicBall-facing SCE document is added:
 - add it here only if it changes implementation behavior or cross-project coordination
 - do not add deep design drafts unless they are still active implementation inputs
+- after the current doc baseline, prefer feedback-driven updates over proactive document expansion
+- if there is no new real integration blocker, keep the current entry set stable
