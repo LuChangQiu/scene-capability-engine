@@ -83,6 +83,36 @@ Status:
 - SCE mitigation applied
 - still needs wider real-world verification before considering this fully closed
 
+### Issue 003: ontology ER/BR/DL data planes are command-ready but currently empty by default
+
+Context:
+- Project: `E:\workspace\331-poc`
+- SCE source: `E:\workspace\kiro-spec-engine`
+- Commands verified:
+  - `npx sce ontology er list --json`
+  - `npx sce ontology br list --json`
+  - `npx sce ontology dl list --json`
+  - `npx sce ontology triad summary --json`
+
+Observed behavior:
+- ER/BR/DL list commands are stable and return table payloads with `view_model.columns`
+- but all three currently return empty item arrays in the default local state
+- triad summary returns valid shape but zero coverage / all triads missing unless MagicBall applies fallback or the project creates real ontology assets
+
+Impact on MagicBall:
+- frontend can safely wire read flows now
+- but user-visible ontology pages need either sample fallback, a create flow, or starter seed data to avoid blank pages in fresh projects
+- triad completeness currently depends on newly created assets or fallback data
+
+Current cross-project decision:
+- treat empty ontology state as expected for fresh/local projects
+- keep this issue open until MagicBall confirms whether fallback UX is sufficient or whether starter seed support is still needed
+
+Status:
+- frontend read path ready
+- ontology write/read loop already verified working
+- fallback/startup UX decision still open
+
 ## Resolved
 
 ### SCE Update 001: Current capabilities ready for MagicBall integration
@@ -90,3 +120,42 @@ Status:
 Status:
 - ready for MagicBall integration
 - moved into `Current Contract`
+
+### Issue 002: pm requirement upsert succeeds but requirement list still returns empty
+
+Resolution:
+- Reproduced against current source and CLI smoke path.
+- Current behavior is now correct.
+- `pm requirement upsert` followed by `pm requirement list` returns the newly written item in the same workspace context.
+
+Verification summary:
+1. wrote `REQ-TEST-001` through `sce pm requirement upsert --json`
+2. immediately executed `sce pm requirement list --json`
+3. result returned:
+   - `summary.total = 1`
+   - `items[0].requirement_id = REQ-TEST-001`
+
+Status:
+- resolved on current SCE source
+- keep closed unless MagicBall can reproduce with exact workspace path and command path
+
+### Verification 001: ontology ER/BR/DL upsert + list round-trip works in current SCE
+
+Verified commands:
+- `npx sce ontology er upsert --input .sce\\state\\mb-er-upsert-test.json --json`
+- `npx sce ontology br upsert --input .sce\\state\\mb-br-upsert-test.json --json`
+- `npx sce ontology dl upsert --input .sce\\state\\mb-dl-upsert-test.json --json`
+- `npx sce ontology er list --json`
+- `npx sce ontology br list --json`
+- `npx sce ontology dl list --json`
+
+Observed result:
+- all three upsert commands return `success: true`
+- all three corresponding list commands immediately show the inserted item
+
+Implication for MagicBall:
+- ontology ER/BR/DL minimal write forms can rely on post-save refresh
+- optimistic fallback is optional for ontology write/read loops
+
+Status:
+- verified working
