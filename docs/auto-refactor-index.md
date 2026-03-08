@@ -259,6 +259,27 @@ Reduce `lib/commands/auto.js` by extracting helper, presenter, policy, service, 
 - `resolveRecoveryActionSelection`
 - `applyRecoveryActionPatch`
 
+48. `lib/auto/batch-goal-input-service.js`
+- `loadCloseLoopBatchGoals`
+- `buildCloseLoopBatchGoalsFromGoal`
+- `normalizeResumeStrategy`
+- `buildCloseLoopBatchGoalsFromSummaryPayload`
+- `loadCloseLoopBatchGoalsFromSummary`
+
+49. `lib/auto/handoff-reporting-service.js`
+- `buildAutoHandoffRegressionSnapshot`
+- `buildAutoHandoffRegressionComparison`
+- `buildAutoHandoffRegressionWindowTrend`
+- `buildAutoHandoffRegressionAggregates`
+- `buildAutoHandoffRegressionRiskLayers`
+- `buildAutoHandoffRegressionRecommendations`
+- `buildAutoHandoffMoquiCoverageRegressions`
+- `renderAutoHandoffRegressionMarkdown`
+- `renderAutoHandoffEvidenceReviewMarkdown`
+- `renderAutoHandoffReleaseNotesDraft`
+- `buildAutoHandoffRegression`
+- `buildAutoHandoffRegressionReport`
+
 ## Validation Coverage
 
 Unit tests:
@@ -288,6 +309,8 @@ Unit tests:
 - `tests/unit/auto/controller-output.test.js`
 - `tests/unit/auto/controller-queue-service.test.js`
 - `tests/unit/auto/controller-session-storage-service.test.js`
+- `tests/unit/auto/batch-goal-input-service.test.js`
+- `tests/unit/auto/handoff-reporting-service.test.js`
 - `tests/unit/auto/governance-advisory-service.test.js`
 - `tests/unit/auto/governance-close-loop-service.test.js`
 - `tests/unit/auto/governance-maintenance-presenter.test.js`
@@ -340,6 +363,8 @@ Integration guardrails:
 - Dead duplicate controller queue helper definitions were removed from `lib/commands/auto.js` after cutover.
 - `lib/commands/auto.js` now keeps `auto-handoff` behavior as dependency-injected command wrappers rather than owning the full orchestration body.
 - Recovery-memory persistence, scope resolution, pruning, and remediation-action selection now delegate to `lib/auto/recovery-memory-service.js`.
+- Batch goal file loading, semantic decomposition, and summary-resume restoration now delegate to `lib/auto/batch-goal-input-service.js`.
+- Handoff regression/evidence markdown rendering and reporting now delegate to `lib/auto/handoff-reporting-service.js`.
 
 ## Working Rules
 

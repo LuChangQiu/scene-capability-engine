@@ -11,11 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `lib/auto/handoff-release-gate-history-loaders-service.js` for release-gate history entry normalization, report discovery, seed loading, and merge selection.
 - Added `lib/auto/handoff-run-service.js` for full auto-handoff orchestration outside the command layer.
 - Added `lib/auto/recovery-memory-service.js` for recovery-memory persistence, scope resolution, pruning, and remediation-action selection.
-- Added dedicated unit coverage in `tests/unit/auto/handoff-release-gate-history-loaders-service.test.js`, `tests/unit/auto/handoff-run-service.test.js`, and `tests/unit/auto/recovery-memory-service.test.js`.
+- Added `lib/auto/batch-goal-input-service.js` for batch goal file loading, semantic decomposition, and summary-resume restoration.
+- Added `lib/auto/handoff-reporting-service.js` for handoff regression/evidence reporting and markdown rendering.
+- Added dedicated unit coverage in `tests/unit/auto/handoff-release-gate-history-loaders-service.test.js`, `tests/unit/auto/handoff-run-service.test.js`, `tests/unit/auto/recovery-memory-service.test.js`, `tests/unit/auto/batch-goal-input-service.test.js`, and `tests/unit/auto/handoff-reporting-service.test.js`.
 
 ### Changed
 - Moved `runAutoHandoff` out of `lib/commands/auto.js`, leaving the command layer as a thin dependency-injected wrapper.
 - Moved recovery-memory persistence and remediation-selection flow out of `lib/commands/auto.js`, leaving close-loop recover commands on service-backed wrappers.
+- Moved batch goal input/resume flow out of `lib/commands/auto.js`, including goal-file parsing, semantic decomposition, and summary-based resume assembly.
+- Moved handoff regression/evidence rendering flow out of `lib/commands/auto.js`, leaving report commands on service-backed wrappers.
 - Completed the high-value `auto-handoff` extraction round by splitting snapshot, release-gate loader, and run orchestration boundaries into dedicated services.
 
 ## [3.6.34] - 2026-03-08
