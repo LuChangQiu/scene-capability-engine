@@ -1,5 +1,7 @@
 ﻿# Magicball 能力库复用对接说明（SCE）
 
+> Status: secondary reference for capability-library integration only.
+> Keep this for the capability-library flow, not as the main MagicBall entry guide.
 > 目标：在 Magicball UI 中提供“能力库检索/匹配/使用”闭环，加速场景能力落地。
 
 Schema reference: `docs/agent-runtime/magicball-status.schema.json`

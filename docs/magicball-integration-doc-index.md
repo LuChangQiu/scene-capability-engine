@@ -10,6 +10,18 @@ Provide one short entry document for MagicBall engineers to know:
 This file should stay short.
 It is a navigation layer, not a new source of truth.
 
+## Current Entry Set
+
+These are the current first-line integration documents:
+- `docs/magicball-sce-adaptation-guide.md`
+- `docs/magicball-ui-surface-checklist.md`
+- `docs/magicball-mode-home-and-ontology-empty-state-playbook.md`
+- `docs/magicball-frontend-state-and-command-mapping.md`
+- `docs/magicball-cli-invocation-examples.md`
+- `docs/magicball-write-auth-adaptation-guide.md`
+- `docs/magicball-task-feedback-timeline-guide.md`
+- `docs/magicball-integration-issue-tracker.md`
+
 ## Recommended Reading Order
 
 1. `docs/magicball-sce-adaptation-guide.md`
@@ -90,6 +102,23 @@ Use:
 | `magicball-task-feedback-timeline-guide.md` | task/timeline integration | low |
 | `magicball-cli-invocation-examples.md` | copy-ready command examples | medium |
 | `magicball-integration-issue-tracker.md` | live cross-project tracker | high |
+
+## Secondary References
+
+These remain useful, but they are not first-read integration entry documents:
+- `docs/magicball-capability-iteration-ui.md`
+- `docs/magicball-capability-iteration-api.md`
+- `docs/magicball-capability-library.md`
+
+Use them when MagicBall is specifically implementing capability iteration / capability library flows.
+
+## Historical Foundation Drafts
+
+These documents are still worth keeping as architecture history, but should not drive current integration work directly:
+- `docs/magicball-app-bundle-sqlite-and-command-draft.md`
+- `docs/magicball-three-mode-alignment-plan.md`
+
+If guidance in these drafts conflicts with the current entry set, prefer the current entry set.
 
 ## Current High-Priority Defaults
 

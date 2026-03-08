@@ -1,5 +1,9 @@
 ﻿# MagicBall Three-Mode Alignment Plan
 
+> Status: historical alignment plan.
+> Keep this as product/architecture background, not as the primary implementation guide.
+> For current integration work, prefer the documents listed in `docs/magicball-integration-doc-index.md`.
+
 ## Goal
 
 Align MagicBall and SCE around a stable three-mode product model:

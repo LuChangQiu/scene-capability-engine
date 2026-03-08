@@ -1,5 +1,7 @@
 # Magicball 能力迭代 API 封装建议（基于 SCE CLI）
 
+> Status: secondary reference for capability-iteration API wrapping only.
+> Use together with the current integration entry set, not instead of it.
 > 目标：把 SCE CLI 统一封装成 Magicball 内部 API，方便前端用标准 JSON 调用。
 
 ---

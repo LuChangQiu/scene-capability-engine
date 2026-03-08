@@ -1,5 +1,7 @@
 # Magicball 能力迭代管理（SCE 对接说明）
 
+> Status: secondary reference for the capability-iteration surface only.
+> Do not use this as the general MagicBall integration entry.
 > 适用于：Magicball AI 助手页面新增顶部图标入口，内部用页签切换。
 > 目标：从历史 `scene/spec/task` 中提炼可复用能力模板，并完成本体映射，形成可发布的能力资产。
 

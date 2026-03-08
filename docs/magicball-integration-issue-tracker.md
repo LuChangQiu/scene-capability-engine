@@ -46,6 +46,7 @@ SCE changes completed and now available for MagicBall:
 - `docs/magicball-integration-doc-index.md`
 - `docs/magicball-cli-invocation-examples.md`
 - these docs now explicitly capture:
+  - current entry docs vs secondary references vs historical drafts are now separated in `docs/magicball-integration-doc-index.md`
   - serialized `mode * home` loading as the safe default during `Issue 001` verification
   - `fallback + optional seed apply` as the recommended default for fresh-project ontology UX under `Issue 003`
 
@@ -147,6 +148,8 @@ Status:
 - starter seed support implemented in SCE
 - payload-level `starter_seed` guidance implemented in SCE
 - MagicBall starter seed preview/apply UI implemented locally in `E:\workspace\331-poc\frontend\src\renderer\components\ontology\OntologyStarterSeedPanel.vue`
+- empty-ontology flow reverified locally on 2026-03-08 in `E:\workspace\331-poc\tmp\sce-empty-ontology-repro`
+- local verification covered: `triad summary` empty -> `seed list/show` preview -> `seed apply` -> `triad summary` ready
 - keep open until broader field verification confirms the UX is stable
 
 ## Resolved
@@ -198,4 +201,17 @@ Implication for MagicBall:
 
 Status:
 - verified working
+### Verification 002: pm requirement/tracking/planning/change/issue round-trip works in current `331-poc`
+
+Observed result:
+- local repro on 2026-03-08 shows `requirement`, `tracking`, `planning`, `change`, and `issue` writes all appear on immediate follow-up list/board reads
+- this revalidation was executed in `E:\workspace\331-poc`
+- write payloads used current SCE-required minimal fields rather than older placeholder payloads
+
+Implication for MagicBall:
+- keep optimistic local UI fallback as a defensive strategy
+- but current local evidence no longer shows stale read-after-write behavior for these PM objects
+
+Status:
+- verified working in current local context
 

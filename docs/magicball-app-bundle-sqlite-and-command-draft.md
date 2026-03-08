@@ -1,5 +1,9 @@
 ﻿# MagicBall App Bundle SQLite And Command Draft
 
+> Status: historical foundation draft.
+> Use this as architecture background only.
+> For current MagicBall implementation work, start from `docs/magicball-integration-doc-index.md` instead.
+
 ## Goal
 
 Define the first executable SCE backbone for MagicBall three-mode alignment:
