@@ -43,6 +43,15 @@ Use:
 
 These should be treated as the top-level source for each mode page.
 
+Operational constraint during current verification window:
+- MagicBall should load these projection commands sequentially, not in parallel
+- recommended order:
+  1. `mode application home`
+  2. `mode ontology home`
+  3. `mode engineering home`
+  4. `app engineering show`
+- reason: SCE already includes sqlite read-retry + short-lived projection cache mitigation, but frontend should still keep serialized loading as the safe default until wider field verification closes `Issue 001`
+
 ## Remote Registry Sources
 
 ### Bundle Registry
@@ -232,6 +241,13 @@ sce ontology seed list --json
 sce ontology seed show --profile customer-order-demo --json
 sce ontology seed apply --profile customer-order-demo --json
 ```
+
+Recommended fresh-project ontology policy:
+- default to `fallback + optional seed apply`
+- first render should use SCE payload `starter_seed` guidance plus a clear empty-state explanation
+- do not auto-apply seed silently on first load
+- expose an explicit `Initialize ontology starter data` action that calls `sce ontology seed apply --profile customer-order-demo --json`
+- after seed apply, refresh `mode ontology home`, `ontology triad summary`, `ontology er list`, `ontology br list`, and `ontology dl list`
 
 ### G. Assurance Data Plane
 

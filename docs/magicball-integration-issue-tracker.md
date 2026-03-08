@@ -40,6 +40,9 @@ SCE changes completed and now available for MagicBall:
 - `docs/magicball-sce-adaptation-guide.md`
 - `docs/magicball-write-auth-adaptation-guide.md`
 - `docs/magicball-adaptation-task-checklist-v1.md`
+- these docs now explicitly capture:
+  - serialized `mode * home` loading as the safe default during `Issue 001` verification
+  - `fallback + optional seed apply` as the recommended default for fresh-project ontology UX under `Issue 003`
 
 ### Next Needed From MagicBall
 1. continue real integration against `customer-order-demo` for all three `mode * home` pages

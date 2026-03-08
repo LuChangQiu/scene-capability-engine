@@ -55,6 +55,8 @@ sce mode engineering home --app customer-order-demo --json
 Done when:
 - all three mode entry pages are driven by these commands
 - frontend no longer reconstructs runtime/ontology/engineering binding itself
+- frontend loads them sequentially in this order: application -> ontology -> engineering -> engineering show
+- frontend does not switch these four reads back to parallel loading until `Issue 001` is explicitly closed in `docs/magicball-integration-issue-tracker.md`
 
 ## Phase 2: Application Mode
 
@@ -165,7 +167,16 @@ Done when:
 ### Task 3.6
 Decide fresh-project ontology behavior.
 
-Options:
+Recommended default:
+- `fallback + optional seed apply`
+
+Implementation rule:
+- on first empty ontology load, explain that empty state is expected for a fresh/local project
+- read `starter_seed` guidance from `mode ontology home` / `ontology triad summary`
+- show a visible `Initialize starter ontology` action
+- do not auto-apply seed without explicit user intent
+
+Alternative options if product policy changes:
 1. frontend fallback only
 2. call built-in starter seed
 
