@@ -40,6 +40,7 @@ SCE changes completed and now available for MagicBall:
 - `docs/magicball-sce-adaptation-guide.md`
 - `docs/magicball-write-auth-adaptation-guide.md`
 - `docs/magicball-adaptation-task-checklist-v1.md`
+- `docs/magicball-mode-home-and-ontology-empty-state-playbook.md`
 - these docs now explicitly capture:
   - serialized `mode * home` loading as the safe default during `Issue 001` verification
   - `fallback + optional seed apply` as the recommended default for fresh-project ontology UX under `Issue 003`

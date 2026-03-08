@@ -7,6 +7,9 @@ Provide a stable adaptation guide for MagicBall to integrate the current SCE cap
 This guide only covers implemented or ready-to-consume capabilities.
 It is intended for MagicBall frontend / integration work.
 
+For the two currently active frontend-sensitive integration items, also use:
+- `docs/magicball-mode-home-and-ontology-empty-state-playbook.md`
+
 ## Current Scope
 
 SCE now provides:
