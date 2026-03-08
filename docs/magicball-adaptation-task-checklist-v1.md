@@ -161,6 +161,24 @@ Done when:
 - MagicBall no longer calculates triad completeness itself
 - `ontology_core_ui` is used directly for completeness and missing-triad display
 
+### Task 3.6
+Decide fresh-project ontology behavior.
+
+Options:
+1. frontend fallback only
+2. call built-in starter seed
+
+Starter seed commands:
+```bash
+sce ontology seed list --json
+sce ontology seed show --profile customer-order-demo --json
+sce ontology seed apply --profile customer-order-demo --json
+```
+
+Done when:
+- MagicBall picks one default strategy for empty ontology pages
+- fresh project no longer appears as an unexplained blank ontology screen
+
 ## Phase 4: Engineering Mode
 
 ### Task 4.1

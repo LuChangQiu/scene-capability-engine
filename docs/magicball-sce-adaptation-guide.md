@@ -226,6 +226,13 @@ sce ontology dl upsert --input dl.json --json
 sce ontology triad summary --json
 ```
 
+#### Starter Seed (optional for fresh projects)
+```bash
+sce ontology seed list --json
+sce ontology seed show --profile customer-order-demo --json
+sce ontology seed apply --profile customer-order-demo --json
+```
+
 ### G. Assurance Data Plane
 
 ```bash

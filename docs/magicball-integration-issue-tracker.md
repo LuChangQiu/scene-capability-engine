@@ -106,12 +106,19 @@ Impact on MagicBall:
 
 Current cross-project decision:
 - treat empty ontology state as expected for fresh/local projects
-- keep this issue open until MagicBall confirms whether fallback UX is sufficient or whether starter seed support is still needed
+- SCE now provides built-in starter seed support for `customer-order-demo`
+- MagicBall still needs to decide whether to use frontend fallback, starter seed apply, or both
+
+Relevant commands:
+- `sce ontology seed list --json`
+- `sce ontology seed show --profile customer-order-demo --json`
+- `sce ontology seed apply --profile customer-order-demo --json`
 
 Status:
 - frontend read path ready
 - ontology write/read loop already verified working
-- fallback/startup UX decision still open
+- starter seed support implemented in SCE
+- fallback/startup UX decision still open on MagicBall side
 
 ## Resolved
 
@@ -159,3 +166,62 @@ Implication for MagicBall:
 
 Status:
 - verified working
+## 2026-03-08
+
+### Issue 004: pm tracking/issue upsert succeeds but board queries still return empty
+
+Context:
+- Project: `E:\workspace\331-poc`
+- SCE source: `E:\workspace\kiro-spec-engine`
+- SCE local version observed: `3.6.34`
+
+Verified commands:
+- `npx sce pm tracking upsert --input .sce\\state\\mb-tracking-upsert-test.json --json`
+- `npx sce pm tracking board --json`
+- `npx sce pm issue upsert --input .sce\\state\\mb-issue-upsert-test.json --json`
+- `npx sce pm issue board --json`
+
+Observed behavior:
+- tracking upsert returns `success: true`
+- issue upsert returns `success: true`
+- but immediately after that:
+  - `pm tracking board` still returns `summary.total = 0`
+  - `pm issue board` still returns `summary.total = 0`
+
+This matches the previously observed `pm requirement upsert` vs `pm requirement list` inconsistency pattern.
+
+Impact on MagicBall:
+- frontend can execute write flows successfully
+- but table refresh cannot rely on board/list consistency right after write
+- frontend currently needs optimistic local insert/update fallback for PM domain writes
+
+Suggested SCE follow-up:
+1. verify whether PM write/read consistency issue affects all PM registries uniformly
+2. compare storage/read path for:
+   - requirement registry
+   - tracking registry
+   - issue registry
+3. verify whether board/list queries are reading the same sqlite state immediately after upsert
+4. verify whether state snapshot/cache invalidation is missing after PM writes
+
+Status:
+- confirmed for requirement/tracking/issue
+- frontend workaround required until SCE read/write consistency is fixed
+## 2026-03-08
+
+### Verification 002: pm tracking/issue upsert works but board refresh remains inconsistent
+
+Verified commands:
+- `npx sce pm tracking upsert --input .sce\\state\\mb-tracking-upsert-test.json --json`
+- `npx sce pm issue upsert --input .sce\\state\\mb-issue-upsert-test.json --json`
+
+Observed result:
+- both upsert commands return `success: true`
+- but corresponding board commands still return empty item arrays immediately after write
+
+MagicBall frontend response:
+- tracking/issue forms are being wired with optimistic local insert fallback, same strategy as requirement
+
+Status:
+- write path works
+- list/board consistency still blocked on SCE side

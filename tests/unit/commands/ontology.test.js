@@ -8,7 +8,10 @@ const {
   runOntologyErUpsertCommand,
   runOntologyBrListCommand,
   runOntologyDlListCommand,
-  runOntologyTriadSummaryCommand
+  runOntologyTriadSummaryCommand,
+  runOntologySeedListCommand,
+  runOntologySeedShowCommand,
+  runOntologySeedApplyCommand
 } = require('../../../lib/commands/ontology');
 
 describe('ontology commands', () => {
@@ -33,6 +36,44 @@ describe('ontology commands', () => {
     if (tempDir) {
       await fs.remove(tempDir);
     }
+  });
+
+  test('lists, shows, and applies built-in ontology seed profiles', async () => {
+    const listed = await runOntologySeedListCommand({ json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(listed.items.some((item) => item.profile === 'customer-order-demo')).toBe(true);
+
+    const shown = await runOntologySeedShowCommand({ profile: 'customer-order-demo', json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(shown.summary).toEqual(expect.objectContaining({
+      er_count: expect.any(Number),
+      br_count: expect.any(Number),
+      dl_count: expect.any(Number)
+    }));
+
+    const applied = await runOntologySeedApplyCommand({ profile: 'customer-order-demo', json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(applied.summary).toEqual(expect.objectContaining({
+      er_written: expect.any(Number),
+      br_written: expect.any(Number),
+      dl_written: expect.any(Number)
+    }));
+    expect(applied.triad.ontology_core_ui).toEqual(expect.objectContaining({
+      ready: true,
+      coverage_percent: 100
+    }));
   });
 
   test('upserts ontology assets and returns triad-oriented view_model payloads', async () => {
