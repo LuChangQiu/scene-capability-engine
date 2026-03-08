@@ -985,6 +985,8 @@ registerAppCommands(program);
 registerModeCommands(program);
 const { registerPmCommands } = require('../lib/commands/pm');
 registerPmCommands(program);
+const { registerOntologyCommands } = require('../lib/commands/ontology');
+registerOntologyCommands(program);
 
 // Template management commands
 const templatesCommand = require('../lib/commands/templates');
