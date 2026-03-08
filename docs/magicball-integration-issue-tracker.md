@@ -41,6 +41,20 @@ SCE changes completed and now available for MagicBall:
 - `docs/magicball-write-auth-adaptation-guide.md`
 - `docs/magicball-adaptation-task-checklist-v1.md`
 
+### Next Needed From MagicBall
+1. continue real integration against `customer-order-demo` for all three `mode * home` pages
+2. keep `mode home` requests serialized during current verification window
+3. decide fresh-ontology UX strategy for `Issue 003`:
+   - frontend fallback only
+   - `ontology seed apply` only
+   - fallback + optional seed apply
+4. if any new integration mismatch appears, record it in `Open Items` with:
+   - exact command
+   - workspace path
+   - current payload
+   - expected payload
+   - UI impact
+
 ## Open Items
 
 ### Issue 001: SQLite lock when frontend triggers multiple SCE projection commands concurrently
