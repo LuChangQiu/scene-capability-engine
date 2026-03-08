@@ -987,6 +987,8 @@ const { registerPmCommands } = require('../lib/commands/pm');
 registerPmCommands(program);
 const { registerOntologyCommands } = require('../lib/commands/ontology');
 registerOntologyCommands(program);
+const { registerAssuranceCommands } = require('../lib/commands/assurance');
+registerAssuranceCommands(program);
 
 // Template management commands
 const templatesCommand = require('../lib/commands/templates');
