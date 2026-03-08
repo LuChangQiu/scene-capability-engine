@@ -116,6 +116,50 @@ describe('app and mode commands', () => {
     });
     expect(applicationHome.view_model.entrypoint).toBe('/apps/customer-order');
 
+    await stateStore.upsertPmRequirement({
+      requirement_id: 'REQ-001',
+      title: '需求清单字段规范与落库设计',
+      source_request: '整理 requirement 对象',
+      status: 'clarifying',
+      priority: 'P1'
+    });
+    await stateStore.upsertOntologyErAsset({
+      entity_id: 'Requirement',
+      name: 'Requirement',
+      display_name: '需求',
+      description: '交付推进中的主锚点对象',
+      status: 'active'
+    });
+    await stateStore.upsertOntologyBrRule({
+      rule_id: 'BR-001',
+      title: '需求标题必须规范化',
+      scope: '需求清单',
+      condition: '原始输入涉及多件事时不得直接作为标题',
+      consequence: '必须拆分需求并保留 source_request',
+      status: 'active'
+    });
+    await stateStore.upsertOntologyDlChain({
+      chain_id: 'DL-001',
+      title: '用户输入转规范化需求标题',
+      trigger: '新建需求',
+      decision_nodes: [{ order: 1, name: '识别主目标' }],
+      outputs: ['requirement.title', 'source_request'],
+      status: 'active'
+    });
+    await stateStore.upsertPmIssue({
+      issue_id: 'BUG-001',
+      title: '工程模式未接入真实主数据',
+      source: 'review',
+      severity: 'medium',
+      status: 'resolved'
+    });
+    await stateStore.upsertAssuranceResourceSnapshot({
+      snapshot_id: 'RES-001',
+      resource_type: 'service',
+      resource_name: 'moqui-runtime',
+      status: 'healthy'
+    });
+
     const ontologyHome = await runModeHomeCommand('ontology', { app: 'customer-order-demo', json: true }, {
       projectPath: tempDir,
       fileSystem: fs,
@@ -123,6 +167,7 @@ describe('app and mode commands', () => {
       stateStore
     });
     expect(ontologyHome.summary.triad_status).toBe('complete');
+    expect(ontologyHome.ontology_core_ui.coverage_percent).toBeGreaterThan(0);
 
     const engineeringHome = await runModeHomeCommand('engineering', { app: 'customer-order-demo', json: true }, {
       projectPath: tempDir,
@@ -131,6 +176,9 @@ describe('app and mode commands', () => {
       stateStore
     });
     expect(engineeringHome.summary.code_version).toBe('main@7e12a8f');
+    expect(engineeringHome.summary.requirement_count).toBe(1);
+    expect(engineeringHome.summary.issue_count).toBe(1);
+    expect(engineeringHome.summary.assurance_resource_count).toBe(1);
   });
 
   test('configures registries, syncs bundle/catalog, and installs runtime', async () => {
