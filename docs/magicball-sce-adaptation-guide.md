@@ -9,6 +9,7 @@ It is intended for MagicBall frontend / integration work.
 
 For the two currently active frontend-sensitive integration items, also use:
 - `docs/magicball-mode-home-and-ontology-empty-state-playbook.md`
+- `docs/magicball-frontend-state-and-command-mapping.md`
 
 ## Current Scope
 

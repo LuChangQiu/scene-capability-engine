@@ -41,6 +41,7 @@ SCE changes completed and now available for MagicBall:
 - `docs/magicball-write-auth-adaptation-guide.md`
 - `docs/magicball-adaptation-task-checklist-v1.md`
 - `docs/magicball-mode-home-and-ontology-empty-state-playbook.md`
+- `docs/magicball-frontend-state-and-command-mapping.md`
 - these docs now explicitly capture:
   - serialized `mode * home` loading as the safe default during `Issue 001` verification
   - `fallback + optional seed apply` as the recommended default for fresh-project ontology UX under `Issue 003`
@@ -48,10 +49,10 @@ SCE changes completed and now available for MagicBall:
 ### Next Needed From MagicBall
 1. continue real integration against `customer-order-demo` for all three `mode * home` pages
 2. keep `mode home` requests serialized during current verification window
-3. decide fresh-ontology UX strategy for `Issue 003`:
-   - frontend fallback only
-   - `ontology seed apply` only
-   - fallback + optional seed apply
+3. keep fresh-ontology UX on `fallback + optional seed apply`:
+   - MagicBall local UI now renders starter seed guidance + preview + explicit apply
+   - `ontology seed apply` is wired through shared write auth using scope `ontology:seed:apply`
+   - keep this item open only for wider field verification, not for strategy selection
 4. if any new integration mismatch appears, record it in `Open Items` with:
    - exact command
    - workspace path
@@ -128,7 +129,9 @@ Current cross-project decision:
 - treat empty ontology state as expected for fresh/local projects
 - SCE now provides built-in starter seed support for `customer-order-demo`
 - `ontology triad summary` and `mode ontology home` now also return `starter_seed` guidance when ontology is empty
-- MagicBall still needs to decide whether to use frontend fallback, starter seed apply, or both
+- MagicBall local UI now uses `fallback + optional seed apply` as the default policy
+- starter seed preview is driven by `sce ontology seed list/show --json`
+- explicit initialization is driven by `sce ontology seed apply --profile <profile> --auth-lease <lease-id> --json`
 
 Relevant commands:
 - `sce ontology seed list --json`
@@ -140,7 +143,8 @@ Status:
 - ontology write/read loop already verified working
 - starter seed support implemented in SCE
 - payload-level `starter_seed` guidance implemented in SCE
-- fallback/startup UX decision still open on MagicBall side
+- MagicBall starter seed preview/apply UI implemented locally in `E:\workspace\331-poc\frontend\src\renderer\components\ontology\OntologyStarterSeedPanel.vue`
+- keep open until broader field verification confirms the UX is stable
 
 ## Resolved
 
@@ -191,3 +195,4 @@ Implication for MagicBall:
 
 Status:
 - verified working
+
