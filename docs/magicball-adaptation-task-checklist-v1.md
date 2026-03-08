@@ -160,6 +160,7 @@ sce ontology triad summary --json
 Done when:
 - MagicBall no longer calculates triad completeness itself
 - `ontology_core_ui` is used directly for completeness and missing-triad display
+- if ontology is empty, UI reads `starter_seed` guidance from SCE payloads instead of inventing its own suggestion text
 
 ### Task 3.6
 Decide fresh-project ontology behavior.

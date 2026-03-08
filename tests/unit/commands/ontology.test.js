@@ -76,6 +76,23 @@ describe('ontology commands', () => {
     }));
   });
 
+  test('returns starter seed guidance when ontology triad is empty', async () => {
+    const triad = await runOntologyTriadSummaryCommand({ json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+
+    expect(triad.ontology_core_ui.ready).toBe(false);
+    expect(triad.starter_seed).toEqual(expect.objectContaining({
+      recommended_profile: 'customer-order-demo'
+    }));
+    expect(triad.view_model.starter_seed).toEqual(expect.objectContaining({
+      recommended_profile: 'customer-order-demo'
+    }));
+  });
+
   test('upserts ontology assets and returns triad-oriented view_model payloads', async () => {
     const erFile = path.join(tempDir, 'er.json');
     await fs.writeJson(erFile, {

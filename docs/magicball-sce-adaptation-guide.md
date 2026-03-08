@@ -294,6 +294,7 @@ Important `view_model` fields:
 - `triad_summary`
 - `ontology_counts`
 - `capability_count`
+- `starter_seed` (present when ontology is empty and SCE recommends a starter profile)
 
 ### `engineering home`
 Important `summary` fields:

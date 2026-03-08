@@ -168,6 +168,7 @@ describe('app and mode commands', () => {
     });
     expect(ontologyHome.summary.triad_status).toBe('complete');
     expect(ontologyHome.ontology_core_ui.coverage_percent).toBeGreaterThan(0);
+    expect(ontologyHome.starter_seed).toBeNull();
 
     const engineeringHome = await runModeHomeCommand('engineering', { app: 'customer-order-demo', json: true }, {
       projectPath: tempDir,
@@ -212,6 +213,31 @@ describe('app and mode commands', () => {
     });
     expect(second.cache).toEqual(expect.objectContaining({ hit: true }));
     expect(second.summary.runtime_version).toBe('v1.0.0');
+  });
+
+  test('provides ontology starter seed guidance when ontology home is empty', async () => {
+    await stateStore.registerAppBundle({
+      app_id: 'app.customer-order-demo-empty',
+      app_key: 'customer-order-demo',
+      app_name: 'Customer Order Demo',
+      environment: 'dev',
+      status: 'active'
+    });
+
+    const ontologyHome = await runModeHomeCommand('ontology', { app: 'customer-order-demo', json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+
+    expect(ontologyHome.ontology_core_ui.ready).toBe(false);
+    expect(ontologyHome.starter_seed).toEqual(expect.objectContaining({
+      recommended_profile: 'customer-order-demo'
+    }));
+    expect(ontologyHome.view_model.starter_seed).toEqual(expect.objectContaining({
+      recommended_profile: 'customer-order-demo'
+    }));
   });
 
   test('configures registries, syncs bundle/catalog, and installs runtime', async () => {

@@ -123,6 +123,7 @@ Impact on MagicBall:
 Current cross-project decision:
 - treat empty ontology state as expected for fresh/local projects
 - SCE now provides built-in starter seed support for `customer-order-demo`
+- `ontology triad summary` and `mode ontology home` now also return `starter_seed` guidance when ontology is empty
 - MagicBall still needs to decide whether to use frontend fallback, starter seed apply, or both
 
 Relevant commands:
@@ -134,6 +135,7 @@ Status:
 - frontend read path ready
 - ontology write/read loop already verified working
 - starter seed support implemented in SCE
+- payload-level `starter_seed` guidance implemented in SCE
 - fallback/startup UX decision still open on MagicBall side
 
 ## Resolved
