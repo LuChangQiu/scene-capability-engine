@@ -87,11 +87,12 @@ MagicBall action taken:
 
 SCE action taken:
 - Added short read retry handling for retryable sqlite lock errors on app/mode/pm/ontology/assurance read paths.
+- Added short-lived `mode home` projection cache to reduce repeated reads for the same app/projection in a short window.
 - Goal: reduce transient `database is locked` failures for read-heavy MagicBall integration flows.
 
 Current cross-project decision:
 - Keep sequential frontend loading as the current safe default.
-- Treat SCE read retry as mitigation, not as permission to switch back to parallel loading immediately.
+- Treat SCE read retry + projection cache as mitigation, not as permission to switch back to parallel loading immediately.
 
 Status:
 - MagicBall workaround applied
@@ -205,3 +206,36 @@ Implication for MagicBall:
 
 Status:
 - verified working
+## 2026-03-08
+
+### Issue 005: pm planning/change list results lag after upsert and can hide the newest local row
+
+Context:
+- Project: `E:\workspace\331-poc`
+- SCE source: `E:\workspace\kiro-spec-engine`
+- SCE local version observed: `3.6.34`
+
+Verified commands:
+- `npx sce pm planning upsert --input .sce\\state\\mb-plan-upsert-test-2.json --json`
+- `npx sce pm planning board --json`
+- `npx sce pm change upsert --input .sce\\state\\mb-change-upsert-test-2.json --json`
+- `npx sce pm change list --json`
+
+Observed behavior:
+- both upsert commands return `success: true`
+- subsequent list/board queries return data, but not the newest row just written
+- example: planning board still showed `PLN-TEST-001` after successful upsert of `PLN-TEST-002`
+- example: change list still showed `CR-TEST-001` after successful upsert of `CR-TEST-002`
+
+Impact on MagicBall:
+- frontend optimistic insert can be overwritten by stale list/board payload if it refreshes immediately after save
+- MagicBall now keeps PM save result locally instead of immediately trusting refreshed planning/change lists
+
+Suggested SCE follow-up:
+1. verify whether PM planning/change list queries are returning stale sqlite reads or cached snapshots
+2. verify whether write commit visibility differs between show and list/board paths
+3. clarify whether PM domain currently has eventual consistency semantics or this is unintended
+
+Status:
+- frontend workaround applied
+- SCE read-after-write consistency still needs investigation

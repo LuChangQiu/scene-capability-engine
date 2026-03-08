@@ -181,6 +181,39 @@ describe('app and mode commands', () => {
     expect(engineeringHome.summary.assurance_resource_count).toBe(1);
   });
 
+  test('reuses short-lived mode home projection cache for repeated reads', async () => {
+    await stateStore.registerAppBundle({
+      app_id: 'app.cache-demo',
+      app_key: 'cache-demo',
+      app_name: 'Cache Demo',
+      environment: 'dev',
+      status: 'active',
+      runtime: {
+        release_id: 'rel.cache-demo.1',
+        runtime_version: 'v1.0.0',
+        release_status: 'published',
+        runtime_status: 'ready'
+      }
+    });
+
+    const first = await runModeHomeCommand('application', { app: 'cache-demo', json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(first.cache).toEqual(expect.objectContaining({ hit: false }));
+
+    const second = await runModeHomeCommand('application', { app: 'cache-demo', json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(second.cache).toEqual(expect.objectContaining({ hit: true }));
+    expect(second.summary.runtime_version).toBe('v1.0.0');
+  });
+
   test('configures registries, syncs bundle/catalog, and installs runtime', async () => {
     const bundleDir = path.join(tempDir, 'bundle-registry', 'bundles', 'demo');
     const catalogDir = path.join(tempDir, 'service-catalog', 'catalog', 'apps');
