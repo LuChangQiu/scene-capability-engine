@@ -1,17 +1,12 @@
 schema_version: '1.0'
 engine: sce
 profile: default
-description: SCE universal steering contract for cross-agent orchestration
+description: SCE steering template contract
 layers:
   core_principles: CORE_PRINCIPLES.md
   environment: ENVIRONMENT.md
   current_context: CURRENT_CONTEXT.md
   rules_guide: RULES_GUIDE.md
-compatibility:
-  codex: '>=0.0.0'
-  claude: '>=0.0.0'
-  cursor: '>=0.0.0'
-  generic: '*'
 governance:
   review_cadence: weekly
   stable_layers:
@@ -53,13 +48,3 @@ governance:
         - 错题
         - 错题本
       guidance: Reuse the existing errorbook capability instead of inventing a parallel mistake-book mode in steering.
-  relocation_targets:
-    long_lived_principles: .sce/steering/CORE_PRINCIPLES.md
-    project_operating_rules: .sce/steering/ENVIRONMENT.md
-    active_delivery_context: .sce/steering/CURRENT_CONTEXT.md
-    detailed_workflow_and_examples: docs/steering-governance.md
-    transient_task_state: .sce/specs/<spec>/tasks.md
-    historical_decisions_and_evidence: .sce/specs/<spec>/custom/
-session:
-  root: .sce/sessions
-  default_status: active

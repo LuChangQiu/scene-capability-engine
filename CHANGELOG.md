@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.38] - 2026-03-12
+
+### Added
+- Added `scripts/steering-content-audit.js` to audit steering content budgets, stale history, checklist leakage, stable-layer spec leakage, and non-canonical governance aliases.
+- Added weekly scheduled workflow `.github/workflows/steering-hygiene.yml` and project guidance in `docs/steering-governance.md` for recurring steering review and cleanup.
+- Added Spec `119-00-steering-self-governance` to document the steering self-governance model, audit scope, and CI rollout.
+
+### Changed
+- Refactored `.sce/steering/` and `template/.sce/steering/` so baseline steering content stays lean, layered, and free of long history or task-state drift.
+- Extended steering manifest governance metadata with file budgets, relocation targets, review cadence, and canonical mechanism rules.
+- Wired `npm run audit:steering` into CI and `prepublishOnly`, making steering hygiene part of normal validation and release flow.
+
 ## [3.6.37] - 2026-03-12
 
 ### Added

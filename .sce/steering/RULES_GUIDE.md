@@ -1,22 +1,22 @@
 # Steering 规则索引
 
-**文件**: CORE_PRINCIPLES (核心规范) | ENVIRONMENT (环境) | CURRENT_CONTEXT (当前场景) | RULES_GUIDE (本文件)
+**文件职责**:
+- `CORE_PRINCIPLES.md`：长期有效的跨项目/跨 Spec 原则
+- `ENVIRONMENT.md`：当前项目的运行环境与发布约束
+- `CURRENT_CONTEXT.md`：当前阶段最小必要上下文
+- `RULES_GUIDE.md`：职责边界与迁移规则
 
-## ⚠️ 关键规则
+**迁移规则**:
+- 长期原则放 `CORE_PRINCIPLES.md`
+- 项目级运行/发布规则放 `ENVIRONMENT.md`
+- 短期推进信息放 `CURRENT_CONTEXT.md`
+- 详细说明、示例、评审标准放 `docs/steering-governance.md`
+- 任务清单、阶段证据、历史流水放对应 Spec 目录
 
-**Steering 严格管控**: `.sce/steering/` 所有文件每个 session 自动加载！
+**审计命令**:
+- `npm run audit:steering`
+- 审计失败时优先做四件事：合并重复、迁移错层、归档历史、删除失效条目
 
-**只能放置**: 上述 4 个核心文件  
-**禁止放置**: 分析报告、历史数据、临时文件、详细文档、子目录
-
-**违规后果**: 增加 token 消耗、减慢响应、污染上下文
-
-**归档位置**: 
-- 分析报告 → `.sce/specs/{spec-name}/results/`
-- 详细文档 → `docs/`
-
-**精简策略**: 删除已完成阶段详情 | 保留当前核心信息 | Token > 50% 立即精简
-
----
-
-v3.0 | 2026-02-05 | 精简 70%
+**硬约束**:
+- `.sce/steering/` 不存放报告、子目录历史、一次性分析、任务 checklist
+- steering 不得平行发明已有机制；例如缺陷经验统一复用 `errorbook`

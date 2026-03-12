@@ -1,46 +1,18 @@
 # Steering 规则索引
 
-> **快速参考**: 各文件职责和快速链接
+**职责边界**:
+- `CORE_PRINCIPLES.md`：长期原则
+- `ENVIRONMENT.md`：项目级规则
+- `CURRENT_CONTEXT.md`：当前阶段上下文
+- `RULES_GUIDE.md`：迁移与维护规则
 
----
+**迁移原则**:
+- 长期有效 -> `CORE_PRINCIPLES.md`
+- 项目运行约束 -> `ENVIRONMENT.md`
+- 当前阶段状态 -> `CURRENT_CONTEXT.md`
+- 详细制度与示例 -> 项目文档
+- 任务、证据、历史 -> 对应 Spec
 
-## 📚 文件列表
-
-| 文件 | 职责 | 更新频率 |
-|------|------|---------|
-| **CORE_PRINCIPLES.md** | 核心开发规范 | 很少 |
-| **ENVIRONMENT.md** | 环境配置 | 很少 |
-| **CURRENT_CONTEXT.md** | 当前 Spec 场景 | 每个 Spec ⚠️ |
-
----
-
-## 🔗 快速链接
-
-- **当前场景**: `CURRENT_CONTEXT.md` - 当前正在推进的 Spec
-- **开发规范**: `CORE_PRINCIPLES.md` - 适用于所有 Spec 的规范
-- **环境配置**: `ENVIRONMENT.md` - 项目环境信息
-- **Spec 工作流**: `../ specs/SPEC_WORKFLOW_GUIDE.md` - Spec 创建和执行流程
-- **体系说明**: `../README.md` - 新项目引导文档
-
----
-
-## ⚠️ 重要提示
-
-### CURRENT_CONTEXT.md 管控
-
-- **每个新 Spec 开始前**：更新为新 Spec 的场景
-- **Spec 推进中**：及时精简已完成内容
-- **Spec 完成后**：清空，准备下一个 Spec
-- **Token 消耗 > 50% 时**：立即精简
-
-### 精简策略
-
-- ❌ 删除：已完成阶段的详细配置、命令、表格
-- ❌ 删除：历史测试数据和详细流程
-- ✅ 保留：当前阶段的核心信息
-- ✅ 保留：关键经验教训（1-2 行）
-
----
-
-**版本**: v2.0  
-**更新**: 2025-01-22
+**治理动作**:
+- 定期运行 `npm run audit:steering`
+- 审计失败时，优先合并重复、迁移错层、归档历史、删除失效内容

@@ -1,6 +1,6 @@
 {
   "name": "scene-capability-engine",
-  "version": "3.6.37",
+  "version": "3.6.38",
   "description": "SCE (Scene Capability Engine) - A CLI tool and npm package for spec-driven development with AI coding assistants.",
   "main": "index.js",
   "bin": {
@@ -38,6 +38,8 @@
     "test:skip-audit": "node scripts/check-skip-allowlist.js",
     "test:sce-tracking": "node scripts/check-sce-tracking.js",
     "test:brand-consistency": "node scripts/check-branding-consistency.js",
+    "audit:steering": "node scripts/steering-content-audit.js --fail-on-error",
+    "report:steering-audit": "node scripts/steering-content-audit.js --json",
     "test:watch": "npx jest --watch",
     "coverage": "npx jest --coverage",
     "report:moqui-metadata": "node scripts/moqui-metadata-extract.js --json",
@@ -76,7 +78,7 @@
     "gate:release-asset-integrity": "node scripts/release-asset-integrity-check.js",
     "report:release-risk-remediation": "node scripts/release-risk-remediation-bundle.js --json",
     "report:moqui-core-regression": "node scripts/moqui-core-regression-suite.js --json",
-    "prepublishOnly": "npm run test:release && npm run test:skip-audit && npm run test:sce-tracking && npm run test:brand-consistency && npm run gate:git-managed && npm run gate:errorbook-registry-health && npm run gate:errorbook-release && npm run report:interactive-governance -- --fail-on-alert",
+    "prepublishOnly": "npm run test:release && npm run test:skip-audit && npm run test:sce-tracking && npm run test:brand-consistency && npm run audit:steering && npm run gate:git-managed && npm run gate:errorbook-registry-health && npm run gate:errorbook-release && npm run report:interactive-governance -- --fail-on-alert",
     "publish:manual": "npm publish --access public",
     "install-global": "npm install -g .",
     "uninstall-global": "npm uninstall -g scene-capability-engine"
