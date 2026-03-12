@@ -2,17 +2,17 @@
 
 ## Introduction
 
-本 Spec 聚焦补完 `kse watch logs --follow`，消除“命令可见但功能未实现”的断层，提升 watch 模式可运维性。
+本 Spec 聚焦补完 `sce watch logs --follow`，消除“命令可见但功能未实现”的断层，提升 watch 模式可运维性。
 
 ## Requirements
 
 ### Requirement 1: Follow 行为可用
 
-**User Story:** 作为操作者，我希望 `kse watch logs --follow` 能持续输出新增日志，以便实时观测自动化执行。
+**User Story:** 作为操作者，我希望 `sce watch logs --follow` 能持续输出新增日志，以便实时观测自动化执行。
 
 #### Acceptance Criteria
 
-1. WHEN 执行 `kse watch logs --follow` THEN 命令 SHALL 持续输出新增日志行。
+1. WHEN 执行 `sce watch logs --follow` THEN 命令 SHALL 持续输出新增日志行。
 2. WHEN 日志文件尚不存在 THEN 命令 SHALL 等待并在日志出现后继续跟随。
 3. WHEN 用户按 Ctrl+C THEN 命令 SHALL 优雅退出且返回码为 0。
 

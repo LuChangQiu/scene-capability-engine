@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This feature adds a `kse scene install` command that installs a published scene package from the local registry into a target project directory. It is the consumption counterpart to the existing `scene publish` / `scene unpublish` commands (Spec 77), completing the publish → install lifecycle for scene packages. The command resolves a package by name and version from the registry, verifies tarball integrity via SHA-256, extracts contents to a target directory, and writes an install manifest recording what was installed.
+This feature adds a `sce scene install` command that installs a published scene package from the local registry into a target project directory. It is the consumption counterpart to the existing `scene publish` / `scene unpublish` commands (Spec 77), completing the publish → install lifecycle for scene packages. The command resolves a package by name and version from the registry, verifies tarball integrity via SHA-256, extracts contents to a target directory, and writes an install manifest recording what was installed.
 
 ## Glossary
 
@@ -11,7 +11,7 @@ This feature adds a `kse scene install` command that installs a published scene 
 - **Registry_Index**: A JSON file (`registry-index.json`) at the Local_Registry root that contains metadata for all published packages and their versions
 - **Install_Manifest**: A JSON file (`scene-install-manifest.json`) written to the target directory after a successful installation, recording package name, version, timestamp, registry path, integrity hash, and list of extracted files
 - **Tarball**: A gzip-compressed tar archive (.tgz) containing all template files for a scene package
-- **Package_Coordinate**: A unique identifier composed of `kse.scene/{name}@{version}`
+- **Package_Coordinate**: A unique identifier composed of `sce.scene/{name}@{version}`
 
 ## Requirements
 
@@ -76,7 +76,7 @@ This feature adds a `kse scene install` command that installs a published scene 
 
 #### Acceptance Criteria
 
-1. WHEN `kse scene install --name <packageName>` is invoked, THE Installer SHALL normalize and validate the provided options, then execute the install pipeline (resolve → verify → extract → write manifest)
+1. WHEN `sce scene install --name <packageName>` is invoked, THE Installer SHALL normalize and validate the provided options, then execute the install pipeline (resolve → verify → extract → write manifest)
 2. WHEN `--registry <path>` is provided, THE Installer SHALL use the specified path as the Local_Registry root instead of the default `.sce/registry`
 3. WHEN `--force` is specified, THE Installer SHALL overwrite an existing installation in the target directory
 4. WHEN `--json` is specified, THE Installer SHALL output the install result as structured JSON to stdout

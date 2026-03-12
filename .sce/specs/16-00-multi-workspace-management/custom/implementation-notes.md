@@ -9,7 +9,7 @@
 
 #### 1. Workspace Data Model (`lib/workspace/multi/workspace.js`)
 
-**Purpose**: Represents a single registered kse project workspace.
+**Purpose**: Represents a single registered sce project workspace.
 
 **Key Features**:
 - Unique name and absolute path storage
@@ -31,7 +31,7 @@
 
 #### 2. WorkspaceRegistry (`lib/workspace/multi/workspace-registry.js`)
 
-**Purpose**: Manages the global registry of kse workspaces with persistence to `~/.kse/workspaces.json`.
+**Purpose**: Manages the global registry of sce workspaces with persistence to `~/.sce/workspaces.json`.
 
 **Key Features**:
 - CRUD operations on workspace entries
@@ -50,14 +50,14 @@
 - `removeWorkspace(name)` - Remove workspace from registry
 - `updateLastAccessed(name)` - Update workspace timestamp
 - `findWorkspaceByPath(path)` - Find workspace containing path
-- `validateWorkspacePath(path)` - Check if path is valid kse project
+- `validateWorkspacePath(path)` - Check if path is valid sce project
 - `hasWorkspace(name)` - Check if workspace exists
 - `count()` - Get number of registered workspaces
 - `clear()` - Clear all workspaces (for testing)
 
 #### 3. GlobalConfig (`lib/workspace/multi/global-config.js`)
 
-**Purpose**: Manages global kse configuration including active workspace, stored in `~/.kse/config.json`.
+**Purpose**: Manages global sce configuration including active workspace, stored in `~/.sce/config.json`.
 
 **Key Features**:
 - Active workspace persistence
@@ -190,8 +190,8 @@ tests/unit/workspace/
 ### Requirements Validated
 
 ✅ **Requirement 1.5**: Workspace data model with name, path, timestamps  
-✅ **Requirement 10.1**: Registry stored in `~/.kse/workspaces.json`  
-✅ **Requirement 10.2**: Active workspace stored in `~/.kse/config.json`  
+✅ **Requirement 10.1**: Registry stored in `~/.sce/workspaces.json`  
+✅ **Requirement 10.2**: Active workspace stored in `~/.sce/config.json`  
 ✅ **Requirement 10.4**: JSON format for human readability  
 ✅ **Requirement 12.2**: Cross-platform path handling with forward slashes
 

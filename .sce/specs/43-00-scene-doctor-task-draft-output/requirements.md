@@ -2,13 +2,13 @@
 
 ## Introduction
 
-After doctor remediation checklist export, operators still need draft tasks aligned with KSE task workflow.
+After doctor remediation checklist export, operators still need draft tasks aligned with SCE task workflow.
 This spec adds doctor task draft generation so diagnostic suggestions can be turned into executable task items quickly.
 
 ## Requirements
 
 ### Requirement 1: Task Draft Export Option
-- Add `--task-out <path>` to `kse scene doctor`.
+- Add `--task-out <path>` to `sce scene doctor`.
 - Export a markdown task draft artifact to the specified path.
 
 ### Requirement 2: Structured Task Draft Content

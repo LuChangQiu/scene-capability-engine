@@ -63,27 +63,27 @@ Each task builds on previous work, ensuring continuous integration and early val
   - **Validates: Requirements 1.1, 1.2, 3.4**
 
 - [x] 3. Implement CLI commands (Phase 1)
-  - [x] 3.1 Implement `kse env list` command
+  - [x] 3.1 Implement `sce env list` command
     - Parse command arguments
     - Call Environment Manager
     - Format and display environment list
     - Highlight active environment
     - _Requirements: 2.1, 2.2_
 
-  - [x] 3.2 Implement `kse env switch <name>` command
+  - [x] 3.2 Implement `sce env switch <name>` command
     - Parse command arguments
     - Validate environment name
     - Call Environment Manager
     - Display success/error message
     - _Requirements: 3.1, 3.2, 3.4_
 
-  - [x] 3.3 Implement `kse env info` command
+  - [x] 3.3 Implement `sce env info` command
     - Get active environment details
     - Display configuration details
     - Show config file mappings
     - _Requirements: 2.3, 2.4, 2.5_
 
-  - [x] 3.4 Implement `kse env register <config-file>` command
+  - [x] 3.4 Implement `sce env register <config-file>` command
     - Parse JSON configuration file
     - Validate configuration structure
     - Call Environment Manager
@@ -159,12 +159,12 @@ Each task builds on previous work, ensuring continuous integration and early val
   - **Validates: Requirements 6.2, 6.4**
 
 - [x] 7. Implement CLI commands (Phase 2)
-  - [x] 7.1 Implement `kse env rollback` command
+  - [x] 7.1 Implement `sce env rollback` command
     - Call Environment Manager rollback
     - Display rollback result
     - _Requirements: 6.2, 6.4_
 
-  - [x] 7.2 Update `kse env switch` to show backup info
+  - [x] 7.2 Update `sce env switch` to show backup info
     - Display backup location
     - Show backup creation status
     - _Requirements: 6.1, 6.3_
@@ -206,13 +206,13 @@ Each task builds on previous work, ensuring continuous integration and early val
   - **Validates: Requirements 4.1, 4.2, 4.3**
 
 - [x] 10. Implement CLI commands (Phase 3)
-  - [x] 10.1 Implement `kse env verify` command
+  - [x] 10.1 Implement `sce env verify` command
     - Call Environment Manager verification
     - Display verification result
     - Show expected vs actual output on failure
     - _Requirements: 4.1, 4.2, 4.3, 4.4_
 
-  - [x] 10.2 Implement `kse env run "<command>"` command
+  - [x] 10.2 Implement `sce env run "<command>"` command
     - Parse command string
     - Call Environment Manager execution
     - Display command output
@@ -326,7 +326,7 @@ Each task builds on previous work, ensuring continuous integration and early val
     - Remove from registry
     - _Requirements: (implied by design)_
 
-  - [x] 17.2 Implement `kse env unregister <name>` command
+  - [x] 17.2 Implement `sce env unregister <name>` command
     - Parse command arguments
     - Require confirmation (unless --force)
     - Call Environment Manager
@@ -403,7 +403,7 @@ Each task builds on previous work, ensuring continuous integration and early val
 **Phase 5**: Essential for usability - MUST complete before release
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

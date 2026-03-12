@@ -1,0 +1,44 @@
+{
+  "apiVersion": "sce.scene.template/v0.1",
+  "kind": "scene-package-template",
+  "metadata": {
+    "template_id": "sce.scene--erp-order-query-read--0.1.0",
+    "source_spec": "moqui-archetype-order-query-read",
+    "package_coordinate": "sce.scene/erp-order-query-read@0.1.0",
+    "package_kind": "scene-domain-profile",
+    "published_at": "2026-02-17T10:00:00.000Z"
+  },
+  "compatibility": {
+    "scene_api_version": "sce.scene/v0.2"
+  },
+  "parameters": [
+    {
+      "id": "order_id",
+      "type": "string",
+      "required": false,
+      "description": "Optional order identifier filter"
+    },
+    {
+      "id": "party_id",
+      "type": "string",
+      "required": false,
+      "description": "Optional party/customer filter"
+    },
+    {
+      "id": "status_id",
+      "type": "string",
+      "required": false,
+      "description": "Optional order status filter"
+    }
+  ],
+  "template": {
+    "package_contract": "scene-package.json",
+    "scene_manifest": "scene.template.yaml"
+  },
+  "artifacts": {
+    "entry_scene": "custom/scene.yaml",
+    "generates": [
+      "custom/scene.yaml"
+    ]
+  }
+}

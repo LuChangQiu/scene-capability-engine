@@ -7,7 +7,7 @@
 - Spec 主线完整度：`adopt -> create -> execute` 可走通；`bootstrap/pipeline/gate` 缺口明显
 - scene 子命令规模：`46`（能力强但入口复杂）
 - 文档治理告警：`21`（均为既有 `.config.sce` 归档位置问题）
-- Gate 命令可用性：`kse spec gate` 目前尚未实装
+- Gate 命令可用性：`sce spec gate` 目前尚未实装
 
 ## 2. 三阶段路线
 

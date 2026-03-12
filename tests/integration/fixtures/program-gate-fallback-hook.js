@@ -1,6 +1,6 @@
 const Module = require('module');
 
-if (process.env.KSE_TEST_MOCK_CLOSE_LOOP_RUNNER === '1') {
+if (process.env.SCE_TEST_MOCK_CLOSE_LOOP_RUNNER === '1') {
   const originalLoad = Module._load;
   const attemptByGoal = new Map();
   let flakyGoalKey = null;

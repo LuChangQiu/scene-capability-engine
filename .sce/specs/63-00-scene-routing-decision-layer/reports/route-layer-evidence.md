@@ -2,7 +2,7 @@
 
 ## Sample Command
 
-- `kse scene route --query hybrid --mode dry_run`
+- `sce scene route --query hybrid --mode dry_run`
 
 ## Observed Result
 

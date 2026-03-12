@@ -119,8 +119,8 @@
 
 📚 相关资源
 
-• 项目地址：https://github.com/heguangyong/kiro-spec-engine
-• npm 包：https://www.npmjs.com/package/kiro-spec-engine
+• 项目地址：https://github.com/heguangyong/scene-capability-engine
+• npm 包：https://www.npmjs.com/package/scene-capability-engine
 
 如果这篇文章对你有启发，欢迎：
 • 点击"在看"分享给更多人

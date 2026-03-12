@@ -20,7 +20,7 @@
 
 ### Template Manifest Validation
 Checks:
-- `apiVersion === kse.scene.template/v0.1`
+- `apiVersion === sce.scene.template/v0.1`
 - `kind === scene-package-template`
 - `metadata.template_id` required
 - `template.package_contract` and `template.scene_manifest` required
@@ -42,7 +42,7 @@ Reuses existing contract validator:
 ## CLI Surface
 
 ```bash
-kse scene package-registry   --template-dir .sce/templates/scene-packages   --out .sce/reports/scene-package-registry.json   --strict   --json
+sce scene package-registry   --template-dir .sce/templates/scene-packages   --out .sce/reports/scene-package-registry.json   --strict   --json
 ```
 
 ## Test Strategy

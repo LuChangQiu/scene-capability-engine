@@ -85,8 +85,8 @@ const HEADER_ITEM_SUFFIXES = [
   { header: 'Master', item: 'Detail' }
 ];
 
-const SCENE_API_VERSION = 'kse.scene/v0.2';
-const PACKAGE_API_VERSION = 'kse.scene.package/v0.1';
+const SCENE_API_VERSION = 'sce.scene/v0.2';
+const PACKAGE_API_VERSION = 'sce.scene.package/v0.1';
 ```
 
 #### Core Functions
@@ -316,7 +316,7 @@ function printSceneExtractSummary(options, payload) {
 ### Generated Scene Manifest (example for "crud" pattern)
 
 ```yaml
-apiVersion: kse.scene/v0.2
+apiVersion: sce.scene/v0.2
 kind: scene
 metadata:
   obj_id: scene.extracted.crud-order
@@ -370,17 +370,17 @@ spec:
 
 ```json
 {
-  "apiVersion": "kse.scene.package/v0.1",
+  "apiVersion": "sce.scene.package/v0.1",
   "kind": "scene-template",
   "metadata": {
-    "group": "kse.scene",
+    "group": "sce.scene",
     "name": "crud-order",
     "version": "0.1.0",
     "summary": "CRUD template for Order entity extracted from Moqui ERP"
   },
   "compatibility": {
-    "kse_version": ">=1.39.0",
-    "scene_api_version": "kse.scene/v0.2"
+    "min_sce_version": ">=1.39.0",
+    "scene_api_version": "sce.scene/v0.2"
   },
   "parameters": [
     {
@@ -465,13 +465,13 @@ The built-in YAML serializer handles the subset of YAML used by scene manifests:
 
 ### Property 4: Manifest generation correctness
 
-*For any* valid PatternMatch, `generateSceneManifest` should produce a manifest where: (a) `apiVersion` is `kse.scene/v0.2` and `kind` is `scene`, (b) "crud" patterns have exactly 5 bindings (list, get, create, update, delete), (c) "query" patterns have exactly 2 bindings (list, get), (d) "workflow" patterns have at least one service invoke binding, and (e) governance fields match the pattern rules (query → risk_level "low", crud/workflow → risk_level "medium").
+*For any* valid PatternMatch, `generateSceneManifest` should produce a manifest where: (a) `apiVersion` is `sce.scene/v0.2` and `kind` is `scene`, (b) "crud" patterns have exactly 5 bindings (list, get, create, update, delete), (c) "query" patterns have exactly 2 bindings (list, get), (d) "workflow" patterns have at least one service invoke binding, and (e) governance fields match the pattern rules (query → risk_level "low", crud/workflow → risk_level "medium").
 
 **Validates: Requirements 3.1, 3.2, 3.3, 3.4, 3.5**
 
 ### Property 5: Contract generation correctness
 
-*For any* valid PatternMatch, `generatePackageContract` should produce a contract where: (a) `apiVersion` is `kse.scene.package/v0.1`, (b) `kind` is `scene-template`, (c) metadata contains non-empty `name`, `version`, `group`, and `summary` fields, (d) the name is in kebab-case derived from the pattern and primary resource, and (e) parameters array contains at least `timeout_ms` and `retry_count` entries.
+*For any* valid PatternMatch, `generatePackageContract` should produce a contract where: (a) `apiVersion` is `sce.scene.package/v0.1`, (b) `kind` is `scene-template`, (c) metadata contains non-empty `name`, `version`, `group`, and `summary` fields, (d) the name is in kebab-case derived from the pattern and primary resource, and (e) parameters array contains at least `timeout_ms` and `retry_count` entries.
 
 **Validates: Requirements 4.1, 4.2, 4.3, 4.4, 4.5**
 

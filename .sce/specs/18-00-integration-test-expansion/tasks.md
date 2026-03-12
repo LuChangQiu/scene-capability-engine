@@ -205,7 +205,7 @@ The implementation is organized to maximize efficiency: shared utilities first, 
 - Use unique directory names per test to enable parallel execution
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

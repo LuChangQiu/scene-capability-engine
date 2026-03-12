@@ -12,7 +12,7 @@ Enhance doctor workflow in `lib/commands/scene.js` by adding task draft generati
 ## Core Additions
 
 - `buildDoctorTaskDraft(report, suggestions)`
-  - Renders markdown in KSE-friendly checklist format.
+  - Renders markdown in SCE-friendly checklist format.
   - Sorts suggestions by priority (`critical`, `high`, `medium`, `low`).
 - `writeDoctorTaskDraft(options, report, projectRoot, fileSystem)`
   - Resolves output path.

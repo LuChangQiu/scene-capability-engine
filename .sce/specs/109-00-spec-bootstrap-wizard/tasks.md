@@ -2,7 +2,7 @@
 
 ## 任务 1：命令入口与参数
 
-- [x] 1.1 新增 `kse spec bootstrap` 命令
+- [x] 1.1 新增 `sce spec bootstrap` 命令
   - 支持 `--name`、`--template`、`--profile`、`--dry-run`、`--non-interactive`、`--json`
   - **验证**: Requirement 1
 

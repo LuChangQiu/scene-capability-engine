@@ -486,7 +486,7 @@ function buildReadinessMatrix(context) {
   if (entityRelationCount === 0) entityActions.push('补齐实体关系（relationship/relations）');
   if (entityPackageCount === 0) entityActions.push('补齐实体 package/domain 标注');
   pushMatrixItem({
-    template_id: 'kse.scene--moqui-entity-model-core--0.1.0',
+    template_id: 'sce.scene--moqui-entity-model-core--0.1.0',
     capability: 'moqui-entity-model-core',
     reason: 'Recover entity catalog and relationship baseline.',
     score: entityScore,
@@ -511,7 +511,7 @@ function buildReadinessMatrix(context) {
   if (serviceCount > 0 && businessLikeServiceCount > 0 && servicesBoundToEntityCount === 0) serviceActions.push('补齐服务到实体的绑定');
   if (serviceCount > 0 && serviceVerbNounCount === 0) serviceActions.push('补齐服务 verb/noun 或动作语义');
   pushMatrixItem({
-    template_id: 'kse.scene--moqui-service-contract-core--0.1.0',
+    template_id: 'sce.scene--moqui-service-contract-core--0.1.0',
     capability: 'moqui-service-contract-core',
     reason: 'Recover service contracts and entity/service bindings.',
     score: serviceScore,
@@ -552,7 +552,7 @@ function buildReadinessMatrix(context) {
     screenActions.push('补齐页面到实体读写映射');
   }
   pushMatrixItem({
-    template_id: 'kse.scene--moqui-screen-flow-core--0.1.0',
+    template_id: 'sce.scene--moqui-screen-flow-core--0.1.0',
     capability: 'moqui-screen-flow-core',
     reason: 'Recover screen flow and screen/service references.',
     score: screenScore,
@@ -580,7 +580,7 @@ function buildReadinessMatrix(context) {
   if (formCount > 0 && formsLinkedScreenCount === 0) formActions.push('补齐表单到页面映射');
   if (formCount > 0 && averageFormFields < 3) formActions.push('提升表单字段完备度（平均字段数>=3）');
   pushMatrixItem({
-    template_id: 'kse.scene--moqui-form-interaction-core--0.1.0',
+    template_id: 'sce.scene--moqui-form-interaction-core--0.1.0',
     capability: 'moqui-form-interaction-core',
     reason: 'Recover form schema and page interaction fields.',
     score: formScore,
@@ -609,7 +609,7 @@ function buildReadinessMatrix(context) {
     ruleDecisionActions.push('提升规则与决策配平度（rule/decision 数量比）');
   }
   pushMatrixItem({
-    template_id: 'kse.scene--moqui-rule-decision-core--0.1.0',
+    template_id: 'sce.scene--moqui-rule-decision-core--0.1.0',
     capability: 'moqui-rule-decision-core',
     reason: 'Recover business rules and decision policies.',
     score: ruleDecisionScore,
@@ -637,7 +637,7 @@ function buildReadinessMatrix(context) {
   if (formCount === 0) copilotActions.push('补齐表单交互上下文，支持页面修复建议');
   if ((ruleCount + decisionCount) === 0) copilotActions.push('补齐规则与决策语义，提升 AI 建议可靠性');
   pushMatrixItem({
-    template_id: 'kse.scene--moqui-page-copilot-dialog--0.1.0',
+    template_id: 'sce.scene--moqui-page-copilot-dialog--0.1.0',
     capability: 'moqui-page-copilot-context-fix',
     reason: 'Inject page-level human/AI copilot dialog for in-context fix guidance.',
     score: copilotScore,
@@ -1044,7 +1044,7 @@ function buildMatrixRemediationPlan(context, prioritizedGaps) {
       continue;
     }
 
-    if (templateId === 'kse.scene--moqui-service-contract-core--0.1.0') {
+    if (templateId === 'sce.scene--moqui-service-contract-core--0.1.0') {
       const issues = [];
       for (const service of context.services) {
         const missingTypes = [];
@@ -1073,7 +1073,7 @@ function buildMatrixRemediationPlan(context, prioritizedGaps) {
       continue;
     }
 
-    if (templateId === 'kse.scene--moqui-screen-flow-core--0.1.0') {
+    if (templateId === 'sce.scene--moqui-screen-flow-core--0.1.0') {
       const issues = [];
       for (const screen of context.screens) {
         const missingTypes = [];
@@ -1102,7 +1102,7 @@ function buildMatrixRemediationPlan(context, prioritizedGaps) {
       continue;
     }
 
-    if (templateId === 'kse.scene--moqui-form-interaction-core--0.1.0') {
+    if (templateId === 'sce.scene--moqui-form-interaction-core--0.1.0') {
       const issues = [];
       for (const form of context.forms) {
         const missingTypes = [];
@@ -1131,7 +1131,7 @@ function buildMatrixRemediationPlan(context, prioritizedGaps) {
       continue;
     }
 
-    if (templateId === 'kse.scene--moqui-rule-decision-core--0.1.0') {
+    if (templateId === 'sce.scene--moqui-rule-decision-core--0.1.0') {
       addItem({
         template_id: templateId,
         status: gap.status,
@@ -1143,7 +1143,7 @@ function buildMatrixRemediationPlan(context, prioritizedGaps) {
       continue;
     }
 
-    if (templateId === 'kse.scene--moqui-page-copilot-dialog--0.1.0') {
+    if (templateId === 'sce.scene--moqui-page-copilot-dialog--0.1.0') {
       addItem({
         template_id: templateId,
         status: gap.status,

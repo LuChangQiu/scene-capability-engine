@@ -56,13 +56,13 @@ Tests:       8 skipped, 1417 passed, 1425 total
 
 **之前** (违反原则):
 ```
-~/.kse/workspaces.json  - 存储工作区列表 + last_accessed
-~/.kse/config.json      - 存储 active_workspace
+~/.sce/workspaces.json  - 存储工作区列表 + last_accessed
+~/.sce/config.json      - 存储 active_workspace
 ```
 
 **现在** (符合原则):
 ```
-~/.kse/workspace-state.json  - 单一数据源，存储所有工作区相关数据
+~/.sce/workspace-state.json  - 单一数据源，存储所有工作区相关数据
 ```
 
 ### 原子操作

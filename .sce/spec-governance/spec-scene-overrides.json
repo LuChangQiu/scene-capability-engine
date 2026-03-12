@@ -124,7 +124,7 @@
       "rule_id": "spec-governance",
       "updated_at": "2026-03-02T16:06:49.658Z"
     },
-    "115-00-kse-quality-hardening-program": {
+    "115-00-sce-quality-hardening-program": {
       "scene_id": "scene.sce-quality",
       "source": "scene-backfill",
       "rule_id": "quality",

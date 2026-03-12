@@ -9,7 +9,7 @@
 1. Pipeline（Spec 100）
 
 ```bash
-kse spec pipeline run --spec 100-00-moqui-screen-endpoint-expansion --json \
+sce spec pipeline run --spec 100-00-moqui-screen-endpoint-expansion --json \
   --out .sce/specs/112-00-spec-value-realization-program/custom/pilot-evidence/pipeline-100.json
 ```
 
@@ -18,7 +18,7 @@ kse spec pipeline run --spec 100-00-moqui-screen-endpoint-expansion --json \
 2. Gate（Spec 100）
 
 ```bash
-kse spec gate run --spec 100-00-moqui-screen-endpoint-expansion --json \
+sce spec gate run --spec 100-00-moqui-screen-endpoint-expansion --json \
   --out .sce/specs/112-00-spec-value-realization-program/custom/pilot-evidence/gate-100.json
 ```
 
@@ -27,7 +27,7 @@ kse spec gate run --spec 100-00-moqui-screen-endpoint-expansion --json \
 3. Orchestrate（Spec 100）
 
 ```bash
-kse orchestrate run --specs "100-00-moqui-screen-endpoint-expansion" --max-parallel 1 --json
+sce orchestrate run --specs "100-00-moqui-screen-endpoint-expansion" --max-parallel 1 --json
 ```
 
 结果：`failed`。
@@ -48,7 +48,7 @@ kse orchestrate run --specs "100-00-moqui-screen-endpoint-expansion" --max-paral
 ## 回滚与清理建议
 
 ```bash
-kse orchestrate stop
+sce orchestrate stop
 ```
 
 如需重置本次尝试状态：
@@ -75,7 +75,7 @@ rm .sce/config/orchestration-status.json
 复放命令：
 
 ```bash
-kse orchestrate run --specs "100-00-moqui-screen-endpoint-expansion" --max-parallel 1 --json
+sce orchestrate run --specs "100-00-moqui-screen-endpoint-expansion" --max-parallel 1 --json
 ```
 
 结果：`completed`。

@@ -44,7 +44,7 @@
 
 ## 任务 5：CLI 命令接入
 
-- [x] 5.1 增加 `kse value metrics snapshot` 命令入口
+- [x] 5.1 增加 `sce value metrics snapshot` 命令入口
   - 支持 `--period --input --out --json`
   - **验证**: Requirement 5.1, 5.2
 
@@ -55,10 +55,10 @@
 
 ## 任务 6：可观测增强（baseline/trend）
 
-- [x] 6.1 增加 `kse value metrics baseline` 命令
+- [x] 6.1 增加 `sce value metrics baseline` 命令
   - 支持 `--input` 与 `--from-history` 两种基线生成路径
   - **验证**: Requirement 2.1, 2.3, 5.1
 
-- [x] 6.2 增加 `kse value metrics trend` 命令
+- [x] 6.2 增加 `sce value metrics trend` 命令
   - 支持窗口化趋势分析与风险汇总输出
   - **验证**: Requirement 3.1, 3.2, 5.1, 5.2

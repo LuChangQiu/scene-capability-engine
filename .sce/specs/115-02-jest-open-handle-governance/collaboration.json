@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "type": "sub",
-  "masterSpec": "115-00-kse-quality-hardening-program",
+  "masterSpec": "115-00-sce-quality-hardening-program",
   "dependencies": [
     {
       "spec": "115-01-ci-test-trust-hardening",

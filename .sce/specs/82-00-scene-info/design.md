@@ -2,7 +2,7 @@
 
 ## Overview
 
-Adds `kse scene info` command to display detailed information about a scene package in the local registry. Follows normalize → validate → run → print pattern. All code in `lib/commands/scene.js`.
+Adds `sce scene info` command to display detailed information about a scene package in the local registry. Follows normalize → validate → run → print pattern. All code in `lib/commands/scene.js`.
 
 ## Components
 
@@ -31,7 +31,7 @@ Versions-only: just the version list.
 {
   success: true,
   name: "my-package",
-  group: "kse.scene",
+  group: "sce.scene",
   description: "A scene package",
   latest: "2.0.0",
   versionCount: 3,

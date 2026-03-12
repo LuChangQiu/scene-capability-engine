@@ -45,7 +45,7 @@ This project uses **Spec-driven development** - a structured approach where:
 
 ### Workspace Management
 - `sce workspace create/list/switch/info/remove` — Manage multiple sce projects
-- Global state: `~/.kse/workspace-state.json`
+- Global state: `~/.sce/workspace-state.json`
 
 ### Environment Configuration
 - `sce env list/switch/info/register/unregister/rollback/verify/run` — Multi-environment management

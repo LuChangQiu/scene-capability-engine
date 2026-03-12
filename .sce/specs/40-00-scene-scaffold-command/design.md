@@ -11,7 +11,7 @@ Extend `lib/commands/scene.js` with a `scaffold` subcommand that:
 
 ## Command Surface
 
-- Command: `kse scene scaffold`
+- Command: `sce scene scaffold`
 - Required input: `--spec <spec-name>`
 - Template source:
   - built-in via `--type erp|hybrid`

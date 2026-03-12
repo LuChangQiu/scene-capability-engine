@@ -75,7 +75,7 @@ This implementation plan breaks down the Spec locking mechanism into discrete co
     - Add colored output and status indicators
     - _Requirements: 1.1, 1.4, 1.5, 2.1, 2.3, 2.4, 2.5, 3.1-3.5, 4.2, 4.3, 7.4_
   
-  - [x] 5.2 Register lock commands in `bin/kiro-spec-engine.js`
+  - [x] 5.2 Register lock commands in `bin/scene-capability-engine.js`
     - Add `lock` command group with subcommands
     - Add `unlock` as alias for `lock release`
     - _Requirements: 8 (CLI Commands)_
@@ -85,8 +85,8 @@ This implementation plan breaks down the Spec locking mechanism into discrete co
 
 - [x] 7. Integrate with existing Spec commands
   - [x] 7.1 Update `lib/commands/spec-commands.js` to show lock status
-    - Add lock indicator to `kse spec list` output
-    - Add lock warning to `kse spec edit` when spec is locked
+    - Add lock indicator to `sce spec list` output
+    - Add lock warning to `sce spec edit` when spec is locked
     - Support `--ignore-lock` flag for read-only operations
     - _Requirements: 6.1, 6.2, 6.3, 6.5_
 

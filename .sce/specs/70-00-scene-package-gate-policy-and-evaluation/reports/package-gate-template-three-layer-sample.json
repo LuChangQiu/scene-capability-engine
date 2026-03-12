@@ -5,7 +5,7 @@
   "output_path": ".sce/specs/70-00-scene-package-gate-policy-and-evaluation/reports/package-gate-policy-three-layer.json",
   "output_abs_path": "E:\\workspace\\kiro-spec-engine\\.sce\\specs\\70-00-scene-package-gate-policy-and-evaluation\\reports\\package-gate-policy-three-layer.json",
   "policy": {
-    "apiVersion": "kse.scene.package-gate/v0.1",
+    "apiVersion": "sce.scene.package-gate/v0.1",
     "profile": "three-layer",
     "rules": {
       "max_invalid_templates": 0,

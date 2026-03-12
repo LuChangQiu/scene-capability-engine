@@ -7,12 +7,12 @@
 
 ## 2. 文档治理状态
 
-- [ ] 执行 `node bin/kiro-spec-engine.js docs diagnose`
+- [ ] 执行 `node bin/scene-capability-engine.js docs diagnose`
 - [ ] 结果应为 `Project is compliant`
 
 ## 3. 全局状态回归
 
-- [ ] 执行 `node bin/kiro-spec-engine.js status --verbose`
+- [ ] 执行 `node bin/scene-capability-engine.js status --verbose`
 - [ ] 确认 `Document Compliance: ✅ Compliant`
 
 ## 4. 人工抽查

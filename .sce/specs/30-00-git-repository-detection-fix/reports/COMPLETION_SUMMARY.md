@@ -10,7 +10,7 @@
 
 ## 🎯 Problem Fixed
 
-**Issue**: `kse repo init --nested` incorrectly detected 34 "repositories" when only 8 were actual Git repositories.
+**Issue**: `sce repo init --nested` incorrectly detected 34 "repositories" when only 8 were actual Git repositories.
 
 **Root Cause**: The `isGitRepo()` method used `git revparse --git-dir`, which returns true for any directory within a Git repository tree, not just repository roots. This caused regular subdirectories to be misidentified as separate repositories.
 
@@ -137,7 +137,7 @@ Added troubleshooting sections:
 
 **User Experience**:
 - ✅ Accurate repository detection (8 repos instead of 34 false positives)
-- ✅ Cleaner output from `kse repo init`
+- ✅ Cleaner output from `sce repo init`
 - ✅ No breaking changes for existing users
 - ✅ Better error messages and troubleshooting guidance
 

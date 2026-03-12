@@ -17,13 +17,13 @@ The Philosophy and Practice of AI-Driven Development: A Deep Dialogue with Grok
 **Dialogue Partner**: Grok (xAI)  
 **Date**: January 24, 2026
 
-📖 **中文版本 (Chinese Version)**: [AI 驱动开发的哲学与实践](https://github.com/heguangyong/kiro-spec-engine/discussions/1)
+📖 **中文版本 (Chinese Version)**: [AI 驱动开发的哲学与实践](https://github.com/heguangyong/scene-capability-engine/discussions/1)
 
 ---
 
 ## 📖 Full Article
 
-Read the complete dialogue: [The Philosophy and Practice of AI-Driven Development](https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md)
+Read the complete dialogue: [The Philosophy and Practice of AI-Driven Development](https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md)
 
 ## 🎯 Core Perspectives
 
@@ -43,7 +43,7 @@ This is an in-depth dialogue about AI development trends, exploring:
 
 ## 🚀 Practical Project
 
-These concepts are practiced in [kiro-spec-engine](https://github.com/heguangyong/kiro-spec-engine):
+These concepts are practiced in [kiro-spec-engine](https://github.com/heguangyong/scene-capability-engine):
 
 - Precisely solving session context consumption problems
 - Document-driven + automated governance
@@ -84,10 +84,10 @@ Welcome to discuss:
 
 ## 🔗 Resources
 
-- **Project**: https://github.com/heguangyong/kiro-spec-engine
-- **npm**: https://www.npmjs.com/package/kiro-spec-engine
-- **Full Article (EN)**: [docs/articles/ai-driven-development-philosophy-and-practice.en.md](https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md)
-- **Full Article (中文)**: [docs/articles/ai-driven-development-philosophy-and-practice.md](https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md)
+- **Project**: https://github.com/heguangyong/scene-capability-engine
+- **npm**: https://www.npmjs.com/package/scene-capability-engine
+- **Full Article (EN)**: [docs/articles/ai-driven-development-philosophy-and-practice.en.md](https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md)
+- **Full Article (中文)**: [docs/articles/ai-driven-development-philosophy-and-practice.md](https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md)
 
 ---
 

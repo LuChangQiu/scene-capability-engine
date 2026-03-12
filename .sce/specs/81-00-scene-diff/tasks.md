@@ -2,7 +2,7 @@
 
 ## Overview
 
-Implement `kse scene diff` command following the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`. No new dependencies.
+Implement `sce scene diff` command following the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`. No new dependencies.
 
 ## Tasks
 

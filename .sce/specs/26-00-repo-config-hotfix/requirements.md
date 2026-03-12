@@ -6,13 +6,13 @@ This hotfix addresses critical bugs discovered in the nested repository feature 
 
 ## Glossary
 
-- **Repository**: A Git repository managed by kse
+- **Repository**: A Git repository managed by sce
 - **Parent_Repository**: A repository that contains other repositories as subdirectories
 - **Nested_Repository**: A repository located within another repository's directory structure
 - **Parent_Path**: The relative path from workspace root to the parent repository
 - **Repository_Path**: The relative path from workspace root to a repository
 - **Path_Map**: Internal data structure mapping repository paths to repository objects
-- **Configuration**: The `.kse-repos.json` file storing repository metadata
+- **Configuration**: The `.sce-repos.json` file storing repository metadata
 
 ## Requirements
 
@@ -30,7 +30,7 @@ This hotfix addresses critical bugs discovered in the nested repository feature 
 
 ### Requirement 2: Maintain Backward Compatibility
 
-**User Story:** As a developer with existing kse configurations, I want the hotfix to work with my current setup, so that I don't need to recreate my repository configurations.
+**User Story:** As a developer with existing sce configurations, I want the hotfix to work with my current setup, so that I don't need to recreate my repository configurations.
 
 #### Acceptance Criteria
 
@@ -47,8 +47,8 @@ This hotfix addresses critical bugs discovered in the nested repository feature 
 
 1. WHEN executing a command starting with "git", THE ExecHandler SHALL NOT prepend "git" again
 2. WHEN executing a non-git command, THE ExecHandler SHALL execute it as-is
-3. WHEN a user runs "kse repo exec git branch", THE ExecHandler SHALL execute "git branch" not "git git branch"
-4. WHEN a user runs "kse repo exec npm test", THE ExecHandler SHALL execute "npm test" unchanged
+3. WHEN a user runs "sce repo exec git branch", THE ExecHandler SHALL execute "git branch" not "git git branch"
+4. WHEN a user runs "sce repo exec npm test", THE ExecHandler SHALL execute "npm test" unchanged
 
 ### Requirement 4: Preserve Existing Functionality
 

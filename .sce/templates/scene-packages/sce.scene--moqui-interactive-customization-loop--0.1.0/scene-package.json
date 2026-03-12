@@ -1,0 +1,346 @@
+{
+  "apiVersion": "sce.scene.package/v0.1",
+  "kind": "scene-domain-profile",
+  "metadata": {
+    "group": "sce.scene",
+    "name": "moqui-interactive-customization-loop",
+    "version": "0.1.0",
+    "summary": "Interactive business customization loop for Moqui with guardrail-first execution.",
+    "description": "Template package for Moqui interactive customization: intent -> plan -> gate -> approval -> low-risk apply -> rollback audit."
+  },
+  "compatibility": {
+    "min_sce_version": ">=3.0.8",
+    "scene_api_version": "sce.scene/v0.2",
+    "moqui_model_version": "3.x",
+    "adapter_api_version": "v1"
+  },
+  "capabilities": {
+    "provides": [
+      "platform-interactive-customization-loop"
+    ],
+    "requires": [
+      "profile:moqui",
+      "moqui.adapter",
+      "scene.policy.guardrail"
+    ]
+  },
+  "parameters": [
+    {
+      "id": "project_root",
+      "type": "string",
+      "required": true,
+      "description": "Moqui project root path."
+    },
+    {
+      "id": "module_scope",
+      "type": "string",
+      "required": false,
+      "default": "all",
+      "description": "Optional module scope for context injection and action routing."
+    },
+    {
+      "id": "execution_policy",
+      "type": "string",
+      "required": false,
+      "default": "advice-first",
+      "description": "Execution policy profile, defaulting to suggestion-first with guarded apply."
+    }
+  ],
+  "artifacts": {
+    "entry_scene": "custom/scene.yaml",
+    "generates": [
+      "custom/scene.yaml"
+    ]
+  },
+  "governance": {
+    "risk_level": "medium",
+    "approval_required": true,
+    "approval": {
+      "required": true
+    },
+    "idempotency": {
+      "required": true,
+      "key": "interactiveChangePlanId"
+    },
+    "rollback_supported": true
+  },
+  "capability_contract": {
+    "bindings": [
+      {
+        "type": "operation",
+        "ref": "spec.moqui.interactive.intent.build",
+        "timeout_ms": 1500,
+        "retry": 1,
+        "intent": "Generate a normalized Change_Intent from page context and business goal.",
+        "preconditions": [
+          "page context is available",
+          "user identity is validated"
+        ],
+        "postconditions": [
+          "change intent is generated",
+          "intent audit event is persisted"
+        ]
+      },
+      {
+        "type": "operation",
+        "ref": "spec.moqui.interactive.plan.generate",
+        "depends_on": "spec.moqui.interactive.intent.build",
+        "timeout_ms": 1800,
+        "retry": 1,
+        "intent": "Generate Change_Plan with scope, impact, risk, and rollback proposal.",
+        "preconditions": [
+          "change intent exists"
+        ],
+        "postconditions": [
+          "change plan is generated"
+        ]
+      },
+      {
+        "type": "operation",
+        "ref": "spec.moqui.interactive.plan.gate",
+        "depends_on": "spec.moqui.interactive.plan.generate",
+        "timeout_ms": 1200,
+        "retry": 0,
+        "intent": "Evaluate guardrail policy and produce gate decision.",
+        "preconditions": [
+          "change plan exists",
+          "guardrail policy is loaded"
+        ],
+        "postconditions": [
+          "gate decision is generated",
+          "deny or review-required reasons are explained"
+        ]
+      },
+      {
+        "type": "operation",
+        "ref": "spec.moqui.interactive.approval.workflow",
+        "depends_on": "spec.moqui.interactive.plan.gate",
+        "timeout_ms": 1800,
+        "retry": 1,
+        "intent": "Drive approval state machine for medium/high risk changes.",
+        "preconditions": [
+          "gate decision is available"
+        ],
+        "postconditions": [
+          "approval status is persisted"
+        ]
+      },
+      {
+        "type": "operation",
+        "ref": "spec.moqui.interactive.low-risk.apply",
+        "depends_on": "spec.moqui.interactive.approval.workflow",
+        "timeout_ms": 2200,
+        "retry": 1,
+        "intent": "Apply low-risk changes in controlled execution mode and emit execution record.",
+        "preconditions": [
+          "risk level is low",
+          "gate decision is allow"
+        ],
+        "postconditions": [
+          "execution record is generated",
+          "execution ledger is appended"
+        ]
+      },
+      {
+        "type": "operation",
+        "ref": "spec.moqui.interactive.rollback.record",
+        "depends_on": "spec.moqui.interactive.low-risk.apply",
+        "timeout_ms": 1500,
+        "retry": 0,
+        "intent": "Generate rollback execution record from historical execution id.",
+        "preconditions": [
+          "execution id is provided",
+          "execution ledger is available"
+        ],
+        "postconditions": [
+          "rollback execution record is generated",
+          "rollback audit trace is appended"
+        ]
+      }
+    ]
+  },
+  "governance_contract": {
+    "risk_level": "medium",
+    "approval": {
+      "required": true
+    },
+    "idempotency": {
+      "required": true,
+      "key": "interactiveChangePlanId"
+    },
+    "data_lineage": {
+      "sources": [
+        {
+          "ref": "spec.moqui.interactive.intent.build",
+          "fields": [
+            "context_ref",
+            "business_goal",
+            "constraints",
+            "intent_id"
+          ]
+        }
+      ],
+      "transforms": [
+        {
+          "operation": "riskClassification",
+          "description": "Classify risk level and action categories from generated plan."
+        },
+        {
+          "operation": "guardrailPolicyEvaluation",
+          "description": "Apply secure-by-default gate policy and high-risk action catalog."
+        },
+        {
+          "operation": "approvalRouteDecision",
+          "description": "Route to approval workflow or low-risk one-click path."
+        }
+      ],
+      "sinks": [
+        {
+          "ref": "spec.moqui.interactive.low-risk.apply",
+          "fields": [
+            "plan_id",
+            "execution_id",
+            "policy_decision",
+            "result",
+            "diff_summary"
+          ]
+        },
+        {
+          "ref": "spec.moqui.interactive.rollback.record",
+          "fields": [
+            "rollback_ref",
+            "audit_trace_id"
+          ]
+        }
+      ]
+    },
+    "business_rules": [
+      {
+        "id": "rule.interactive.intent-readonly-enforced",
+        "description": "Intent generation phase is read-only and must not mutate runtime state.",
+        "entity_ref": "change_intent",
+        "bind_to": "spec.moqui.interactive.intent.build",
+        "status": "enforced"
+      },
+      {
+        "id": "rule.interactive.high-risk-requires-approval",
+        "description": "High-risk plans must be approved before execution.",
+        "entity_ref": "change_plan",
+        "bind_to": "spec.moqui.interactive.approval.workflow",
+        "status": "active"
+      },
+      {
+        "id": "rule.interactive.low-risk-one-click-only",
+        "description": "One-click apply is restricted to low-risk plans with allow decision.",
+        "entity_ref": "execution_record",
+        "bind_to": "spec.moqui.interactive.low-risk.apply",
+        "status": "enforced"
+      },
+      {
+        "id": "rule.interactive.rollback-trace-required",
+        "description": "Rollback must retain explicit execution_id and trace linkage.",
+        "entity_ref": "rollback_record",
+        "bind_to": "spec.moqui.interactive.rollback.record",
+        "status": "enforced"
+      }
+    ],
+    "decision_logic": [
+      {
+        "id": "decision.interactive.gate-routing",
+        "description": "Route deny/review-required/allow based on policy gate output.",
+        "bind_to": "spec.moqui.interactive.plan.gate",
+        "status": "resolved",
+        "automated": true
+      },
+      {
+        "id": "decision.interactive.execute-routing",
+        "description": "Execute via low-risk apply path when risk is low and gate allows.",
+        "bind_to": "spec.moqui.interactive.low-risk.apply",
+        "status": "resolved",
+        "automated": true
+      },
+      {
+        "id": "decision.interactive.rollback-routing",
+        "description": "Generate rollback record with audit linkage when recovery is requested.",
+        "bind_to": "spec.moqui.interactive.rollback.record",
+        "status": "resolved",
+        "automated": true
+      }
+    ]
+  },
+  "ontology_model": {
+    "entities": [
+      {
+        "id": "change_intent",
+        "type": "context"
+      },
+      {
+        "id": "change_plan",
+        "type": "plan"
+      },
+      {
+        "id": "gate_decision",
+        "type": "policy"
+      },
+      {
+        "id": "approval_state",
+        "type": "workflow"
+      },
+      {
+        "id": "execution_record",
+        "type": "artifact"
+      },
+      {
+        "id": "rollback_record",
+        "type": "artifact"
+      }
+    ],
+    "relations": [
+      {
+        "source": "change_intent",
+        "target": "change_plan",
+        "type": "produces"
+      },
+      {
+        "source": "change_plan",
+        "target": "gate_decision",
+        "type": "produces"
+      },
+      {
+        "source": "gate_decision",
+        "target": "approval_state",
+        "type": "produces"
+      },
+      {
+        "source": "approval_state",
+        "target": "execution_record",
+        "type": "produces"
+      },
+      {
+        "source": "execution_record",
+        "target": "rollback_record",
+        "type": "produces"
+      }
+    ]
+  },
+  "agent_hints": {
+    "summary": "Guardrail-first interactive customization loop for Moqui business users.",
+    "complexity": "high",
+    "estimated_duration_ms": 4200,
+    "required_permissions": [
+      "moqui.read",
+      "moqui.write.limited",
+      "policy.read"
+    ],
+    "suggested_sequence": [
+      "spec.moqui.interactive.intent.build",
+      "spec.moqui.interactive.plan.generate",
+      "spec.moqui.interactive.plan.gate",
+      "spec.moqui.interactive.approval.workflow",
+      "spec.moqui.interactive.low-risk.apply",
+      "spec.moqui.interactive.rollback.record"
+    ],
+    "rollback_strategy": "Replay rollback record generation from execution ledger and keep immutable audit trail."
+  }
+}
+

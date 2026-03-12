@@ -2,7 +2,7 @@
 
 ## 概述
 
-将 Palantir Foundry 启发的四项增强（Ontology Graph、Action Abstraction、Data Lineage、Agent-Ready Metadata）实现到 KSE Scene Runtime 中。核心模块为 `lib/scene-runtime/scene-ontology.js`，扩展 lint 引擎和评分计算器，新增 `kse scene ontology` CLI 子命令组。
+将 Palantir Foundry 启发的四项增强（Ontology Graph、Action Abstraction、Data Lineage、Agent-Ready Metadata）实现到 SCE Scene Runtime 中。核心模块为 `lib/scene-runtime/scene-ontology.js`，扩展 lint 引擎和评分计算器，新增 `sce scene ontology` CLI 子命令组。
 
 ## 任务
 

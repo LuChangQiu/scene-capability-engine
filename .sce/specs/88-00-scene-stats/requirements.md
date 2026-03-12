@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This feature adds a `kse scene stats` subcommand that displays aggregate statistics about the local scene package registry. The command reads `registry-index.json` and computes a dashboard of metrics including total packages, total versions, total tags, ownership coverage, deprecation count, and most recently published package. Follows the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`. No new dependencies.
+This feature adds a `sce scene stats` subcommand that displays aggregate statistics about the local scene package registry. The command reads `registry-index.json` and computes a dashboard of metrics including total packages, total versions, total tags, ownership coverage, deprecation count, and most recently published package. Follows the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`. No new dependencies.
 
 ## Glossary
 
-- **Stats_Command**: The `kse scene stats` CLI subcommand that computes and displays registry statistics.
+- **Stats_Command**: The `sce scene stats` CLI subcommand that computes and displays registry statistics.
 - **Registry_Index**: The `registry-index.json` file that stores metadata for all published packages and their versions.
 - **Package_Entry**: A single package record within the Registry_Index, containing `versions`, `latest`, and optionally `owner`, `tags`, `deprecated`.
 - **Stats_Payload**: The structured result object containing all computed statistics returned by the run function.

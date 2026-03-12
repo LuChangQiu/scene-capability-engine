@@ -2,7 +2,7 @@
 
 ## Overview
 
-This spec defines a comprehensive system for kiro-spec-engine (kse) to intelligently adopt existing projects and provide smooth upgrade paths for users. The system must handle two critical scenarios: onboarding new users with existing projects, and upgrading existing users to new versions.
+This spec defines a comprehensive system for kiro-spec-engine (sce) to intelligently adopt existing projects and provide smooth upgrade paths for users. The system must handle two critical scenarios: onboarding new users with existing projects, and upgrading existing users to new versions.
 
 ---
 
@@ -10,12 +10,12 @@ This spec defines a comprehensive system for kiro-spec-engine (kse) to intellige
 
 ### 1.1 Detection and Analysis
 
-**User Story**: As a developer with an existing project, I want kse to detect my project structure and intelligently integrate without breaking anything.
+**User Story**: As a developer with an existing project, I want sce to detect my project structure and intelligently integrate without breaking anything.
 
 **Acceptance Criteria**:
 - GIVEN a project directory
-- WHEN I run `kse adopt` or `kse init --adopt`
-- THEN kse should:
+- WHEN I run `sce adopt` or `sce init --adopt`
+- THEN sce should:
   - Detect if `.sce/` directory exists
   - Analyze existing structure (specs/, steering/, tools/)
   - Identify project type (Node.js, Python, mixed, etc.)
@@ -30,7 +30,7 @@ This spec defines a comprehensive system for kiro-spec-engine (kse) to intellige
 **Mode A: Fresh Adoption** (no `.sce/` directory)
 - Create complete `.sce/` structure
 - Initialize with default templates
-- Create `.sce/version.json` with current kse version
+- Create `.sce/version.json` with current sce version
 
 **Mode B: Partial Adoption** (`.sce/` exists but incomplete)
 - Preserve existing specs/ and steering/
@@ -46,7 +46,7 @@ This spec defines a comprehensive system for kiro-spec-engine (kse) to intellige
 
 ### 1.3 Conflict Resolution
 
-**User Story**: As a user, I want clear guidance when kse detects conflicts with my existing setup.
+**User Story**: As a user, I want clear guidance when sce detects conflicts with my existing setup.
 
 **Acceptance Criteria**:
 - Detect file conflicts (e.g., existing CORE_PRINCIPLES.md vs template)
@@ -74,13 +74,13 @@ This spec defines a comprehensive system for kiro-spec-engine (kse) to intellige
 
 ### 2.1 Version Tracking
 
-**User Story**: As a developer, I want kse to track which version initialized my project.
+**User Story**: As a developer, I want sce to track which version initialized my project.
 
 **Acceptance Criteria**:
 - Create `.sce/version.json` on init/adopt:
   ```json
   {
-    "kse-version": "1.0.0",
+    "sce-version": "1.0.0",
     "template-version": "1.0.0",
     "created": "2026-01-23T10:00:00Z",
     "last-upgraded": "2026-01-23T10:00:00Z",
@@ -92,15 +92,15 @@ This spec defines a comprehensive system for kiro-spec-engine (kse) to intellige
 
 ### 2.2 Version Detection
 
-**User Story**: As a user, I want kse to automatically detect version mismatches.
+**User Story**: As a user, I want sce to automatically detect version mismatches.
 
 **Acceptance Criteria**:
-- On any kse command, check project version vs installed kse version
+- On any sce command, check project version vs installed sce version
 - Display warning if mismatch detected:
   ```
-  ⚠️  Project initialized with kse v1.0.0
-  📦 Current kse version: v1.2.0
-  💡 Run `kse upgrade` to update project templates
+  ⚠️  Project initialized with sce v1.0.0
+  📦 Current sce version: v1.2.0
+  💡 Run `sce upgrade` to update project templates
   ```
 - Allow users to suppress warnings with `--no-version-check`
 
@@ -109,7 +109,7 @@ This spec defines a comprehensive system for kiro-spec-engine (kse) to intellige
 **User Story**: As a maintainer, I want to define which versions are compatible.
 
 **Acceptance Criteria**:
-- Maintain compatibility matrix in kse:
+- Maintain compatibility matrix in sce:
   ```javascript
   {
     "1.0.x": { compatible: ["1.0.0", "1.1.0", "1.2.0"], breaking: false },
@@ -126,15 +126,15 @@ This spec defines a comprehensive system for kiro-spec-engine (kse) to intellige
 
 ### 3.1 Upgrade Command
 
-**User Story**: As a user, I want a simple command to upgrade my project to the latest kse version.
+**User Story**: As a user, I want a simple command to upgrade my project to the latest sce version.
 
 **Acceptance Criteria**:
-- Provide `kse upgrade` command
+- Provide `sce upgrade` command
 - Options:
-  - `kse upgrade` - interactive upgrade with prompts
-  - `kse upgrade --auto` - automatic upgrade (safe changes only)
-  - `kse upgrade --dry-run` - show what would change
-  - `kse upgrade --to=1.2.0` - upgrade to specific version
+  - `sce upgrade` - interactive upgrade with prompts
+  - `sce upgrade --auto` - automatic upgrade (safe changes only)
+  - `sce upgrade --dry-run` - show what would change
+  - `sce upgrade --to=1.2.0` - upgrade to specific version
 
 ### 3.2 Upgrade Strategy
 
@@ -180,7 +180,7 @@ This spec defines a comprehensive system for kiro-spec-engine (kse) to intellige
 **User Story**: As a maintainer, I want to provide custom migration logic for breaking changes.
 
 **Acceptance Criteria**:
-- Support migration scripts in kse:
+- Support migration scripts in sce:
   ```
   migrations/
     1.0.0-to-1.1.0.js
@@ -231,7 +231,7 @@ This spec defines a comprehensive system for kiro-spec-engine (kse) to intellige
 **User Story**: As a user, I want to easily rollback if something goes wrong.
 
 **Acceptance Criteria**:
-- Provide `kse rollback` command
+- Provide `sce rollback` command
 - List available backups
 - Restore from backup with confirmation
 - Preserve current state before rollback

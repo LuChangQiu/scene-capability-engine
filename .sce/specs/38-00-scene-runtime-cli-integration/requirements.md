@@ -3,12 +3,12 @@
 ## Introduction
 
 The runtime pilot from spec `37-00-scene-runtime-execution-pilot` already provides loader, compiler, policy gate, executor, audit emitter, and eval bridge.
-This spec exposes that runtime as an operator-facing CLI entry so scene execution can be invoked in a standard KSE workflow.
+This spec exposes that runtime as an operator-facing CLI entry so scene execution can be invoked in a standard SCE workflow.
 
 ## Requirements
 
 ### Requirement 1: Scene Run Entry
-- Provide `kse scene run` command.
+- Provide `sce scene run` command.
 - Support scene source from either `--spec <spec-name>` or `--manifest <path>`.
 - Reject invalid source combinations and invalid mode values.
 

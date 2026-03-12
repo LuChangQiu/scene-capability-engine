@@ -682,7 +682,7 @@ sce spec bootstrap --name 03-00-ci-cd-pipeline --non-interactive
 **Ask the community:**
 - GitHub Discussions: https://github.com/heguangyong/scene-capability-engine/discussions
 - Discord: [Join our Discord](https://discord.gg/sce)
-- Twitter: [@kse_dev](https://twitter.com/kse_dev)
+- Twitter: [@sce_dev](https://twitter.com/sce_dev)
 
 **Report issues:**
 - GitHub Issues: https://github.com/heguangyong/scene-capability-engine/issues

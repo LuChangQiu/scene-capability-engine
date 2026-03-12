@@ -2,7 +2,7 @@
 
 ## Overview
 
-Implement `kse scene list` and `kse scene search` commands following the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`, tests in `tests/unit/commands/scene.test.js`. No new dependencies.
+Implement `sce scene list` and `sce scene search` commands following the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`, tests in `tests/unit/commands/scene.test.js`. No new dependencies.
 
 ## Tasks
 

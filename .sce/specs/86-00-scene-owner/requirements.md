@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This feature adds a `kse scene owner` subcommand group to manage package ownership metadata in the local scene package registry. The command allows registry maintainers to set, show, list, and transfer ownership of packages by reading and writing an `owner` string field on package entries in `registry-index.json`. Ownership is tracked at the package level (not per-version).
+This feature adds a `sce scene owner` subcommand group to manage package ownership metadata in the local scene package registry. The command allows registry maintainers to set, show, list, and transfer ownership of packages by reading and writing an `owner` string field on package entries in `registry-index.json`. Ownership is tracked at the package level (not per-version).
 
 ## Glossary
 
-- **Owner_Command**: The `kse scene owner` CLI subcommand group containing sub-subcommands: set, show, list, transfer.
+- **Owner_Command**: The `sce scene owner` CLI subcommand group containing sub-subcommands: set, show, list, transfer.
 - **Registry_Index**: The `registry-index.json` file that stores metadata for all published packages and their versions.
 - **Package_Entry**: A single package record within the Registry_Index, containing `versions` and optionally `owner`.
 - **Owner_Field**: A string field on the Package_Entry representing the current owner/maintainer of the package.

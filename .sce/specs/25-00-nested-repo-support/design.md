@@ -2,7 +2,7 @@
 
 ## Overview
 
-This design extends kse's multi-repo management functionality to support nested Git repositories. The current implementation stops scanning when it encounters a Git repository, preventing discovery of subrepositories. This enhancement enables management of complex project structures where Git repositories contain other Git repositories as subdirectories.
+This design extends sce's multi-repo management functionality to support nested Git repositories. The current implementation stops scanning when it encounters a Git repository, preventing discovery of subrepositories. This enhancement enables management of complex project structures where Git repositories contain other Git repositories as subdirectories.
 
 The design maintains backward compatibility with existing configurations while adding new capabilities for nested repository discovery, tracking, and management.
 
@@ -59,7 +59,7 @@ The design maintains backward compatibility with existing configurations while a
 
 ### Component Interactions
 
-1. **CLI → InitHandler**: User invokes `kse repo init` with optional `--nested` or `--no-nested` flags
+1. **CLI → InitHandler**: User invokes `sce repo init` with optional `--nested` or `--no-nested` flags
 2. **InitHandler → RepoManager**: Passes scan options including nested mode
 3. **RepoManager → Filesystem**: Recursively scans directories, now continuing into Git repositories
 4. **RepoManager → ConfigManager**: Provides discovered repositories with parent relationships
@@ -307,7 +307,7 @@ buildRepositoryTree(repos)
 
 ### Property 5: Command Execution Completeness
 
-*For any* set of repositories including nested repositories, commands executed via `kse repo exec`, `kse repo status`, and `kse repo health` should operate on all repositories regardless of nesting level.
+*For any* set of repositories including nested repositories, commands executed via `sce repo exec`, `sce repo status`, and `sce repo health` should operate on all repositories regardless of nesting level.
 
 **Validates: Requirements 4.1, 5.1, 6.1**
 
@@ -395,9 +395,9 @@ buildRepositoryTree(repos)
 **Solution**:
 - During validation, detect orphaned nested repositories
 - Provide clear error messages with remediation steps
-- Suggest running `kse repo init` to rescan
+- Suggest running `sce repo init` to rescan
 
-**Error Message**: "Repository '{name}' references non-existent parent '{parent}'. Run 'kse repo init' to rescan."
+**Error Message**: "Repository '{name}' references non-existent parent '{parent}'. Run 'sce repo init' to rescan."
 
 ## Testing Strategy
 
@@ -461,7 +461,7 @@ describe('Nested Repository Support', () => {
 ### Integration Testing
 
 **Scenarios**:
-1. End-to-end: `kse repo init --nested` → verify configuration → `kse repo status` → verify output
+1. End-to-end: `sce repo init --nested` → verify configuration → `sce repo status` → verify output
 2. Backward compatibility: Load old configuration → verify no errors → verify behavior
 3. Mode switching: Run init with --nested → run init with --no-nested → verify config updates
 
@@ -524,7 +524,7 @@ describe('Nested Repository Support', () => {
 
 **For Users with Nested Repositories**:
 1. Upgrade to version with nested support
-2. Run `kse repo init` to rescan and discover nested repositories
+2. Run `sce repo init` to rescan and discover nested repositories
 3. Review generated configuration
 4. Existing commands (status, health, exec) automatically work with nested repos
 
@@ -563,7 +563,7 @@ describe('Nested Repository Support', () => {
 
 **Updated Commands**:
 ```
-kse repo init [options]
+sce repo init [options]
 
 Options:
   -y, --yes              Skip confirmation prompts
@@ -590,7 +590,7 @@ project/
 │           └── mantle-udm/   ← Nested Git repo
 └── frontend/             ← Git repo
 
-$ kse repo init
+$ sce repo init
 ✓ Found 4 Git repositories (nested scanning enabled)
 
 Discovered repositories:
@@ -606,7 +606,7 @@ Discovered repositories:
 
 **Example 2: Non-Nested Mode**
 ```
-$ kse repo init --no-nested
+$ sce repo init --no-nested
 ✓ Found 2 Git repositories (nested scanning disabled)
 
 Discovered repositories:

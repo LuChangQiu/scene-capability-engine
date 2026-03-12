@@ -2,7 +2,7 @@
 
 ## Overview
 
-This design addresses the bug where `kse repo init --nested` incorrectly identifies regular subdirectories as Git repositories. The root cause is that the current `isGitRepo()` method uses `git revparse --git-dir`, which returns true for any directory within a Git repository tree, not just repository roots.
+This design addresses the bug where `sce repo init --nested` incorrectly identifies regular subdirectories as Git repositories. The root cause is that the current `isGitRepo()` method uses `git revparse --git-dir`, which returns true for any directory within a Git repository tree, not just repository roots.
 
 The fix involves adding explicit `.git` directory validation to ensure only actual Git repository roots are detected.
 
@@ -252,7 +252,7 @@ if (options.verbose && !isRepo) {
 
 1. **Test: Real filesystem scanning**
    - Setup: Create temporary directory with real Git repos
-   - Action: Run `kse repo init --nested`
+   - Action: Run `sce repo init --nested`
    - Assert: Detects correct number of repositories
 
 ## Implementation Plan

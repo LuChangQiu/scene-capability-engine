@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This specification defines the requirements for integrating Ultrawork quality automation into the kiro-spec-engine (kse) project. The system shall enhance the Ultrawork tool to actually modify documents (not just identify improvements) and integrate quality checks into the Spec creation workflow to ensure all generated Specs meet professional-grade standards (9.0/10 quality score).
+This specification defines the requirements for integrating Ultrawork quality automation into the kiro-spec-engine (sce) project. The system shall enhance the Ultrawork tool to actually modify documents (not just identify improvements) and integrate quality checks into the Spec creation workflow to ensure all generated Specs meet professional-grade standards (9.0/10 quality score).
 
 ## Glossary
 

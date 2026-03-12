@@ -56,12 +56,12 @@
 - [x] 实现错误引用检测
 - [x] 实现占位符检测
 - [x] 实现报告生成
-- [x] 添加 CLI 命令 `kse docs check-refs`
+- [x] 添加 CLI 命令 `sce docs check-refs`
 - [x] 测试工具功能
 
 **产出**:
 - `lib/governance/doc-reference-checker.js` - 检查工具
-- `bin/kiro-spec-engine.js` - 更新的 CLI
+- `bin/scene-capability-engine.js` - 更新的 CLI
 - `lib/commands/docs.js` - 更新的命令处理
 
 **功能**:
@@ -98,7 +98,7 @@
 - **总计**: 6 个新文件
 
 ### 更新的文件
-- **CLI**: 1 个 (bin/kiro-spec-engine.js)
+- **CLI**: 1 个 (bin/scene-capability-engine.js)
 - **命令**: 1 个 (lib/commands/docs.js)
 - **原则**: 1 个 (CORE_PRINCIPLES.md)
 - **总计**: 3 个更新
@@ -115,7 +115,7 @@
 ### 工具测试
 
 ```bash
-$ node bin/kiro-spec-engine.js docs check-refs
+$ node bin/scene-capability-engine.js docs check-refs
 
 🔍 Checking Document References...
 
@@ -271,7 +271,7 @@ Exit Code: 0
 
 ### 代码文件
 1. ✅ `lib/governance/doc-reference-checker.js` - 检查工具
-2. ✅ `bin/kiro-spec-engine.js` - 更新的 CLI
+2. ✅ `bin/scene-capability-engine.js` - 更新的 CLI
 3. ✅ `lib/commands/docs.js` - 更新的命令处理
 
 ### 文档文件
@@ -331,7 +331,7 @@ Exit Code: 0
 
 ### 持续维护
 
-1. 定期运行 `kse docs check-refs`
+1. 定期运行 `sce docs check-refs`
 2. 每个 Spec 完成后审查
 3. 发布前完整检查
 4. 记录和分享经验

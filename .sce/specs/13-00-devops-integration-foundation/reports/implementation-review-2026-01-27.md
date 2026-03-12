@@ -315,11 +315,11 @@ async validateDocumentContent(documentPath, documentType) {
 - Proper option handling
 
 **Commands**:
-1. `kse ops init` - ✅ Working
-2. `kse ops validate` - ✅ Working
-3. `kse ops audit` - ✅ Working
-4. `kse ops takeover` - ✅ Working
-5. `kse ops feedback` - ✅ Working
+1. `sce ops init` - ✅ Working
+2. `sce ops validate` - ✅ Working
+3. `sce ops audit` - ✅ Working
+4. `sce ops takeover` - ✅ Working
+5. `sce ops feedback` - ✅ Working
 
 ---
 

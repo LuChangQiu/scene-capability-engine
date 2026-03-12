@@ -1,4 +1,4 @@
-apiVersion: kse.scene/v0.2
+apiVersion: sce.scene/v0.2
 kind: scene
 metadata:
   obj_id: scene.erp.71-00-scene-package-gate-task-draft-and-sync
@@ -10,12 +10,12 @@ spec:
     goal: Transform failed scene package gate checks into actionable task closure
   model_scope:
     read:
-      - kse.SceneTemplateGate.checkId
-      - kse.SceneTemplateGate.expected
-      - kse.SceneTemplateGate.actual
+      - sce.SceneTemplateGate.checkId
+      - sce.SceneTemplateGate.expected
+      - sce.SceneTemplateGate.actual
     write:
-      - kse.SceneTemplateGateTask.taskId
-      - kse.SceneTemplateGateTask.status
+      - sce.SceneTemplateGateTask.taskId
+      - sce.SceneTemplateGateTask.status
   capability_contract:
     bindings:
       - type: query

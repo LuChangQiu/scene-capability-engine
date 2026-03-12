@@ -1,0 +1,39 @@
+{
+  "apiVersion": "sce.scene.template/v0.1",
+  "kind": "scene-package-template",
+  "metadata": {
+    "template_id": "sce.scene--scene-package-contract-declaration--0.2.0",
+    "source_spec": "67-00-scene-package-contract-declaration",
+    "package_coordinate": "sce.scene/scene-package-contract-declaration@0.2.0",
+    "package_kind": "scene-domain-profile",
+    "published_at": "2026-02-09T09:12:22.054Z"
+  },
+  "compatibility": {
+    "scene_api_version": "sce.scene/v0.2"
+  },
+  "parameters": [
+    {
+      "id": "entity_name",
+      "type": "string",
+      "required": true,
+      "description": "Primary entity name for generated scene flow"
+    },
+    {
+      "id": "service_name",
+      "type": "string",
+      "required": false,
+      "default": "queryService",
+      "description": "Optional service binding reference"
+    }
+  ],
+  "template": {
+    "package_contract": "scene-package.json",
+    "scene_manifest": "scene.template.yaml"
+  },
+  "artifacts": {
+    "entry_scene": "custom/scene.yaml",
+    "generates": [
+      "custom/scene.yaml"
+    ]
+  }
+}

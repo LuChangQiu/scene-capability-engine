@@ -2,99 +2,99 @@
 
 ## Overview
 
-Enable users to build and maintain a personal knowledge base within kse projects, allowing them to capture experiences, patterns, and best practices. The system should intelligently evaluate knowledge value and suggest integration into project documentation or core principles.
+Enable users to build and maintain a personal knowledge base within sce projects, allowing them to capture experiences, patterns, and best practices. The system should intelligently evaluate knowledge value and suggest integration into project documentation or core principles.
 
 ## User Stories
 
 ### US-1: Knowledge Base Initialization
-**As a** kse user  
+**As a** sce user  
 **I want to** initialize a knowledge base in my project  
 **So that** I can start capturing my experiences and learnings
 
 **Acceptance Criteria**:
-- Command `kse knowledge init` creates `.sce/knowledge/` directory structure
+- Command `sce knowledge init` creates `.sce/knowledge/` directory structure
 - Creates README.md with usage guide
 - Creates subdirectories: patterns/, lessons/, workflows/, checklists/, references/
 - Creates index.json for metadata tracking
 - Idempotent: safe to run multiple times
 
 ### US-2: Add Knowledge Entry
-**As a** kse user  
+**As a** sce user  
 **I want to** quickly add a new knowledge entry  
 **So that** I can capture insights while they're fresh
 
 **Acceptance Criteria**:
-- Command `kse knowledge add <type> <title>` creates new entry
+- Command `sce knowledge add <type> <title>` creates new entry
 - Supported types: pattern, lesson, workflow, checklist, reference
 - Generates file with template structure (frontmatter + content sections)
 - Opens file in default editor (optional)
 - Updates index.json with metadata
 
 ### US-3: List Knowledge Entries
-**As a** kse user  
+**As a** sce user  
 **I want to** view all my knowledge entries  
 **So that** I can find and reference them easily
 
 **Acceptance Criteria**:
-- Command `kse knowledge list` displays all entries in table format
+- Command `sce knowledge list` displays all entries in table format
 - Shows: ID, type, title, created date, tags
 - Supports filtering: `--type <type>`, `--tag <tag>`
 - Supports sorting: `--sort <field>`
 - Shows entry count and statistics
 
 ### US-4: Search Knowledge
-**As a** kse user  
+**As a** sce user  
 **I want to** search my knowledge base  
 **So that** I can quickly find relevant information
 
 **Acceptance Criteria**:
-- Command `kse knowledge search <keyword>` searches all entries
+- Command `sce knowledge search <keyword>` searches all entries
 - Searches in: title, tags, content
 - Shows matching entries with context snippets
 - Supports regex patterns
 - Highlights matching terms
 
 ### US-5: View Knowledge Entry
-**As a** kse user  
+**As a** sce user  
 **I want to** view a specific knowledge entry  
 **So that** I can read its full content
 
 **Acceptance Criteria**:
-- Command `kse knowledge show <id>` displays entry content
+- Command `sce knowledge show <id>` displays entry content
 - Shows formatted markdown with syntax highlighting
 - Shows metadata (created, updated, tags, category)
 - Supports `--raw` flag for plain text output
 
 ### US-6: Edit Knowledge Entry
-**As a** kse user  
+**As a** sce user  
 **I want to** edit existing knowledge entries  
 **So that** I can refine and update my learnings
 
 **Acceptance Criteria**:
-- Command `kse knowledge edit <id>` opens entry in editor
+- Command `sce knowledge edit <id>` opens entry in editor
 - Updates modification timestamp
 - Validates frontmatter after edit
 - Updates index.json
 
 ### US-7: Delete Knowledge Entry
-**As a** kse user  
+**As a** sce user  
 **I want to** remove outdated knowledge entries  
 **So that** my knowledge base stays relevant
 
 **Acceptance Criteria**:
-- Command `kse knowledge delete <id>` removes entry
+- Command `sce knowledge delete <id>` removes entry
 - Requires confirmation (unless `--force`)
 - Creates backup before deletion
 - Updates index.json
 - Shows deletion summary
 
 ### US-8: AI Knowledge Analysis
-**As a** kse user  
+**As a** sce user  
 **I want** AI to analyze my knowledge base  
 **So that** I can understand its value and get improvement suggestions
 
 **Acceptance Criteria**:
-- Command `kse knowledge analyze` evaluates all entries
+- Command `sce knowledge analyze` evaluates all entries
 - Analyzes: universality, project-specificity, temporality, documentation value
 - Scores each entry (0-100)
 - Suggests actions: integrate to CORE_PRINCIPLES, move to docs, keep in knowledge/, archive
@@ -102,12 +102,12 @@ Enable users to build and maintain a personal knowledge base within kse projects
 - Generates analysis report
 
 ### US-9: Knowledge Integration
-**As a** kse user  
+**As a** sce user  
 **I want to** integrate valuable knowledge into project documentation  
 **So that** it becomes part of the project's permanent knowledge
 
 **Acceptance Criteria**:
-- Command `kse knowledge integrate <id> --target <destination>`
+- Command `sce knowledge integrate <id> --target <destination>`
 - Supported targets: steering, docs, spec, custom
 - For steering: AI suggests which file (CORE_PRINCIPLES, ENVIRONMENT, etc.)
 - For docs: AI suggests appropriate document
@@ -117,36 +117,36 @@ Enable users to build and maintain a personal knowledge base within kse projects
 - Shows integration summary
 
 ### US-10: Knowledge Query (AI-Powered)
-**As a** kse user or AI agent  
+**As a** sce user or AI agent  
 **I want to** query the knowledge base with natural language  
 **So that** I can find relevant information contextually
 
 **Acceptance Criteria**:
-- Command `kse knowledge query "<question>"`
+- Command `sce knowledge query "<question>"`
 - AI searches and ranks entries by relevance
 - Returns top 3-5 most relevant entries
 - Shows relevance score and reasoning
 - Can be used programmatically by AI agents
 
 ### US-11: Knowledge Export/Import
-**As a** kse user  
+**As a** sce user  
 **I want to** export and import knowledge entries  
 **So that** I can share knowledge across projects or with team
 
 **Acceptance Criteria**:
-- Command `kse knowledge export [--output <path>]` exports all entries
+- Command `sce knowledge export [--output <path>]` exports all entries
 - Creates zip archive with all files and index
-- Command `kse knowledge import <path>` imports entries
+- Command `sce knowledge import <path>` imports entries
 - Handles conflicts (skip, overwrite, rename)
 - Validates imported entries
 
 ### US-12: Knowledge Statistics
-**As a** kse user  
+**As a** sce user  
 **I want to** see statistics about my knowledge base  
 **So that** I can track my learning progress
 
 **Acceptance Criteria**:
-- Command `kse knowledge stats` shows statistics
+- Command `sce knowledge stats` shows statistics
 - Shows: total entries, entries by type, entries by tag
 - Shows: creation timeline, most referenced entries
 - Shows: integration history
@@ -272,7 +272,7 @@ Code examples...
 
 ## Success Metrics
 
-1. **Adoption**: 50% of kse users initialize knowledge base within first month
+1. **Adoption**: 50% of sce users initialize knowledge base within first month
 2. **Usage**: Average 5+ entries per active user
 3. **Integration**: 20% of entries get integrated into project docs
 4. **Satisfaction**: 4.5+ star rating from users
@@ -289,7 +289,7 @@ Code examples...
 
 ## Dependencies
 
-- Existing kse CLI infrastructure
+- Existing sce CLI infrastructure
 - fs-extra for file operations
 - Commander.js for CLI
 - chalk for colored output

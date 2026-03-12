@@ -1,8 +1,8 @@
 # MoltBot 功能借鉴分析
 
-**核心问题**: MoltBot 有哪些**功能**值得 kse 借鉴？
+**核心问题**: MoltBot 有哪些**功能**值得 sce 借鉴？
 
-**kse 核心定位**:
+**sce 核心定位**:
 > AI 驱动引擎，通过结构化文档驱动命令增强各行业效能（开发、运维、方案撰写等）
 
 ---
@@ -153,43 +153,43 @@ permissions:
 
 **MoltBot 功能**: Multi-Agent Routing
 
-**kse 可以借鉴**:
+**sce 可以借鉴**:
 ```bash
-# 当前 kse 是单项目的
+# 当前 sce 是单项目的
 cd project-a
-kse status  # 只看当前项目
+sce status  # 只看当前项目
 
 # 可以增强为多项目管理
-kse workspace list
-kse workspace switch project-a
-kse workspace status --all  # 查看所有项目状态
+sce workspace list
+sce workspace switch project-a
+sce workspace status --all  # 查看所有项目状态
 ```
 
 **具体功能**:
 
 1. **工作区管理**:
    ```bash
-   kse workspace create my-project
-   kse workspace list
-   kse workspace switch my-project
-   kse workspace remove my-project
+   sce workspace create my-project
+   sce workspace list
+   sce workspace switch my-project
+   sce workspace remove my-project
    ```
 
 2. **跨项目操作**:
    ```bash
    # 在所有项目中搜索 Spec
-   kse search "user authentication" --all-workspaces
+   sce search "user authentication" --all-workspaces
    
    # 批量状态检查
-   kse status --all-workspaces
+   sce status --all-workspaces
    
    # 跨项目 Spec 复用
-   kse spec copy project-a/01-00-auth project-b/05-00-auth
+   sce spec copy project-a/01-00-auth project-b/05-00-auth
    ```
 
 3. **工作区配置**:
    ```json
-   // ~/.kse/workspaces.json
+   // ~/.sce/workspaces.json
    {
      "workspaces": [
        {
@@ -221,13 +221,13 @@ kse workspace status --all  # 查看所有项目状态
 
 **MoltBot 功能**: Cron + Wakeups
 
-**kse 可以借鉴**:
+**sce 可以借鉴**:
 ```bash
 # 定时任务管理
-kse cron add "0 9 * * *" "kse doctor --docs"
-kse cron add "0 0 * * 0" "kse docs stats --report"
-kse cron list
-kse cron remove <id>
+sce cron add "0 9 * * *" "sce doctor --docs"
+sce cron add "0 0 * * 0" "sce docs stats --report"
+sce cron list
+sce cron remove <id>
 ```
 
 **具体功能**:
@@ -235,28 +235,28 @@ kse cron remove <id>
 1. **定时检查**:
    ```bash
    # 每天早上检查文档合规性
-   kse cron add "0 9 * * *" "kse doctor --docs --notify"
+   sce cron add "0 9 * * *" "sce doctor --docs --notify"
    
    # 每周生成项目报告
-   kse cron add "0 0 * * 0" "kse report generate --email"
+   sce cron add "0 0 * * 0" "sce report generate --email"
    
    # 每小时检查 Spec 状态
-   kse cron add "0 * * * *" "kse status --check-stale"
+   sce cron add "0 * * * *" "sce status --check-stale"
    ```
 
 2. **自动化工作流**:
    ```bash
    # 每天自动运行 Ultrawork 质量检查
-   kse cron add "0 10 * * *" "kse enhance check-all"
+   sce cron add "0 10 * * *" "sce enhance check-all"
    
    # 定期清理临时文件
-   kse cron add "0 2 * * *" "kse docs cleanup --dry-run=false"
+   sce cron add "0 2 * * *" "sce docs cleanup --dry-run=false"
    ```
 
 3. **通知集成**:
    ```bash
    # 检查结果通知到 Slack/Email
-   kse cron add "0 9 * * *" "kse doctor --notify slack"
+   sce cron add "0 9 * * *" "sce doctor --notify slack"
    ```
 
 **实现方式**:
@@ -277,13 +277,13 @@ kse cron remove <id>
 
 **MoltBot 功能**: Webhooks
 
-**kse 可以借鉴**:
+**sce 可以借鉴**:
 ```bash
 # Webhook 管理
-kse webhook add github-push https://api.github.com/repos/...
-kse webhook add ci-complete https://ci.example.com/...
-kse webhook list
-kse webhook test <id>
+sce webhook add github-push https://api.github.com/repos/...
+sce webhook add ci-complete https://ci.example.com/...
+sce webhook list
+sce webhook test <id>
 ```
 
 **具体功能**:
@@ -291,35 +291,35 @@ kse webhook test <id>
 1. **CI/CD 集成**:
    ```bash
    # GitHub Actions 完成后触发
-   kse webhook add github-ci \
+   sce webhook add github-ci \
      --event ci-complete \
-     --action "kse status update"
+     --action "sce status update"
    
    # 部署完成后更新 Spec
-   kse webhook add deploy-complete \
+   sce webhook add deploy-complete \
      --event deploy \
-     --action "kse spec mark-deployed"
+     --action "sce spec mark-deployed"
    ```
 
 2. **外部工具集成**:
    ```bash
    # Jira issue 创建时自动创建 Spec
-   kse webhook add jira-issue \
+   sce webhook add jira-issue \
      --event issue.created \
-     --action "kse spec create-from-issue"
+     --action "sce spec create-from-issue"
    
    # Slack 消息触发操作
-   kse webhook add slack-command \
+   sce webhook add slack-command \
      --event slack.command \
-     --action "kse status --format slack"
+     --action "sce status --format slack"
    ```
 
 3. **自动化流程**:
    ```bash
    # PR 合并后自动归档 Spec
-   kse webhook add pr-merged \
+   sce webhook add pr-merged \
      --event pr.merged \
-     --action "kse docs archive --auto"
+     --action "sce docs archive --auto"
    ```
 
 **配置示例**:
@@ -331,7 +331,7 @@ kse webhook test <id>
       "id": "github-ci",
       "event": "ci-complete",
       "url": "https://api.github.com/repos/user/repo/statuses",
-      "action": "kse status update",
+      "action": "sce status update",
       "enabled": true
     }
   ]
@@ -351,13 +351,13 @@ kse webhook test <id>
 
 **MoltBot 功能**: Skills Platform + ClawdHub
 
-**kse 可以借鉴**:
+**sce 可以借鉴**:
 ```bash
 # Spec 模板/扩展管理
-kse extension install spec-template-rest-api
-kse extension install quality-checker
-kse extension list
-kse extension search "authentication"
+sce extension install spec-template-rest-api
+sce extension install quality-checker
+sce extension list
+sce extension search "authentication"
 ```
 
 **具体功能**:
@@ -365,48 +365,48 @@ kse extension search "authentication"
 1. **Spec 模板库**:
    ```bash
    # 安装常用 Spec 模板
-   kse extension install spec-template-user-auth
-   kse extension install spec-template-rest-api
-   kse extension install spec-template-react-component
+   sce extension install spec-template-user-auth
+   sce extension install spec-template-rest-api
+   sce extension install spec-template-react-component
    
    # 使用模板创建 Spec
-   kse spec create 05-00-user-login --template user-auth
+   sce spec create 05-00-user-login --template user-auth
    ```
 
 2. **质量检查扩展**:
    ```bash
    # 安装质量检查工具
-   kse extension install quality-gate-security
-   kse extension install quality-gate-performance
+   sce extension install quality-gate-security
+   sce extension install quality-gate-performance
    
    # 运行扩展
-   kse enhance check --extension security
+   sce enhance check --extension security
    ```
 
 3. **行业特定扩展**:
    ```bash
    # 金融行业合规检查
-   kse extension install compliance-fintech
+   sce extension install compliance-fintech
    
    # 医疗行业 HIPAA 检查
-   kse extension install compliance-hipaa
+   sce extension install compliance-hipaa
    
    # 运行合规检查
-   kse doctor --extension compliance-fintech
+   sce doctor --extension compliance-fintech
    ```
 
 4. **自定义扩展**:
    ```bash
    # 创建自定义扩展
-   kse extension create my-custom-checker
+   sce extension create my-custom-checker
    
    # 发布到社区
-   kse extension publish my-custom-checker
+   sce extension publish my-custom-checker
    ```
 
 **扩展结构**:
 ```
-.kse/extensions/
+.sce/extensions/
 ├── spec-templates/
 │   ├── user-auth/
 │   │   ├── requirements.md
@@ -435,13 +435,13 @@ kse extension search "authentication"
 
 **MoltBot 功能**: Session Model (main/group/isolated)
 
-**kse 可以借鉴**:
+**sce 可以借鉴**:
 ```bash
 # 上下文管理
-kse context create feature-a
-kse context switch feature-a
-kse context list
-kse context merge feature-a feature-b
+sce context create feature-a
+sce context switch feature-a
+sce context list
+sce context merge feature-a feature-b
 ```
 
 **具体功能**:
@@ -449,14 +449,14 @@ kse context merge feature-a feature-b
 1. **多上下文支持**:
    ```bash
    # 为不同功能创建独立上下文
-   kse context create user-auth
-   kse context create payment-system
+   sce context create user-auth
+   sce context create payment-system
    
    # 切换上下文
-   kse context switch user-auth
+   sce context switch user-auth
    
    # 在特定上下文中工作
-   kse spec create 01-00-login --context user-auth
+   sce spec create 01-00-login --context user-auth
    ```
 
 2. **上下文隔离**:
@@ -467,17 +467,17 @@ kse context merge feature-a feature-b
    # - 历史记录
    # - AI 对话历史
    
-   kse context export user-auth --output user-auth-context.json
-   kse context import payment-context.json
+   sce context export user-auth --output user-auth-context.json
+   sce context import payment-context.json
    ```
 
 3. **上下文协作**:
    ```bash
    # 跨上下文引用
-   kse spec reference user-auth/01-00-login
+   sce spec reference user-auth/01-00-login
    
    # 合并上下文
-   kse context merge feature-a feature-b --output feature-ab
+   sce context merge feature-a feature-b --output feature-ab
    ```
 
 **配置示例**:
@@ -514,51 +514,51 @@ kse context merge feature-a feature-b
 
 **MoltBot 功能**: Remote Gateway + Tailscale
 
-**kse 可以借鉴**:
+**sce 可以借鉴**:
 ```bash
 # 远程协作
-kse remote start
-kse remote connect team-server
-kse remote share spec 01-00-user-auth
+sce remote start
+sce remote connect team-server
+sce remote share spec 01-00-user-auth
 ```
 
 **具体功能**:
 
-1. **远程 kse 服务器**:
+1. **远程 sce 服务器**:
    ```bash
-   # 在服务器上运行 kse daemon
-   kse daemon start --port 8080
+   # 在服务器上运行 sce daemon
+   sce daemon start --port 8080
    
    # 客户端连接
-   kse remote connect https://kse-server.example.com
+   sce remote connect https://sce-server.example.com
    
    # 远程操作
-   kse status --remote
-   kse spec list --remote
+   sce status --remote
+   sce spec list --remote
    ```
 
 2. **团队协作**:
    ```bash
    # 共享 Spec
-   kse share spec 01-00-user-auth --team
+   sce share spec 01-00-user-auth --team
    
    # 协作编辑
-   kse spec edit 01-00-user-auth --collaborative
+   sce spec edit 01-00-user-auth --collaborative
    
    # 查看团队活动
-   kse activity --team
+   sce activity --team
    ```
 
 3. **Spec 同步**:
    ```bash
    # 推送到远程
-   kse push spec 01-00-user-auth
+   sce push spec 01-00-user-auth
    
    # 从远程拉取
-   kse pull spec 02-00-payment
+   sce pull spec 02-00-payment
    
    # 同步所有
-   kse sync --all
+   sce sync --all
    ```
 
 **价值**:
@@ -574,11 +574,11 @@ kse remote share spec 01-00-user-auth
 
 **MoltBot 功能**: Event System
 
-**kse 可以借鉴**:
+**sce 可以借鉴**:
 ```bash
 # 事件监听和触发
-kse event listen spec.created
-kse event trigger spec.completed --data '{"spec": "01-00"}'
+sce event listen spec.created
+sce event trigger spec.completed --data '{"spec": "01-00"}'
 ```
 
 **具体功能**:
@@ -603,19 +603,19 @@ kse event trigger spec.completed --data '{"spec": "01-00"}'
 2. **事件处理**:
    ```bash
    # 监听事件并执行操作
-   kse event on spec.completed \
-     --action "kse docs archive --spec {spec}"
+   sce event on spec.completed \
+     --action "sce docs archive --spec {spec}"
    
-   kse event on doc.compliance.failed \
-     --action "kse notify slack --message 'Compliance failed'"
+   sce event on doc.compliance.failed \
+     --action "sce notify slack --message 'Compliance failed'"
    ```
 
 3. **事件日志**:
    ```bash
    # 查看事件历史
-   kse event log
-   kse event log --type spec.created
-   kse event log --since "2026-01-01"
+   sce event log
+   sce event log --type spec.created
+   sce event log --since "2026-01-01"
    ```
 
 **配置示例**:
@@ -625,12 +625,12 @@ kse event trigger spec.completed --data '{"spec": "01-00"}'
   "handlers": [
     {
       "event": "spec.completed",
-      "action": "kse docs archive --spec {spec}",
+      "action": "sce docs archive --spec {spec}",
       "enabled": true
     },
     {
       "event": "doc.compliance.failed",
-      "action": "kse notify slack",
+      "action": "sce notify slack",
       "enabled": true
     }
   ]
@@ -650,11 +650,11 @@ kse event trigger spec.completed --data '{"spec": "01-00"}'
 
 **MoltBot 功能**: Docker Sandbox
 
-**kse 可以借鉴**:
+**sce 可以借鉴**:
 ```bash
 # 在沙箱中执行命令
-kse sandbox run "npm test"
-kse sandbox run "python script.py" --isolated
+sce sandbox run "npm test"
+sce sandbox run "python script.py" --isolated
 ```
 
 **具体功能**:
@@ -662,19 +662,19 @@ kse sandbox run "python script.py" --isolated
 1. **隔离执行**:
    ```bash
    # 在 Docker 容器中运行测试
-   kse sandbox run "npm test" --image node:22
+   sce sandbox run "npm test" --image node:22
    
    # 隔离运行脚本
-   kse sandbox run "python enhance.py" --isolated
+   sce sandbox run "python enhance.py" --isolated
    ```
 
 2. **安全检查**:
    ```bash
    # 在沙箱中运行质量检查
-   kse enhance check --sandbox
+   sce enhance check --sandbox
    
    # 安全地运行第三方扩展
-   kse extension run untrusted-checker --sandbox
+   sce extension run untrusted-checker --sandbox
    ```
 
 **价值**:
@@ -682,7 +682,7 @@ kse sandbox run "python script.py" --isolated
 - 隔离环境测试
 - 保护主机系统
 
-**优先级**: ⭐⭐ (对于 kse 不是核心需求)
+**优先级**: ⭐⭐ (对于 sce 不是核心需求)
 
 ---
 
@@ -730,7 +730,7 @@ kse sandbox run "python script.py" --isolated
 ### 3.4 可选 (⭐⭐)
 
 8. **沙箱执行环境**
-   - 对 kse 不是核心需求
+   - 对 sce 不是核心需求
 
 ---
 
@@ -742,23 +742,23 @@ kse sandbox run "python script.py" --isolated
 
 1. **多工作区管理**:
    ```bash
-   kse workspace create <name>
-   kse workspace list
-   kse workspace switch <name>
+   sce workspace create <name>
+   sce workspace list
+   sce workspace switch <name>
    ```
 
 2. **Cron 基础**:
    ```bash
-   kse cron add "<schedule>" "<command>"
-   kse cron list
-   kse cron remove <id>
+   sce cron add "<schedule>" "<command>"
+   sce cron list
+   sce cron remove <id>
    ```
 
 3. **Webhook 基础**:
    ```bash
-   kse webhook add <name> <url>
-   kse webhook list
-   kse webhook test <id>
+   sce webhook add <name> <url>
+   sce webhook list
+   sce webhook test <id>
    ```
 
 ### 4.2 Phase 2: 生态建设 (1-2 月)
@@ -780,7 +780,7 @@ kse sandbox run "python script.py" --isolated
 **目标**: 团队协作和高级自动化
 
 1. **远程协作**:
-   - kse daemon
+   - sce daemon
    - 远程连接
    - Spec 同步
 
@@ -791,7 +791,7 @@ kse sandbox run "python script.py" --isolated
 
 ---
 
-## 5. 与 kse 核心定位的契合度
+## 5. 与 sce 核心定位的契合度
 
 ### 5.1 完全契合 (⭐⭐⭐⭐⭐)
 
@@ -808,7 +808,7 @@ kse sandbox run "python script.py" --isolated
 
 ### 5.3 不太契合 (⭐⭐)
 
-- **沙箱执行**: kse 不是执行引擎
+- **沙箱执行**: sce 不是执行引擎
 
 ---
 
@@ -833,7 +833,7 @@ kse sandbox run "python script.py" --isolated
 
 ### 6.2 核心价值
 
-这些功能都围绕 kse 的核心定位：
+这些功能都围绕 sce 的核心定位：
 > **通过结构化文档驱动命令增强各行业效能**
 
 - **多工作区**: 提升多项目管理效能
@@ -848,7 +848,7 @@ kse sandbox run "python script.py" --isolated
 - Canvas 可视化
 - 设备节点（相机/麦克风）
 
-**原因**: 这些是 MoltBot 作为 "Personal OS" 的特性，与 kse 作为 "AI 驱动引擎" 的定位不符。
+**原因**: 这些是 MoltBot 作为 "Personal OS" 的特性，与 sce 作为 "AI 驱动引擎" 的定位不符。
 
 ---
 

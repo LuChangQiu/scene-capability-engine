@@ -13,7 +13,7 @@ Build a lifecycle bridge between scene contract declaration and reusable templat
 
 ## Command Surface
 
-- `kse scene package-publish`
+- `sce scene package-publish`
   - `--spec <spec-name>` (required)
   - `--spec-package <relative-path>`
   - `--scene-manifest <relative-path>`
@@ -22,7 +22,7 @@ Build a lifecycle bridge between scene contract declaration and reusable templat
   - `--force`
   - `--json`
 
-- `kse scene package-instantiate`
+- `sce scene package-instantiate`
   - `--template <path>` (required)
   - `--target-spec <spec-name>` (required)
   - `--values <path>`
@@ -42,17 +42,17 @@ Build a lifecycle bridge between scene contract declaration and reusable templat
 
 ```json
 {
-  "apiVersion": "kse.scene.template/v0.1",
+  "apiVersion": "sce.scene.template/v0.1",
   "kind": "scene-package-template",
   "metadata": {
-    "template_id": "kse.scene--erp-order-query--0.2.0",
+    "template_id": "sce.scene--erp-order-query--0.2.0",
     "source_spec": "67-00-scene-package-contract-declaration",
-    "package_coordinate": "kse.scene/erp-order-query@0.2.0",
+    "package_coordinate": "sce.scene/erp-order-query@0.2.0",
     "package_kind": "scene-template",
     "published_at": "2026-02-09T00:00:00.000Z"
   },
   "compatibility": {
-    "scene_api_version": "kse.scene/v0.2"
+    "scene_api_version": "sce.scene/v0.2"
   },
   "parameters": [],
   "template": {

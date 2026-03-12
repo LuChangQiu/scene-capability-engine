@@ -24,7 +24,7 @@
   - go / conditional-go / no-go
   - **验证**: Requirement 3
 
-- [ ] 3.2 生成 KSE 发布检查单
+- [ ] 3.2 生成 SCE 发布检查单
   - 版本号、changelog、README/command-reference、回滚说明
   - **验证**: Requirement 4
 

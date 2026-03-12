@@ -2,7 +2,7 @@
 
 ## Overview
 
-Implement `kse scene info` command following normalize → validate → run → print pattern. All code in `lib/commands/scene.js`. No new dependencies.
+Implement `sce scene info` command following normalize → validate → run → print pattern. All code in `lib/commands/scene.js`. No new dependencies.
 
 ## Tasks
 

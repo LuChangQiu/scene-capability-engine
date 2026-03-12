@@ -6,7 +6,7 @@
   - Implemented `lib/commands/scene.js` with option normalization, validation, context construction, and runtime invocation.
 
 - [x] 2 Register scene command in CLI bootstrap
-  - Registered `registerSceneCommands(program)` in `bin/kiro-spec-engine.js`.
+  - Registered `registerSceneCommands(program)` in `bin/scene-capability-engine.js`.
 
 - [x] 3 Add unit tests for command behavior
   - Added `tests/unit/commands/scene.test.js`.

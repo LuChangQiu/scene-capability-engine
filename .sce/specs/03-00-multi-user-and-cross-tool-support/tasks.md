@@ -20,7 +20,7 @@ This implementation plan extends kiro-spec-engine to support multi-user collabor
     - _Requirements: 1.1, 2.1_
   
   - [x] 1.2 Implement strategy prompting and selection
-    - Create interactive prompt for strategy selection (use-kse/use-project)
+    - Create interactive prompt for strategy selection (use-sce/use-project)
     - Display existing steering files to user
     - Validate user selection
     - _Requirements: 1.2, 2.2_
@@ -31,8 +31,8 @@ This implementation plan extends kiro-spec-engine to support multi-user collabor
     - Validate backup integrity
     - _Requirements: 1.3_
   
-  - [x] 1.4 Implement kse steering installation
-    - Create `installKseSteering()` to copy template files
+  - [x] 1.4 Implement sce steering installation
+    - Create `installSceSteering()` to copy template files
     - Handle file conflicts and permissions
     - Verify installation success
     - _Requirements: 1.3_
@@ -51,7 +51,7 @@ This implementation plan extends kiro-spec-engine to support multi-user collabor
   
   - [ ]* 1.7 Write property tests for Steering Manager
     - **Property 1: Steering Conflict Detection**
-    - **Property 2: Steering Backup on Use-KSE**
+    - **Property 2: Steering Backup on Use-SCE**
     - **Property 3: Steering Preservation on Use-Project**
     - **Property 4: Strategy Documentation**
     - **Validates: Requirements 1.1, 1.3, 1.4, 2.1, 2.6**
@@ -158,7 +158,7 @@ This implementation plan extends kiro-spec-engine to support multi-user collabor
 
 - [x] 6. Implement team status command
   - [x] 6.1 Create status command handler
-    - Implement `kse status` command
+    - Implement `sce status` command
     - List all specs in project
     - Calculate task completion statistics per spec
     - _Requirements: 5.1, 5.2_
@@ -270,33 +270,33 @@ This implementation plan extends kiro-spec-engine to support multi-user collabor
   - Ensure all tests pass, ask the user if questions arise.
 
 - [x] 12. Implement CLI commands
-  - [x] 12.1 Create `kse workspace` command group
-    - Implement `kse workspace init` to initialize personal workspace
-    - Implement `kse workspace sync` to synchronize state
-    - Implement `kse workspace list` to show all workspaces
+  - [x] 12.1 Create `sce workspace` command group
+    - Implement `sce workspace init` to initialize personal workspace
+    - Implement `sce workspace sync` to synchronize state
+    - Implement `sce workspace list` to show all workspaces
     - Add command help and usage examples
     - _Requirements: 3.1, 9.2_
   
-  - [x] 12.2 Create `kse task` command group
-    - Implement `kse task claim {spec-name} {task-id}` to claim tasks
-    - Implement `kse task unclaim {spec-name} {task-id}` to unclaim tasks
+  - [x] 12.2 Create `sce task` command group
+    - Implement `sce task claim {spec-name} {task-id}` to claim tasks
+    - Implement `sce task unclaim {spec-name} {task-id}` to unclaim tasks
     - Add `--force` flag for claim override
     - Add command help and usage examples
     - _Requirements: 4.1, 4.4_
   
-  - [x] 12.3 Create `kse context` command
-    - Implement `kse context export {spec-name}` to export context
+  - [x] 12.3 Create `sce context` command
+    - Implement `sce context export {spec-name}` to export context
     - Add options for including/excluding sections
     - Add command help and usage examples
     - _Requirements: 6.1_
   
-  - [x] 12.4 Create `kse prompt` command
-    - Implement `kse prompt generate {spec-name} {task-id}` to generate prompts
+  - [x] 12.4 Create `sce prompt` command
+    - Implement `sce prompt generate {spec-name} {task-id}` to generate prompts
     - Add options for target tool and context length
     - Add command help and usage examples
     - _Requirements: 7.1_
   
-  - [x] 12.5 Update `kse status` command
+  - [x] 12.5 Update `sce status` command
     - Enhance to show claimed tasks and team status
     - Add workspace information if in multi-user mode
     - Format output for readability
@@ -309,7 +309,7 @@ This implementation plan extends kiro-spec-engine to support multi-user collabor
     - _Requirements: 10.2, 10.3_
   
   - [x] 13.2 Implement gradual migration support
-    - Allow `kse workspace init` on existing single-user projects
+    - Allow `sce workspace init` on existing single-user projects
     - Preserve existing specs and tasks during migration
     - Update documentation with migration guide
     - _Requirements: 10.4_
@@ -325,7 +325,7 @@ This implementation plan extends kiro-spec-engine to support multi-user collabor
     - Document findings in notes
     - _Requirements: 11.1, 11.2_
   
-  - [x] 14.2 Analyze use cases for kse
+  - [x] 14.2 Analyze use cases for sce
     - Identify potential integration points
     - Evaluate benefits and trade-offs
     - Document use cases
@@ -414,7 +414,7 @@ This implementation plan extends kiro-spec-engine to support multi-user collabor
 - Integration tests verify end-to-end workflows
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

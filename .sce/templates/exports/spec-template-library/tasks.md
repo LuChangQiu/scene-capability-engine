@@ -345,7 +345,7 @@ This implementation plan breaks down the {{SPEC_NAME_TITLE}} feature into discre
 
   - [ ] 19.3 Remove legacy compatibility fields from template contracts
     - Ensure generated scene package contracts only emit `compatibility.min_sce_version`
-    - Verify no `compatibility.kse_version` remains in exported templates or fixtures
+    - Verify no `compatibility.sce_version` remains in exported templates or fixtures
     - _Requirements: 16.4_
 
 ## Notes

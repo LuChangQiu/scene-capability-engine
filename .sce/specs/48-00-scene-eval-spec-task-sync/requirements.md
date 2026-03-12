@@ -3,7 +3,7 @@
 ## Introduction
 
 `scene eval` can now compute recommendations from runtime results and feedback templates.
-To make that output actionable in the KSE workflow, evaluation recommendations should be
+To make that output actionable in the SCE workflow, evaluation recommendations should be
 synchronized into spec `tasks.md` directly, with trace metadata and duplicate protection.
 
 ## Requirements

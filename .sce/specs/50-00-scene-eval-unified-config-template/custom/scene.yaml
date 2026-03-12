@@ -1,4 +1,4 @@
-apiVersion: kse.scene/v0.2
+apiVersion: sce.scene/v0.2
 kind: scene
 metadata:
   obj_id: scene.erp.50-00-scene-eval-unified-config-template

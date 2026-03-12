@@ -2,7 +2,7 @@
 
 ## Overview
 
-Adds a `kse scene owner` subcommand group to manage package ownership metadata in the local scene package registry. The group contains four sub-subcommands: `set`, `show`, `list`, and `transfer`. Each operates on the `owner` string field of package entries in `registry-index.json`. Follows the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`. No new dependencies.
+Adds a `sce scene owner` subcommand group to manage package ownership metadata in the local scene package registry. The group contains four sub-subcommands: `set`, `show`, `list`, and `transfer`. Each operates on the `owner` string field of package entries in `registry-index.json`. Follows the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`. No new dependencies.
 
 Since all four sub-subcommands share the same registry loading, option normalization, and output formatting patterns, the design consolidates them into a single `runSceneOwnerCommand` dispatcher that delegates to action-specific logic based on the `action` field. This reduces code duplication while maintaining the established pattern.
 

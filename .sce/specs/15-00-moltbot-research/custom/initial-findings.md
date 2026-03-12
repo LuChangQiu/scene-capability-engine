@@ -2,7 +2,7 @@
 
 **调研日期**: 2026-01-28  
 **调研对象**: [MoltBot](https://github.com/moltbot/moltbot) (原 ClawdBot)  
-**调研目的**: 分析爆火项目特点，寻找与 kse 的借鉴点
+**调研目的**: 分析爆火项目特点，寻找与 sce 的借鉴点
 
 ---
 
@@ -288,11 +288,11 @@ moltbot onboard
 
 ---
 
-## 8. 与 kse 的对比
+## 8. 与 sce 的对比
 
 ### 8.1 相似之处
 
-| 维度 | MoltBot | kse |
+| 维度 | MoltBot | sce |
 |-----|---------|-----|
 | **定位** | AI 助手平台 | AI 开发方法论工具 |
 | **开源** | ✅ | ✅ |
@@ -303,7 +303,7 @@ moltbot onboard
 
 ### 8.2 核心差异
 
-| 维度 | MoltBot | kse |
+| 维度 | MoltBot | sce |
 |-----|---------|-----|
 | **目标用户** | 终端用户 | 开发者 |
 | **核心价值** | 个人助手 | 开发方法论 |
@@ -320,7 +320,7 @@ moltbot onboard
 - **How**: 通过消息平台交互
 - **Why**: 自动化日常任务
 
-**kse**:
+**sce**:
 - **What**: Spec 驱动开发工具
 - **Who**: 使用 AI 编码工具的开发者
 - **How**: 提供结构化上下文
@@ -337,9 +337,9 @@ moltbot onboard
 moltbot onboard  # 一条命令，全程引导
 ```
 
-**kse 可以借鉴**:
+**sce 可以借鉴**:
 ```bash
-kse init  # 交互式项目初始化
+sce init  # 交互式项目初始化
 ```
 
 **具体实现**:
@@ -359,7 +359,7 @@ kse init  # 交互式项目初始化
 **MoltBot 的定位**:
 > "不是工具，是操作系统层"
 
-**kse 可以重新定位**:
+**sce 可以重新定位**:
 > "不是工具，是开发方法论基础设施"
 
 **具体体现**:
@@ -370,9 +370,9 @@ kse init  # 交互式项目初始化
 ### 9.3 ⭐ 多渠道集成思路
 
 **MoltBot**: 集成 12+ 消息平台  
-**kse**: 可以集成更多 AI 工具
+**sce**: 可以集成更多 AI 工具
 
-**当前 kse 支持**:
+**当前 sce 支持**:
 - Cursor
 - Claude
 - Windsurf
@@ -395,7 +395,7 @@ kse init  # 交互式项目初始化
 ### 9.4 ⭐ Skills/Extensions 生态
 
 **MoltBot**: ClawdHub 技能注册表  
-**kse**: 可以建立 Spec 模板市场
+**sce**: 可以建立 Spec 模板市场
 
 **SpecHub 概念**:
 - 社区贡献的 Spec 模板
@@ -404,21 +404,21 @@ kse init  # 交互式项目初始化
 
 **示例**:
 ```bash
-kse install spec-template user-auth
-kse install spec-template rest-api
-kse install spec-template react-dashboard
+sce install spec-template user-auth
+sce install spec-template rest-api
+sce install spec-template react-dashboard
 ```
 
 ### 9.5 ⭐ 引导式体验
 
 **MoltBot**: 每一步都有清晰指引  
-**kse**: 可以增强用户引导
+**sce**: 可以增强用户引导
 
 **具体改进**:
 1. **首次运行**:
    ```bash
-   $ kse
-   👋 Welcome to kse! Let's get started.
+   $ sce
+   👋 Welcome to sce! Let's get started.
    
    I'll help you set up your first Spec-driven project.
    This will take about 30 seconds.
@@ -428,30 +428,30 @@ kse install spec-template react-dashboard
 
 2. **上下文帮助**:
    ```bash
-   $ kse status
+   $ sce status
    ✅ Project adopted
    📝 3 specs found
    
    💡 Next steps:
-      - Create a new spec: kse create-spec 04-00-my-feature
-      - View spec workflow: kse docs spec-workflow
+      - Create a new spec: sce create-spec 04-00-my-feature
+      - View spec workflow: sce docs spec-workflow
    ```
 
 3. **错误恢复**:
    ```bash
-   $ kse adopt
+   $ sce adopt
    ❌ Error: .sce/ already exists
    
    💡 Did you mean:
-      - Update to latest: kse adopt --force
-      - Check status: kse status
-      - Get help: kse doctor
+      - Update to latest: sce adopt --force
+      - Check status: sce status
+      - Get help: sce doctor
    ```
 
 ### 9.6 Doctor 命令增强
 
 **MoltBot**: `moltbot doctor` 检查配置风险  
-**kse**: 已有 `kse doctor`，可以增强
+**sce**: 已有 `sce doctor`，可以增强
 
 **可以添加**:
 - AI 工具集成检查
@@ -467,7 +467,7 @@ kse install spec-template react-dashboard
 - Showcase 页面
 - 活跃的 Discord
 
-**kse 可以做**:
+**sce 可以做**:
 - 建立 Showcase（用户案例）
 - 社区贡献者墙
 - 每月最佳 Spec 评选
@@ -480,21 +480,21 @@ kse install spec-template react-dashboard
 ### 10.1 系统级权限
 
 **MoltBot**: 可以运行 bash、访问文件系统  
-**kse**: 不需要，AI 工具已有权限
+**sce**: 不需要，AI 工具已有权限
 
-**原因**: kse 是方法论工具，不是执行引擎
+**原因**: sce 是方法论工具，不是执行引擎
 
 ### 10.2 多渠道消息集成
 
 **MoltBot**: WhatsApp/Telegram/Discord 等  
-**kse**: 不需要，用户在 AI 工具中工作
+**sce**: 不需要，用户在 AI 工具中工作
 
-**原因**: kse 的价值在于提供上下文，不是替代 AI 工具
+**原因**: sce 的价值在于提供上下文，不是替代 AI 工具
 
 ### 10.3 Voice Wake/Talk Mode
 
 **MoltBot**: 语音交互  
-**kse**: 不需要
+**sce**: 不需要
 
 **原因**: 开发者主要通过文本交互
 
@@ -504,13 +504,13 @@ kse install spec-template react-dashboard
 
 ### 11.1 短期（1-2 周）
 
-1. **实现 `kse init` 引导式初始化**
+1. **实现 `sce init` 引导式初始化**
    - 交互式问答
    - 自动项目配置
    - 生成示例 Spec
    - 优先级: ⭐⭐⭐⭐⭐
 
-2. **增强 `kse doctor`**
+2. **增强 `sce doctor`**
    - AI 工具集成检查
    - Spec 质量评分
    - 最佳实践建议
@@ -572,7 +572,7 @@ kse install spec-template react-dashboard
 3. **完美时机**: AI Agent 浪潮
 4. **社区驱动**: 开源 + 有趣品牌 + 活跃社区
 
-### 12.2 kse 可以应用的公式
+### 12.2 sce 可以应用的公式
 
 ```
 采用率 = 解决开发痛点 × 降低学习曲线 × AI 开发浪潮 × 开发者社区
@@ -587,11 +587,11 @@ kse install spec-template react-dashboard
 ### 12.3 核心差异认知
 
 **MoltBot**: "Personal OS for Life"  
-**kse**: "Development OS for Code"
+**sce**: "Development OS for Code"
 
 **不要模仿，要借鉴思路**:
 - MoltBot 的成功在于定位和执行
-- kse 应该找到自己的独特价值
+- sce 应该找到自己的独特价值
 - 借鉴 UX 设计，不是功能复制
 
 ---
@@ -601,12 +601,12 @@ kse install spec-template react-dashboard
 ### 13.1 需要深入探讨的问题
 
 1. **定位问题**:
-   - kse 是否需要重新定位？
+   - sce 是否需要重新定位？
    - "上下文提供者" vs "开发方法论基础设施"
    - 如何传达核心价值？
 
 2. **用户体验**:
-   - `kse init` 的具体交互流程？
+   - `sce init` 的具体交互流程？
    - 如何平衡简单性和灵活性？
    - 错误消息的改进优先级？
 
@@ -623,7 +623,7 @@ kse install spec-template react-dashboard
 ### 13.2 需要验证的假设
 
 1. **用户痛点**:
-   - 开发者真的觉得 kse 学习曲线陡峭吗？
+   - 开发者真的觉得 sce 学习曲线陡峭吗？
    - 首次使用的主要障碍是什么？
    - 用户最需要的功能是什么？
 
@@ -649,9 +649,9 @@ kse install spec-template react-dashboard
 4. ⭐⭐⭐⭐ **社区驱动** - 开源 + 有趣品牌
 5. ⭐⭐⭐ **生态系统** - Skills 平台
 
-### 14.2 kse 最应该借鉴的 3 点
+### 14.2 sce 最应该借鉴的 3 点
 
-1. **引导式初始化** (`kse init`)
+1. **引导式初始化** (`sce init`)
    - 最高优先级
    - 最大影响
    - 相对容易实现
@@ -669,9 +669,9 @@ kse install spec-template react-dashboard
 
 ### 14.3 不应该做的 3 点
 
-1. **不要复制功能** - kse 不是 MoltBot
+1. **不要复制功能** - sce 不是 MoltBot
 2. **不要偏离定位** - 保持开发工具的本质
-3. **不要过度复杂化** - 简单性是 kse 的优势
+3. **不要过度复杂化** - 简单性是 sce 的优势
 
 ---
 
@@ -679,13 +679,13 @@ kse install spec-template react-dashboard
 
 请您反馈以下问题，我们可以深入讨论：
 
-1. **您认为 kse 最大的使用障碍是什么？**
+1. **您认为 sce 最大的使用障碍是什么？**
    - 学习曲线？
    - 文档不足？
    - 价值不清晰？
    - 其他？
 
-2. **您觉得 `kse init` 引导式初始化是否值得优先实现？**
+2. **您觉得 `sce init` 引导式初始化是否值得优先实现？**
    - 非常值得
    - 值得考虑
    - 优先级不高
@@ -697,7 +697,7 @@ kse install spec-template react-dashboard
    - 优先级低
    - 不需要
 
-4. **您认为 kse 应该如何重新定位？**
+4. **您认为 sce 应该如何重新定位？**
    - 保持现状
    - 强化 "方法论" 概念
    - 转向 "基础设施" 定位

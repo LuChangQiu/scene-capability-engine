@@ -20,4 +20,4 @@
 
 - [x] 5 Run full verification and status checks
   - Executed `npx jest tests/unit/commands/scene.test.js --runInBand`.
-  - Executed `npm test -- --runInBand`, `kse doctor --docs`, and `kse status`.
+  - Executed `npm test -- --runInBand`, `sce doctor --docs`, and `sce status`.

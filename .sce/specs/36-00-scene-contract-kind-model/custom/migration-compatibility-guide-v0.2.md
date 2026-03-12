@@ -2,7 +2,7 @@
 
 ## Principles
 
-- keep legacy KSE spec workflow intact
+- keep legacy SCE spec workflow intact
 - add Scene/Kind artifacts without breaking existing docs
 - migrate domain by domain with pilot-first strategy
 
@@ -26,7 +26,7 @@
 
 ## Compatibility Matrix
 
-| Existing KSE Capability | Compatibility | Notes |
+| Existing SCE Capability | Compatibility | Notes |
 | --- | --- | --- |
 | spec directory structure | full | unchanged |
 | docs governance | full | new artifacts placed in custom/ |

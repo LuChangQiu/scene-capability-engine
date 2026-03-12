@@ -2,7 +2,7 @@
 
 ## 简介
 
-本特性为 kiro-spec-engine (kse) 引入第四层约束 — Spec 级 `steering.md`，并改造全局 `CURRENT_CONTEXT.md` 为多 Agent 友好的汇总格式。解决多 Agent 并行推进不同 Spec 时 CURRENT_CONTEXT 写冲突、缺少 Spec 级约束存放位置、以及 Spec 生命周期协调缺失的问题。
+本特性为 kiro-spec-engine (sce) 引入第四层约束 — Spec 级 `steering.md`，并改造全局 `CURRENT_CONTEXT.md` 为多 Agent 友好的汇总格式。解决多 Agent 并行推进不同 Spec 时 CURRENT_CONTEXT 写冲突、缺少 Spec 级约束存放位置、以及 Spec 生命周期协调缺失的问题。
 
 ## 术语表
 

@@ -8,7 +8,7 @@ inside a target spec. This spec adds a scaffold command to create or preview sta
 ## Requirements
 
 ### Requirement 1: Scene Scaffold CLI
-- Provide `kse scene scaffold` command.
+- Provide `sce scene scaffold` command.
 - Require target spec via `--spec`.
 - Support starter type selection via `--type erp|hybrid`.
 - Support custom template override via `--template`.

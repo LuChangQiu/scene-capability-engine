@@ -1,0 +1,250 @@
+{
+  "apiVersion": "sce.scene.package/v0.1",
+  "kind": "scene-domain-profile",
+  "metadata": {
+    "group": "sce.scene",
+    "name": "erp-order-query-read",
+    "version": "0.1.0",
+    "summary": "Order read/query scene template for Moqui-aligned ERP integration",
+    "description": "Query-focused domain profile for order read flows with ontology, lineage, and decision strategy."
+  },
+  "compatibility": {
+    "min_sce_version": ">=1.47.15",
+    "scene_api_version": "sce.scene/v0.2",
+    "moqui_model_version": "3.x",
+    "adapter_api_version": "v1"
+  },
+  "capabilities": {
+    "provides": [
+      "scene.erp.order.query.read"
+    ],
+    "requires": [
+      "binding:http",
+      "profile:erp",
+      "moqui.adapter"
+    ]
+  },
+  "parameters": [
+    {
+      "id": "order_id",
+      "type": "string",
+      "required": false,
+      "description": "Optional order identifier filter"
+    },
+    {
+      "id": "party_id",
+      "type": "string",
+      "required": false,
+      "description": "Optional party/customer filter"
+    },
+    {
+      "id": "status_id",
+      "type": "string",
+      "required": false,
+      "description": "Optional order status filter"
+    }
+  ],
+  "artifacts": {
+    "entry_scene": "custom/scene.yaml",
+    "generates": [
+      "custom/scene.yaml"
+    ]
+  },
+  "governance": {
+    "risk_level": "low",
+    "approval_required": false,
+    "approval": {
+      "required": false
+    },
+    "idempotency": {
+      "required": true,
+      "key": "orderQueryFingerprint"
+    },
+    "rollback_supported": true
+  },
+  "capability_contract": {
+    "bindings": [
+      {
+        "type": "query",
+        "ref": "spec.erp.order-list-query",
+        "timeout_ms": 1800,
+        "retry": 1,
+        "intent": "Fetch order header candidates by dynamic filter",
+        "preconditions": [
+          "query filters are validated",
+          "caller has order read permission"
+        ],
+        "postconditions": [
+          "candidate order list is available"
+        ]
+      },
+      {
+        "type": "query",
+        "ref": "spec.erp.order-header-read",
+        "depends_on": "spec.erp.order-list-query",
+        "timeout_ms": 1500,
+        "retry": 1,
+        "intent": "Hydrate order header details for selected records",
+        "preconditions": [
+          "candidate order list is available"
+        ],
+        "postconditions": [
+          "order header payload is normalized"
+        ]
+      },
+      {
+        "type": "query",
+        "ref": "spec.erp.order-item-read",
+        "depends_on": "spec.erp.order-header-read",
+        "timeout_ms": 1500,
+        "retry": 1,
+        "intent": "Attach order item lines for complete order projection",
+        "preconditions": [
+          "order header payload is normalized"
+        ],
+        "postconditions": [
+          "order projection includes header and items"
+        ]
+      }
+    ]
+  },
+  "governance_contract": {
+    "risk_level": "low",
+    "approval": {
+      "required": false
+    },
+    "idempotency": {
+      "required": true,
+      "key": "orderQueryFingerprint"
+    },
+    "data_lineage": {
+      "sources": [
+        {
+          "ref": "spec.erp.order-list-query",
+          "fields": [
+            "orderId",
+            "partyId",
+            "statusId"
+          ]
+        },
+        {
+          "ref": "spec.erp.order-header-read",
+          "fields": [
+            "orderName",
+            "orderDate",
+            "grandTotal"
+          ]
+        }
+      ],
+      "transforms": [
+        {
+          "operation": "normalizeOrderHeader",
+          "description": "Normalize order header schema for template-safe output"
+        },
+        {
+          "operation": "mergeOrderItems",
+          "description": "Merge header and line items into order projection"
+        }
+      ],
+      "sinks": [
+        {
+          "ref": "spec.erp.order-item-read",
+          "fields": [
+            "orderProjection",
+            "items",
+            "totals"
+          ]
+        }
+      ]
+    },
+    "business_rules": [
+      {
+        "id": "rule.order-query.filter-whitelist",
+        "description": "Only approved filter fields can be used for order query",
+        "entity_ref": "order_header",
+        "bind_to": "spec.erp.order-list-query",
+        "status": "enforced"
+      },
+      {
+        "id": "rule.order-query.header-redaction",
+        "description": "Sensitive header fields must be redacted before projection output",
+        "entity_ref": "order_projection",
+        "bind_to": "spec.erp.order-header-read",
+        "status": "active"
+      }
+    ],
+    "decision_logic": [
+      {
+        "id": "decision.order-query.empty-result-policy",
+        "description": "Return explicit empty projection when no order is matched",
+        "bind_to": "spec.erp.order-list-query",
+        "status": "resolved",
+        "automated": true
+      },
+      {
+        "id": "decision.order-query.item-hydration-policy",
+        "description": "Skip item hydration when header is missing required keys",
+        "bind_to": "spec.erp.order-item-read",
+        "status": "resolved",
+        "automated": true
+      }
+    ]
+  },
+  "ontology_model": {
+    "entities": [
+      {
+        "id": "order_header",
+        "type": "core"
+      },
+      {
+        "id": "order_item",
+        "type": "core"
+      },
+      {
+        "id": "order_projection",
+        "type": "projection"
+      },
+      {
+        "id": "customer_party",
+        "type": "reference"
+      }
+    ],
+    "relations": [
+      {
+        "source": "order_header",
+        "target": "customer_party",
+        "type": "depends_on"
+      },
+      {
+        "source": "order_header",
+        "target": "order_item",
+        "type": "composes"
+      },
+      {
+        "source": "order_header",
+        "target": "order_projection",
+        "type": "produces"
+      },
+      {
+        "source": "order_item",
+        "target": "order_projection",
+        "type": "produces"
+      }
+    ]
+  },
+  "agent_hints": {
+    "summary": "Read-only order query template with deterministic projection and ontology mapping.",
+    "complexity": "low",
+    "estimated_duration_ms": 2200,
+    "required_permissions": [
+      "order.read"
+    ],
+    "suggested_sequence": [
+      "spec.erp.order-list-query",
+      "spec.erp.order-header-read",
+      "spec.erp.order-item-read"
+    ],
+    "rollback_strategy": "Retry query with reduced filter set and preserve previous projection cache"
+  }
+}
+

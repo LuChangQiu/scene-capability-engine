@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Moqui Scene Template Extractor is the second phase of the KSE + Moqui fusion strategy. Building on Spec 90's MoquiClient and MoquiAdapter, this feature connects to a live Moqui ERP instance, discovers available entities/services/screens, analyzes them to identify business patterns (e.g., CRUD operations, order queries, workflow orchestrations), and generates reusable scene templates (YAML manifests + scene-package.json). The extracted templates integrate with KSE's existing `scene package-publish` and `scene instantiate` workflows.
+The Moqui Scene Template Extractor is the second phase of the SCE + Moqui fusion strategy. Building on Spec 90's MoquiClient and MoquiAdapter, this feature connects to a live Moqui ERP instance, discovers available entities/services/screens, analyzes them to identify business patterns (e.g., CRUD operations, order queries, workflow orchestrations), and generates reusable scene templates (YAML manifests + scene-package.json). The extracted templates integrate with SCE's existing `scene package-publish` and `scene instantiate` workflows.
 
 ## Glossary
 
@@ -11,8 +11,8 @@ The Moqui Scene Template Extractor is the second phase of the KSE + Moqui fusion
 - **Business_Pattern**: A recognized combination of Moqui resources that maps to a reusable scene archetype (e.g., "crud", "query", "workflow")
 - **Pattern_Rule**: A rule definition that describes how to match discovered resources to a specific Business_Pattern
 - **Extraction_Result**: The output of the extraction pipeline containing generated scene manifests and package contracts
-- **Scene_Manifest**: A YAML file following `kse.scene/v0.2` apiVersion that describes a scene's domain, intent, bindings, and governance
-- **Package_Contract**: A JSON file following `kse.scene.package/v0.1` apiVersion that describes a scene package's metadata, parameters, and template structure
+- **Scene_Manifest**: A YAML file following `sce.scene/v0.2` apiVersion that describes a scene's domain, intent, bindings, and governance
+- **Package_Contract**: A JSON file following `sce.scene.package/v0.1` apiVersion that describes a scene package's metadata, parameters, and template structure
 - **Template_Bundle**: A directory containing a Scene_Manifest and Package_Contract pair ready for publishing via `scene package-publish`
 - **MoquiClient**: The HTTP client from Spec 90 that handles JWT authentication and request execution against Moqui REST APIs
 - **MoquiAdapter**: The binding handler from Spec 90 that parses binding refs and routes operations to Moqui endpoints
@@ -44,11 +44,11 @@ The Moqui Scene Template Extractor is the second phase of the KSE + Moqui fusion
 
 ### Requirement 3: Scene Manifest Generation
 
-**User Story:** As a developer, I want the extractor to generate valid scene manifests from identified patterns, so that the templates are compatible with KSE's scene runtime.
+**User Story:** As a developer, I want the extractor to generate valid scene manifests from identified patterns, so that the templates are compatible with SCE's scene runtime.
 
 #### Acceptance Criteria
 
-1. THE Extractor SHALL generate Scene_Manifests using apiVersion `kse.scene/v0.2` with `kind: scene`
+1. THE Extractor SHALL generate Scene_Manifests using apiVersion `sce.scene/v0.2` with `kind: scene`
 2. WHEN generating a Scene_Manifest for a "crud" pattern, THE Extractor SHALL include binding refs for all five entity operations (list, get, create, update, delete) in the capability_contract
 3. WHEN generating a Scene_Manifest for a "query" pattern, THE Extractor SHALL include binding refs for read-only operations (list, get) in the capability_contract
 4. WHEN generating a Scene_Manifest for a "workflow" pattern, THE Extractor SHALL include service invoke binding refs and entity read/write model_scope entries
@@ -57,15 +57,15 @@ The Moqui Scene Template Extractor is the second phase of the KSE + Moqui fusion
 
 ### Requirement 4: Package Contract Generation
 
-**User Story:** As a developer, I want the extractor to generate scene-package.json contracts alongside manifests, so that templates can be published and instantiated through existing KSE workflows.
+**User Story:** As a developer, I want the extractor to generate scene-package.json contracts alongside manifests, so that templates can be published and instantiated through existing SCE workflows.
 
 #### Acceptance Criteria
 
-1. THE Extractor SHALL generate Package_Contracts using apiVersion `kse.scene.package/v0.1`
+1. THE Extractor SHALL generate Package_Contracts using apiVersion `sce.scene.package/v0.1`
 2. THE Extractor SHALL derive the package name from the Business_Pattern type and primary entity/service name using kebab-case formatting
 3. THE Extractor SHALL include template parameters for configurable values (e.g., timeout_ms, retry count) in the Package_Contract
 4. THE Extractor SHALL set the package kind based on the Business_Pattern: "scene-template" for all pattern types
-5. WHEN generating a Package_Contract, THE Extractor SHALL include metadata fields: name, version ("0.1.0"), group ("kse.scene"), and description derived from the pattern
+5. WHEN generating a Package_Contract, THE Extractor SHALL include metadata fields: name, version ("0.1.0"), group ("sce.scene"), and description derived from the pattern
 
 ### Requirement 5: Template Output and File Writing
 
@@ -81,7 +81,7 @@ The Moqui Scene Template Extractor is the second phase of the KSE + Moqui fusion
 
 ### Requirement 6: CLI Command Integration
 
-**User Story:** As a developer, I want a `kse scene extract` CLI command, so that I can run template extraction from the command line.
+**User Story:** As a developer, I want a `sce scene extract` CLI command, so that I can run template extraction from the command line.
 
 #### Acceptance Criteria
 

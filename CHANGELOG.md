@@ -1,4 +1,4 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to this project will be documented in this file.
 
@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [3.6.37] - 2026-03-12
+
+### Added
+- Added explicit release-environment guidance that clarifies this project publishes only from `v*` tag pushes, requires GitHub Actions secret `NPM_TOKEN`, and must bump `package.json.version` before tagging.
+- Added release notes for `v3.6.37` under `docs/releases/` and `docs/zh/releases/`.
+
+### Changed
+- Removed legacy `kse` command/content references across active code paths, templates, fixtures, watch configuration, version metadata, steering, and release documentation without preserving compatibility aliases.
+- Renamed the multi-workspace directory validation API from `isValidKseDirectory` to `isValidSceDirectory` and updated the related tests.
+- Renamed historical spec/template fixture paths from `kse` identifiers to `sce` identifiers, including scene package template IDs and spec-scene override references.
+- Updated the branding consistency gate to fail on legacy `kse` aliases and stale social handles instead of allowing them to linger in tracked content.
+- Fixed `scripts/git-managed-gate.js` on Windows by falling back to `git.cmd` / `git.exe` resolution, so `prepublishOnly` and release preflight no longer misreport a valid repository as missing git metadata.
 
 ### Added
 - Added `lib/auto/handoff-release-gate-history-loaders-service.js` for release-gate history entry normalization, report discovery, seed loading, and merge selection.
@@ -278,7 +291,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `state-reconcile-<tag>.json`
 
 ### Changed
-- Release workflow state reconciliation gate is now enforce-by-default (`KSE_RELEASE_STATE_MIGRATION_ENFORCE` defaults to `true`).
+- Release workflow state reconciliation gate is now enforce-by-default (`SCE_RELEASE_STATE_MIGRATION_ENFORCE` defaults to `true`).
 - Release workflow Node runtime updated to `22.x` so sqlite-backed reconciliation can run in release pipeline.
 
 ## [3.6.7] - 2026-03-05
@@ -856,7 +869,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Interactive runtime policy + work-order default pipeline**: Added `interactive-runtime-policy-evaluate` and `interactive-work-order-build`, integrated both into `interactive-customization-loop` and `interactive-flow` (including `sce scene interactive-loop/interactive-flow` passthrough), with default `runtime_mode=ops-fix`, `runtime_environment=staging`, runtime non-allow fail gate option, and auditable work-order artifacts.
 - **Release weekly ops closed-loop summary**: Added `node scripts/release-ops-weekly-summary.js` (npm alias `npm run report:release-ops-weekly`) to aggregate handoff evidence, release-gate history, interactive governance, and matrix signals into one weekly risk/recommendation card (`weekly-ops-summary.json|.md`).
 - **Release workflow weekly ops asset publication**: `release.yml` now exports and publishes `weekly-ops-summary-<tag>.json|.md` alongside governance snapshot and Moqui release evidence assets.
-- **Release weekly ops hard gate**: Added `node scripts/release-weekly-ops-gate.js` (npm alias `npm run gate:release-ops-weekly`) and wired release workflow defaults to block publish when weekly ops summary risk exceeds `medium` (configurable via `KSE_RELEASE_WEEKLY_OPS_*` variables).
+- **Release weekly ops hard gate**: Added `node scripts/release-weekly-ops-gate.js` (npm alias `npm run gate:release-ops-weekly`) and wired release workflow defaults to block publish when weekly ops summary risk exceeds `medium` (configurable via `SCE_RELEASE_WEEKLY_OPS_*` variables).
 - **Unified weekly+drift remediation bundle**: Added `node scripts/release-risk-remediation-bundle.js` (npm alias `npm run report:release-risk-remediation`) and wired release workflow to publish `release-risk-remediation-<tag>.json|.md|.lines` assets derived from merged gate signals.
 - **Release asset integrity hard gate**: Added `node scripts/release-asset-integrity-check.js` (npm alias `npm run gate:release-asset-integrity`) and wired `release.yml` to block publish on missing/empty core release-evidence assets, while exporting `release-asset-integrity-<tag>.json|.md`.
 - **Interactive dialogue governance baseline**: Added `node scripts/interactive-dialogue-governance.js`, baseline policy `docs/interactive-customization/dialogue-governance-policy-baseline.json`, and loop/flow integration so embedded assistants emit `allow|clarify|deny` dialogue decisions with clarification prompts before planning.
@@ -878,7 +891,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Interactive matrix signal closed-loop defaultization**: `interactive-flow` now runs a default matrix snapshot stage (`moqui-template-baseline-report`) after loop execution, persists session matrix artifacts, appends `.sce/reports/interactive-matrix-signals.jsonl`, and exposes matrix controls (`--no-matrix`, thresholds, compare baseline, signal path, fail-on-portfolio/regression/error) in both script and `sce scene interactive-flow`.
 - **Interactive approval workflow state machine**: Added `node scripts/interactive-approval-workflow.js` (status alias `npm run report:interactive-approval-status`) covering `draft/submitted/approved/rejected/executed/verified/archived` transitions, with high-risk execute blocking and append-only approval event audit JSONL.
 - **Interactive Moqui adapter stage-C baseline**: Added `lib/interactive-customization/moqui-interactive-adapter.js` plus `node scripts/interactive-moqui-adapter.js` (alias `npm run report:interactive-adapter-capabilities`) to implement unified adapter contract `capabilities/plan/validate/apply/rollback`, low-risk one-click apply (`low-risk-apply`), policy-aware controlled execution, and append-only execution records with validation snapshot + rollback reference.
-- **Interactive template matrix stage-D baseline**: Added `kse.scene--moqui-interactive-customization-loop--0.1.0` scene package assets (scene-package/scene manifest/template manifest), plus template sedimentation playbook, adapter extension contract schema/sample, and Domain_Pack extension flow docs for cross-stack replication.
+- **Interactive template matrix stage-D baseline**: Added `sce.scene--moqui-interactive-customization-loop--0.1.0` scene package assets (scene-package/scene manifest/template manifest), plus template sedimentation playbook, adapter extension contract schema/sample, and Domain_Pack extension flow docs for cross-stack replication.
 - **Interactive governance observability + alerting**: Added `node scripts/interactive-governance-report.js` (alias `npm run report:interactive-governance`) to compute adoption/success/rollback/security-intercept/satisfaction KPIs, apply threshold alerts, and emit JSON/Markdown governance reports with `--fail-on-alert` gate behavior.
 - **Interactive governance matrix telemetry integration**: `interactive-governance-report` now consumes matrix signals by default, computes matrix pass/regression/stage-error metrics, and enforces threshold alerts for matrix trend degradation.
 - **Matrix regression gate + remediation queue automation**: Added `scripts/matrix-regression-gate.js` and `scripts/moqui-matrix-remediation-queue.js` with npm aliases (`gate:matrix-regression`, `report:matrix-remediation-queue`) so CI/release can enforce configurable regression limits and export close-loop remediation lines from matrix regressions.
@@ -901,8 +914,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Capability matrix recommendations upgrade**: `sce auto handoff capability-matrix` now also recommends baseline-driven phased one-shot remediation commands when Moqui matrix regressions appear in baseline trend comparison.
 - **Handoff profile policy abstraction (`default|moqui|enterprise`)**: `sce auto handoff run` and `sce auto handoff capability-matrix` now support `--profile` preset policies with explicit option override precedence, plus external integration contract guidance in `docs/handoff-profile-integration-guide.md`.
 - **Regression/governance recommendation unification**: `sce auto handoff regression`, `sce auto governance stats`, and governance close-loop release-gate blockers now include baseline-driven phased one-shot remediation guidance for Moqui matrix regressions.
-- **Release workflow matrix evidence hardening**: `test.yml` and `release.yml` now archive matrix/governance artifacts by default and support configurable matrix regression hard-gate controls via `KSE_MATRIX_REGRESSION_GATE_ENFORCE` + `KSE_MATRIX_REGRESSION_GATE_MAX`.
-- **Release workflow Moqui summary alignment**: `release.yml` now explicitly generates and publishes `moqui-release-summary.{json,md}` from baseline + interactive governance + evidence inputs, with optional hard-gate flag `KSE_MOQUI_RELEASE_SUMMARY_ENFORCE`.
+- **Release workflow matrix evidence hardening**: `test.yml` and `release.yml` now archive matrix/governance artifacts by default and support configurable matrix regression hard-gate controls via `SCE_MATRIX_REGRESSION_GATE_ENFORCE` + `SCE_MATRIX_REGRESSION_GATE_MAX`.
+- **Release workflow Moqui summary alignment**: `release.yml` now explicitly generates and publishes `moqui-release-summary.{json,md}` from baseline + interactive governance + evidence inputs, with optional hard-gate flag `SCE_MOQUI_RELEASE_SUMMARY_ENFORCE`.
 - **Release governance snapshot standalone assets**: Added `scripts/release-governance-snapshot-export.js` and wired `release.yml` to publish `governance-snapshot-<tag>.json|.md` as independent governance audit artifacts (with unavailable placeholders when evidence summary is missing).
 - **331-poc integration checklist baseline**: Added `docs/interactive-customization/331-poc-sce-integration-checklist.md` to define minimal runtime contract, default commands, gate defaults, and pass criteria for Moqui + SCE deployment.
 - **Interactive feedback ingestion helper**: Added `node scripts/interactive-feedback-log.js` (alias `npm run log:interactive-feedback`) to append structured business-user feedback events into `.sce/reports/interactive-user-feedback.jsonl` for governance sample coverage and trend stability.
@@ -1285,7 +1298,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.39.0] - 2026-02-10
 
 ### Added
-- **Moqui ERP Adapter**: Integrate Moqui ERP instance into KSE scene runtime
+- **Moqui ERP Adapter**: Integrate Moqui ERP instance into SCE scene runtime
   - `MoquiClient` — HTTP client with JWT auth lifecycle (login, refresh, re-login, logout), retry logic using Node.js built-in `http`/`https`
   - `MoquiAdapter` — Binding handler for `spec.erp.*` and `moqui.*` refs, entity CRUD, service invocation, screen discovery
   - `sce scene connect` — Test connectivity and authentication to Moqui ERP instance
@@ -2089,7 +2102,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Template management: `sce templates update`, `sce templates cache`, `sce templates guide`
   - Custom sources: `sce templates add-source <name> <url>`, `sce templates remove-source <name>`, `sce templates sources`
   - Create Spec from template: `sce spec create <name> --template <template-id>`
-  - Local caching for offline use (~/.kse/templates/)
+  - Local caching for offline use (~/.sce/templates/)
   - Multi-source support with conflict resolution (source:template-id format)
   - Automatic variable substitution ({{SPEC_NAME}}, {{DATE}}, {{AUTHOR}}, etc.)
   - YAML frontmatter removal in applied templates
@@ -2186,10 +2199,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Multi-user support**: Detects and respects `contexts/` multi-user collaboration setup
   - Differential backup: Only backs up violating files/directories (not entire .sce/)
   - Backup location: `.sce/backups/steering-cleanup-{timestamp}/`
-  - Version-based caching (~/.kse/steering-check-cache.json) to avoid repeated checks
+  - Version-based caching (~/.sce/steering-check-cache.json) to avoid repeated checks
   - Performance target: <50ms per check
   - Clear progress messages during auto-fix
-  - Bypass options: `--skip-steering-check` flag and `KSE_SKIP_STEERING_CHECK` environment variable
+  - Bypass options: `--skip-steering-check` flag and `SCE_SKIP_STEERING_CHECK` environment variable
   - Force check option: `--force-steering-check` flag
   - Comprehensive documentation in `.sce/README.md`
 
@@ -2227,7 +2240,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Critical Principle**: Added "测试失败零容忍原则" (Zero Tolerance for Test Failures) to CORE_PRINCIPLES.md
   - Emphasizes "千里之堤溃于蚁穴" - never ignore any test failure
   - Provides clear execution standards and rationale
-  - Aligns with Ultrawork spirit and KSE core values
+  - Aligns with Ultrawork spirit and SCE core values
 
 ### Changed
 - **Documentation Optimization**: Refactored CORE_PRINCIPLES.md for clarity and value density
@@ -2414,7 +2427,7 @@ rm -rf .sce/steering/workspaces
   - `sce workspace remove <name>` - Remove workspace from registry
   - `sce workspace info [name]` - Display workspace details
 - **Data Atomicity Architecture**
-  - Single source of truth: `~/.kse/workspace-state.json`
+  - Single source of truth: `~/.sce/workspace-state.json`
   - Atomic operations for all workspace state changes
   - Automatic migration from legacy format
   - Cross-platform path handling with PathUtils

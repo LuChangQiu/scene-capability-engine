@@ -4,8 +4,8 @@
 
 The Spec Template Library feature consists of two main components:
 
-1. **kse-spec-templates Repository**: A standalone GitHub repository containing categorized, high-quality Spec templates with metadata and examples
-2. **Template Manager Module**: Integrated into kse CLI, responsible for template discovery, download, caching, and application
+1. **sce-spec-templates Repository**: A standalone GitHub repository containing categorized, high-quality Spec templates with metadata and examples
+2. **Template Manager Module**: Integrated into sce CLI, responsible for template discovery, download, caching, and application
 
 The design follows a distributed architecture where templates are stored in Git repositories (official and custom sources) and cached locally for offline use. The Template Manager provides a seamless CLI experience for browsing, downloading, and applying templates to new Spec creation.
 
@@ -15,15 +15,15 @@ The design follows a distributed architecture where templates are stored in Git 
 
 ```mermaid
 graph TB
-    CLI[kse CLI] --> TM[Template Manager]
-    TM --> LC[Local Cache<br/>~/.kse/templates/]
+    CLI[sce CLI] --> TM[Template Manager]
+    TM --> LC[Local Cache<br/>~/.sce/templates/]
     TM --> GH[GitHub Repositories]
     
     LC --> OFF[official/]
     LC --> CUST[custom-source-1/]
     LC --> CUST2[custom-source-2/]
     
-    GH --> REPO1[kse-spec-templates<br/>Official Repo]
+    GH --> REPO1[sce-spec-templates<br/>Official Repo]
     GH --> REPO2[Custom Repos]
     
     TM --> REG[Template Registry<br/>Parser]
@@ -44,7 +44,7 @@ sequenceDiagram
     participant Cache as Local Cache
     participant Git as Git Repository
     
-    User->>CLI: kse spec create my-feature --template web-features/rest-api
+    User->>CLI: sce spec create my-feature --template web-features/rest-api
     CLI->>TM: createFromTemplate(name, template)
     
     alt Cache exists
@@ -147,7 +147,7 @@ class RegistryParser {
         "design.md",
         "tasks.md"
       ],
-      "author": "kse-team",
+      "author": "sce-team",
       "created_at": "2025-01-15",
       "updated_at": "2025-01-20"
     }
@@ -252,7 +252,7 @@ class CacheManager {
 
 **Cache Structure**:
 ```
-~/.kse/templates/
+~/.sce/templates/
 ├── official/                    # Official template library
 │   ├── .git/
 │   ├── template-registry.json
@@ -278,39 +278,39 @@ class CacheManager {
 - Expose template operations via CLI
 - Handle command-line arguments and options
 - Provide user-friendly output and error messages
-- Integrate with existing kse CLI structure
+- Integrate with existing sce CLI structure
 
 **Commands**:
 ```javascript
 // List all templates
-kse templates list [--category <category>] [--source <source>]
+sce templates list [--category <category>] [--source <source>]
 
 // Search templates
-kse templates search <keyword> [--category <category>]
+sce templates search <keyword> [--category <category>]
 
 // Show template details
-kse templates show <template-path>
+sce templates show <template-path>
 
 // Update templates
-kse templates update [--source <source>] [--version <version>]
+sce templates update [--source <source>] [--version <version>]
 
 // Add custom source
-kse templates add-source <name> <git-url>
+sce templates add-source <name> <git-url>
 
 // Remove custom source
-kse templates remove-source <name>
+sce templates remove-source <name>
 
 // List configured sources
-kse templates sources
+sce templates sources
 
 // Show cache status
-kse templates cache [--clear] [--source <source>]
+sce templates cache [--clear] [--source <source>]
 
 // Display template guide
-kse templates guide
+sce templates guide
 
 // Create Spec from template
-kse spec create <name> --template <template-path> [--force]
+sce spec create <name> --template <template-path> [--force]
 ```
 
 ## Data Models
@@ -334,7 +334,7 @@ applicable_scenarios:
   - Implementing CRUD operations
   - Building microservices
   - Adding authentication to APIs
-author: kse-team
+author: sce-team
 created_at: 2025-01-15
 updated_at: 2025-01-20
 version: 1.0.0
@@ -353,7 +353,7 @@ interface TemplateEntry {
   tags: string[];                // ["api", "rest", "backend"]
   applicable_scenarios: string[]; // Use case descriptions
   files: string[];               // ["requirements.md", "design.md", "tasks.md"]
-  author: string;                // "kse-team"
+  author: string;                // "sce-team"
   created_at: string;            // ISO date
   updated_at: string;            // ISO date
   version?: string;              // Template version

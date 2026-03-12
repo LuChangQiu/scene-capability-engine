@@ -340,7 +340,7 @@ Log files are created at `.sce/logs/adopt-{timestamp}.log` with the following fo
 
 ```
 ================================================================================
-Kiro Spec Engine - Adoption Log
+Scene Capability Engine - Adoption Log
 Adoption ID: adopt-20260127-143022
 Start Time: 2026-01-27T14:30:22.123Z
 Log Level: VERBOSE

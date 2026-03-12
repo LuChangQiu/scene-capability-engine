@@ -17,7 +17,7 @@ This implementation plan establishes a complete release pipeline for the kiro-sp
 - [x] 2. npm package configuration
   - [x] 2.1 Update package.json with complete metadata
     - Set name to "kiro-spec-engine"
-    - Configure bin with both "kse" and "kiro-spec-engine" commands
+    - Configure bin with both "sce" and "kiro-spec-engine" commands
     - Set files array to include bin/, template/, locales/, README files, LICENSE
     - Set engines.node to ">=14.0.0"
     - Add keywords: kiro, spec, cli, development-tools, ultrawork, quality-enhancement
@@ -80,7 +80,7 @@ This implementation plan establishes a complete release pipeline for the kiro-sp
     - **Property 5: Version consistency**
     - **Validates: Requirements 7.3**
     - Test that displayed version matches package.json
-    - Test both command aliases (kse and kiro-spec-engine)
+    - Test both command aliases (sce and kiro-spec-engine)
     - Run 100 iterations minimum
   
   - [ ]* 4.4 Write integration tests for doctor command
@@ -90,9 +90,9 @@ This implementation plan establishes a complete release pipeline for the kiro-sp
     - _Requirements: 7.5_
 
 - [x] 5. Checkpoint - Ensure core functionality works
-  - Manually test `node bin/kiro-spec-engine.js --version`
-  - Manually test `node bin/kiro-spec-engine.js doctor`
-  - Manually test `node bin/kiro-spec-engine.js init test-project`
+  - Manually test `node bin/scene-capability-engine.js --version`
+  - Manually test `node bin/scene-capability-engine.js doctor`
+  - Manually test `node bin/scene-capability-engine.js init test-project`
   - Ensure all tests pass: `npm test`
   - Ask the user if questions arise
 
@@ -253,7 +253,7 @@ This implementation plan establishes a complete release pipeline for the kiro-sp
   - Verify README documentation is complete
   - Verify CHANGELOG is up to date
   - Test package installation locally: `npm install -g .`
-  - Test installed commands: `kse --version`, `kse doctor`, `kse init test-project`
+  - Test installed commands: `sce --version`, `sce doctor`, `sce init test-project`
   - Ensure all tests pass, ask the user if questions arise
 
 - [x] 17. GitHub repository setup
@@ -276,11 +276,11 @@ This implementation plan establishes a complete release pipeline for the kiro-sp
 
 - [x] 19. Post-release validation
   - Install package globally from npm: `npm install -g kiro-spec-engine`
-  - Test `kse --version` displays correct version
+  - Test `sce --version` displays correct version
   - Test `kiro-spec-engine --version` displays correct version
-  - Test `kse --help` displays usage information
-  - Test `kse doctor` checks system requirements
-  - Test `kse init test-project` creates project structure
+  - Test `sce --help` displays usage information
+  - Test `sce doctor` checks system requirements
+  - Test `sce init test-project` creates project structure
   - Document any issues found
   - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
 
@@ -296,7 +296,7 @@ This implementation plan establishes a complete release pipeline for the kiro-sp
 - GitHub repository setup and first release require manual steps outside of code
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

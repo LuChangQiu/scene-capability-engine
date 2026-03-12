@@ -94,7 +94,7 @@
 - ✅ Agent 能力参差不齐
 - ✅ 高内聚低耦合的自然实现
 
-**项目地址**：https://github.com/heguangyong/kiro-spec-engine
+**项目地址**：https://github.com/heguangyong/scene-capability-engine
 
 ### 完整思考过程
 
@@ -109,7 +109,7 @@
 
 **阅读完整文章**：
 - 微信公众号：https://mp.weixin.qq.com/s/GRo0XQ6GvQ03T4_FTvAsKA
-- GitHub：https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md
+- GitHub：https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md
 - 掘金：https://juejin.cn/post/7598899986857377798
 - 知乎专栏：https://zhuanlan.zhihu.com/p/1999164891391624163
 
@@ -129,9 +129,9 @@
 
 ## 🔗 相关资源
 
-- **GitHub 项目**：https://github.com/heguangyong/kiro-spec-engine
-- **GitHub 讨论**：https://github.com/heguangyong/kiro-spec-engine/discussions/1
-- **npm 包**：https://www.npmjs.com/package/kiro-spec-engine
+- **GitHub 项目**：https://github.com/heguangyong/scene-capability-engine
+- **GitHub 讨论**：https://github.com/heguangyong/scene-capability-engine/discussions/1
+- **npm 包**：https://www.npmjs.com/package/scene-capability-engine
 - **X/Twitter**：https://x.com/heguangyong/status/2015668235065229782
 
 ---

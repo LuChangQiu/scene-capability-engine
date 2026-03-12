@@ -29,6 +29,6 @@ Seed target specs:
 
 ## Validation
 
-- `kse scene catalog`
-- `kse status`
-- `kse doctor --docs`
+- `sce scene catalog`
+- `sce status`
+- `sce doctor --docs`

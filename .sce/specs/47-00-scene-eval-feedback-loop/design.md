@@ -10,7 +10,7 @@ Introduce a dedicated `scene eval` command to close the loop:
 
 ## Command Surface
 
-`kse scene eval [options]`
+`sce scene eval [options]`
 
 - `--result <path>`: scene run result JSON.
 - `--feedback <path>`: doctor feedback template markdown.

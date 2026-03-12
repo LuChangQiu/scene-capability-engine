@@ -1,4 +1,4 @@
-apiVersion: kse.scene/v0.2
+apiVersion: sce.scene/v0.2
 kind: scene
 metadata:
   obj_id: scene.erp.73-00-scene-package-gate-remediation-task-bridge
@@ -10,13 +10,13 @@ spec:
     goal: Bridge remediation actions to executable task artifacts for deterministic gate closure
   model_scope:
     read:
-      - kse.SceneTemplateGateRemediation.actionId
-      - kse.SceneTemplateGateRemediation.priority
-      - kse.SceneTemplateGateRemediation.sourceCheckIds
+      - sce.SceneTemplateGateRemediation.actionId
+      - sce.SceneTemplateGateRemediation.priority
+      - sce.SceneTemplateGateRemediation.sourceCheckIds
     write:
-      - kse.SceneTemplateGateTask.taskId
-      - kse.SceneTemplateGateTask.actionId
-      - kse.SceneTemplateGateTask.status
+      - sce.SceneTemplateGateTask.taskId
+      - sce.SceneTemplateGateTask.actionId
+      - sce.SceneTemplateGateTask.status
   capability_contract:
     bindings:
       - type: query

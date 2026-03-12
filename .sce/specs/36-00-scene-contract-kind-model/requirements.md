@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This spec defines a unified object model for scenario-driven execution in KSE-based intelligent systems spanning ERP and robot ecosystems.
+This spec defines a unified object model for scenario-driven execution in SCE-based intelligent systems spanning ERP and robot ecosystems.
 The purpose is to bridge user intent, executable services, and constrained data models without fragmenting data truth.
 
 Design target:
@@ -50,7 +50,7 @@ Contracts MUST align with Moqui entity model and field dictionary.
 Control-plane metadata and business-plane fields MUST be separated.
 
 #### Acceptance Criteria
-- Control metadata uses dedicated namespace (for example kse.*).
+- Control metadata uses dedicated namespace (for example sce.*).
 - Business bindings use dedicated namespace (for example moqui.*).
 - Collision-prone names (id/status/user/party/fromDate/thruDate) are mapped explicitly, not overloaded.
 
@@ -112,7 +112,7 @@ Hybrid scenes MUST support consistency through orchestrated compensation.
 
 - Backward compatibility with existing spec directory conventions.
 - Incremental adoption: existing specs remain valid during migration.
-- Low operational overhead for teams currently using standard KSE workflows.
+- Low operational overhead for teams currently using standard SCE workflows.
 
 ## Out of Scope
 

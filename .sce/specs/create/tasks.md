@@ -7,7 +7,7 @@ tags: [api, rest, implementation]
 applicable_scenarios:
   - Breaking down API implementation
   - Planning development phases
-author: kse-team
+author: sce-team
 created_at: 2025-01-30
 updated_at: 2025-01-30
 version: 1.0.0
@@ -151,7 +151,7 @@ This plan breaks down the create REST API implementation into incremental, testa
 **Author**: FallingAKS
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

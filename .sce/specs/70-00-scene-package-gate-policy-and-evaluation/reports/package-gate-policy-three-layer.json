@@ -1,5 +1,5 @@
 {
-  "apiVersion": "kse.scene.package-gate/v0.1",
+  "apiVersion": "sce.scene.package-gate/v0.1",
   "profile": "three-layer",
   "rules": {
     "max_invalid_templates": 0,

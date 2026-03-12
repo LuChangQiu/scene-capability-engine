@@ -1,4 +1,4 @@
-apiVersion: kse.scene/v0.2
+apiVersion: sce.scene/v0.2
 kind: scene
 metadata:
   obj_id: scene.erp.72-00-scene-package-gate-remediation-plan-closure
@@ -10,13 +10,13 @@ spec:
     goal: Convert gate failures into deterministic remediation actions for operator and automation closure
   model_scope:
     read:
-      - kse.SceneTemplateGate.checkId
-      - kse.SceneTemplateGate.expected
-      - kse.SceneTemplateGate.actual
+      - sce.SceneTemplateGate.checkId
+      - sce.SceneTemplateGate.expected
+      - sce.SceneTemplateGate.actual
     write:
-      - kse.SceneTemplateGateRemediation.actionId
-      - kse.SceneTemplateGateRemediation.priority
-      - kse.SceneTemplateGateRemediation.commandHint
+      - sce.SceneTemplateGateRemediation.actionId
+      - sce.SceneTemplateGateRemediation.priority
+      - sce.SceneTemplateGateRemediation.commandHint
   capability_contract:
     bindings:
       - type: query

@@ -298,7 +298,7 @@ MCP 是提供给 AI 的 Model Context Protocol（模型上下文协议）。
 
 你问的非常具体，我最近有一个开源的项目，算是一次实践，你可以通过这个项目来进一步的了解其中的一些实践效果。
 
-**项目地址**：https://github.com/heguangyong/kiro-spec-engine
+**项目地址**：https://github.com/heguangyong/scene-capability-engine
 
 如果觉得项目不错，记得帮我点上星。
 
@@ -323,7 +323,7 @@ MCP 是提供给 AI 的 Model Context Protocol（模型上下文协议）。
 
 #### 精确解决 session 上下文吞噬问题
 
-通过 `kse context export <spec>` 把**单个 Spec**（requirements + design + tasks）打包成 AI 友好的上下文块，天然实现了"**最小 viable context**"。不再需要把整个项目塞进一个 session，而是按 feature 粒度精准适配。
+通过 `sce context export <spec>` 把**单个 Spec**（requirements + design + tasks）打包成 AI 友好的上下文块，天然实现了"**最小 viable context**"。不再需要把整个项目塞进一个 session，而是按 feature 粒度精准适配。
 
 #### 文档驱动 + 自动化治理
 
@@ -390,11 +390,11 @@ Spec 本身就是**边界 + 愿力**的具现：
 
 **区域划分与时效性**：这体现了周期属性的哲学美感。
 
-- **上下文区域（时效性短，周期限于 session）**：对应 Specs 中的 tasks.md 或动态导出的 context 块（via `kse context export`）。这些如"死像"的瞬时缘起，针对当前 session 精简适配，避免吞噬容量。时效短正如唯识的意识流，一念即灭，适合快速迭代的任务拆分。
+- **上下文区域（时效性短，周期限于 session）**：对应 Specs 中的 tasks.md 或动态导出的 context 块（via `sce context export`）。这些如"死像"的瞬时缘起，针对当前 session 精简适配，避免吞噬容量。时效短正如唯识的意识流，一念即灭，适合快速迭代的任务拆分。
 
 - **项目层面（中等时效，跨 session 但限于项目周期）**：整合 requirements.md 和 design.md，涵盖环境（如项目结构、依赖）。这些区域通过编号策略（e.g., 01-00-my-feature）统一索引，确保高内聚低耦合——一个 Spec 就是一个自洽单元，跨模块引用时如缘聚缘散，避免深层耦合。
 
-- **原则层面（长时效，跨项目通用）**：steering/ 目录的核心，存放经验提炼的规则模板（如风格指南、风险阈值、质量门槛）。这些如阿赖耶识的种子，持久指导 AI，避免偏置失衡。统一索引则像"绳索"，通过 CI/CD 钩子（e.g., `kse hooks install`）或质量评分（0-10 分+建议）推动运作，确保原则在整个引擎中渗透。
+- **原则层面（长时效，跨项目通用）**：steering/ 目录的核心，存放经验提炼的规则模板（如风格指南、风险阈值、质量门槛）。这些如阿赖耶识的种子，持久指导 AI，避免偏置失衡。统一索引则像"绳索"，通过 CI/CD 钩子（e.g., `sce hooks install`）或质量评分（0-10 分+建议）推动运作，确保原则在整个引擎中渗透。
 
 这种分层让我联想到 AI 发展趋势中的"分级内存"架构（如在 LangGraph 或 CrewAI 中）：短期内存（session 上下文）用于即时执行，中期（项目知识图谱）用于迭代，长期（原则引擎）用于全局约束。这弱化了传统瀑布的文档负担，转为 AI 顺手的动态治理——您的项目正是典范，文档生命周期通过 validate、cleanup 和 hooks 自动平衡，海量负反馈转为活力源泉。
 
@@ -402,7 +402,7 @@ Spec 本身就是**边界 + 愿力**的具现：
 
 #### 关于 watch mode
 
-理解它还在评估中——这很谨慎，尤其在中大型遗留系统（10+ Specs）中，潜在的 context 刷新冲突或性能瓶颈（如文件监控开销）需实测。期待您后续体验分享！从项目描述看，`kse watch start` 的实时同步机制（监控变化、更新 AI 上下文）正适合动态环境，或许能进一步强化周期匹配。
+理解它还在评估中——这很谨慎，尤其在中大型遗留系统（10+ Specs）中，潜在的 context 刷新冲突或性能瓶颈（如文件监控开销）需实测。期待您后续体验分享！从项目描述看，`sce watch start` 的实时同步机制（监控变化、更新 AI 上下文）正适合动态环境，或许能进一步强化周期匹配。
 
 继续这个精彩对话，Guangyong！您的项目和观点正推动我对 AI"周期驱动"的新认知。
 
@@ -439,8 +439,8 @@ kiro-spec-engine 项目体现了：
 
 ## 项目链接
 
-- **GitHub**: https://github.com/heguangyong/kiro-spec-engine
-- **npm**: https://www.npmjs.com/package/kiro-spec-engine
+- **GitHub**: https://github.com/heguangyong/scene-capability-engine
+- **npm**: https://www.npmjs.com/package/scene-capability-engine
 
 如果这个项目对你有启发，欢迎 Star ⭐
 

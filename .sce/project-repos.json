@@ -4,728 +4,728 @@
     {
       "name": "kiro-spec-engine",
       "path": ".",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": null
     },
     {
       "name": ".github",
       "path": ".github",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": null
     },
     {
       "name": ".github-workflows",
       "path": ".github/workflows",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".github"
     },
     {
       "name": ".sce",
       "path": ".sce",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": null
     },
     {
       "name": ".sce-backups",
       "path": ".sce/backups",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce"
     },
     {
       "name": ".sce-config",
       "path": ".sce/config",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce"
     },
     {
       "name": ".sce-contexts",
       "path": ".sce/contexts",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce"
     },
     {
       "name": ".sce-hooks",
       "path": ".sce/hooks",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce"
     },
     {
       "name": ".sce-logs",
       "path": ".sce/logs",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce"
     },
     {
       "name": ".sce-reports",
       "path": ".sce/reports",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce"
     },
     {
       "name": ".sce-specs",
       "path": ".sce/specs",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce"
     },
     {
       "name": ".sce-specs-01-00-npm-github-release-pipeline",
       "path": ".sce/specs/01-00-npm-github-release-pipeline",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-02-00-project-adoption-and-upgrade",
       "path": ".sce/specs/02-00-project-adoption-and-upgrade",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-03-00-multi-user-and-cross-tool-support",
       "path": ".sce/specs/03-00-multi-user-and-cross-tool-support",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-04-00-ultrawork-integration-and-quality-automation",
       "path": ".sce/specs/04-00-ultrawork-integration-and-quality-automation",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-05-00-agent-hooks-and-automation",
       "path": ".sce/specs/05-00-agent-hooks-and-automation",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-06-00-test-stability-and-reliability",
       "path": ".sce/specs/06-00-test-stability-and-reliability",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-07-00-user-onboarding-and-documentation",
       "path": ".sce/specs/07-00-user-onboarding-and-documentation",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-08-00-document-lifecycle-management",
       "path": ".sce/specs/08-00-document-lifecycle-management",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-09-00-document-governance-automation",
       "path": ".sce/specs/09-00-document-governance-automation",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-10-00-adopt-conflict-resolution-improvement",
       "path": ".sce/specs/10-00-adopt-conflict-resolution-improvement",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-11-00-ai-autonomy-documentation-alignment",
       "path": ".sce/specs/11-00-ai-autonomy-documentation-alignment",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-12-00-grok-conversation-article",
       "path": ".sce/specs/12-00-grok-conversation-article",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-13-00-devops-integration-foundation",
       "path": ".sce/specs/13-00-devops-integration-foundation",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-14-00-adopt-ux-improvement",
       "path": ".sce/specs/14-00-adopt-ux-improvement",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-15-00-moltbot-research",
       "path": ".sce/specs/15-00-moltbot-research",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-16-00-multi-workspace-management",
       "path": ".sce/specs/16-00-multi-workspace-management",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-17-00-test-suite-optimization",
       "path": ".sce/specs/17-00-test-suite-optimization",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-18-00-integration-test-expansion",
       "path": ".sce/specs/18-00-integration-test-expansion",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-19-00-steering-directory-compliance-check",
       "path": ".sce/specs/19-00-steering-directory-compliance-check",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-20-00-environment-configuration-management",
       "path": ".sce/specs/20-00-environment-configuration-management",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-21-00-gitignore-auto-fix",
       "path": ".sce/specs/21-00-gitignore-auto-fix",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-22-00-spec-template-library",
       "path": ".sce/specs/22-00-spec-template-library",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-23-00-template-creation-from-spec",
       "path": ".sce/specs/23-00-template-creation-from-spec",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-24-00-multi-repo-management",
       "path": ".sce/specs/24-00-multi-repo-management",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-25-00-nested-repo-support",
       "path": ".sce/specs/25-00-nested-repo-support",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-26-00-repo-config-hotfix",
       "path": ".sce/specs/26-00-repo-config-hotfix",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-27-00-nested-validation-fix",
       "path": ".sce/specs/27-00-nested-validation-fix",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-28-00-nested-scanning-validation-fix",
       "path": ".sce/specs/28-00-nested-scanning-validation-fix",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-specs-create",
       "path": ".sce/specs/create",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/specs"
     },
     {
       "name": ".sce-steering",
       "path": ".sce/steering",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce"
     },
     {
       "name": ".sce-templates",
       "path": ".sce/templates",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce"
     },
     {
       "name": ".sce-templates-exports",
       "path": ".sce/templates/exports",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/templates"
     },
     {
       "name": ".sce-tools",
       "path": ".sce/tools",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce"
     },
     {
       "name": ".sce-watch",
       "path": ".sce/watch",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce"
     },
     {
       "name": ".sce-watch-logs",
       "path": ".sce/watch/logs",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": ".sce/watch"
     },
     {
       "name": "bin",
       "path": "bin",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": null
     },
     {
       "name": "docs",
       "path": "docs",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": null
     },
     {
       "name": "docs-articles",
       "path": "docs/articles",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "docs"
     },
     {
       "name": "docs-examples",
       "path": "docs/examples",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "docs"
     },
     {
       "name": "docs-examples-add-export-command",
       "path": "docs/examples/add-export-command",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "docs/examples"
     },
     {
       "name": "docs-examples-add-rest-api",
       "path": "docs/examples/add-rest-api",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "docs/examples"
     },
     {
       "name": "docs-examples-add-user-dashboard",
       "path": "docs/examples/add-user-dashboard",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "docs/examples"
     },
     {
       "name": "docs-images",
       "path": "docs/images",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "docs"
     },
     {
       "name": "docs-tools",
       "path": "docs/tools",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "docs"
     },
     {
       "name": "docs-zh",
       "path": "docs/zh",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "docs"
     },
     {
       "name": "docs-zh-tools",
       "path": "docs/zh/tools",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "docs/zh"
     },
     {
       "name": "lib",
       "path": "lib",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": null
     },
     {
       "name": "lib-adoption",
       "path": "lib/adoption",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-backup",
       "path": "lib/backup",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-commands",
       "path": "lib/commands",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-context",
       "path": "lib/context",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-environment",
       "path": "lib/environment",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-gitignore",
       "path": "lib/gitignore",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-governance",
       "path": "lib/governance",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-operations",
       "path": "lib/operations",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-operations-models",
       "path": "lib/operations/models",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib/operations"
     },
     {
       "name": "lib-repo",
       "path": "lib/repo",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-repo-errors",
       "path": "lib/repo/errors",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib/repo"
     },
     {
       "name": "lib-repo-handlers",
       "path": "lib/repo/handlers",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib/repo"
     },
     {
       "name": "lib-steering",
       "path": "lib/steering",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-task",
       "path": "lib/task",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-templates",
       "path": "lib/templates",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-upgrade",
       "path": "lib/upgrade",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-upgrade-migrations",
       "path": "lib/upgrade/migrations",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib/upgrade"
     },
     {
       "name": "lib-utils",
       "path": "lib/utils",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-version",
       "path": "lib/version",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-watch",
       "path": "lib/watch",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-workspace",
       "path": "lib/workspace",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib"
     },
     {
       "name": "lib-workspace-multi",
       "path": "lib/workspace/multi",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "lib/workspace"
     },
     {
       "name": "locales",
       "path": "locales",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": null
     },
     {
       "name": "template",
       "path": "template",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": null
     },
     {
       "name": "template-.sce",
       "path": "template/.sce",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "template"
     },
     {
       "name": "template-.sce-specs",
       "path": "template/.sce/specs",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "template/.sce"
     },
     {
       "name": "template-.sce-steering",
       "path": "template/.sce/steering",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "template/.sce"
     },
     {
       "name": "template-.sce-templates",
       "path": "template/.sce/templates",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "template/.sce"
     },
     {
       "name": "template-.sce-tools",
       "path": "template/.sce/tools",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "template/.sce"
     },
     {
       "name": "tests",
       "path": "tests",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": null
     },
     {
       "name": "tests-fixtures",
       "path": "tests/fixtures",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests"
     },
     {
       "name": "tests-helpers",
       "path": "tests/helpers",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests"
     },
     {
       "name": "tests-integration",
       "path": "tests/integration",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests"
     },
     {
       "name": "tests-properties",
       "path": "tests/properties",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests"
     },
     {
       "name": "tests-temp",
       "path": "tests/temp",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests"
     },
     {
       "name": "tests-unit",
       "path": "tests/unit",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests"
     },
     {
       "name": "tests-unit-adoption",
       "path": "tests/unit/adoption",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests/unit"
     },
     {
       "name": "tests-unit-commands",
       "path": "tests/unit/commands",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests/unit"
     },
     {
       "name": "tests-unit-environment",
       "path": "tests/unit/environment",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests/unit"
     },
     {
       "name": "tests-unit-gitignore",
       "path": "tests/unit/gitignore",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests/unit"
     },
     {
       "name": "tests-unit-governance",
       "path": "tests/unit/governance",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests/unit"
     },
     {
       "name": "tests-unit-operations",
       "path": "tests/unit/operations",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests/unit"
     },
     {
       "name": "tests-unit-repo",
       "path": "tests/unit/repo",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests/unit"
     },
     {
       "name": "tests-unit-steering",
       "path": "tests/unit/steering",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests/unit"
     },
     {
       "name": "tests-unit-utils",
       "path": "tests/unit/utils",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests/unit"
     },
     {
       "name": "tests-unit-workspace",
       "path": "tests/unit/workspace",
-      "remote": "https://github.com/heguangyong/kiro-spec-engine.git",
+      "remote": "https://github.com/heguangyong/scene-capability-engine.git",
       "defaultBranch": "main",
       "parent": "tests/unit"
     }

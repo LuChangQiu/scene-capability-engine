@@ -20,7 +20,7 @@
 
 #### 验收标准
 
-1. THE CLI SHALL 提供 `kse spec pipeline run --spec <name>`
+1. THE CLI SHALL 提供 `sce spec pipeline run --spec <name>`
 2. THE 命令 SHALL 支持 `--from-stage`、`--to-stage`、`--dry-run`
 3. THE 命令 SHALL 支持 `--json` 输出与 `--out` 落盘
 

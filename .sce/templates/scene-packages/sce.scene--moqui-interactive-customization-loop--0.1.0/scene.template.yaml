@@ -1,0 +1,51 @@
+apiVersion: sce.scene/v0.2
+kind: scene
+metadata:
+  obj_id: scene.moqui-interactive-customization-loop
+  obj_version: 0.1.0
+  title: Moqui Interactive Customization Loop
+spec:
+  domain: moqui
+  intent:
+    goal: Execute guarded interactive business customization for Moqui users.
+  model_scope:
+    read:
+      - spec.moqui.interactive.intent.build
+      - spec.moqui.interactive.plan.generate
+      - spec.moqui.interactive.plan.gate
+      - spec.moqui.interactive.approval.workflow
+      - spec.moqui.interactive.rollback.record
+    write:
+      - spec.moqui.interactive.low-risk.apply
+  capability_contract:
+    bindings:
+      - type: operation
+        ref: spec.moqui.interactive.intent.build
+        intent: Generate Change_Intent from page context and user goal.
+      - type: operation
+        ref: spec.moqui.interactive.plan.generate
+        depends_on: spec.moqui.interactive.intent.build
+        intent: Generate Change_Plan with impact/risk/rollback sections.
+      - type: operation
+        ref: spec.moqui.interactive.plan.gate
+        depends_on: spec.moqui.interactive.plan.generate
+        intent: Evaluate guardrail policy and risk catalog decision.
+      - type: operation
+        ref: spec.moqui.interactive.approval.workflow
+        depends_on: spec.moqui.interactive.plan.gate
+        intent: Route approvals before execution.
+      - type: operation
+        ref: spec.moqui.interactive.low-risk.apply
+        depends_on: spec.moqui.interactive.approval.workflow
+        intent: Apply low-risk plans and emit execution record.
+      - type: operation
+        ref: spec.moqui.interactive.rollback.record
+        depends_on: spec.moqui.interactive.low-risk.apply
+        intent: Record rollback action with audit trace.
+  governance_contract:
+    risk_level: medium
+    approval:
+      required: true
+    idempotency:
+      required: true
+      key: interactiveChangePlanId

@@ -2,16 +2,16 @@
 
 ## Introduction
 
-This Spec addresses the misalignment between kiro-spec-engine's current positioning as an "AI autonomy enabler" and its documentation, which still contains manual, tool-centric instructions. The goal is to systematically update all documentation to reflect that AI agents autonomously use kse as invisible infrastructure, while users simply express intent.
+This Spec addresses the misalignment between kiro-spec-engine's current positioning as an "AI autonomy enabler" and its documentation, which still contains manual, tool-centric instructions. The goal is to systematically update all documentation to reflect that AI agents autonomously use sce as invisible infrastructure, while users simply express intent.
 
 ## Glossary
 
 - **Documentation_System**: The complete set of user-facing documentation files in the kiro-spec-engine project
-- **AI_Agent**: An AI assistant (like Kiro, Codex, Claude) that autonomously uses kse to manage development workflows
+- **AI_Agent**: An AI assistant (like Kiro, Codex, Claude) that autonomously uses sce to manage development workflows
 - **User**: A human developer who expresses intent to AI agents rather than manually running commands
 - **Manual_Language**: Documentation that instructs users to run commands or create files manually
 - **Autonomy_Language**: Documentation that describes how AI agents autonomously handle tasks based on user intent
-- **Tool_Guide**: Documentation files in docs/tools/ that describe kse command capabilities
+- **Tool_Guide**: Documentation files in docs/tools/ that describe sce command capabilities
 - **Workflow_Guide**: Documentation that describes development processes and methodologies
 
 ## Requirements
@@ -42,7 +42,7 @@ This Spec addresses the misalignment between kiro-spec-engine's current position
 
 ### Requirement 3: Core Documentation Updates
 
-**User Story:** As a new user, I want the main README and getting started guides to clearly communicate that AI handles kse autonomously, so that I understand my role is to express intent.
+**User Story:** As a new user, I want the main README and getting started guides to clearly communicate that AI handles sce autonomously, so that I understand my role is to express intent.
 
 #### Acceptance Criteria
 
@@ -106,7 +106,7 @@ This Spec addresses the misalignment between kiro-spec-engine's current position
 
 #### Acceptance Criteria
 
-1. WHEN documentation updates are complete, THE System SHALL verify no files contain "run `kse create-spec`" instructions
+1. WHEN documentation updates are complete, THE System SHALL verify no files contain "run `sce create-spec`" instructions
 2. WHEN documentation is validated, THE System SHALL verify all "you create/run/execute" patterns are replaced with AI-centric language
 3. WHEN documentation is validated, THE System SHALL verify Tool_Guides maintain technical reference quality
 4. WHEN documentation is validated, THE System SHALL verify English and Chinese versions are aligned
@@ -126,7 +126,7 @@ This Spec addresses the misalignment between kiro-spec-engine's current position
 
 ### Requirement 10: Backward Compatibility Preservation
 
-**User Story:** As a user with existing kse installations, I want documentation updates to not break my understanding of core concepts, so that I can continue using kse effectively.
+**User Story:** As a user with existing sce installations, I want documentation updates to not break my understanding of core concepts, so that I can continue using sce effectively.
 
 #### Acceptance Criteria
 

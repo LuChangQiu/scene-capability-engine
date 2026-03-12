@@ -18,5 +18,5 @@
   - Updated `status` command to prefer marker section progress when present.
 
 - [x] 5 Normalize legacy spec completion markers and validate
-  - Appended `## KSE Status Markers` sections for remaining legacy/incomplete specs.
+  - Appended `## SCE Status Markers` sections for remaining legacy/incomplete specs.
   - Added/updated tests (`task-claimer`, `status`, `scene/runtime`, `lock`, integration) and validated all pass.

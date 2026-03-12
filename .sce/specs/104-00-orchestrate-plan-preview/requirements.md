@@ -2,7 +2,7 @@
 
 ## 简介
 
-当前 `kse orchestrate run` 会直接执行，不支持先查看依赖图与批次计划。该 Spec 增加 `kse orchestrate plan`，用于在执行前输出可审计的编排计划，降低盲跑风险。
+当前 `sce orchestrate run` 会直接执行，不支持先查看依赖图与批次计划。该 Spec 增加 `sce orchestrate plan`，用于在执行前输出可审计的编排计划，降低盲跑风险。
 
 ## 术语表
 
@@ -18,7 +18,7 @@
 
 #### 验收标准
 
-1. THE CLI SHALL 提供 `kse orchestrate plan --specs <specs>` 子命令
+1. THE CLI SHALL 提供 `sce orchestrate plan --specs <specs>` 子命令
 2. THE 命令 SHALL 支持 `--json` 输出结构化计划
 3. THE 命令 SHALL 复用 `orchestrate run` 的 Spec 存在性校验逻辑
 

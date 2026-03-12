@@ -3,7 +3,7 @@
   "registry_path": ".sce/specs/70-00-scene-package-gate-policy-and-evaluation/reports/package-registry-input.json",
   "policy_path": ".sce/specs/70-00-scene-package-gate-policy-and-evaluation/reports/package-gate-policy-three-layer.json",
   "policy": {
-    "apiVersion": "kse.scene.package-gate/v0.1",
+    "apiVersion": "sce.scene.package-gate/v0.1",
     "profile": "three-layer",
     "rules": {
       "max_invalid_templates": 0,
@@ -78,7 +78,7 @@
         "priority": "high",
         "title": "Increase valid template count by at least 2",
         "recommendation": "Promote additional template packages via package-publish until gate threshold is met.",
-        "command_hint": "kse scene package-registry --template-dir .sce/templates/scene-packages --json",
+        "command_hint": "sce scene package-registry --template-dir .sce/templates/scene-packages --json",
         "source_check_ids": [
           "min-valid-templates"
         ]
@@ -88,7 +88,7 @@
         "priority": "medium",
         "title": "Add at least one l1-capability template package",
         "recommendation": "Create and publish a scene-capability package to satisfy l1-capability coverage.",
-        "command_hint": "kse scene package-template --kind scene-capability --spec <spec-name> && kse scene package-publish --spec <spec-name>",
+        "command_hint": "sce scene package-template --kind scene-capability --spec <spec-name> && sce scene package-publish --spec <spec-name>",
         "source_check_ids": [
           "required-layer:l1-capability"
         ]
@@ -98,7 +98,7 @@
         "priority": "medium",
         "title": "Add at least one l3-instance template package",
         "recommendation": "Create and publish a scene-template package to satisfy l3-instance coverage.",
-        "command_hint": "kse scene package-template --kind scene-template --spec <spec-name> && kse scene package-publish --spec <spec-name>",
+        "command_hint": "sce scene package-template --kind scene-template --spec <spec-name> && sce scene package-publish --spec <spec-name>",
         "source_check_ids": [
           "required-layer:l3-instance"
         ]

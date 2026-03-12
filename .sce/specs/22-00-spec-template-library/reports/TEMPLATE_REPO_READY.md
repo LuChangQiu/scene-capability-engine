@@ -1,8 +1,8 @@
-# kse-spec-templates Repository - Ready for Deployment
+# sce-spec-templates Repository - Ready for Deployment
 
 ## Status: ✅ Ready
 
-The kse-spec-templates repository is fully prepared and ready to be pushed to GitHub.
+The sce-spec-templates repository is fully prepared and ready to be pushed to GitHub.
 
 ## Location
 
@@ -83,8 +83,8 @@ cd .sce/specs/22-00-spec-template-library/template-repo
 # Initialize and push
 git init
 git add .
-git commit -m "Initial commit: kse-spec-templates v1.0.0"
-git remote add origin https://github.com/heguangyong/kse-spec-templates.git
+git commit -m "Initial commit: sce-spec-templates v1.0.0"
+git remote add origin https://github.com/heguangyong/sce-spec-templates.git
 git branch -M main
 git push -u origin main
 
@@ -103,25 +103,25 @@ git push origin v1.0.0
 ### 3. Test Integration
 
 ```bash
-# Test with kse CLI
-kse templates update
-kse templates list
-kse spec create test-feature --template web-features/rest-api
+# Test with sce CLI
+sce templates update
+sce templates list
+sce spec create test-feature --template web-features/rest-api
 ```
 
 ### 4. Announce Release
 
 - Create GitHub Release with changelog
-- Update kse main repository README
+- Update sce main repository README
 - Announce in community channels
 
-## Integration with kse CLI
+## Integration with sce CLI
 
-The kse CLI (v1.16.0) is already configured to use this repository:
+The sce CLI (v1.16.0) is already configured to use this repository:
 
-- Default source URL: `https://github.com/heguangyong/kse-spec-templates.git`
+- Default source URL: `https://github.com/heguangyong/sce-spec-templates.git`
 - Auto-download on first use
-- Local cache at `~/.kse/templates/official/`
+- Local cache at `~/.sce/templates/official/`
 - Full CLI support for all template operations
 
 ## Future Enhancements

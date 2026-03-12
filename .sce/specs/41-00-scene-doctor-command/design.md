@@ -12,7 +12,7 @@
 
 ## Command Surface
 
-- `kse scene doctor`
+- `sce scene doctor`
 - Inputs:
   - scene source (`--spec`/`--manifest`)
   - mode (`--mode`)

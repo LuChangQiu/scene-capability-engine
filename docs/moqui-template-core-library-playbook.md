@@ -201,7 +201,7 @@ sce auto close-loop-batch .sce/auto/ontology-remediation.lines --format lines --
 
 Stage-D baseline package for the interactive business customization loop:
 
-- `kse.scene--moqui-interactive-customization-loop--0.1.0`
+- `sce.scene--moqui-interactive-customization-loop--0.1.0`
 
 This package captures:
 

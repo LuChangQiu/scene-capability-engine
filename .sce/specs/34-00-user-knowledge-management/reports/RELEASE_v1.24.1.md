@@ -10,7 +10,7 @@
    - npm 标准安装包
    - 包含所有源代码和依赖清单
 
-2. **kse-v1.24.1-offline.zip** (725 KB)
+2. **sce-v1.24.1-offline.zip** (725 KB)
    - 完整离线安装包
    - 包含 .tgz 文件和所有安装文档
 
@@ -25,7 +25,7 @@ npm install -g kiro-spec-engine-1.24.1.tgz
 #### 方法 2: 使用压缩包
 
 ```bash
-# 1. 解压 kse-v1.24.1-offline.zip
+# 1. 解压 sce-v1.24.1-offline.zip
 # 2. 进入解压目录
 # 3. 运行安装命令
 npm install -g kiro-spec-engine-1.24.1.tgz
@@ -55,10 +55,10 @@ npm install -g kiro-spec-engine-1.24.1.tgz
 **使用示例**:
 ```bash
 # 扫描所有嵌套仓库（默认）
-kse repo init
+sce repo init
 
 # 只扫描顶层仓库
-kse repo init --no-nested
+sce repo init --no-nested
 ```
 
 ### 2. 用户知识管理系统 (Spec 34-00)
@@ -71,16 +71,16 @@ kse repo init --no-nested
 **使用示例**:
 ```bash
 # 初始化知识库
-kse knowledge init
+sce knowledge init
 
 # 添加知识条目
-kse knowledge add
+sce knowledge add
 
 # 搜索知识
-kse knowledge search "关键词"
+sce knowledge search "关键词"
 
 # 查看统计
-kse knowledge stats
+sce knowledge stats
 ```
 
 ### 3. 跨平台路径处理改进
@@ -143,7 +143,7 @@ npm uninstall -g kiro-spec-engine
 npm install -g kiro-spec-engine-1.24.1.tgz
 
 # 验证版本
-kse --version
+sce --version
 ```
 
 ## 🙏 致谢
@@ -152,7 +152,7 @@ kse --version
 
 ## 📧 支持
 
-- GitHub: https://github.com/heguangyong/kiro-spec-engine
+- GitHub: https://github.com/heguangyong/scene-capability-engine
 - 文档: docs/README.md
 - 问题反馈: GitHub Issues
 

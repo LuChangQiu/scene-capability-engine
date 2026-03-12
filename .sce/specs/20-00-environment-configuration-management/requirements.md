@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This document specifies the requirements for the Environment Configuration Management feature in kse (kiro-spec-engine). This feature enables developers to manage multiple environment configurations (development, staging, production, etc.) within their projects, providing quick switching, validation, and execution capabilities across different environments.
+This document specifies the requirements for the Environment Configuration Management feature in sce (kiro-spec-engine). This feature enables developers to manage multiple environment configurations (development, staging, production, etc.) within their projects, providing quick switching, validation, and execution capabilities across different environments.
 
-The feature addresses the common pain point of manually managing multiple configuration files and switching between environments, which is error-prone and time-consuming. By integrating environment management into kse's workflow, developers can maintain consistency and reduce configuration-related errors.
+The feature addresses the common pain point of manually managing multiple configuration files and switching between environments, which is error-prone and time-consuming. By integrating environment management into sce's workflow, developers can maintain consistency and reduce configuration-related errors.
 
 ## Glossary
 

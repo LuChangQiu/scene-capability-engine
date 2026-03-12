@@ -14,7 +14,7 @@ applicable_scenarios:
   - Implementing CRUD operations
   - Building microservices
   - Adding authentication to APIs
-author: kse-team
+author: sce-team
 created_at: 2025-01-30
 updated_at: 2025-01-30
 version: 1.0.0

@@ -1,4 +1,4 @@
-apiVersion: kse.scene/v0.2
+apiVersion: sce.scene/v0.2
 kind: scene
 metadata:
   obj_id: scene.erp.69-00-scene-package-registry-and-quality-gate
@@ -10,12 +10,12 @@ spec:
     goal: Build template registry governance and quality gate for scene package library
   model_scope:
     read:
-      - kse.SceneTemplate.templateId
-      - kse.SceneTemplate.kind
-      - kse.SceneTemplate.status
+      - sce.SceneTemplate.templateId
+      - sce.SceneTemplate.kind
+      - sce.SceneTemplate.status
     write:
-      - kse.SceneTemplateRegistry.reportId
-      - kse.SceneTemplateRegistry.generatedAt
+      - sce.SceneTemplateRegistry.reportId
+      - sce.SceneTemplateRegistry.generatedAt
   capability_contract:
     bindings:
       - type: query

@@ -8,10 +8,10 @@
 
 ## Runtime Checks
 
-- `kse scene route --query hybrid --mode dry_run`
-- `kse scene route --query routing --require-unique`
-- `kse scene route-policy-template --profile hybrid --out .sce/specs/64-00-scene-route-policy-governance/reports/route-policy-hybrid.json --json`
-- `kse scene route --query hybrid --mode commit --route-policy .sce/specs/64-00-scene-route-policy-governance/reports/route-policy-hybrid.json --json --out .sce/specs/64-00-scene-route-policy-governance/reports/route-with-policy-sample.json`
+- `sce scene route --query hybrid --mode dry_run`
+- `sce scene route --query routing --require-unique`
+- `sce scene route-policy-template --profile hybrid --out .sce/specs/64-00-scene-route-policy-governance/reports/route-policy-hybrid.json --json`
+- `sce scene route --query hybrid --mode commit --route-policy .sce/specs/64-00-scene-route-policy-governance/reports/route-policy-hybrid.json --json --out .sce/specs/64-00-scene-route-policy-governance/reports/route-with-policy-sample.json`
 
 ## Notes
 

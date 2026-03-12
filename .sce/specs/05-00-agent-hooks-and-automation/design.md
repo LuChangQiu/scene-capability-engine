@@ -27,7 +27,7 @@ The design prioritizes **cross-tool parity** while providing the best experience
           ▼                  ▼                  ▼
 ┌─────────────────────────────────────────────────────────────┐
 │                    Command Executor                          │
-│              (kse workspace sync, etc.)                      │
+│              (sce workspace sync, etc.)                      │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -157,7 +157,7 @@ class ActionExecutor {
 ```
 
 **Key Behaviors**:
-- Executes kse CLI commands
+- Executes sce CLI commands
 - Handles command failures
 - Retries with exponential backoff
 - Logs all executions
@@ -213,7 +213,7 @@ class ExecutionLogger {
   "timestamp": "2026-01-23T10:30:00Z",
   "event": "file_changed",
   "file": ".sce/specs/my-spec/tasks.md",
-  "action": "kse workspace sync",
+  "action": "sce workspace sync",
   "result": "success",
   "duration": 1234,
   "error": null
@@ -305,14 +305,14 @@ interface ExecutionLog {
 ### Use Case 1: Auto-Sync on Task Update
 
 **Trigger**: `tasks.md` file changes  
-**Action**: Run `kse workspace sync`  
+**Action**: Run `sce workspace sync`  
 **Debounce**: 2000ms
 
 **Configuration**:
 ```json
 {
   "**/tasks.md": {
-    "command": "kse workspace sync",
+    "command": "sce workspace sync",
     "debounce": 2000,
     "description": "Sync workspace when tasks are updated"
   }
@@ -324,7 +324,7 @@ interface ExecutionLog {
 1. User edits tasks.md
 2. FileWatcher detects change
 3. EventDebouncer waits 2s for more changes
-4. ActionExecutor runs: kse workspace sync
+4. ActionExecutor runs: sce workspace sync
 5. ExecutionLogger logs result
 ```
 
@@ -338,7 +338,7 @@ interface ExecutionLog {
 ```json
 {
   "**/.sce/specs/*/requirements.md": {
-    "command": "kse prompt regenerate ${spec}",
+    "command": "sce prompt regenerate ${spec}",
     "debounce": 5000,
     "description": "Regenerate prompts when requirements change"
   }
@@ -355,7 +355,7 @@ interface ExecutionLog {
 ```json
 {
   "**/.sce/specs/*/.complete": {
-    "command": "kse context export ${spec}",
+    "command": "sce context export ${spec}",
     "debounce": 1000,
     "description": "Export context when work is complete"
   }
@@ -386,47 +386,47 @@ interface ExecutionLog {
 
 ```bash
 # Start watch mode
-kse watch start
-kse watch start --config=custom-watch.json
-kse watch start --patterns="**/tasks.md,**/requirements.md"
+sce watch start
+sce watch start --config=custom-watch.json
+sce watch start --patterns="**/tasks.md,**/requirements.md"
 
 # Stop watch mode
-kse watch stop
+sce watch stop
 
 # Restart watch mode
-kse watch restart
+sce watch restart
 
 # Check status
-kse watch status
+sce watch status
 
 # View logs
-kse watch logs
-kse watch logs --tail=50
-kse watch logs --follow
+sce watch logs
+sce watch logs --tail=50
+sce watch logs --follow
 
 # View metrics
-kse watch metrics
-kse watch metrics --format=json
+sce watch metrics
+sce watch metrics --format=json
 
 # Test configuration
-kse watch test
-kse watch test --pattern="**/tasks.md"
+sce watch test
+sce watch test --pattern="**/tasks.md"
 ```
 
 ### Configuration Commands
 
 ```bash
 # Initialize watch config
-kse watch init
+sce watch init
 
 # Edit configuration
-kse watch config edit
+sce watch config edit
 
 # Validate configuration
-kse watch config validate
+sce watch config validate
 
 # Show current configuration
-kse watch config show
+sce watch config show
 ```
 
 ## Error Handling

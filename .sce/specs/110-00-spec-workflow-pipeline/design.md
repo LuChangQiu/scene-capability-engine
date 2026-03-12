@@ -47,6 +47,6 @@
 
 - `lib/commands/spec-pipeline.js`（新）
 - `lib/spec/pipeline/*`（新，StageRunner/StateStore/Adapters）
-- `bin/kiro-spec-engine.js`（注册命令）
+- `bin/scene-capability-engine.js`（注册命令）
 - `tests/spec-pipeline/*`（新增测试）
 

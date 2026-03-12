@@ -10,17 +10,17 @@
 ### 1. [high] increase-valid-templates
 - title: Increase valid template count by at least 2
 - recommendation: Promote additional template packages via package-publish until gate threshold is met.
-- command: `kse scene package-registry --template-dir .sce/templates/scene-packages --json`
+- command: `sce scene package-registry --template-dir .sce/templates/scene-packages --json`
 - source_checks: min-valid-templates
 
 ### 2. [medium] cover-l1-capability
 - title: Add at least one l1-capability template package
 - recommendation: Create and publish a scene-capability package to satisfy l1-capability coverage.
-- command: `kse scene package-template --kind scene-capability --spec <spec-name> && kse scene package-publish --spec <spec-name>`
+- command: `sce scene package-template --kind scene-capability --spec <spec-name> && sce scene package-publish --spec <spec-name>`
 - source_checks: required-layer:l1-capability
 
 ### 3. [medium] cover-l3-instance
 - title: Add at least one l3-instance template package
 - recommendation: Create and publish a scene-template package to satisfy l3-instance coverage.
-- command: `kse scene package-template --kind scene-template --spec <spec-name> && kse scene package-publish --spec <spec-name>`
+- command: `sce scene package-template --kind scene-template --spec <spec-name> && sce scene package-publish --spec <spec-name>`
 - source_checks: required-layer:l3-instance

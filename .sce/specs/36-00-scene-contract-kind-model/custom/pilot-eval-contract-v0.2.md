@@ -3,7 +3,7 @@
 ## Eval Contract (scene.order.query)
 
 ```yaml
-apiVersion: kse.eval/v0.2
+apiVersion: sce.eval/v0.2
 kind: eval
 metadata:
   obj_id: eval.erp.order-query-quality.001

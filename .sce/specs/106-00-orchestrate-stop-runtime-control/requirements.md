@@ -18,7 +18,7 @@
 
 #### 验收标准
 
-1. WHEN 执行 `kse orchestrate stop` 且存在活跃 Run_ID THEN 系统 SHALL 触发 Runtime_Stop
+1. WHEN 执行 `sce orchestrate stop` 且存在活跃 Run_ID THEN 系统 SHALL 触发 Runtime_Stop
 2. Runtime_Stop SHALL 调用 `OrchestrationEngine.stop()` 并终止所有 running agent
 3. 停止完成后状态 SHALL 转为 `stopped`
 

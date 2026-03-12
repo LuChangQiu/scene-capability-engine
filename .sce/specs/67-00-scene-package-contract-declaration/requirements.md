@@ -2,7 +2,7 @@
 
 ## Introduction
 
-KSE scene runtime now supports route tuning and rollout closure. To make scene assets reusable across projects, each
+SCE scene runtime now supports route tuning and rollout closure. To make scene assets reusable across projects, each
 scene/spec needs a package-level contract declaration with compatibility, capability, parameter, and governance
 metadata.
 

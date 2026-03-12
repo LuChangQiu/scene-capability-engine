@@ -4807,7 +4807,7 @@ if (process.argv.includes('--json')) {
     ]));
     expect(parsed.health.recommendations).toEqual(expect.arrayContaining([
       expect.stringContaining('sce auto handoff evidence --window 5 --json'),
-      expect.stringContaining('KSE_RELEASE_WEEKLY_OPS_*'),
+      expect.stringContaining('SCE_RELEASE_WEEKLY_OPS_*'),
       expect.stringContaining('interactive-dialogue-governance.js'),
       expect.stringContaining('interactive-governance-report.js')
     ]));
@@ -5863,7 +5863,7 @@ if (process.argv.includes('--json')) {
     }));
     expect(parsed.recommendations).toEqual(expect.arrayContaining([
       expect.stringContaining('release-ops-weekly-summary.js'),
-      expect.stringContaining('KSE_RELEASE_WEEKLY_OPS_*'),
+      expect.stringContaining('SCE_RELEASE_WEEKLY_OPS_*'),
       expect.stringContaining('interactive-authorization-tier-evaluate.js'),
       expect.stringContaining('interactive-dialogue-governance.js'),
       expect.stringContaining('interactive-governance-report.js')

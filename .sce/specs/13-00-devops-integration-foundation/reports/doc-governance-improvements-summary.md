@@ -28,13 +28,13 @@
 **修复文件**:
 - ✅ `.sce/specs/SPEC_WORKFLOW_GUIDE.md`
   - 移除"上海图书馆 MinIO"引用
-  - 改为"所有使用 kiro-spec-engine (kse) 的 Spec 驱动开发项目"
+  - 改为"所有使用 kiro-spec-engine (sce) 的 Spec 驱动开发项目"
   
 - ✅ `template/.sce/specs/SPEC_WORKFLOW_GUIDE.md`
   - 同上修改（模板文件）
   
 - ✅ `.sce/steering/ENVIRONMENT.md`
-  - 项目名称: "测试项目" → "kiro-spec-engine (kse)"
+  - 项目名称: "测试项目" → "kiro-spec-engine (sce)"
   - 更新为实际项目信息
 
 ### 2. 模板占位符改进（中优先级）
@@ -60,7 +60,7 @@
   - 检查未替换的占位符
   - 生成详细报告
   
-- ✅ `kse docs check-refs` 命令
+- ✅ `sce docs check-refs` 命令
   - CLI 接口
   - 彩色输出
   - 支持 `--report` 选项保存报告
@@ -125,28 +125,28 @@
 
 ```bash
 # 检查错误引用和占位符
-kse docs check-refs
+sce docs check-refs
 
 # 生成详细报告
-kse docs check-refs --report
+sce docs check-refs --report
 
 # 检查文档合规性
-kse docs diagnose
+sce docs diagnose
 
 # 验证所有 Spec
-kse docs validate --all
+sce docs validate --all
 ```
 
 ### 项目初始化时
 
 ```bash
 # 1. 从模板创建新项目后，立即运行
-kse docs check-refs
+sce docs check-refs
 
 # 2. 根据提示修复所有问题
 
 # 3. 再次检查确认
-kse docs check-refs
+sce docs check-refs
 
 # 4. 应该看到: ✅ No issues found!
 ```
@@ -158,23 +158,23 @@ kse docs check-refs
 # 手动检查 requirements.md, design.md, tasks.md
 
 # 2. 验证 Spec 结构
-kse docs validate --spec your-spec-name
+sce docs validate --spec your-spec-name
 
 # 3. 归档产物
-kse docs archive --spec your-spec-name
+sce docs archive --spec your-spec-name
 
 # 4. 检查引用
-kse docs check-refs
+sce docs check-refs
 ```
 
 ### 发布前
 
 ```bash
 # 完整检查流程
-kse docs check-refs --report
-kse docs diagnose
-kse docs validate --all
-kse docs report
+sce docs check-refs --report
+sce docs diagnose
+sce docs validate --all
+sce docs report
 npm test
 ```
 
@@ -202,7 +202,7 @@ npm test
 - 容易遗漏问题
 
 **现在**:
-- 一键运行 `kse docs check-refs`
+- 一键运行 `sce docs check-refs`
 - 自动扫描所有关键文件
 - 生成详细报告
 
@@ -227,9 +227,9 @@ npm test
 ```bash
 # 创建新项目后的标准流程
 1. 复制模板
-2. 运行 kse docs check-refs
+2. 运行 sce docs check-refs
 3. 根据提示替换所有占位符
-4. 再次运行 kse docs check-refs 确认
+4. 再次运行 sce docs check-refs 确认
 5. 提交初始版本
 ```
 
@@ -239,7 +239,7 @@ npm test
 # 每个 Spec 完成后
 1. 完成所有任务
 2. 归档产物
-3. 运行 kse docs check-refs
+3. 运行 sce docs check-refs
 4. 更新 CURRENT_CONTEXT.md
 ```
 
@@ -273,7 +273,7 @@ npm test
    - 交互式配置
    
 2. ⏳ 集成到 CI/CD
-   - 自动运行 `kse docs check-refs`
+   - 自动运行 `sce docs check-refs`
    - 失败时阻止合并
 
 ### 中期（1-2 月）

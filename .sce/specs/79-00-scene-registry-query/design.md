@@ -136,7 +136,7 @@ Note: `search` uses `requiredOption` for `--query` at the CLI level, but the `ru
   packages: [
     {
       name: 'my-package',
-      group: 'kse.scene',
+      group: 'sce.scene',
       description: 'A scene package',
       latest: '1.2.0',
       version_count: 2
@@ -154,7 +154,7 @@ Note: `search` uses `requiredOption` for `--query` at the CLI level, but the `ru
   packages: [
     {
       name: 'my-package',
-      group: 'kse.scene',
+      group: 'sce.scene',
       description: 'A scene package',
       latest: '1.2.0',
       version_count: 2

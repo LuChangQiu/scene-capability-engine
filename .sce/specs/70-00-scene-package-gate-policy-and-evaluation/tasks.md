@@ -7,7 +7,7 @@
   - Added normalize/validate option handlers for both command flows.
 
 - [x] 2 Implement policy template generation and profile model
-  - Added `kse.scene.package-gate/v0.1` policy template model.
+  - Added `sce.scene.package-gate/v0.1` policy template model.
   - Added baseline and three-layer profile presets with overwrite safety.
 
 - [x] 3 Implement registry gate evaluation pipeline

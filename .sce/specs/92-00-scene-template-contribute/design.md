@@ -2,7 +2,7 @@
 
 ## Overview
 
-Scene Template Contribute Pipeline 为 KSE 添加三个新 CLI 子命令（`scene contribute`、`scene lint`、`scene score`）和一个核心模块 `scene-template-linter.js`。该模块包含模板 Lint 引擎和质量评分计算器两个核心功能。
+Scene Template Contribute Pipeline 为 SCE 添加三个新 CLI 子命令（`scene contribute`、`scene lint`、`scene score`）和一个核心模块 `scene-template-linter.js`。该模块包含模板 Lint 引擎和质量评分计算器两个核心功能。
 
 设计遵循以下原则：
 1. **复用优先** — 复用已有的 `validateScenePackageContract`、`validateScenePackageDirectory`、`validatePackageForPublish`、`storeToRegistry` 等函数
@@ -83,7 +83,7 @@ sequenceDiagram
 #### Constants
 
 ```javascript
-const KNOWN_BINDING_REF_PREFIXES = ['moqui.', 'spec.erp.', 'kse.scene.'];
+const KNOWN_BINDING_REF_PREFIXES = ['moqui.', 'spec.erp.', 'sce.scene.'];
 const VALID_RISK_LEVELS = ['low', 'medium', 'high'];
 const KEBAB_CASE_PATTERN = /^[a-z][a-z0-9]*(-[a-z0-9]+)*$/;
 const SEMVER_PATTERN = /^\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?$/;
@@ -384,7 +384,7 @@ function printSceneContributeSummary(options, payload, projectRoot) {}
       completed: true,
       skipped: false,
       overwritten: false,
-      coordinate: 'kse.scene/crud-order@0.1.0',
+      coordinate: 'sce.scene/crud-order@0.1.0',
       tarball: {
         path: '.sce/registry/packages/crud-order/crud-order-0.1.0.tgz',
         size: 2048,
@@ -437,7 +437,7 @@ function printSceneContributeSummary(options, payload, projectRoot) {}
 
 ### Property 3: Binding ref 格式验证
 
-*For any* binding ref string, `checkBindingRefFormat` should produce a warning-level LintItem if and only if the ref does not start with any of the known prefixes (`moqui.`, `spec.erp.`, `kse.scene.`). Refs matching a known prefix should produce zero warnings.
+*For any* binding ref string, `checkBindingRefFormat` should produce a warning-level LintItem if and only if the ref does not start with any of the known prefixes (`moqui.`, `spec.erp.`, `sce.scene.`). Refs matching a known prefix should produce zero warnings.
 
 **Validates: Requirements 1.3**
 

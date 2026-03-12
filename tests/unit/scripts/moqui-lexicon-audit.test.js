@@ -70,14 +70,14 @@ describe('moqui-lexicon-audit script', () => {
     expect(await fs.pathExists(markdownFile)).toBe(true);
   });
 
-  test('filters provided capabilities to manifest template scope with kse/sce prefix normalization', async () => {
+  test('filters provided capabilities to manifest template scope with sce prefix normalization', async () => {
     const projectRoot = path.resolve(__dirname, '..', '..', '..');
     const scriptPath = path.join(projectRoot, 'scripts', 'moqui-lexicon-audit.js');
     const workspace = path.join(tempDir, 'workspace');
     const manifestFile = path.join(workspace, 'docs', 'handoffs', 'handoff-manifest.json');
     const templateRoot = path.join(workspace, '.sce', 'templates', 'scene-packages');
-    const targetTemplateDir = path.join(templateRoot, 'kse.scene--erp-order-query-read--0.1.0');
-    const noiseTemplateDir = path.join(templateRoot, 'kse.scene--scene-package-contract-declaration--0.2.0');
+    const targetTemplateDir = path.join(templateRoot, 'sce.scene--erp-order-query-read--0.1.0');
+    const noiseTemplateDir = path.join(templateRoot, 'sce.scene--scene-package-contract-declaration--0.2.0');
     const outFile = path.join(tempDir, 'moqui-lexicon-audit-scoped.json');
 
     await fs.ensureDir(path.dirname(manifestFile));
@@ -133,7 +133,7 @@ describe('moqui-lexicon-audit script', () => {
       using_manifest_scope: true,
     }));
     expect(payload.templates).toHaveLength(1);
-    expect(payload.templates[0].template_id).toBe('kse.scene--erp-order-query-read--0.1.0');
+    expect(payload.templates[0].template_id).toBe('sce.scene--erp-order-query-read--0.1.0');
   });
 
   test('infers expected capabilities from manifest templates when capabilities are missing', async () => {

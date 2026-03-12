@@ -156,7 +156,7 @@ describe('moqui-metadata-extract script', () => {
       ],
       templates: [
         '.sce/templates/exports/order-management',
-        'kse.scene--moqui-page-copilot-dialog--0.1.0'
+        'sce.scene--moqui-page-copilot-dialog--0.1.0'
       ],
       capabilities: [
         'moqui-service-contract-core',
@@ -171,7 +171,7 @@ describe('moqui-metadata-extract script', () => {
     await fs.writeFile(matrixPath, [
       '| Priority | Moqui Capability | Template ID | Status |',
       '| --- | --- | --- | --- |',
-      '| P0 | Order read (`OrderHeader`, `query services`) | `kse.scene--moqui-screen-flow-core--0.1.0` | ready |'
+      '| P0 | Order read (`OrderHeader`, `query services`) | `sce.scene--moqui-screen-flow-core--0.1.0` | ready |'
     ].join('\n'), 'utf8');
 
     await fs.writeJson(evidencePath, {

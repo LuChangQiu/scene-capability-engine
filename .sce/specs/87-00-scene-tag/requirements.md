@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This feature adds a `kse scene tag` subcommand group to manage distribution tags on scene packages in the local registry. Tags (like "latest", "stable", "beta", "experimental") are aliases that point to specific versions, similar to npm dist-tags. This allows users to install specific release channels without knowing exact version numbers. The command group provides three sub-subcommands: `add`, `rm`, and `ls`.
+This feature adds a `sce scene tag` subcommand group to manage distribution tags on scene packages in the local registry. Tags (like "latest", "stable", "beta", "experimental") are aliases that point to specific versions, similar to npm dist-tags. This allows users to install specific release channels without knowing exact version numbers. The command group provides three sub-subcommands: `add`, `rm`, and `ls`.
 
 ## Glossary
 
-- **Tag_Command**: The `kse scene tag` CLI subcommand group containing sub-subcommands: add, rm, ls.
+- **Tag_Command**: The `sce scene tag` CLI subcommand group containing sub-subcommands: add, rm, ls.
 - **Registry_Index**: The `registry-index.json` file that stores metadata for all published packages and their versions.
 - **Package_Entry**: A single package record within the Registry_Index, containing `versions`, `latest`, and optionally `tags`.
 - **Tags_Object**: A plain object on the Package_Entry mapping tag names (strings) to version strings, e.g. `{ "stable": "1.1.0", "beta": "1.3.0-beta.1" }`.

@@ -3,13 +3,13 @@
 ## Introduction
 
 Scene runtime already supports `run` and `doctor` outputs, including a doctor feedback template.
-To complete the governance loop, KSE needs a machine-readable evaluation stage that aggregates
+To complete the governance loop, SCE needs a machine-readable evaluation stage that aggregates
 runtime evidence and feedback records into one report for iteration decisions.
 
 ## Requirements
 
 ### Requirement 1: Eval Command Entry
-- Add `kse scene eval` command for closed-loop evaluation.
+- Add `sce scene eval` command for closed-loop evaluation.
 - Accept run result JSON input (`--result`) and/or doctor feedback markdown input (`--feedback`).
 - Reject invocation when neither input is provided.
 

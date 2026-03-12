@@ -1,0 +1,38 @@
+{
+    "apiVersion":  "sce.scene.template/v0.1",
+    "kind":  "scene-package-template",
+    "metadata":  {
+                     "template_id":  "sce.scene--moqui-entity-model-core--0.1.0",
+                     "source_spec":  "moqui-archetype-moqui-entity-model-core",
+                     "package_coordinate":  "sce.scene/moqui-entity-model-core@0.1.0",
+                     "package_kind":  "scene-domain-profile",
+                     "published_at":  "2026-02-19T00:00:00.000Z"
+                 },
+    "compatibility":  {
+                          "scene_api_version":  "sce.scene/v0.2"
+                      },
+    "parameters":  [
+                       {
+                           "id":  "project_root",
+                           "type":  "string",
+                           "required":  true,
+                           "description":  "Moqui project root path"
+                       },
+                       {
+                           "id":  "target_scope",
+                           "type":  "string",
+                           "required":  false,
+                           "description":  "Optional target module or component scope"
+                       }
+                   ],
+    "template":  {
+                     "package_contract":  "scene-package.json",
+                     "scene_manifest":  "scene.template.yaml"
+                 },
+    "artifacts":  {
+                      "entry_scene":  "custom/scene.yaml",
+                      "generates":  [
+                                        "custom/scene.yaml"
+                                    ]
+                  }
+}

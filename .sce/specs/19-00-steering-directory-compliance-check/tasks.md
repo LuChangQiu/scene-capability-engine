@@ -117,7 +117,7 @@ This implementation plan breaks down the steering directory compliance check fea
   - [x] 7.1 Add compliance check to main CLI entry point
     - Hook check before command routing
     - Parse bypass flags (--skip-steering-check, --force-steering-check)
-    - Check environment variable (KSE_SKIP_STEERING_CHECK)
+    - Check environment variable (SCE_SKIP_STEERING_CHECK)
     - Exit with non-zero code on compliance failure
     - _Requirements: 1.1, 1.2, 1.3, 6.1, 6.2, 6.3, 7.2, 7.3_
   
@@ -151,7 +151,7 @@ This implementation plan breaks down the steering directory compliance check fea
   - [x] 9.1 Add bypass options to CLI help text
     - Document --skip-steering-check flag
     - Document --force-steering-check flag
-    - Document KSE_SKIP_STEERING_CHECK environment variable
+    - Document SCE_SKIP_STEERING_CHECK environment variable
     - _Requirements: 6.4_
   
   - [x] 9.2 Create user-facing documentation
@@ -176,7 +176,7 @@ This implementation plan breaks down the steering directory compliance check fea
 - Performance target: <50ms for compliance check
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

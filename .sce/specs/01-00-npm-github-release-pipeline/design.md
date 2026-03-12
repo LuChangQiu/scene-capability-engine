@@ -69,8 +69,8 @@ sequenceDiagram
     
     User->>npm: npm install -g kiro-spec-engine
     npm->>User: Install CLI
-    User->>User: Run kse --version
-    User->>User: Run kse init
+    User->>User: Run sce --version
+    User->>User: Run sce init
     User->>User: Check Python availability
 ```
 
@@ -114,8 +114,8 @@ Repository Configuration
   "version": "1.0.0",
   "description": "Kiro Spec-driven development engine with Ultrawork quality enhancement",
   "bin": {
-    "kiro-spec-engine": "./bin/kiro-spec-engine.js",
-    "kse": "./bin/kiro-spec-engine.js"
+    "kiro-spec-engine": "./bin/scene-capability-engine.js",
+    "sce": "./bin/scene-capability-engine.js"
   },
   "files": [
     "bin/",
@@ -362,7 +362,7 @@ module.exports = doctorCommand;
 ```
 
 **Interface**:
-- Command: `kse doctor`
+- Command: `sce doctor`
 - Output: System diagnostics with clear status indicators
 
 ## Data Models
@@ -472,7 +472,7 @@ Property 4: Graceful degradation for non-Python commands
 **Validates: Requirements 3.6**
 
 Property 5: Version consistency
-*For any* version command invocation (kse --version or kiro-spec-engine --version), the displayed version should match the version field in package.json
+*For any* version command invocation (sce --version or kiro-spec-engine --version), the displayed version should match the version field in package.json
 **Validates: Requirements 7.3**
 
 Property 6: Help localization
@@ -562,7 +562,7 @@ For more help, visit: https://github.com/USERNAME/kiro-spec-engine#python-setup
 **Scenario**: Package installs but CLI commands don't work
 
 **Handling**:
-1. User runs `kse doctor` to diagnose
+1. User runs `sce doctor` to diagnose
 2. Doctor command checks Node.js and Python availability
 3. Doctor command verifies CLI is in PATH
 4. Display diagnostic results with troubleshooting steps
@@ -709,7 +709,7 @@ describe('init command integration', () => {
     const testDir = path.join(__dirname, '../fixtures/test-output');
     
     // Run init command
-    execSync(`node bin/kiro-spec-engine.js init test-project`, {
+    execSync(`node bin/scene-capability-engine.js init test-project`, {
       cwd: testDir
     });
     
@@ -740,11 +740,11 @@ describe('init command integration', () => {
 
 Before each release, manually verify:
 - [ ] `npm install -g kiro-spec-engine` works
-- [ ] `kse --version` displays correct version
+- [ ] `sce --version` displays correct version
 - [ ] `kiro-spec-engine --version` displays correct version
-- [ ] `kse --help` shows localized help
-- [ ] `kse init test-project` creates project structure
-- [ ] `kse doctor` reports system status correctly
+- [ ] `sce --help` shows localized help
+- [ ] `sce init test-project` creates project structure
+- [ ] `sce doctor` reports system status correctly
 - [ ] Python detection works with and without Python installed
 - [ ] Error messages are clear and helpful
 - [ ] Documentation links in errors are valid

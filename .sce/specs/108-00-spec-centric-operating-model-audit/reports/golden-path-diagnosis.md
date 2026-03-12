@@ -10,13 +10,13 @@
 
 ### 阶段 A：项目接管
 
-- 可用：`kse adopt`
+- 可用：`sce adopt`
 - 现状：可初始化 `.sce` 基础结构
 - 诊断：**已具备**
 
 ### 阶段 B：Spec 起步
 
-- 可用：`kse spec <name>`（create-spec alias）
+- 可用：`sce spec <name>`（create-spec alias）
 - 现状：仅创建目录，后续文档仍需手工生成或手工调用增强
 - 诊断：**核心断点 #1（P0）**
 
@@ -34,12 +34,12 @@
 
 ### 阶段 E：质量闸口
 
-- 现状：`107-00-spec-gate-command` 已建 spec，但 CLI 尚无 `kse spec gate` 实装
+- 现状：`107-00-spec-gate-command` 已建 spec，但 CLI 尚无 `sce spec gate` 实装
 - 诊断：**核心断点 #4（P0）**
 
 ### 阶段 F：归档治理
 
-- 可用：`kse docs validate/archive`
+- 可用：`sce docs validate/archive`
 - 现状：治理可执行，但与执行链未形成“强制闭环”
 - 诊断：**核心断点 #5（P1）**
 
@@ -64,7 +64,7 @@
 
 ## 4. 结论
 
-当前 KSE 已具备“强执行能力”，但在 Spec 主线上的“起步-编排-收敛”仍不够产品化。
+当前 SCE 已具备“强执行能力”，但在 Spec 主线上的“起步-编排-收敛”仍不够产品化。
 
 建议优先落地：
 

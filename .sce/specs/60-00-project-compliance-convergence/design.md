@@ -19,7 +19,7 @@ historical implementation details.
 
 ## Validation Plan
 
-- `kse doctor --docs`
-- `kse status`
+- `sce doctor --docs`
+- `sce status`
 - Targeted tests for status/task parser
 - Full test suite smoke (`npm test -- --runInBand`) for final confidence

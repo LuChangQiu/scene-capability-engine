@@ -21,11 +21,11 @@ This document specifies requirements for implementing agent hooks in Kiro IDE an
 
 #### Acceptance Criteria
 
-1. WHEN I run `kse hooks init`, THE System SHALL create `.sce/hooks/` directory with default hook templates
+1. WHEN I run `sce hooks init`, THE System SHALL create `.sce/hooks/` directory with default hook templates
 2. THE System SHALL provide at least 5 pre-configured hook templates for common use cases
 3. WHEN a hook event occurs, THE System SHALL execute the configured action automatically
 4. THE System SHALL log all hook executions to `.sce/hooks/execution.log`
-5. THE System SHALL provide `kse hooks list/enable/disable/test` commands for hook management
+5. THE System SHALL provide `sce hooks list/enable/disable/test` commands for hook management
 
 ### Requirement 2: File Watcher for Non-Kiro Tools
 
@@ -33,11 +33,11 @@ This document specifies requirements for implementing agent hooks in Kiro IDE an
 
 #### Acceptance Criteria
 
-1. WHEN I run `kse watch start`, THE System SHALL start monitoring specified file patterns
+1. WHEN I run `sce watch start`, THE System SHALL start monitoring specified file patterns
 2. WHEN a monitored file changes, THE System SHALL execute configured commands automatically
 3. THE System SHALL support watching tasks.md, requirements.md, design.md, and source files
 4. THE System SHALL run in background and survive terminal restarts
-5. THE System SHALL provide `kse watch stop/status/logs` commands for management
+5. THE System SHALL provide `sce watch stop/status/logs` commands for management
 
 ### Requirement 3: Manual Workflow Documentation
 
@@ -49,7 +49,7 @@ This document specifies requirements for implementing agent hooks in Kiro IDE an
 2. THE documentation SHALL include estimated time savings with automation
 3. THE documentation SHALL provide keyboard shortcuts and tips for efficiency
 4. THE documentation SHALL include examples for Claude Code, Cursor, and Copilot
-5. THE documentation SHALL be accessible via `kse workflows list` command
+5. THE documentation SHALL be accessible via `sce workflows list` command
 
 ### Requirement 4: Cross-Tool Automation Parity
 
@@ -65,12 +65,12 @@ This document specifies requirements for implementing agent hooks in Kiro IDE an
 
 ### Requirement 5: Hook Templates and Presets
 
-**User Story:** As a new kse user, I want pre-configured automation templates, so that I can start using automation without complex configuration.
+**User Story:** As a new sce user, I want pre-configured automation templates, so that I can start using automation without complex configuration.
 
 #### Acceptance Criteria
 
 1. THE System SHALL provide templates for: auto-sync, quality-gate, context-export, prompt-gen, test-runner
-2. WHEN I run `kse hooks install <template>`, THE System SHALL install the template with sensible defaults
+2. WHEN I run `sce hooks install <template>`, THE System SHALL install the template with sensible defaults
 3. THE System SHALL allow customization of installed templates
 4. THE System SHALL provide template descriptions and use case explanations
 5. THE System SHALL support community-contributed templates
@@ -82,7 +82,7 @@ This document specifies requirements for implementing agent hooks in Kiro IDE an
 #### Acceptance Criteria
 
 1. THE System SHALL store automation config in `.sce/automation-config.json`
-2. THE System SHALL provide `kse automation status` to show current configuration
+2. THE System SHALL provide `sce automation status` to show current configuration
 3. THE System SHALL allow enabling/disabling automation per tool
 4. THE System SHALL support project-level and user-level configuration
 5. THE System SHALL validate configuration and provide helpful error messages
@@ -93,7 +93,7 @@ This document specifies requirements for implementing agent hooks in Kiro IDE an
 
 #### Acceptance Criteria
 
-1. WHEN watch mode detects tasks.md changes, THE System SHALL run `kse workspace sync`
+1. WHEN watch mode detects tasks.md changes, THE System SHALL run `sce workspace sync`
 2. WHEN watch mode detects spec file changes, THE System SHALL regenerate prompts
 3. THE System SHALL debounce file changes to avoid excessive executions
 4. THE System SHALL provide configurable watch patterns and commands
@@ -108,7 +108,7 @@ This document specifies requirements for implementing agent hooks in Kiro IDE an
 1. THE System SHALL track number of automated executions per day
 2. THE System SHALL estimate time saved by automation
 3. THE System SHALL log all automation events with timestamps
-4. THE System SHALL provide `kse automation metrics` command to view statistics
+4. THE System SHALL provide `sce automation metrics` command to view statistics
 5. THE System SHALL support exporting metrics to CSV or JSON
 
 ### Requirement 9: Error Handling and Recovery
@@ -120,16 +120,16 @@ This document specifies requirements for implementing agent hooks in Kiro IDE an
 1. WHEN an automated command fails, THE System SHALL log the error and continue
 2. THE System SHALL retry failed commands up to 3 times with exponential backoff
 3. THE System SHALL notify user of persistent failures
-4. THE System SHALL provide `kse automation errors` command to view recent failures
+4. THE System SHALL provide `sce automation errors` command to view recent failures
 5. THE System SHALL allow disabling problematic automations without affecting others
 
 ### Requirement 10: Tool Detection and Auto-Configuration
 
-**User Story:** As a new user, I want kse to detect my tool and configure automation automatically, so that I get the best experience without manual setup.
+**User Story:** As a new user, I want sce to detect my tool and configure automation automatically, so that I get the best experience without manual setup.
 
 #### Acceptance Criteria
 
-1. WHEN I run `kse adopt`, THE System SHALL detect if I'm using Kiro IDE
+1. WHEN I run `sce adopt`, THE System SHALL detect if I'm using Kiro IDE
 2. IF Kiro IDE is detected, THE System SHALL offer to install agent hooks
 3. IF other tools are detected, THE System SHALL offer to setup watch mode or manual workflows
 4. THE System SHALL provide tool-specific setup instructions
@@ -155,7 +155,7 @@ This document specifies requirements for implementing agent hooks in Kiro IDE an
 
 - Watch mode SHALL work on Windows, macOS, and Linux
 - The System SHALL support Node.js 14.x and above
-- Automation SHALL not interfere with normal kse operations
+- Automation SHALL not interfere with normal sce operations
 - The System SHALL gracefully degrade when features unavailable
 
 ### Reliability
@@ -213,7 +213,7 @@ This document specifies requirements for implementing agent hooks in Kiro IDE an
 - Kiro IDE agent hooks API (for Kiro-specific features)
 - Node.js `chokidar` library (for file watching)
 - Node.js `child_process` (for command execution)
-- Existing kse CLI commands
+- Existing sce CLI commands
 
 ## Risks and Mitigation
 

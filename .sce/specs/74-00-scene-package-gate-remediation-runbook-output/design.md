@@ -13,7 +13,7 @@ Flow:
 
 ## Command Surface
 
-`kse scene package-gate`
+`sce scene package-gate`
 - `--runbook-out <path>`
   - Optional markdown output for remediation execution plan.
 

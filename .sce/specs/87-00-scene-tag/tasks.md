@@ -2,7 +2,7 @@
 
 ## Overview
 
-Add `kse scene tag` subcommand group with sub-subcommands (add, rm, ls) to manage distribution tags on scene packages in the local registry. All code in `lib/commands/scene.js`, following normalize → validate → run → print pattern. Single `runSceneTagCommand` dispatcher handles all three actions.
+Add `sce scene tag` subcommand group with sub-subcommands (add, rm, ls) to manage distribution tags on scene packages in the local registry. All code in `lib/commands/scene.js`, following normalize → validate → run → print pattern. Single `runSceneTagCommand` dispatcher handles all three actions.
 
 ## Tasks
 

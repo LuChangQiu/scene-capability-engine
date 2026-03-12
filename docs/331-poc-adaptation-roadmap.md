@@ -54,7 +54,7 @@
    - tag 发布时自动将 release notes 草稿、evidence 审阅 markdown、summary JSON 作为 GitHub Release 资产上传。
    - 无 evidence 时至少上传 fallback notes，保证发布资产结构稳定。
 20. 新增可配置发布门禁（workflow 级）：
-   - 支持通过 `KSE_RELEASE_*` 仓库变量配置 success rate/risk/ontology 阈值。
+   - 支持通过 `SCE_RELEASE_*` 仓库变量配置 success rate/risk/ontology 阈值。
    - 支持 advisory（默认）与 enforce（阻断发布）两种模式，且门禁在 `npm publish` 前执行。
 21. 新增 release gate 审计产物：
    - 每次 tag 发布生成 `release-gate-<tag>.json`，记录阈值、观测信号、违规项和判定结果。
@@ -87,10 +87,10 @@
    - 自动检测连续 gate 失败、高风险占比过高、短期风险占比上升。
    - 在 Release Notes 中显式给出 drift alerts，提前暴露质量恶化趋势。
 31. 漂移告警阈值参数化：
-   - 支持通过 `KSE_RELEASE_DRIFT_*` 仓库变量调节 fail streak/high-risk share/delta 阈值。
+   - 支持通过 `SCE_RELEASE_DRIFT_*` 仓库变量调节 fail streak/high-risk share/delta 阈值。
    - 不同项目可按发布策略调整灵敏度，减少误报或漏报。
 32. 漂移告警阻断模式：
-   - 新增 `KSE_RELEASE_DRIFT_ENFORCE`，可在漂移告警触发时阻断发布。
+   - 新增 `SCE_RELEASE_DRIFT_ENFORCE`，可在漂移告警触发时阻断发布。
    - 保留默认 advisory 模式，确保历史数据不足时不误阻断。
 33. 漂移告警审计写回 gate 报告：
    - `release.yml` 将 drift 评估结果回写到 `release-gate-<tag>.json` 的 `drift` 字段。

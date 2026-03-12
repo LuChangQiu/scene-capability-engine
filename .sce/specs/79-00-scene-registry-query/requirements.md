@@ -2,14 +2,14 @@
 
 ## Introduction
 
-This feature adds two read-only query commands to the kse CLI for browsing the local scene package registry: `kse scene list` (list all packages) and `kse scene search --query <term>` (search packages by name, description, or group). Both commands reuse the existing `loadRegistryIndex` function and follow the established normalize → validate → run → print pattern.
+This feature adds two read-only query commands to the sce CLI for browsing the local scene package registry: `sce scene list` (list all packages) and `sce scene search --query <term>` (search packages by name, description, or group). Both commands reuse the existing `loadRegistryIndex` function and follow the established normalize → validate → run → print pattern.
 
 ## Glossary
 
 - **Registry_Index**: The `registry-index.json` file containing metadata for all published scene packages in a local registry directory.
 - **Package_Entry**: A single package record inside the Registry_Index, containing name, group, description, latest version, and a map of version records.
-- **List_Command**: The `kse scene list` CLI command that displays all packages in the Registry_Index.
-- **Search_Command**: The `kse scene search --query <term>` CLI command that filters packages by a search term.
+- **List_Command**: The `sce scene list` CLI command that displays all packages in the Registry_Index.
+- **Search_Command**: The `sce scene search --query <term>` CLI command that filters packages by a search term.
 - **Search_Term**: A user-supplied string used for case-insensitive substring matching against package name, description, and group fields.
 
 ## Requirements

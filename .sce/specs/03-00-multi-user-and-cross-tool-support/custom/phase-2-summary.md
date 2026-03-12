@@ -6,7 +6,7 @@
 
 ## Overview
 
-Phase 2 extends kiro-spec-engine with cross-tool compatibility, enabling developers to use kse specs in any AI coding assistant (Claude Code, Cursor, Codex, etc.).
+Phase 2 extends kiro-spec-engine with cross-tool compatibility, enabling developers to use sce specs in any AI coding assistant (Claude Code, Cursor, Codex, etc.).
 
 ## Completed Features
 
@@ -17,14 +17,14 @@ Phase 2 extends kiro-spec-engine with cross-tool compatibility, enabling develop
 - Export complete spec context to standalone Markdown
 - Include requirements, design, tasks, and steering rules
 - Task-specific context generation
-- Self-contained files usable without kse CLI
+- Self-contained files usable without sce CLI
 
 **Tests**: 8 unit tests, all passing
 
 **Usage**:
 ```bash
-kse context export <spec-name>
-kse context export <spec-name> --steering --steering-files=CORE_PRINCIPLES.md
+sce context export <spec-name>
+sce context export <spec-name> --steering --steering-files=CORE_PRINCIPLES.md
 ```
 
 ### 2. Prompt Generator (~400 lines)
@@ -41,9 +41,9 @@ kse context export <spec-name> --steering --steering-files=CORE_PRINCIPLES.md
 
 **Usage**:
 ```bash
-kse prompt generate <spec-name> <task-id>
-kse prompt generate <spec-name> <task-id> --tool=claude-code
-kse prompt generate <spec-name> <task-id> --tool=cursor --max-length=5000
+sce prompt generate <spec-name> <task-id>
+sce prompt generate <spec-name> <task-id> --tool=claude-code
+sce prompt generate <spec-name> <task-id> --tool=cursor --max-length=5000
 ```
 
 ### 3. CLI Commands (~600 lines)
@@ -55,26 +55,26 @@ kse prompt generate <spec-name> <task-id> --tool=cursor --max-length=5000
 
 **Workspace Commands**:
 ```bash
-kse workspace init              # Initialize personal workspace
-kse workspace sync              # Sync with team
-kse workspace list              # List all workspaces
+sce workspace init              # Initialize personal workspace
+sce workspace sync              # Sync with team
+sce workspace list              # List all workspaces
 ```
 
 **Task Commands**:
 ```bash
-kse task claim <spec> <task>    # Claim a task
-kse task unclaim <spec> <task>  # Unclaim a task
-kse task list <spec>            # List claimed tasks
+sce task claim <spec> <task>    # Claim a task
+sce task unclaim <spec> <task>  # Unclaim a task
+sce task list <spec>            # List claimed tasks
 ```
 
 **Context Commands**:
 ```bash
-kse context export <spec>       # Export context
+sce context export <spec>       # Export context
 ```
 
 **Prompt Commands**:
 ```bash
-kse prompt generate <spec> <task>  # Generate prompt
+sce prompt generate <spec> <task>  # Generate prompt
 ```
 
 ### 4. Backward Compatibility
@@ -84,7 +84,7 @@ kse prompt generate <spec> <task>  # Generate prompt
 - Single-user mode detection via `isMultiUserMode()`
 - Graceful degradation when workspaces don't exist
 - Helpful migration messages in commands
-- Gradual migration support via `kse workspace init`
+- Gradual migration support via `sce workspace init`
 
 ## Code Statistics
 
@@ -128,10 +128,10 @@ kse prompt generate <spec> <task>  # Generate prompt
 ### Export Context for Claude Code
 ```bash
 # Export complete spec context
-kse context export 03-00-multi-user-and-cross-tool-support
+sce context export 03-00-multi-user-and-cross-tool-support
 
 # Export with steering rules
-kse context export 03-00-multi-user-and-cross-tool-support \
+sce context export 03-00-multi-user-and-cross-tool-support \
   --steering \
   --steering-files=CORE_PRINCIPLES.md,ENVIRONMENT.md
 
@@ -142,7 +142,7 @@ cat .sce/specs/03-00-multi-user-and-cross-tool-support/context-export.md
 ### Generate Task Prompt for Cursor
 ```bash
 # Generate prompt for specific task
-kse prompt generate 03-00-multi-user-and-cross-tool-support 9.1 --tool=cursor
+sce prompt generate 03-00-multi-user-and-cross-tool-support 9.1 --tool=cursor
 
 # Copy the prompt file
 cat .sce/specs/03-00-multi-user-and-cross-tool-support/prompts/task-9-1.md
@@ -151,16 +151,16 @@ cat .sce/specs/03-00-multi-user-and-cross-tool-support/prompts/task-9-1.md
 ### Claim Task and Export Context
 ```bash
 # Claim a task
-kse task claim 03-00-multi-user-and-cross-tool-support 10.1
+sce task claim 03-00-multi-user-and-cross-tool-support 10.1
 
 # Generate prompt for the task
-kse prompt generate 03-00-multi-user-and-cross-tool-support 10.1
+sce prompt generate 03-00-multi-user-and-cross-tool-support 10.1
 
 # Work on the task in your preferred AI tool
 # ...
 
 # Unclaim when done
-kse task unclaim 03-00-multi-user-and-cross-tool-support 10.1
+sce task unclaim 03-00-multi-user-and-cross-tool-support 10.1
 ```
 
 ## Remaining Tasks (Optional)
@@ -190,10 +190,10 @@ kse task unclaim 03-00-multi-user-and-cross-tool-support 10.1
 
 ## Conclusion
 
-Phase 2 successfully delivers cross-tool compatibility for kse. Developers can now:
+Phase 2 successfully delivers cross-tool compatibility for sce. Developers can now:
 - Export spec context to any AI coding assistant
 - Generate task-specific prompts with smart content extraction
-- Use kse specs in Claude Code, Cursor, Codex, or any Markdown-compatible tool
+- Use sce specs in Claude Code, Cursor, Codex, or any Markdown-compatible tool
 - Maintain backward compatibility with single-user projects
 
 The implementation is production-ready with comprehensive test coverage and user-friendly CLI commands.

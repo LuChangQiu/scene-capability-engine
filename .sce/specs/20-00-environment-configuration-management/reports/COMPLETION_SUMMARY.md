@@ -9,7 +9,7 @@
 
 ## Overview
 
-Successfully implemented a lightweight multi-environment configuration management system for kse. The feature allows users to manage multiple environment configurations (dev, test, staging, prod) with automatic backup, rollback, and verification capabilities.
+Successfully implemented a lightweight multi-environment configuration management system for sce. The feature allows users to manage multiple environment configurations (dev, test, staging, prod) with automatic backup, rollback, and verification capabilities.
 
 ---
 
@@ -55,7 +55,7 @@ Successfully implemented a lightweight multi-environment configuration managemen
 2. **lib/environment/environment-manager.js** - Core CRUD operations
 3. **lib/environment/backup-system.js** - Automatic backup/restore
 4. **lib/commands/env.js** - CLI interface
-5. **bin/kiro-spec-engine.js** - CLI integration
+5. **bin/scene-capability-engine.js** - CLI integration
 
 ### Tests
 - **Total Tests**: 95 tests (78 environment + 17 CLI)
@@ -74,28 +74,28 @@ Successfully implemented a lightweight multi-environment configuration managemen
 
 ```bash
 # List all environments
-kse env list
+sce env list
 
 # Switch to environment (with automatic backup)
-kse env switch <name>
+sce env switch <name>
 
 # Show active environment details
-kse env info
+sce env info
 
 # Register new environment from config file
-kse env register <config-file>
+sce env register <config-file>
 
 # Remove environment (requires --force)
-kse env unregister <name> --force
+sce env unregister <name> --force
 
 # Rollback to previous environment
-kse env rollback
+sce env rollback
 
 # Verify current environment (optional)
-kse env verify
+sce env verify
 
 # Run command in environment context (optional)
-kse env run "<command>"
+sce env run "<command>"
 ```
 
 ---
@@ -154,7 +154,7 @@ Created comprehensive `docs/environment-management-guide.md`:
 2. **Phased Approach**: Deferring Phase 4 (multi-workspace) allowed faster delivery of core value
 3. **Test Coverage**: 95 tests provided confidence in cross-platform behavior
 4. **Backup Safety**: Automatic backups before switches prevent data loss
-5. **CLI Design**: Consistent command structure (`kse env <action>`) improves usability
+5. **CLI Design**: Consistent command structure (`sce env <action>`) improves usability
 
 ---
 
@@ -186,7 +186,7 @@ Created comprehensive `docs/environment-management-guide.md`:
 
 ## Conclusion
 
-Spec 20-00 successfully delivered a production-ready environment configuration management system. The feature is fully tested, documented, and integrated into kse v1.17.0. Phase 4 (multi-workspace integration) is deferred to v2 without impacting core functionality.
+Spec 20-00 successfully delivered a production-ready environment configuration management system. The feature is fully tested, documented, and integrated into sce v1.17.0. Phase 4 (multi-workspace integration) is deferred to v2 without impacting core functionality.
 
 **Status**: Ready for production use ✅
 

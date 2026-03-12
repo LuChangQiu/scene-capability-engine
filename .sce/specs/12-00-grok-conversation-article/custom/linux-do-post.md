@@ -36,7 +36,7 @@
 - ✅ 高内聚低耦合的设计
 
 **可落地的方案**：
-- 开源项目：[kiro-spec-engine](https://github.com/heguangyong/kiro-spec-engine)
+- 开源项目：[kiro-spec-engine](https://github.com/heguangyong/scene-capability-engine)
 - 已发布到 npm，可直接使用
 - 完整的方法论和工具链
 
@@ -160,8 +160,8 @@
 
 ### 项目地址
 
-- **GitHub**: https://github.com/heguangyong/kiro-spec-engine
-- **npm**: https://www.npmjs.com/package/kiro-spec-engine
+- **GitHub**: https://github.com/heguangyong/scene-capability-engine
+- **npm**: https://www.npmjs.com/package/scene-capability-engine
 
 **如果感兴趣，欢迎 Star ⭐**
 
@@ -172,14 +172,14 @@
 完整对话 **2 万字**，记录了 7 轮深度交流：
 
 ### 中文版
-- **GitHub**: https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md
+- **GitHub**: https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md
 - **微信公众号**: https://mp.weixin.qq.com/s/GRo0XQ6GvQ03T4_FTvAsKA
 - **掘金**: https://juejin.cn/post/7598899986857377798
 - **知乎**: https://zhuanlan.zhihu.com/p/1999164891391624163
 
 ### English Version
 - **Dev.to**: https://dev.to/guangyong_he_801a39925878/the-philosophy-and-practice-of-ai-driven-development-a-deep-dialogue-with-grok-597i
-- **GitHub**: https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md
+- **GitHub**: https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md
 
 ---
 

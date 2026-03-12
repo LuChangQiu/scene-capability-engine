@@ -53,7 +53,7 @@
 - 可发布到 Discussions
 
 **操作步骤**：
-1. 访问：https://github.com/heguangyong/kiro-spec-engine/settings
+1. 访问：https://github.com/heguangyong/scene-capability-engine/settings
 2. 启用 Discussions 功能
 3. 创建新 Discussion
 4. 复制 `QUICK_PUBLISH.md` 中的内容
@@ -130,12 +130,12 @@
 ## 🔗 相关链接
 
 ### 项目链接
-- **GitHub**：https://github.com/heguangyong/kiro-spec-engine
-- **npm**：https://www.npmjs.com/package/kiro-spec-engine
+- **GitHub**：https://github.com/heguangyong/scene-capability-engine
+- **npm**：https://www.npmjs.com/package/scene-capability-engine
 
 ### 文章链接（发布后更新）
-- **GitHub 中文版**：https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md
-- **GitHub 英文版**：https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md
+- **GitHub 中文版**：https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md
+- **GitHub 英文版**：https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md
 - **GitHub Discussions**：（待发布）
 - **微信公众号**：（待发布）
 

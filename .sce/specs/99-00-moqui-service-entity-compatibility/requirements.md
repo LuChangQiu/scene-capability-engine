@@ -57,7 +57,7 @@
 
 ### 需求 5：Scene 命令验收矩阵
 
-**用户故事：** 作为 KSE 使用者，我希望新增 service/entity 能力在 scene 命令中可稳定使用。
+**用户故事：** 作为 SCE 使用者，我希望新增 service/entity 能力在 scene 命令中可稳定使用。
 
 #### 验收标准
 

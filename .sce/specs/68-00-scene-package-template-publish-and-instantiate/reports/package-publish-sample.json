@@ -7,13 +7,13 @@
     "scene_manifest_path": "custom/scene.yaml"
   },
   "template": {
-    "id": "kse.scene--scene-package-contract-declaration--0.2.0",
-    "coordinate": "kse.scene/scene-package-contract-declaration@0.2.0",
+    "id": "sce.scene--scene-package-contract-declaration--0.2.0",
+    "coordinate": "sce.scene/scene-package-contract-declaration@0.2.0",
     "kind": "scene-domain-profile",
-    "output_dir": ".sce/templates/scene-packages/kse.scene--scene-package-contract-declaration--0.2.0",
-    "manifest_path": ".sce/templates/scene-packages/kse.scene--scene-package-contract-declaration--0.2.0/template.manifest.json",
-    "package_contract_path": ".sce/templates/scene-packages/kse.scene--scene-package-contract-declaration--0.2.0/scene-package.json",
-    "scene_template_path": ".sce/templates/scene-packages/kse.scene--scene-package-contract-declaration--0.2.0/scene.template.yaml"
+    "output_dir": ".sce/templates/scene-packages/sce.scene--scene-package-contract-declaration--0.2.0",
+    "manifest_path": ".sce/templates/scene-packages/sce.scene--scene-package-contract-declaration--0.2.0/template.manifest.json",
+    "package_contract_path": ".sce/templates/scene-packages/sce.scene--scene-package-contract-declaration--0.2.0/scene-package.json",
+    "scene_template_path": ".sce/templates/scene-packages/sce.scene--scene-package-contract-declaration--0.2.0/scene.template.yaml"
   },
   "summary": {
     "parameter_count": 2,

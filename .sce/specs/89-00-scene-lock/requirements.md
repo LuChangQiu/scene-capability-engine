@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This feature adds a `kse scene lock` subcommand group to manage version locking on scene packages in the local registry. Locking a specific version prevents accidental unpublish or overwrite of that version. The command group provides three sub-subcommands: `set` (lock a version), `rm` (unlock a version), and `ls` (list locked versions for a package). Lock state is tracked via a `locked: true` flag on individual version entries in `registry-index.json`.
+This feature adds a `sce scene lock` subcommand group to manage version locking on scene packages in the local registry. Locking a specific version prevents accidental unpublish or overwrite of that version. The command group provides three sub-subcommands: `set` (lock a version), `rm` (unlock a version), and `ls` (list locked versions for a package). Lock state is tracked via a `locked: true` flag on individual version entries in `registry-index.json`.
 
 ## Glossary
 
-- **Lock_Command**: The `kse scene lock` CLI subcommand group containing sub-subcommands: set, rm, ls.
+- **Lock_Command**: The `sce scene lock` CLI subcommand group containing sub-subcommands: set, rm, ls.
 - **Registry_Index**: The `registry-index.json` file that stores metadata for all published packages and their versions.
 - **Package_Entry**: A single package record within the Registry_Index, containing `versions`, `latest`, and other metadata.
 - **Version_Entry**: A single version record within a Package_Entry's `versions` object, containing `published_at`, `integrity`, `tarball`, and optionally `locked`.

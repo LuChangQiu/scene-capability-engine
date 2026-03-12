@@ -222,5 +222,5 @@ The system consists of two main components:
 1. WHEN a template is registered, THE Template_Registry SHALL include `template_type`, `min_sce_version`, `risk_level`, and `rollback_contract`
 2. WHEN a template targets scene-package generation, THE Template_Registry SHALL include `ontology_scope` with `domains`, `entities`, `relations`, `business_rules`, and `decisions` where applicable
 3. THE Template_Manager SHALL support filtering templates by capability metadata (`template_type`, `compatible_with`, `risk_level`)
-4. WHEN a scene package is generated from template, THE contract SHALL emit `compatibility.min_sce_version` and SHALL NOT emit `compatibility.kse_version`
+4. WHEN a scene package is generated from template, THE contract SHALL emit `compatibility.min_sce_version` and SHALL NOT emit `compatibility.sce_version`
 5. THE Template_Manager SHALL provide machine-readable outputs that can be consumed by scene package ontology gates and capability coverage scorecards

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Adds a `kse scene deprecate` subcommand that marks package versions as deprecated in the local registry by adding/removing a `deprecated` field on version entries in `registry-index.json`. Also enhances `scene install` and `scene info` to surface deprecation warnings. Follows the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`. No new dependencies.
+Adds a `sce scene deprecate` subcommand that marks package versions as deprecated in the local registry by adding/removing a `deprecated` field on version entries in `registry-index.json`. Also enhances `scene install` and `scene info` to surface deprecation warnings. Follows the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`. No new dependencies.
 
 ## Architecture
 

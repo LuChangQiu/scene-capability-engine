@@ -49,7 +49,7 @@
     "valid": true,
     "errors": [],
     "kind": "scene",
-    "api_version": "kse.scene/v0.2",
+    "api_version": "sce.scene/v0.2",
     "scene_ref": "scene.erp.36-00-scene-contract-kind-model",
     "scene_version": "0.2.0",
     "title": "Scene Contract Kind Model",
@@ -63,9 +63,9 @@
       "commit_low_risk"
     ],
     "commands": {
-      "validate": "kse scene validate --spec 36-00-scene-contract-kind-model --spec-manifest custom/scene.yaml",
-      "doctor": "kse scene doctor --spec 36-00-scene-contract-kind-model --spec-manifest custom/scene.yaml --mode commit",
-      "run": "kse scene run --spec 36-00-scene-contract-kind-model --spec-manifest custom/scene.yaml --mode commit"
+      "validate": "sce scene validate --spec 36-00-scene-contract-kind-model --spec-manifest custom/scene.yaml",
+      "doctor": "sce scene doctor --spec 36-00-scene-contract-kind-model --spec-manifest custom/scene.yaml --mode commit",
+      "run": "sce scene run --spec 36-00-scene-contract-kind-model --spec-manifest custom/scene.yaml --mode commit"
     }
   },
   "alternatives": [
@@ -75,7 +75,7 @@
       "valid": true,
       "errors": [],
       "kind": "scene",
-      "api_version": "kse.scene/v0.2",
+      "api_version": "sce.scene/v0.2",
       "scene_ref": "scene.erp.38-00-scene-runtime-cli-integration",
       "scene_version": "0.2.0",
       "title": "Scene Runtime Cli Integration",
@@ -89,9 +89,9 @@
         "commit_low_risk"
       ],
       "commands": {
-        "validate": "kse scene validate --spec 38-00-scene-runtime-cli-integration --spec-manifest custom/scene.yaml",
-        "doctor": "kse scene doctor --spec 38-00-scene-runtime-cli-integration --spec-manifest custom/scene.yaml --mode commit",
-        "run": "kse scene run --spec 38-00-scene-runtime-cli-integration --spec-manifest custom/scene.yaml --mode commit"
+        "validate": "sce scene validate --spec 38-00-scene-runtime-cli-integration --spec-manifest custom/scene.yaml",
+        "doctor": "sce scene doctor --spec 38-00-scene-runtime-cli-integration --spec-manifest custom/scene.yaml --mode commit",
+        "run": "sce scene run --spec 38-00-scene-runtime-cli-integration --spec-manifest custom/scene.yaml --mode commit"
       }
     },
     {
@@ -100,7 +100,7 @@
       "valid": true,
       "errors": [],
       "kind": "scene",
-      "api_version": "kse.scene/v0.2",
+      "api_version": "sce.scene/v0.2",
       "scene_ref": "scene.erp.39-00-scene-validation-and-starter-manifests",
       "scene_version": "0.2.0",
       "title": "Scene Validation And Starter Manifests",
@@ -114,9 +114,9 @@
         "commit_low_risk"
       ],
       "commands": {
-        "validate": "kse scene validate --spec 39-00-scene-validation-and-starter-manifests --spec-manifest custom/scene.yaml",
-        "doctor": "kse scene doctor --spec 39-00-scene-validation-and-starter-manifests --spec-manifest custom/scene.yaml --mode commit",
-        "run": "kse scene run --spec 39-00-scene-validation-and-starter-manifests --spec-manifest custom/scene.yaml --mode commit"
+        "validate": "sce scene validate --spec 39-00-scene-validation-and-starter-manifests --spec-manifest custom/scene.yaml",
+        "doctor": "sce scene doctor --spec 39-00-scene-validation-and-starter-manifests --spec-manifest custom/scene.yaml --mode commit",
+        "run": "sce scene run --spec 39-00-scene-validation-and-starter-manifests --spec-manifest custom/scene.yaml --mode commit"
       }
     },
     {
@@ -125,7 +125,7 @@
       "valid": true,
       "errors": [],
       "kind": "scene",
-      "api_version": "kse.scene/v0.2",
+      "api_version": "sce.scene/v0.2",
       "scene_ref": "scene.erp.40-00-scene-scaffold-command",
       "scene_version": "0.2.0",
       "title": "Scene Scaffold Command",
@@ -139,9 +139,9 @@
         "commit_low_risk"
       ],
       "commands": {
-        "validate": "kse scene validate --spec 40-00-scene-scaffold-command --spec-manifest custom/scene.yaml",
-        "doctor": "kse scene doctor --spec 40-00-scene-scaffold-command --spec-manifest custom/scene.yaml --mode commit",
-        "run": "kse scene run --spec 40-00-scene-scaffold-command --spec-manifest custom/scene.yaml --mode commit"
+        "validate": "sce scene validate --spec 40-00-scene-scaffold-command --spec-manifest custom/scene.yaml",
+        "doctor": "sce scene doctor --spec 40-00-scene-scaffold-command --spec-manifest custom/scene.yaml --mode commit",
+        "run": "sce scene run --spec 40-00-scene-scaffold-command --spec-manifest custom/scene.yaml --mode commit"
       }
     },
     {
@@ -150,7 +150,7 @@
       "valid": true,
       "errors": [],
       "kind": "scene",
-      "api_version": "kse.scene/v0.2",
+      "api_version": "sce.scene/v0.2",
       "scene_ref": "scene.erp.41-00-scene-doctor-command",
       "scene_version": "0.2.0",
       "title": "Scene Doctor Command",
@@ -164,9 +164,9 @@
         "commit_low_risk"
       ],
       "commands": {
-        "validate": "kse scene validate --spec 41-00-scene-doctor-command --spec-manifest custom/scene.yaml",
-        "doctor": "kse scene doctor --spec 41-00-scene-doctor-command --spec-manifest custom/scene.yaml --mode commit",
-        "run": "kse scene run --spec 41-00-scene-doctor-command --spec-manifest custom/scene.yaml --mode commit"
+        "validate": "sce scene validate --spec 41-00-scene-doctor-command --spec-manifest custom/scene.yaml",
+        "doctor": "sce scene doctor --spec 41-00-scene-doctor-command --spec-manifest custom/scene.yaml --mode commit",
+        "run": "sce scene run --spec 41-00-scene-doctor-command --spec-manifest custom/scene.yaml --mode commit"
       }
     },
     {
@@ -175,7 +175,7 @@
       "valid": true,
       "errors": [],
       "kind": "scene",
-      "api_version": "kse.scene/v0.2",
+      "api_version": "sce.scene/v0.2",
       "scene_ref": "scene.erp.42-00-scene-doctor-remediation-output",
       "scene_version": "0.2.0",
       "title": "Scene Doctor Remediation Output",
@@ -189,9 +189,9 @@
         "commit_low_risk"
       ],
       "commands": {
-        "validate": "kse scene validate --spec 42-00-scene-doctor-remediation-output --spec-manifest custom/scene.yaml",
-        "doctor": "kse scene doctor --spec 42-00-scene-doctor-remediation-output --spec-manifest custom/scene.yaml --mode commit",
-        "run": "kse scene run --spec 42-00-scene-doctor-remediation-output --spec-manifest custom/scene.yaml --mode commit"
+        "validate": "sce scene validate --spec 42-00-scene-doctor-remediation-output --spec-manifest custom/scene.yaml",
+        "doctor": "sce scene doctor --spec 42-00-scene-doctor-remediation-output --spec-manifest custom/scene.yaml --mode commit",
+        "run": "sce scene run --spec 42-00-scene-doctor-remediation-output --spec-manifest custom/scene.yaml --mode commit"
       }
     },
     {
@@ -200,7 +200,7 @@
       "valid": true,
       "errors": [],
       "kind": "scene",
-      "api_version": "kse.scene/v0.2",
+      "api_version": "sce.scene/v0.2",
       "scene_ref": "scene.erp.43-00-scene-doctor-task-draft-output",
       "scene_version": "0.2.0",
       "title": "Scene Doctor Task Draft Output",
@@ -214,9 +214,9 @@
         "commit_low_risk"
       ],
       "commands": {
-        "validate": "kse scene validate --spec 43-00-scene-doctor-task-draft-output --spec-manifest custom/scene.yaml",
-        "doctor": "kse scene doctor --spec 43-00-scene-doctor-task-draft-output --spec-manifest custom/scene.yaml --mode commit",
-        "run": "kse scene run --spec 43-00-scene-doctor-task-draft-output --spec-manifest custom/scene.yaml --mode commit"
+        "validate": "sce scene validate --spec 43-00-scene-doctor-task-draft-output --spec-manifest custom/scene.yaml",
+        "doctor": "sce scene doctor --spec 43-00-scene-doctor-task-draft-output --spec-manifest custom/scene.yaml --mode commit",
+        "run": "sce scene run --spec 43-00-scene-doctor-task-draft-output --spec-manifest custom/scene.yaml --mode commit"
       }
     }
   ]

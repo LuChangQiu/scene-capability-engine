@@ -8,8 +8,8 @@
 
 ## Verification Commands
 
-1. kse scene route --query routing --mode dry_run --route-policy .sce/config/scene-route-policy.json
-2. kse scene route --query routing --mode dry_run --route-policy .sce/specs/66-00-scene-route-policy-rollout-package/reports/rollouts/hybrid-wave-01/route-policy.next.json
+1. sce scene route --query routing --mode dry_run --route-policy .sce/config/scene-route-policy.json
+2. sce scene route --query routing --mode dry_run --route-policy .sce/specs/66-00-scene-route-policy-rollout-package/reports/rollouts/hybrid-wave-01/route-policy.next.json
 
 ## Apply and Rollback
 

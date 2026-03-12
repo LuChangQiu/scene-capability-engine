@@ -125,7 +125,7 @@ async function createMoquiCoreRegressionWorkspace(workspacePath) {
     '.sce',
     'templates',
     'scene-packages',
-    'kse.scene--erp-order-query-read--0.1.0'
+    'sce.scene--erp-order-query-read--0.1.0'
   );
   const specDir = path.join(
     workspacePath,

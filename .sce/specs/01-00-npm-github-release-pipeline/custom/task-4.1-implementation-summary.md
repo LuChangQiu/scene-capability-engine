@@ -2,7 +2,7 @@
 
 ## Overview
 
-Successfully implemented the `doctor` command for the Kiro Spec Engine CLI. The command provides system diagnostics by checking Node.js and Python availability, displaying clear status indicators, and providing installation instructions when Python is missing.
+Successfully implemented the `doctor` command for the Scene Capability Engine CLI. The command provides system diagnostics by checking Node.js and Python availability, displaying clear status indicators, and providing installation instructions when Python is missing.
 
 ## Implementation Details
 
@@ -18,10 +18,10 @@ Successfully implemented the `doctor` command for the Kiro Spec Engine CLI. The 
 
 ### Files Modified
 
-1. **bin/kiro-spec-engine.js**
+1. **bin/scene-capability-engine.js**
    - Added import for `doctorCommand` module
    - Registered `doctor` command with Commander.js
-   - Command accessible via `kse doctor` or `kiro-spec-engine doctor`
+   - Command accessible via `sce doctor` or `kiro-spec-engine doctor`
 
 2. **locales/en.json**
    - Added `cli.commands.doctor` section with English messages:
@@ -77,7 +77,7 @@ Successfully implemented the `doctor` command for the Kiro Spec Engine CLI. The 
 
 ### Test 1: Doctor Command with Python Available (English)
 ```bash
-$ node bin/kiro-spec-engine.js doctor
+$ node bin/scene-capability-engine.js doctor
 🔥 System Diagnostics
 
 Checking system requirements...
@@ -88,13 +88,13 @@ Checking system requirements...
 ────────────────────────────────────────────────────────────
 
 ✅ All system requirements are met!
-You're ready to use all Kiro Spec Engine features including Ultrawork enhancements.
+You're ready to use all Scene Capability Engine features including Ultrawork enhancements.
 ```
 **Result**: ✅ PASSED
 
 ### Test 2: Doctor Command with Python Available (Chinese)
 ```bash
-$ KIRO_LANG=zh node bin/kiro-spec-engine.js doctor
+$ KIRO_LANG=zh node bin/scene-capability-engine.js doctor
 🔥 系统诊断
 
 正在检查系统要求...
@@ -105,15 +105,15 @@ $ KIRO_LANG=zh node bin/kiro-spec-engine.js doctor
 ────────────────────────────────────────────────────────────
 
 ✅ 所有系统要求均已满足！
-您已准备好使用 Kiro Spec Engine 的所有功能，包括 Ultrawork 增强。
+您已准备好使用 Scene Capability Engine 的所有功能，包括 Ultrawork 增强。
 ```
 **Result**: ✅ PASSED
 
 ### Test 3: Help Command Shows Doctor
 ```bash
-$ node bin/kiro-spec-engine.js --help
+$ node bin/scene-capability-engine.js --help
 Commands:
-  init [options] [project-name]     初始化新的 Kiro Spec Engine 项目
+  init [options] [project-name]     初始化新的 Scene Capability Engine 项目
   enhance [options] <stage> <file>  Enhance document quality with Ultrawork spirit
   create-spec <spec-name>           Create a new spec directory
   doctor                            检查系统要求和诊断信息
@@ -124,7 +124,7 @@ Commands:
 ## Requirements Validation
 
 ### Requirement 7.5: Installation Verification
-✅ **SATISFIED**: The CLI provides a `kse doctor` command that checks system requirements (Node.js, Python)
+✅ **SATISFIED**: The CLI provides a `sce doctor` command that checks system requirements (Node.js, Python)
 
 **Acceptance Criteria Met**:
 - ✅ Check Node.js version and display
@@ -166,7 +166,7 @@ Commands:
 
 ### CLI Integration
 - ✅ Command registered in main CLI file
-- ✅ Accessible via both `kse doctor` and `kiro-spec-engine doctor`
+- ✅ Accessible via both `sce doctor` and `kiro-spec-engine doctor`
 - ✅ Appears in help output
 - ✅ Follows same pattern as other commands
 

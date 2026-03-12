@@ -57,7 +57,7 @@ Successfully implemented manual configuration support for `.sce/project-repos.js
 ## User Impact
 
 ### Problem Solved
-Users reported inability to manually edit repository configurations. When creating a config with 8 real Git repositories, validation failed. Only KSE auto-generated configurations worked.
+Users reported inability to manually edit repository configurations. When creating a config with 8 real Git repositories, validation failed. Only SCE auto-generated configurations worked.
 
 ### Solution Delivered
 - Users can now manually create minimal configurations (name + path only)

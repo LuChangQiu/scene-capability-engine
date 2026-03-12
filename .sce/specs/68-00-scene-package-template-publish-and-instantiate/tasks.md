@@ -8,7 +8,7 @@
 
 - [x] 2 Implement publish pipeline and template manifest emission
   - Added package contract + scene manifest loading, validation guard, template id resolution, and library output writes.
-  - Added `template.manifest.json` generation with `kse.scene.template/v0.1` metadata.
+  - Added `template.manifest.json` generation with `sce.scene.template/v0.1` metadata.
 
 - [x] 3 Implement instantiate pipeline with parameter resolution and render
   - Added template manifest loader, contract validation, required/default parameter resolution.
@@ -21,4 +21,4 @@
 - [x] 5 Run regression and command smoke verification
   - Executed `npx jest tests/unit/commands/scene.test.js --runInBand`.
   - Executed command help + publish/instantiate smoke runs with JSON report capture.
-  - Executed `npm test -- --runInBand`, `kse doctor --docs`, and `kse status`.
+  - Executed `npm test -- --runInBand`, `sce doctor --docs`, and `sce status`.

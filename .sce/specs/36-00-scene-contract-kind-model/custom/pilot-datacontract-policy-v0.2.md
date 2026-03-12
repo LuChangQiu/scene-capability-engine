@@ -3,7 +3,7 @@
 ## DataContract (scene.order.query)
 
 ```yaml
-apiVersion: kse.datacontract/v0.2
+apiVersion: sce.datacontract/v0.2
 kind: datacontract
 metadata:
   obj_id: datacontract.erp.order-query.001
@@ -30,7 +30,7 @@ spec:
 ## Policy (scene.order.query)
 
 ```yaml
-apiVersion: kse.policy/v0.2
+apiVersion: sce.policy/v0.2
 kind: policy
 metadata:
   obj_id: policy.erp.read-low-risk.001

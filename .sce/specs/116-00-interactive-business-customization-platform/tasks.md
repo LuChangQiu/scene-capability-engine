@@ -75,7 +75,7 @@
 
 - [x] 5.1 将 Moqui 实验中稳定变更沉淀为 SCE 模板资产
   - scene-package / ontology / governance contract / playbook
-  - 已落地模板：`.sce/templates/scene-packages/kse.scene--moqui-interactive-customization-loop--0.1.0/*`
+  - 已落地模板：`.sce/templates/scene-packages/sce.scene--moqui-interactive-customization-loop--0.1.0/*`
   - 已落地 playbook：`docs/interactive-customization/moqui-interactive-template-playbook.md`
   - **验证**: Requirement 5
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This feature extends the existing scene package system with two new CLI commands: `kse scene publish` and `kse scene unpublish`. The publish command validates a scene package, bundles its files into a `.tgz` tarball, and stores it in a local registry directory with a central index. The unpublish command removes a specific version from the registry.
+This feature extends the existing scene package system with two new CLI commands: `sce scene publish` and `sce scene unpublish`. The publish command validates a scene package, bundles its files into a `.tgz` tarball, and stores it in a local registry directory with a central index. The unpublish command removes a specific version from the registry.
 
 The design follows the established normalize → validate → execute → print pattern used by all existing scene commands in `lib/commands/scene.js`.
 
@@ -205,12 +205,12 @@ function printSceneUnpublishSummary(options, payload, projectRoot) {
 
 ```json
 {
-  "apiVersion": "kse.scene.registry/v0.1",
+  "apiVersion": "sce.scene.registry/v0.1",
   "generated_at": "2025-01-01T00:00:00.000Z",
   "packages": {
     "my-package": {
       "name": "my-package",
-      "group": "kse.scene",
+      "group": "sce.scene",
       "description": "A scene template package",
       "latest": "1.2.0",
       "versions": {
@@ -237,10 +237,10 @@ function printSceneUnpublishSummary(options, payload, projectRoot) {
   "published": true,
   "dry_run": false,
   "overwritten": false,
-  "coordinate": "kse.scene/my-package@1.0.0",
+  "coordinate": "sce.scene/my-package@1.0.0",
   "package": {
     "name": "my-package",
-    "group": "kse.scene",
+    "group": "sce.scene",
     "version": "1.0.0",
     "kind": "scene-template"
   },
@@ -263,7 +263,7 @@ function printSceneUnpublishSummary(options, payload, projectRoot) {
 ```json
 {
   "unpublished": true,
-  "coordinate": "kse.scene/my-package@1.0.0",
+  "coordinate": "sce.scene/my-package@1.0.0",
   "package": {
     "name": "my-package",
     "version": "1.0.0"

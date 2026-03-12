@@ -66,7 +66,7 @@ npm pack
 
 # Test installation locally
 npm install -g ./kiro-spec-engine-1.8.0.tgz
-kse --version  # Should show 1.8.0
+sce --version  # Should show 1.8.0
 ```
 
 ### 2. Git Operations
@@ -108,7 +108,7 @@ npm view kiro-spec-engine version  # Should show 1.8.0
 
 ### 4. GitHub Release
 
-1. Go to https://github.com/heguangyong/kiro-spec-engine/releases
+1. Go to https://github.com/heguangyong/scene-capability-engine/releases
 2. Click "Draft a new release"
 3. Select tag: v1.8.0
 4. Release title: "v1.8.0 - DevOps Integration Foundation"
@@ -127,9 +127,9 @@ npm view kiro-spec-engine version  # Should show 1.8.0
 
 **Announcement Template**:
 ```
-🎉 kse v1.8.0 Released: DevOps Integration Foundation
+🎉 sce v1.8.0 Released: DevOps Integration Foundation
 
-We're excited to announce kse v1.8.0, introducing complete DevOps integration!
+We're excited to announce sce v1.8.0, introducing complete DevOps integration!
 
 Key Features:
 ✅ Operations Spec Management
@@ -142,10 +142,10 @@ Install/Update:
 npm install -g kiro-spec-engine@1.8.0
 
 Full Release Notes:
-https://github.com/heguangyong/kiro-spec-engine/releases/tag/v1.8.0
+https://github.com/heguangyong/scene-capability-engine/releases/tag/v1.8.0
 
 Documentation:
-https://github.com/heguangyong/kiro-spec-engine#readme
+https://github.com/heguangyong/scene-capability-engine#readme
 ```
 
 ---
@@ -158,7 +158,7 @@ https://github.com/heguangyong/kiro-spec-engine#readme
 - [ ] GitHub release published
 - [ ] Documentation accessible
 - [ ] Installation works (`npm install -g kiro-spec-engine`)
-- [ ] Basic commands work (`kse --version`, `kse ops --help`)
+- [ ] Basic commands work (`sce --version`, `sce ops --help`)
 
 ### Monitoring
 

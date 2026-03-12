@@ -14,19 +14,19 @@ This directory contains your personal knowledge base for this project.
 
 ```bash
 # Add new entry
-kse knowledge add <type> "<title>"
+sce knowledge add <type> "<title>"
 
 # List all entries
-kse knowledge list
+sce knowledge list
 
 # Search entries
-kse knowledge search <keyword>
+sce knowledge search <keyword>
 
 # Analyze knowledge base
-kse knowledge analyze
+sce knowledge analyze
 
 # Integrate knowledge into project
-kse knowledge integrate <id> --target <destination>
+sce knowledge integrate <id> --target <destination>
 ```
 
 ## Learn More

@@ -7,9 +7,9 @@
 ## 命令设计
 
 ```bash
-kse spec gate --spec 102-00-moqui-test-coverage-hardening
-kse spec gate --spec 103-00-moqui-parity-acceptance-gate --json --out .sce/reports/spec-gate.json
-kse spec gate --spec 103-00-moqui-parity-acceptance-gate --strict
+sce spec gate --spec 102-00-moqui-test-coverage-hardening
+sce spec gate --spec 103-00-moqui-parity-acceptance-gate --json --out .sce/reports/spec-gate.json
+sce spec gate --spec 103-00-moqui-parity-acceptance-gate --strict
 ```
 
 ## 检查模块
@@ -44,5 +44,5 @@ kse spec gate --spec 103-00-moqui-parity-acceptance-gate --strict
 ## 变更点
 
 - `lib/commands/spec-gate.js`（新）
-- `bin/kiro-spec-engine.js`（注册命令）
+- `bin/scene-capability-engine.js`（注册命令）
 - `tests/spec-gate/spec-gate-command.test.js`（新）

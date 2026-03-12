@@ -25,7 +25,7 @@
 ## 任务 4：稳定性回归与清单化
 
 - [x] 4.1 运行治理状态回归检查
-  - 命令：`kse docs diagnose`、`kse status --verbose`
+  - 命令：`sce docs diagnose`、`sce status --verbose`
   - **验证**: Requirement 3.3, 4.3
 
 - [x] 4.2 产出稳定性复跑清单

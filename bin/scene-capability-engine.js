@@ -1118,7 +1118,7 @@ async function updateProjectConfig(projectName) {
   const skipAutoTakeover = isTakeoverAutoApplySkippedCommand(args);
   const skipCheck = isNoMutationCommand(args) ||
                     args.includes('--skip-steering-check') || 
-                    process.env.KSE_SKIP_STEERING_CHECK === '1';
+                    process.env.SCE_SKIP_STEERING_CHECK === '1';
   const forceCheck = args.includes('--force-steering-check');
 
   if (!isLegacyAllowlistedCommand) {

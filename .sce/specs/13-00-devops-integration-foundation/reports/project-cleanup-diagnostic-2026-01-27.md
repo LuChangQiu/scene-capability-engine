@@ -24,11 +24,11 @@
 **清理内容**:
 - 删除 `lib/commands/op.js` (旧 OpSpec 系统)
 - 删除 `.sce/ops/` 目录 (仅包含示例)
-- 从 `bin/kiro-spec-engine.js` 移除 4 个命令注册
+- 从 `bin/scene-capability-engine.js` 移除 4 个命令注册
 - 迁移 FeedbackManager 路径: `.sce/ops/feedback/` → `.sce/feedback/`
 
 **影响**:
-- ✅ 消除命令名称混淆 (`kse op` vs `kse ops`)
+- ✅ 消除命令名称混淆 (`sce op` vs `sce ops`)
 - ✅ 解决目录结构冲突
 - ✅ 所有 830 个测试仍然通过
 - ✅ 无功能损失
@@ -64,7 +64,7 @@ Spec 13-00 目录下有 10 个临时报告文件未归档到子目录
 
 **建议操作**:
 ```bash
-kse docs archive --spec 13-00-devops-integration-foundation
+sce docs archive --spec 13-00-devops-integration-foundation
 ```
 
 **预期结果**:
@@ -225,13 +225,13 @@ kiro-spec-engine/
 
 1. **归档 Spec 13 的临时文件**
    ```bash
-   kse docs archive --spec 13-00-devops-integration-foundation
+   sce docs archive --spec 13-00-devops-integration-foundation
    ```
    预期: 10 个文件移动到 reports/
 
 2. **验证归档结果**
    ```bash
-   kse docs diagnose
+   sce docs diagnose
    ```
    预期: 0 violations
 
@@ -324,16 +324,16 @@ kiro-spec-engine/
 
 ```bash
 # 文档归档
-kse docs archive --spec 13-00-devops-integration-foundation
+sce docs archive --spec 13-00-devops-integration-foundation
 
 # 文档诊断
-kse docs diagnose
+sce docs diagnose
 
 # 文档验证
-kse docs validate --all
+sce docs validate --all
 
 # 系统诊断
-kse doctor --docs
+sce doctor --docs
 
 # 运行测试
 npm test

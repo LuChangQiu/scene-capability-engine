@@ -317,14 +317,14 @@ class Integrator {
 
 **Command Structure**:
 ```javascript
-// kse knowledge init
+// sce knowledge init
 async function initCommand(options) {
   // Create directory structure
   // Generate README and templates
   // Initialize index.json
 }
 
-// kse knowledge add <type> <title>
+// sce knowledge add <type> <title>
 async function addCommand(type, title, options) {
   // Validate type
   // Generate entry from template
@@ -332,48 +332,48 @@ async function addCommand(type, title, options) {
   // Optionally open in editor
 }
 
-// kse knowledge list [options]
+// sce knowledge list [options]
 async function listCommand(options) {
   // Load index
   // Apply filters
   // Format and display table
 }
 
-// kse knowledge search <keyword>
+// sce knowledge search <keyword>
 async function searchCommand(keyword, options) {
   // Search in index and files
   // Rank results
   // Display with context
 }
 
-// kse knowledge show <id>
+// sce knowledge show <id>
 async function showCommand(id, options) {
   // Load entry
   // Format and display
 }
 
-// kse knowledge edit <id>
+// sce knowledge edit <id>
 async function editCommand(id, options) {
   // Open in editor
   // Validate after edit
   // Update index
 }
 
-// kse knowledge delete <id>
+// sce knowledge delete <id>
 async function deleteCommand(id, options) {
   // Confirm
   // Backup
   // Delete and update index
 }
 
-// kse knowledge analyze [options]
+// sce knowledge analyze [options]
 async function analyzeCommand(options) {
   // Analyze all entries
   // Generate report
   // Display suggestions
 }
 
-// kse knowledge integrate <id> --target <target>
+// sce knowledge integrate <id> --target <target>
 async function integrateCommand(id, options) {
   // Validate target
   // Backup
@@ -381,20 +381,20 @@ async function integrateCommand(id, options) {
   // Mark as integrated
 }
 
-// kse knowledge query "<question>"
+// sce knowledge query "<question>"
 async function queryCommand(question, options) {
   // AI-powered search
   // Rank by relevance
   // Display top results
 }
 
-// kse knowledge export [--output <path>]
+// sce knowledge export [--output <path>]
 async function exportCommand(options) {
   // Create archive
   // Include all files and index
 }
 
-// kse knowledge import <path>
+// sce knowledge import <path>
 async function importCommand(path, options) {
   // Extract archive
   // Validate entries
@@ -402,7 +402,7 @@ async function importCommand(path, options) {
   // Import and index
 }
 
-// kse knowledge stats
+// sce knowledge stats
 async function statsCommand(options) {
   // Load index
   // Calculate statistics
@@ -595,14 +595,14 @@ try {
 ## Deployment
 
 **Installation**:
-- Feature included in kse core
+- Feature included in sce core
 - No additional installation needed
 
 **Activation**:
-- User runs `kse knowledge init`
+- User runs `sce knowledge init`
 - Creates `.sce/knowledge/` directory
 - Ready to use
 
 **Deactivation**:
 - User can delete `.sce/knowledge/` directory
-- No impact on other kse features
+- No impact on other sce features

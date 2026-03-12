@@ -2,7 +2,7 @@
 
 ## Overview
 
-Add `kse scene deprecate` subcommand to mark/unmark package versions as deprecated in the local registry. Enhance `scene install` and `scene info` to surface deprecation warnings. All code in `lib/commands/scene.js`, following normalize → validate → run → print pattern.
+Add `sce scene deprecate` subcommand to mark/unmark package versions as deprecated in the local registry. Enhance `scene install` and `scene info` to surface deprecation warnings. All code in `lib/commands/scene.js`, following normalize → validate → run → print pattern.
 
 ## Tasks
 

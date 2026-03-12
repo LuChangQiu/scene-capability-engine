@@ -23,7 +23,7 @@
 
 ✅ **架构改进**:
 - 实施数据原子性原则
-- 单一数据源：`~/.kse/workspace-state.json`
+- 单一数据源：`~/.sce/workspace-state.json`
 - 原子操作保证数据一致性
 - 向后兼容旧架构
 
@@ -72,13 +72,13 @@
 
 **问题**: 原架构数据分散在多个文件，存在不一致风险
 ```
-~/.kse/workspaces.json  - 工作区列表 + last_accessed
-~/.kse/config.json      - active_workspace
+~/.sce/workspaces.json  - 工作区列表 + last_accessed
+~/.sce/config.json      - active_workspace
 ```
 
 **解决方案**: 单一数据源架构
 ```
-~/.kse/workspace-state.json  - 所有工作区相关数据
+~/.sce/workspace-state.json  - 所有工作区相关数据
 ```
 
 **收益**:
@@ -113,19 +113,19 @@ PathUtils 提供统一的路径处理：
 
 ```bash
 # 创建工作区
-kse workspace create my-project /path/to/project
+sce workspace create my-project /path/to/project
 
 # 列出所有工作区
-kse workspace list
+sce workspace list
 
 # 切换工作区
-kse workspace switch my-project
+sce workspace switch my-project
 
 # 查看工作区信息
-kse workspace info my-project
+sce workspace info my-project
 
 # 删除工作区
-kse workspace remove my-project --force
+sce workspace remove my-project --force
 ```
 
 ## 向后兼容性
@@ -183,7 +183,7 @@ kse workspace remove my-project --force
 
 ## 总结
 
-Spec 16-00 成功实现了多工作区管理的核心功能，并通过数据原子性原则重构提升了系统架构质量。MVP 功能完整、稳定、可用，为用户提供了管理多个 kse 项目的能力。
+Spec 16-00 成功实现了多工作区管理的核心功能，并通过数据原子性原则重构提升了系统架构质量。MVP 功能完整、稳定、可用，为用户提供了管理多个 sce 项目的能力。
 
 Phase 2 的可选功能可以在未来根据实际需求作为独立 Spec 实现，当前交付的 MVP 已满足基本使用场景。
 

@@ -26,21 +26,21 @@
 
 ### 2.1 Spec 16-00: 多工作区/多项目管理
 
-**目标**: 支持开发者同时管理多个 kse 项目
+**目标**: 支持开发者同时管理多个 sce 项目
 
 **核心功能**:
 ```bash
 # 工作区管理
-kse workspace create <name> [path]
-kse workspace list
-kse workspace switch <name>
-kse workspace remove <name>
-kse workspace info [name]
+sce workspace create <name> [path]
+sce workspace list
+sce workspace switch <name>
+sce workspace remove <name>
+sce workspace info [name]
 
 # 跨工作区操作
-kse status --all-workspaces
-kse search "keyword" --all-workspaces
-kse spec copy <source-ws>/<spec> <target-ws>/<spec>
+sce status --all-workspaces
+sce search "keyword" --all-workspaces
+sce spec copy <source-ws>/<spec> <target-ws>/<spec>
 ```
 
 **实施时间**: 1-2 周
@@ -54,11 +54,11 @@ kse spec copy <source-ws>/<spec> <target-ws>/<spec>
 **核心功能**:
 ```bash
 # Cron 管理
-kse cron add "<schedule>" "<command>" [--name <name>]
-kse cron list
-kse cron remove <id>
-kse cron enable <id>
-kse cron disable <id>
+sce cron add "<schedule>" "<command>" [--name <name>]
+sce cron list
+sce cron remove <id>
+sce cron enable <id>
+sce cron disable <id>
 ```
 
 **实施时间**: 1 周
@@ -72,10 +72,10 @@ kse cron disable <id>
 **核心功能**:
 ```bash
 # Webhook 管理
-kse webhook add <name> <url> [--event <event>]
-kse webhook list
-kse webhook remove <id>
-kse webhook test <id>
+sce webhook add <name> <url> [--event <event>]
+sce webhook list
+sce webhook remove <id>
+sce webhook test <id>
 ```
 
 **实施时间**: 1-2 周

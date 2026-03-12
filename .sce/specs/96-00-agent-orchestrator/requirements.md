@@ -2,7 +2,7 @@
 
 ## 简介
 
-Agent Orchestrator（Agent 编排器）是 kse 的主动调度层，使主控 Agent 能够通过 Kiro IDE 内嵌终端自动启动和管理多个 Codex CLI 子 agent 进程，实现 Spec 的自动化并行执行。当前 kse 已具备完整的多 Agent 协调基础设施（AgentRegistry、TaskLockManager、Coordinator、SpecLifecycleManager 等），但缺少能够自动评估工作量、启动子 agent 进程、分配 Spec 任务、监控执行状态的编排器。本功能填补这一空白。
+Agent Orchestrator（Agent 编排器）是 sce 的主动调度层，使主控 Agent 能够通过 Kiro IDE 内嵌终端自动启动和管理多个 Codex CLI 子 agent 进程，实现 Spec 的自动化并行执行。当前 sce 已具备完整的多 Agent 协调基础设施（AgentRegistry、TaskLockManager、Coordinator、SpecLifecycleManager 等），但缺少能够自动评估工作量、启动子 agent 进程、分配 Spec 任务、监控执行状态的编排器。本功能填补这一空白。
 
 ## 术语表
 
@@ -10,10 +10,10 @@ Agent Orchestrator（Agent 编排器）是 kse 的主动调度层，使主控 Ag
 - **AgentSpawner**: Agent 生成器，负责通过 Node.js child_process 启动和管理 Codex CLI 子进程
 - **OrchestrationEngine**: 编排引擎，基于依赖图执行批次调度的核心组件
 - **Codex_CLI**: OpenAI Codex 命令行工具，以非交互模式（`codex exec`）运行，作为子 agent 后端
-- **Spec**: kse 中的功能规格单元，包含 requirements.md、design.md、tasks.md
+- **Spec**: sce 中的功能规格单元，包含 requirements.md、design.md、tasks.md
 - **依赖图**: 有向无环图（DAG），描述 Spec 之间的执行依赖关系
 - **批次**: 依赖图中同一层级可并行执行的 Spec 集合
-- **Bootstrap_Prompt**: 注入给子 agent 的初始化提示词，包含 kse 规范、Spec 路径和 steering 上下文
+- **Bootstrap_Prompt**: 注入给子 agent 的初始化提示词，包含 sce 规范、Spec 路径和 steering 上下文
 - **JSON_Lines**: Codex CLI 的 `--json` 模式输出格式，每行一个 JSON 事件对象
 - **编排计划**: Orchestrator 生成的执行计划，包含 Spec 列表、依赖关系和批次分组
 
@@ -40,7 +40,7 @@ Agent Orchestrator（Agent 编排器）是 kse 的主动调度层，使主控 Ag
 #### 验收标准
 
 1. WHEN 构建 Bootstrap Prompt THEN Orchestrator SHALL 包含目标 Spec 的路径信息（`.sce/specs/{specName}/`）
-2. WHEN 构建 Bootstrap Prompt THEN Orchestrator SHALL 包含 kse 项目规范和 steering 上下文
+2. WHEN 构建 Bootstrap Prompt THEN Orchestrator SHALL 包含 sce 项目规范和 steering 上下文
 3. WHEN 构建 Bootstrap Prompt THEN Orchestrator SHALL 包含明确的任务执行指令（执行 tasks.md 中的任务）
 4. THE Bootstrap_Prompt SHALL 使用可配置的模板格式，支持通过 orchestrator.json 自定义
 
@@ -89,9 +89,9 @@ Agent Orchestrator（Agent 编排器）是 kse 的主动调度层，使主控 Ag
 
 #### 验收标准
 
-1. WHEN 用户执行 `kse orchestrate run --specs "<spec列表>" --max-parallel <N>` THEN Orchestrator SHALL 解析 Spec 列表、构建依赖图并开始批次调度执行
-2. WHEN 用户执行 `kse orchestrate status` THEN Orchestrator SHALL 显示当前编排的整体进度、各 Spec 状态和活跃子 agent 信息
-3. WHEN 用户执行 `kse orchestrate stop` THEN Orchestrator SHALL 停止所有运行中的子 agent 并清理资源
+1. WHEN 用户执行 `sce orchestrate run --specs "<spec列表>" --max-parallel <N>` THEN Orchestrator SHALL 解析 Spec 列表、构建依赖图并开始批次调度执行
+2. WHEN 用户执行 `sce orchestrate status` THEN Orchestrator SHALL 显示当前编排的整体进度、各 Spec 状态和活跃子 agent 信息
+3. WHEN 用户执行 `sce orchestrate stop` THEN Orchestrator SHALL 停止所有运行中的子 agent 并清理资源
 4. IF 用户提供的 Spec 名称不存在 THEN Orchestrator SHALL 报告具体哪些 Spec 未找到并拒绝执行
 5. IF 用户指定的 max-parallel 值小于 1 THEN Orchestrator SHALL 报告参数无效并使用默认值
 

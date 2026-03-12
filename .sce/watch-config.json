@@ -16,7 +16,7 @@
   ],
   "actions": {
     "**/tasks.md": {
-      "command": "kse workspace sync",
+      "command": "sce workspace sync",
       "debounce": 2000,
       "description": "Sync workspace when tasks are updated"
     },

@@ -10,7 +10,7 @@ The Spec-level collaboration system enables multiple AI instances (Kiro) to work
 - **Integration Testing**: Verify cross-Spec functionality
 - **Breakdown Planning**: Decompose large features into manageable Sub-Specs
 
-The design follows the existing kse architecture patterns and integrates seamlessly with the current Spec workflow.
+The design follows the existing sce architecture patterns and integrates seamlessly with the current Spec workflow.
 
 ## Architecture
 
@@ -460,7 +460,7 @@ interface TypeDefinition {
 
 ### Property 15: Backward Compatibility Preservation
 
-*For any* Spec without collaboration.json, all existing kse commands should function identically to how they functioned before the collaboration feature was added.
+*For any* Spec without collaboration.json, all existing sce commands should function identically to how they functioned before the collaboration feature was added.
 
 **Validates: Requirements 10.1, 10.2, 10.3, 10.5**
 
@@ -604,7 +604,7 @@ test('Feature: spec-level-collaboration, Property 4: Metadata Persistence Round-
 - CLI command parsing and output formatting
 - Specific error conditions (missing files, invalid JSON)
 - Edge cases (empty dependency graphs, single-node graphs)
-- Integration with existing kse commands
+- Integration with existing sce commands
 - File system operations (create, read, update, delete)
 
 **Test Structure**:

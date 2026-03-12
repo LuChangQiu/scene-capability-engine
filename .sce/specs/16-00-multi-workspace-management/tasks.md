@@ -94,27 +94,27 @@ Each task builds on previous work, ensuring continuous integration and early val
     - **Validates: Requirements 3.1, 3.2**
 
 - [x] 5. Implement workspace CLI commands
-  - [x] 5.1 Implement `kse workspace create` command
+  - [x] 5.1 Implement `sce workspace create` command
     - Parse command arguments (name, optional path)
     - Use current directory if no path provided
     - Call registry.create_workspace()
     - Display success message with workspace details
     - _Requirements: 1.1, 1.2, 1.3, 1.4_
 
-  - [x] 5.2 Implement `kse workspace list` command
+  - [x] 5.2 Implement `sce workspace list` command
     - Retrieve all workspaces from registry
     - Format output with names, paths, active indicator
     - Sort by last accessed (most recent first)
     - _Requirements: 2.1, 2.2, 6.4_
 
-  - [x] 5.3 Implement `kse workspace switch` command
+  - [x] 5.3 Implement `sce workspace switch` command
     - Validate workspace exists
     - Set as active workspace
     - Update last accessed timestamp
     - Display confirmation message
     - _Requirements: 3.1, 3.2, 3.3_
 
-  - [x] 5.4 Implement `kse workspace remove` command
+  - [x] 5.4 Implement `sce workspace remove` command
     - Validate workspace exists
     - Require confirmation (unless --force)
     - Remove from registry
@@ -122,7 +122,7 @@ Each task builds on previous work, ensuring continuous integration and early val
     - Display confirmation message
     - _Requirements: 4.1, 4.2, 4.3, 4.5_
 
-  - [x] 5.5 Implement `kse workspace info` command
+  - [x] 5.5 Implement `sce workspace info` command
     - Get workspace by name (or use active workspace)
     - Count Specs in workspace
     - Display detailed information
@@ -188,7 +188,7 @@ Each task builds on previous work, ensuring continuous integration and early val
     - Handle inaccessible workspaces gracefully
     - _Requirements: 6.1, 6.2, 6.3, 6.4_
 
-  - [ ] 9.2 Implement `kse status --all-workspaces` command
+  - [ ] 9.2 Implement `sce status --all-workspaces` command
     - Call status aggregation function
     - Format output grouped by workspace
     - Sort by last accessed timestamp
@@ -208,7 +208,7 @@ Each task builds on previous work, ensuring continuous integration and early val
     - Handle inaccessible workspaces gracefully
     - _Requirements: 7.1, 7.2, 7.3, 7.4_
 
-  - [ ] 10.2 Implement `kse search --all-workspaces` command
+  - [ ] 10.2 Implement `sce search --all-workspaces` command
     - Call cross-workspace search function
     - Format output grouped by workspace
     - Display workspace name for each result
@@ -228,7 +228,7 @@ Each task builds on previous work, ensuring continuous integration and early val
     - Preserve file contents exactly
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5_
 
-  - [ ] 11.2 Implement `kse spec copy` command
+  - [ ] 11.2 Implement `sce spec copy` command
     - Parse source and target workspace/spec names
     - Call Spec copy function
     - Display progress and confirmation
@@ -312,7 +312,7 @@ Each task builds on previous work, ensuring continuous integration and early val
 - Target 90% line coverage, 100% for error handling paths
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

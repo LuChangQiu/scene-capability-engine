@@ -2,7 +2,7 @@
 
 ## Overview
 
-Implement `kse scene install` command following the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`, all tests in `tests/unit/commands/scene.test.js`. Reuses existing registry infrastructure from Spec 77 (`loadRegistryIndex`, `buildRegistryTarballPath`, `resolveLatestVersion`, `extractTarBuffer`). No new dependencies.
+Implement `sce scene install` command following the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`, all tests in `tests/unit/commands/scene.test.js`. Reuses existing registry infrastructure from Spec 77 (`loadRegistryIndex`, `buildRegistryTarballPath`, `resolveLatestVersion`, `extractTarBuffer`). No new dependencies.
 
 ## Tasks
 

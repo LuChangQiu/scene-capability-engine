@@ -6,7 +6,7 @@
     "spec_package": "custom/scene-package.json"
   },
   "summary": {
-    "coordinate": "kse.scene/scene-package-contract-declaration@0.2.0",
+    "coordinate": "sce.scene/scene-package-contract-declaration@0.2.0",
     "kind": "scene-domain-profile",
     "parameter_count": 2,
     "provides_count": 1,

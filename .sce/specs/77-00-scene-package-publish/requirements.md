@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This feature adds a `kse scene publish` command that packages scene template packages into distributable tarballs (.tgz) and publishes them to a local registry directory. It also adds a `kse scene unpublish` command to remove published versions. Together with the existing `scene instantiate` command, this completes the create → publish → instantiate lifecycle for scene packages.
+This feature adds a `sce scene publish` command that packages scene template packages into distributable tarballs (.tgz) and publishes them to a local registry directory. It also adds a `sce scene unpublish` command to remove published versions. Together with the existing `scene instantiate` command, this completes the create → publish → instantiate lifecycle for scene packages.
 
 ## Glossary
 
@@ -77,7 +77,7 @@ This feature adds a `kse scene publish` command that packages scene template pac
 
 #### Acceptance Criteria
 
-1. WHEN `kse scene publish --package <path>` is invoked, THE Publisher SHALL normalize and validate the provided options, then execute the publish pipeline (validate → bundle → store → update index)
+1. WHEN `sce scene publish --package <path>` is invoked, THE Publisher SHALL normalize and validate the provided options, then execute the publish pipeline (validate → bundle → store → update index)
 2. WHEN `--registry <path>` is provided, THE Publisher SHALL use the specified path as the Local_Registry root instead of the default `.sce/registry/`
 3. WHEN `--dry-run` is specified, THE Publisher SHALL perform validation and bundling simulation, display what would be published, and skip writing any files to the Local_Registry
 4. WHEN `--force` is specified, THE Publisher SHALL overwrite an existing version in the Local_Registry
@@ -90,7 +90,7 @@ This feature adds a `kse scene publish` command that packages scene template pac
 
 #### Acceptance Criteria
 
-1. WHEN `kse scene unpublish --name <name> --version <version>` is invoked, THE Publisher SHALL remove the specified version tarball from the Local_Registry
+1. WHEN `sce scene unpublish --name <name> --version <version>` is invoked, THE Publisher SHALL remove the specified version tarball from the Local_Registry
 2. WHEN the specified package name or version does not exist in the Local_Registry, THE Publisher SHALL report a not-found error and exit with a non-zero code
 3. WHEN a version is successfully removed, THE Publisher SHALL update the Registry_Index to reflect the removal
 4. WHEN `--json` is specified, THE Publisher SHALL output the unpublish result as structured JSON to stdout

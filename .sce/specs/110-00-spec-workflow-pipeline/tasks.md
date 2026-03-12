@@ -2,7 +2,7 @@
 
 ## 任务 1：命令入口
 
-- [x] 1.1 新增 `kse spec pipeline run` 命令
+- [x] 1.1 新增 `sce spec pipeline run` 命令
   - 支持 stage 范围与 dry-run
   - **验证**: Requirement 1
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Define the minimum executable contract for Scene-driven capability orchestration while keeping compatibility with current KSE Spec workflows.
+Define the minimum executable contract for Scene-driven capability orchestration while keeping compatibility with current SCE Spec workflows.
 
 ## Scope
 
@@ -36,13 +36,13 @@ Required common fields:
 ## Machine-Readable Scene Manifest
 
 ```yaml
-apiVersion: kse.scene/v0.1
+apiVersion: sce.scene/v0.1
 kind: scene
 metadata:
   obj_id: scene.sales-order-query.001
   obj_version: 0.1.0
   obj_state: draft
-  owner_principal: kse.ops.platform
+  owner_principal: sce.ops.platform
   title: Sales Order Query
 spec:
   intent:
@@ -105,7 +105,7 @@ spec:
 
 ## Namespace Rules
 
-- Control-plane metadata must use `kse.*` semantics.
+- Control-plane metadata must use `sce.*` semantics.
 - Business bindings must use canonical `moqui.EntityName.fieldName` references.
 - Top-level ambiguous keys are banned: `id`, `status`, `userId`, `partyId`, `fromDate`, `thruDate`.
 
@@ -144,6 +144,6 @@ v0.1 required relation types:
 
 ## Compatibility Notes
 
-- Existing KSE Spec directories remain unchanged.
+- Existing SCE Spec directories remain unchanged.
 - Scene manifest is additive and can live under Spec subdirectory `custom/`.
-- KSE governance stays in control plane; runtime executor can evolve independently.
+- SCE governance stays in control plane; runtime executor can evolve independently.

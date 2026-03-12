@@ -22,7 +22,7 @@ into concrete next actions. The result is a tighter control loop:
         "priority": "high",
         "title": "Increase valid template count by at least 2",
         "recommendation": "Promote additional template packages via package-publish until gate threshold is met.",
-        "command_hint": "kse scene package-registry --template-dir .sce/templates/scene-packages --json"
+        "command_hint": "sce scene package-registry --template-dir .sce/templates/scene-packages --json"
       }
     ]
   }

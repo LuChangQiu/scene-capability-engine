@@ -10,7 +10,7 @@
 
 ## Overview
 
-This design transforms the `kse adopt` command from an interactive, question-heavy experience into a smart, zero-interaction system that automatically handles project adoption with safety and clarity.
+This design transforms the `sce adopt` command from an interactive, question-heavy experience into a smart, zero-interaction system that automatically handles project adoption with safety and clarity.
 
 ### Core Philosophy
 
@@ -35,7 +35,7 @@ This design transforms the `kse adopt` command from an interactive, question-hea
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    kse adopt Command                     │
+│                    sce adopt Command                     │
 └─────────────────────────────────────────────────────────┘
                             │
                             ▼
@@ -383,7 +383,7 @@ function displayProgress(update: ProgressUpdate): void {
 **Example Output**:
 
 ```
-🔥 Kiro Spec Engine - Project Adoption
+🔥 Scene Capability Engine - Project Adoption
 
 📦 Analyzing project structure... ✅
 📋 Creating adoption plan... ✅
@@ -502,7 +502,7 @@ function displaySummary(summary: AdoptionSummary): void {
 ### Default Behavior (Zero Interaction)
 
 ```bash
-$ kse adopt
+$ sce adopt
 # Automatically:
 # 1. Detects project state
 # 2. Selects best mode
@@ -540,19 +540,19 @@ interface AdoptCommandOptions {
 
 ```bash
 # Default: Smart, automatic, safe
-$ kse adopt
+$ sce adopt
 
 # Preview what would happen
-$ kse adopt --dry-run
+$ sce adopt --dry-run
 
 # Interactive mode for advanced users
-$ kse adopt --interactive
+$ sce adopt --interactive
 
 # Force update with backup
-$ kse adopt --force
+$ sce adopt --force
 
 # Verbose output for debugging
-$ kse adopt --verbose
+$ sce adopt --verbose
 ```
 
 ---
@@ -607,7 +607,7 @@ Solutions:
   2. {Solution 2}
   3. {Solution 3}
 
-💡 Need help? Run: kse doctor
+💡 Need help? Run: sce doctor
 ```
 
 **Example**:
@@ -627,7 +627,7 @@ Solutions:
   2. Check file permissions: ls -la .sce/
   3. Try running with sudo (if appropriate)
 
-💡 Need help? Run: kse doctor
+💡 Need help? Run: sce doctor
 ```
 
 ---
@@ -819,14 +819,14 @@ Solutions:
 **Migration Guide**:
 ```markdown
 # For users who prefer interactive mode:
-$ kse adopt --interactive
+$ sce adopt --interactive
 
 # For automated scripts:
-$ kse adopt  # Now works without interaction!
+$ sce adopt  # Now works without interaction!
 
 # For advanced control:
-$ kse adopt --dry-run  # Preview first
-$ kse adopt --force    # Then execute
+$ sce adopt --dry-run  # Preview first
+$ sce adopt --force    # Then execute
 ```
 
 ---

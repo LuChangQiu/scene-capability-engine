@@ -29,14 +29,14 @@
 
 | 能力族 | 主命令 | 主要输入 | 主要输出 | 状态/配置落点 | 与 Spec 主线耦合 | 主要风险 |
 |---|---|---|---|---|---|---|
-| spec/create | `kse spec <name>` | `spec-name`, `--template` | 新建 spec 目录（默认不产三文档） | `.sce/specs/<spec>/` | 中 | 起步仍偏手工，质量不稳 |
-| adopt | `kse adopt` | 项目根目录、模式参数 | `.sce` 基础结构 | `.sce/*` | 高 | 接管后缺少一键 bootstrap |
-| docs | `kse docs diagnose/validate/archive` | spec 或全局扫描参数 | 合规报告、归档动作 | `.sce/config/docs.json` | 高 | 治理与执行链路尚未统一闭环 |
-| lock | `kse lock acquire/release/status` | spec 名称、超时/原因 | 锁状态 | `.sce/specs/<spec>/locks/*` + `.sce/config/machine-id.json` | 高 | 只解决互斥，不保证流程收敛 |
-| collab | `kse collab init/status/assign` | master/sub spec、依赖、实例 | 协作状态、依赖图 | `.sce/specs/<spec>/collaboration.json` | 高 | 协作状态与执行状态可能分叉 |
-| orchestrate | `kse orchestrate run/status/stop` | specs、max-parallel | 批次执行结果 | `.sce/config/orchestration-status.json`, `.sce/config/orchestrator.json` | 中高 | 缺少 plan/watch/run-id 精细治理 |
-| auto | `kse auto run/create/status` | spec、mode、配置 | 自动执行状态/日志 | `.sce/auto/config.json`, `.sce/auto/<spec>-state.json` | 中 | 自动执行与 tasks 真值可能漂移 |
-| scene | `kse scene *` | manifest/spec/policy/registry | 计划、结果、评估、模板、包管理 | `.sce/templates/*`, `.sce/registry/*`, `.sce/config/scene-*`, spec 内 `custom/*` | 中 | 子系统强大但主线入口分散 |
+| spec/create | `sce spec <name>` | `spec-name`, `--template` | 新建 spec 目录（默认不产三文档） | `.sce/specs/<spec>/` | 中 | 起步仍偏手工，质量不稳 |
+| adopt | `sce adopt` | 项目根目录、模式参数 | `.sce` 基础结构 | `.sce/*` | 高 | 接管后缺少一键 bootstrap |
+| docs | `sce docs diagnose/validate/archive` | spec 或全局扫描参数 | 合规报告、归档动作 | `.sce/config/docs.json` | 高 | 治理与执行链路尚未统一闭环 |
+| lock | `sce lock acquire/release/status` | spec 名称、超时/原因 | 锁状态 | `.sce/specs/<spec>/locks/*` + `.sce/config/machine-id.json` | 高 | 只解决互斥，不保证流程收敛 |
+| collab | `sce collab init/status/assign` | master/sub spec、依赖、实例 | 协作状态、依赖图 | `.sce/specs/<spec>/collaboration.json` | 高 | 协作状态与执行状态可能分叉 |
+| orchestrate | `sce orchestrate run/status/stop` | specs、max-parallel | 批次执行结果 | `.sce/config/orchestration-status.json`, `.sce/config/orchestrator.json` | 中高 | 缺少 plan/watch/run-id 精细治理 |
+| auto | `sce auto run/create/status` | spec、mode、配置 | 自动执行状态/日志 | `.sce/auto/config.json`, `.sce/auto/<spec>-state.json` | 中 | 自动执行与 tasks 真值可能漂移 |
+| scene | `sce scene *` | manifest/spec/policy/registry | 计划、结果、评估、模板、包管理 | `.sce/templates/*`, `.sce/registry/*`, `.sce/config/scene-*`, spec 内 `custom/*` | 中 | 子系统强大但主线入口分散 |
 
 ## 4. 关键观察
 

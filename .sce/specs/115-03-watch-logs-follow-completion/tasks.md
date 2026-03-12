@@ -16,5 +16,5 @@
   - [x] 3.2 更新命令参考与 CHANGELOG
 
 - [x] 4. 验证
-  - [x] 4.1 实机执行 `kse watch logs --tail 10 --follow`
+  - [x] 4.1 实机执行 `sce watch logs --tail 10 --follow`
   - [x] 4.2 记录验证结果

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Add `kse scene owner` subcommand group with sub-subcommands (set, show, list, transfer) to manage package ownership metadata in the local scene package registry. All code in `lib/commands/scene.js`, following normalize → validate → run → print pattern. Single `runSceneOwnerCommand` dispatcher handles all four actions.
+Add `sce scene owner` subcommand group with sub-subcommands (set, show, list, transfer) to manage package ownership metadata in the local scene package registry. All code in `lib/commands/scene.js`, following normalize → validate → run → print pattern. Single `runSceneOwnerCommand` dispatcher handles all four actions.
 
 ## Tasks
 

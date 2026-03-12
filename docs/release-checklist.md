@@ -115,41 +115,48 @@ Verify:
 
 Ensure:
 
+- Release automation is tag-driven, not commit-driven:
+  - `.github/workflows/release.yml` only triggers on `push.tags: v*`
+  - plain `git push` runs normal CI and does not publish npm/GitHub release
+- GitHub Actions publish prerequisites are in place:
+  - repository secret `NPM_TOKEN` must exist and remain valid for `npm publish --access public`
+  - `GITHUB_TOKEN` is used by workflow for release asset/readback steps
 - `package.json` version is correct.
+- `package.json` version must be greater than the currently published npm version.
 - `CHANGELOG.md` includes release-relevant entries.
 - Release notes draft exists (for example `docs/releases/vX.Y.Z.md`).
 - Optional: configure release evidence gate with repository variables (`Settings -> Secrets and variables -> Actions -> Variables`):
-  - `KSE_RELEASE_GATE_ENFORCE`: `true|false` (default advisory, non-blocking)
-  - `KSE_RELEASE_GATE_REQUIRE_EVIDENCE`: require `handoff-runs.json` summary
-  - `KSE_RELEASE_GATE_REQUIRE_GATE_PASS`: require evidence gate `passed=true` (default true when evidence exists)
-  - `KSE_RELEASE_GATE_MIN_SPEC_SUCCESS_RATE`: minimum allowed success rate percent
-  - `KSE_RELEASE_GATE_MAX_RISK_LEVEL`: `low|medium|high|unknown` (default `unknown`)
-  - `KSE_RELEASE_GATE_MAX_UNMAPPED_RULES`: maximum allowed unmapped ontology business rules
-  - `KSE_RELEASE_GATE_MAX_UNDECIDED_DECISIONS`: maximum allowed undecided ontology decisions
-  - `KSE_RELEASE_GATE_REQUIRE_SCENE_BATCH_PASS`: require scene package publish-batch gate passed (`true|false`, default `true`)
-  - `KSE_RELEASE_GATE_MAX_SCENE_BATCH_FAILURES`: maximum allowed scene package batch failure count (default `0`)
+  - `SCE_RELEASE_GATE_ENFORCE`: `true|false` (default advisory, non-blocking)
+  - `SCE_RELEASE_GATE_REQUIRE_EVIDENCE`: require `handoff-runs.json` summary
+  - `SCE_RELEASE_GATE_REQUIRE_GATE_PASS`: require evidence gate `passed=true` (default true when evidence exists)
+  - `SCE_RELEASE_GATE_MIN_SPEC_SUCCESS_RATE`: minimum allowed success rate percent
+  - `SCE_RELEASE_GATE_MAX_RISK_LEVEL`: `low|medium|high|unknown` (default `unknown`)
+  - `SCE_RELEASE_GATE_MAX_UNMAPPED_RULES`: maximum allowed unmapped ontology business rules
+  - `SCE_RELEASE_GATE_MAX_UNDECIDED_DECISIONS`: maximum allowed undecided ontology decisions
+  - `SCE_RELEASE_GATE_REQUIRE_SCENE_BATCH_PASS`: require scene package publish-batch gate passed (`true|false`, default `true`)
+  - `SCE_RELEASE_GATE_MAX_SCENE_BATCH_FAILURES`: maximum allowed scene package batch failure count (default `0`)
 - Optional: tune release drift alerts in release notes:
   - Drift evaluation is executed by `scripts/release-drift-evaluate.js` in CI (history load, alert calc, gate report writeback, enforce exit code).
-  - `KSE_RELEASE_DRIFT_ENFORCE`: `true|false` (default `false`), block publish when drift alerts are triggered
-  - `KSE_RELEASE_DRIFT_FAIL_STREAK_MIN`: minimum consecutive failed gates to trigger alert (default `2`)
-  - `KSE_RELEASE_DRIFT_HIGH_RISK_SHARE_MIN_PERCENT`: minimum high-risk share in latest 5 versions (default `60`)
-  - `KSE_RELEASE_DRIFT_HIGH_RISK_SHARE_DELTA_MIN_PERCENT`: minimum short-vs-long high-risk share delta (default `25`)
-  - `KSE_RELEASE_DRIFT_PREFLIGHT_BLOCK_RATE_MIN_PERCENT`: minimum release preflight blocked rate in latest 5 known runs (default `40`)
-  - `KSE_RELEASE_DRIFT_HARD_GATE_BLOCK_STREAK_MIN`: minimum consecutive hard-gate preflight blocked streak (latest window, default `2`)
-  - `KSE_RELEASE_DRIFT_PREFLIGHT_UNAVAILABLE_STREAK_MIN`: minimum consecutive release preflight unavailable streak (latest window, default `2`)
+  - `SCE_RELEASE_DRIFT_ENFORCE`: `true|false` (default `false`), block publish when drift alerts are triggered
+  - `SCE_RELEASE_DRIFT_FAIL_STREAK_MIN`: minimum consecutive failed gates to trigger alert (default `2`)
+  - `SCE_RELEASE_DRIFT_HIGH_RISK_SHARE_MIN_PERCENT`: minimum high-risk share in latest 5 versions (default `60`)
+  - `SCE_RELEASE_DRIFT_HIGH_RISK_SHARE_DELTA_MIN_PERCENT`: minimum short-vs-long high-risk share delta (default `25`)
+  - `SCE_RELEASE_DRIFT_PREFLIGHT_BLOCK_RATE_MIN_PERCENT`: minimum release preflight blocked rate in latest 5 known runs (default `40`)
+  - `SCE_RELEASE_DRIFT_HARD_GATE_BLOCK_STREAK_MIN`: minimum consecutive hard-gate preflight blocked streak (latest window, default `2`)
+  - `SCE_RELEASE_DRIFT_PREFLIGHT_UNAVAILABLE_STREAK_MIN`: minimum consecutive release preflight unavailable streak (latest window, default `2`)
 - Optional: tune weekly ops release gate:
-  - `KSE_RELEASE_WEEKLY_OPS_ENFORCE`: `true|false` (default `true`)
-  - `KSE_RELEASE_WEEKLY_OPS_REQUIRE_SUMMARY`: require weekly summary artifact (`true|false`, default `true`)
-  - `KSE_RELEASE_WEEKLY_OPS_MAX_RISK_LEVEL`: `low|medium|high|unknown` (default `medium`)
-  - `KSE_RELEASE_WEEKLY_OPS_MAX_GOVERNANCE_BREACHES`: optional max breach count
-  - `KSE_RELEASE_WEEKLY_OPS_MAX_AUTHORIZATION_TIER_BLOCK_RATE_PERCENT`: max authorization-tier deny/review block rate percent (default `40`)
-  - `KSE_RELEASE_WEEKLY_OPS_MAX_DIALOGUE_AUTHORIZATION_BLOCK_RATE_PERCENT`: max dialogue-authorization block rate percent (default `40`)
-  - `KSE_RELEASE_WEEKLY_OPS_MAX_MATRIX_REGRESSION_RATE_PERCENT`: optional max regression-positive rate percent
+  - `SCE_RELEASE_WEEKLY_OPS_ENFORCE`: `true|false` (default `true`)
+  - `SCE_RELEASE_WEEKLY_OPS_REQUIRE_SUMMARY`: require weekly summary artifact (`true|false`, default `true`)
+  - `SCE_RELEASE_WEEKLY_OPS_MAX_RISK_LEVEL`: `low|medium|high|unknown` (default `medium`)
+  - `SCE_RELEASE_WEEKLY_OPS_MAX_GOVERNANCE_BREACHES`: optional max breach count
+  - `SCE_RELEASE_WEEKLY_OPS_MAX_AUTHORIZATION_TIER_BLOCK_RATE_PERCENT`: max authorization-tier deny/review block rate percent (default `40`)
+  - `SCE_RELEASE_WEEKLY_OPS_MAX_DIALOGUE_AUTHORIZATION_BLOCK_RATE_PERCENT`: max dialogue-authorization block rate percent (default `40`)
+  - `SCE_RELEASE_WEEKLY_OPS_MAX_MATRIX_REGRESSION_RATE_PERCENT`: optional max regression-positive rate percent
   - Invalid numeric values are reported as gate `config_warnings` and default threshold fallback is applied.
 - Optional: tune release asset integrity gate:
-  - `KSE_RELEASE_ASSET_INTEGRITY_ENFORCE`: `true|false` (default `true`)
-  - `KSE_RELEASE_ASSET_INTEGRITY_REQUIRE_NON_EMPTY`: `true|false` (default `true`)
-  - `KSE_RELEASE_ASSET_INTEGRITY_REQUIRED_FILES`: override required asset list (comma-separated, supports `{tag}`)
+  - `SCE_RELEASE_ASSET_INTEGRITY_ENFORCE`: `true|false` (default `true`)
+  - `SCE_RELEASE_ASSET_INTEGRITY_REQUIRE_NON_EMPTY`: `true|false` (default `true`)
+  - `SCE_RELEASE_ASSET_INTEGRITY_REQUIRED_FILES`: override required asset list (comma-separated, supports `{tag}`)
 - Optional release-asset 0-byte guard (enabled in workflow by default):
   - `scripts/release-asset-nonempty-normalize.js` auto-fills placeholder content for optional assets such as `.lines` and `.jsonl` before GitHub Release upload.
   - Local dry-run example:
@@ -159,4 +166,20 @@ Ensure:
 - Optional local dry-run for gate history index artifact:
   - `sce auto handoff gate-index --dir .sce/reports/release-evidence --out .sce/reports/release-evidence/release-gate-history.json --json`
 
-Then proceed with your release workflow (tag, push, npm publish, GitHub release).
+Then proceed with your release workflow:
+
+```bash
+# 1. bump version + commit first
+# 2. push branch changes
+git push origin main
+
+# 3. create and push release tag
+git tag vX.Y.Z
+git push origin vX.Y.Z
+```
+
+Expected:
+
+- `git push origin main` only runs normal CI.
+- `git push origin vX.Y.Z` triggers GitHub Actions `Release` workflow.
+- workflow publishes npm package and creates GitHub Release if all release gates pass.

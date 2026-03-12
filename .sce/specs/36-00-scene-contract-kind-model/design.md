@@ -16,7 +16,7 @@ Core idea:
 1. Keep execution unified while allowing multiple object types.
 2. Preserve Moqui data model as the single business truth.
 3. Prevent naming collisions between control-plane metadata and business fields.
-4. Support gradual adoption without breaking existing KSE specs.
+4. Support gradual adoption without breaking existing SCE specs.
 5. Support ERP-only, robot-only, and hybrid scenes under one governance model.
 
 ## Object Model
@@ -47,7 +47,7 @@ All objects share:
 
 ## Namespace Strategy
 
-- Control-plane metadata uses kse.* semantics.
+- Control-plane metadata uses sce.* semantics.
 - Business bindings use canonical moqui.Entity.field references.
 - Collision-prone generic keys are disallowed in common envelope.
 
@@ -102,7 +102,7 @@ Scene adds domain identity:
 
 ### Adapter Boundary
 
-- KSE/runtime: intent resolution, plan compilation, policy gate, audit, eval
+- SCE/runtime: intent resolution, plan compilation, policy gate, audit, eval
 - ERP adapter: Moqui service/query/event execution
 - Robot adapter: deterministic mission dispatch and state callbacks
 
@@ -138,7 +138,7 @@ Hybrid scenes use saga-style consistency:
 
 - Existing requirements.md/design.md/tasks.md remain valid.
 - New machine-readable manifests are additive.
-- KSE workflows continue operating during transition.
+- SCE workflows continue operating during transition.
 
 ## Discussion Deliverables
 

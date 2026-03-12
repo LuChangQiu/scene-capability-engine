@@ -18,12 +18,12 @@ A working MVP of the autonomous control system has been implemented.
 
 ### CLI Commands
 ```bash
-kse auto create "feature description"  # Create and run Spec
-kse auto run <spec-name>               # Run existing Spec
-kse auto status [spec-name]            # Show status
-kse auto resume [spec-name]            # Resume paused execution
-kse auto stop <spec-name>              # Stop execution
-kse auto config                        # Manage configuration
+sce auto create "feature description"  # Create and run Spec
+sce auto run <spec-name>               # Run existing Spec
+sce auto status [spec-name]            # Show status
+sce auto resume [spec-name]            # Resume paused execution
+sce auto stop <spec-name>              # Stop execution
+sce auto config                        # Manage configuration
 ```
 
 ### Modes
@@ -35,13 +35,13 @@ kse auto config                        # Manage configuration
 
 ```bash
 # Create and run a Spec autonomously
-kse auto create "user authentication system"
+sce auto create "user authentication system"
 
 # Run an existing Spec
-kse auto run 33-00-ai-autonomous-control --mode balanced
+sce auto run 33-00-ai-autonomous-control --mode balanced
 
 # Check status
-kse auto status 33-00-ai-autonomous-control
+sce auto status 33-00-ai-autonomous-control
 ```
 
 ## What's NOT Implemented (Future Work)

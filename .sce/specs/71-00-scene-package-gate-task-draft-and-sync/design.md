@@ -14,7 +14,7 @@ Add a task-closing layer to `scene package-gate`:
 ## Command Surface Extension
 
 ```bash
-kse scene package-gate   --registry .sce/reports/scene-package-registry.json   --policy .sce/templates/scene-package-gate-policy.json   --spec 71-00-scene-package-gate-task-draft-and-sync   --task-out .sce/reports/scene-package-gate-task-draft.md   --sync-spec-tasks   --json
+sce scene package-gate   --registry .sce/reports/scene-package-registry.json   --policy .sce/templates/scene-package-gate-policy.json   --spec 71-00-scene-package-gate-task-draft-and-sync   --task-out .sce/reports/scene-package-gate-task-draft.md   --sync-spec-tasks   --json
 ```
 
 ## Task Synthesis Model

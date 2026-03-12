@@ -1,0 +1,297 @@
+{
+  "apiVersion": "sce.scene.package/v0.1",
+  "kind": "scene-domain-profile",
+  "metadata": {
+    "group": "sce.scene",
+    "name": "erp-order-fulfillment-workflow",
+    "version": "0.1.0",
+    "summary": "Order fulfillment workflow template for Moqui-aligned ERP orchestration",
+    "description": "Workflow domain profile for reservation, payment, release, and status transition with ontology-aware gates."
+  },
+  "compatibility": {
+    "min_sce_version": ">=1.47.15",
+    "scene_api_version": "sce.scene/v0.2",
+    "moqui_model_version": "3.x",
+    "adapter_api_version": "v1"
+  },
+  "capabilities": {
+    "provides": [
+      "scene.erp.order.fulfillment.workflow"
+    ],
+    "requires": [
+      "binding:http",
+      "profile:erp",
+      "moqui.adapter"
+    ]
+  },
+  "parameters": [
+    {
+      "id": "order_id",
+      "type": "string",
+      "required": true,
+      "description": "Target order identifier"
+    },
+    {
+      "id": "fulfillment_mode",
+      "type": "string",
+      "required": false,
+      "default": "standard",
+      "description": "Fulfillment mode, for example standard or expedited"
+    },
+    {
+      "id": "payment_reference",
+      "type": "string",
+      "required": false,
+      "description": "Optional payment reference for authorization reuse"
+    }
+  ],
+  "artifacts": {
+    "entry_scene": "custom/scene.yaml",
+    "generates": [
+      "custom/scene.yaml"
+    ]
+  },
+  "governance": {
+    "risk_level": "medium",
+    "approval_required": true,
+    "approval": {
+      "required": true
+    },
+    "idempotency": {
+      "required": true,
+      "key": "fulfillmentExecutionId"
+    },
+    "rollback_supported": true
+  },
+  "capability_contract": {
+    "bindings": [
+      {
+        "type": "query",
+        "ref": "spec.erp.order-fulfillment-eligibility-check",
+        "timeout_ms": 1500,
+        "retry": 1,
+        "intent": "Validate order is ready for fulfillment",
+        "preconditions": [
+          "order exists",
+          "order is not cancelled"
+        ],
+        "postconditions": [
+          "fulfillment eligibility decision is available"
+        ]
+      },
+      {
+        "type": "invoke",
+        "ref": "spec.erp.inventory-reserve",
+        "depends_on": "spec.erp.order-fulfillment-eligibility-check",
+        "timeout_ms": 2500,
+        "retry": 2,
+        "intent": "Reserve inventory for all fulfillable order lines",
+        "preconditions": [
+          "fulfillment eligibility decision is available"
+        ],
+        "postconditions": [
+          "inventory reservation records are created"
+        ]
+      },
+      {
+        "type": "invoke",
+        "ref": "spec.erp.payment-authorize",
+        "depends_on": "spec.erp.inventory-reserve",
+        "timeout_ms": 2500,
+        "retry": 2,
+        "intent": "Authorize payment for reserved order amount",
+        "preconditions": [
+          "inventory reservation records are created"
+        ],
+        "postconditions": [
+          "payment authorization status is captured"
+        ]
+      },
+      {
+        "type": "invoke",
+        "ref": "spec.erp.fulfillment-release",
+        "depends_on": "spec.erp.payment-authorize",
+        "timeout_ms": 2500,
+        "retry": 1,
+        "intent": "Release order to warehouse fulfillment queue",
+        "preconditions": [
+          "payment authorization status is captured"
+        ],
+        "postconditions": [
+          "fulfillment execution is issued"
+        ]
+      },
+      {
+        "type": "invoke",
+        "ref": "spec.erp.order-status-update",
+        "depends_on": "spec.erp.fulfillment-release",
+        "timeout_ms": 1500,
+        "retry": 1,
+        "intent": "Persist order status transition after fulfillment release",
+        "preconditions": [
+          "fulfillment execution is issued"
+        ],
+        "postconditions": [
+          "order status reflects fulfillment progress"
+        ]
+      }
+    ]
+  },
+  "governance_contract": {
+    "risk_level": "medium",
+    "approval": {
+      "required": true
+    },
+    "idempotency": {
+      "required": true,
+      "key": "fulfillmentExecutionId"
+    },
+    "data_lineage": {
+      "sources": [
+        {
+          "ref": "spec.erp.order-fulfillment-eligibility-check",
+          "fields": [
+            "orderId",
+            "eligible",
+            "reasons"
+          ]
+        },
+        {
+          "ref": "spec.erp.inventory-reserve",
+          "fields": [
+            "reservationId",
+            "itemSeqId",
+            "reservedQty"
+          ]
+        }
+      ],
+      "transforms": [
+        {
+          "operation": "aggregateFulfillmentExecution",
+          "description": "Build execution payload from eligibility, reservation, and payment states"
+        },
+        {
+          "operation": "deriveStatusTransition",
+          "description": "Derive status transition from release and payment outcomes"
+        }
+      ],
+      "sinks": [
+        {
+          "ref": "spec.erp.order-status-update",
+          "fields": [
+            "orderId",
+            "statusId",
+            "executionId"
+          ]
+        }
+      ]
+    },
+    "business_rules": [
+      {
+        "id": "rule.fulfillment.reserve-before-release",
+        "description": "Inventory must be reserved before fulfillment release",
+        "entity_ref": "inventory_reservation",
+        "bind_to": "spec.erp.inventory-reserve",
+        "status": "enforced"
+      },
+      {
+        "id": "rule.fulfillment.payment-before-status-transition",
+        "description": "Payment authorization must exist before final status update",
+        "entity_ref": "payment_authorization",
+        "bind_to": "spec.erp.payment-authorize",
+        "status": "enforced"
+      }
+    ],
+    "decision_logic": [
+      {
+        "id": "decision.fulfillment.partial-reserve-policy",
+        "description": "Choose partial or full fulfillment path based on reservation coverage",
+        "bind_to": "spec.erp.inventory-reserve",
+        "status": "resolved",
+        "automated": true
+      },
+      {
+        "id": "decision.fulfillment.payment-failure-compensation",
+        "description": "Trigger reservation compensation when payment authorization fails",
+        "bind_to": "spec.erp.payment-authorize",
+        "status": "resolved",
+        "automated": true
+      }
+    ]
+  },
+  "ontology_model": {
+    "entities": [
+      {
+        "id": "order_header",
+        "type": "core"
+      },
+      {
+        "id": "order_item",
+        "type": "core"
+      },
+      {
+        "id": "inventory_reservation",
+        "type": "transaction"
+      },
+      {
+        "id": "payment_authorization",
+        "type": "transaction"
+      },
+      {
+        "id": "fulfillment_execution",
+        "type": "workflow"
+      }
+    ],
+    "relations": [
+      {
+        "source": "order_header",
+        "target": "order_item",
+        "type": "composes"
+      },
+      {
+        "source": "inventory_reservation",
+        "target": "order_item",
+        "type": "depends_on"
+      },
+      {
+        "source": "payment_authorization",
+        "target": "order_header",
+        "type": "depends_on"
+      },
+      {
+        "source": "order_header",
+        "target": "fulfillment_execution",
+        "type": "produces"
+      },
+      {
+        "source": "fulfillment_execution",
+        "target": "inventory_reservation",
+        "type": "depends_on"
+      },
+      {
+        "source": "fulfillment_execution",
+        "target": "payment_authorization",
+        "type": "depends_on"
+      }
+    ]
+  },
+  "agent_hints": {
+    "summary": "Order fulfillment workflow template with compensation-aware execution strategy.",
+    "complexity": "high",
+    "estimated_duration_ms": 4800,
+    "required_permissions": [
+      "order.write",
+      "inventory.write",
+      "payment.write"
+    ],
+    "suggested_sequence": [
+      "spec.erp.order-fulfillment-eligibility-check",
+      "spec.erp.inventory-reserve",
+      "spec.erp.payment-authorize",
+      "spec.erp.fulfillment-release",
+      "spec.erp.order-status-update"
+    ],
+    "rollback_strategy": "Compensate reservations and revert order status when downstream steps fail"
+  }
+}
+

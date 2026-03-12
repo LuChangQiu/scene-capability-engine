@@ -4,7 +4,7 @@
 
 After runtime and lock capability expansion, project artifacts drifted from governance rules.
 We need a final convergence pass so status, spec progress, and document lifecycle compliance
-all remain green under `kse status` and `kse doctor --docs`.
+all remain green under `sce status` and `sce doctor --docs`.
 
 ## Requirements
 
@@ -22,7 +22,7 @@ all remain green under `kse status` and `kse doctor --docs`.
 - Lock status should be clear and report no unexpected lock leftovers.
 
 ### Requirement 4: Status Convergence
-- All specs must report complete task progress in `kse status`.
+- All specs must report complete task progress in `sce status`.
 - Status output and document compliance output must both be green.
 
 ### Requirement 5: Verification

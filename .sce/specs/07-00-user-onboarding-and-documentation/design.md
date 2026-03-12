@@ -2,9 +2,9 @@
 
 ## Overview
 
-This design addresses the user onboarding and documentation improvement for kse (Kiro Spec Engine). The goal is to create a comprehensive, user-friendly documentation system that helps users quickly understand kse's role as a context provider for AI tools and successfully integrate it into their workflow within 5 minutes.
+This design addresses the user onboarding and documentation improvement for sce (Scene Capability Engine). The goal is to create a comprehensive, user-friendly documentation system that helps users quickly understand sce's role as a context provider for AI tools and successfully integrate it into their workflow within 5 minutes.
 
-The design focuses on restructuring existing documentation, creating tool-specific guides, adding visual aids, and ensuring consistency across all documentation. The approach is documentation-centric with no code changes required to kse itself - all improvements are in markdown files, diagrams, and examples.
+The design focuses on restructuring existing documentation, creating tool-specific guides, adding visual aids, and ensuring consistency across all documentation. The approach is documentation-centric with no code changes required to sce itself - all improvements are in markdown files, diagrams, and examples.
 
 **Key Design Principles:**
 - **User-first**: Start with what users need to know, not what we want to tell them
@@ -22,7 +22,7 @@ The documentation system will be organized into three tiers:
 
 **Tier 1: Entry Points (README.md)**
 - Primary landing page for all users
-- Concise overview of kse's purpose and value
+- Concise overview of sce's purpose and value
 - Quick start guide (5 minutes)
 - Links to deeper documentation
 
@@ -62,9 +62,9 @@ User arrives → README.md → Quick Start (5 min) → Tool-Specific Guide → A
 
 **Structure**:
 ```markdown
-# kse - Kiro Spec Engine
+# sce - Scene Capability Engine
 
-## What is kse?
+## What is sce?
 [3 paragraphs: what it is, what it's NOT, who it's for]
 
 ## Quick Start (5 Minutes)
@@ -85,7 +85,7 @@ User arrives → README.md → Quick Start (5 min) → Tool-Specific Guide → A
 
 **Key Changes from Current README**:
 - Move detailed feature list to separate documentation
-- Add "What kse is NOT" section to clarify positioning
+- Add "What sce is NOT" section to clarify positioning
 - Embed quick start directly in README (not just link)
 - Add visual workflow diagram
 - Reorganize to prioritize getting started over comprehensive feature listing
@@ -101,18 +101,18 @@ User arrives → README.md → Quick Start (5 min) → Tool-Specific Guide → A
 ## Prerequisites
 [Node.js version, basic CLI knowledge]
 
-## Step 1: Install kse (30 seconds)
+## Step 1: Install sce (30 seconds)
 [npm install command with expected output]
 
-## Step 2: Adopt kse in Your Project (1 minute)
-[kse adopt command, what it creates, verification]
+## Step 2: Adopt sce in Your Project (1 minute)
+[sce adopt command, what it creates, verification]
 
 ## Step 3: Create Your First Spec (2 minutes)
 [Example: add-user-login feature]
 [Show requirements.md creation]
 
 ## Step 4: Export Context for Your AI Tool (1 minute)
-[kse context export command]
+[sce context export command]
 [How to use exported context with AI]
 
 ## Step 5: Next Steps (30 seconds)
@@ -130,7 +130,7 @@ User arrives → README.md → Quick Start (5 min) → Tool-Specific Guide → A
 
 **Template Structure** (applied to each tool):
 ```markdown
-# Using kse with [Tool Name]
+# Using sce with [Tool Name]
 
 ## Overview
 [Tool's capabilities, integration mode available]
@@ -152,7 +152,7 @@ User arrives → README.md → Quick Start (5 min) → Tool-Specific Guide → A
 [Common pitfalls]
 
 ## Examples
-[Real examples of using kse with this tool]
+[Real examples of using sce with this tool]
 
 ## Troubleshooting
 [Tool-specific issues]
@@ -169,7 +169,7 @@ User arrives → README.md → Quick Start (5 min) → Tool-Specific Guide → A
 
 ### Component 4: Visual Workflow Diagrams
 
-**Purpose**: Provide visual representations of kse processes and integration patterns.
+**Purpose**: Provide visual representations of sce processes and integration patterns.
 
 **Diagrams to Create**:
 
@@ -186,7 +186,7 @@ graph LR
 2. **Integration Modes**
 ```mermaid
 graph TD
-    A[kse] --> B[Native Integration]
+    A[sce] --> B[Native Integration]
     A --> C[Manual Export]
     A --> D[Watch Mode]
     B --> E[Kiro]
@@ -198,12 +198,12 @@ graph TD
 ```mermaid
 sequenceDiagram
     participant User
-    participant kse
+    participant sce
     participant AI Tool
-    User->>kse: Create Spec
-    kse->>kse: Generate requirements/design/tasks
-    User->>kse: Export context
-    kse->>User: Context file
+    User->>sce: Create Spec
+    sce->>sce: Generate requirements/design/tasks
+    User->>sce: Export context
+    sce->>User: Context file
     User->>AI Tool: Provide context
     AI Tool->>User: Generate code based on context
 ```
@@ -219,17 +219,17 @@ sequenceDiagram
 # Troubleshooting Guide
 
 ## Installation Issues
-### Error: "npm install -g kse" fails
+### Error: "npm install -g sce" fails
 [Solutions for different platforms]
 
-### Error: "kse: command not found"
+### Error: "sce: command not found"
 [PATH configuration solutions]
 
 ## Adoption Issues
 ### Error: "Not a git repository"
 [Explanation and solution]
 
-### Error: "kse.json already exists"
+### Error: "sce.json already exists"
 [Upgrade vs fresh adoption]
 
 ## Command Issues
@@ -264,16 +264,16 @@ sequenceDiagram
 
 ### Component 6: FAQ Document
 
-**Purpose**: Answer common questions about kse's purpose, usage, and relationship to other tools.
+**Purpose**: Answer common questions about sce's purpose, usage, and relationship to other tools.
 
 **Key Questions to Address**:
-- What is kse and why do I need it?
-- How is kse different from [other tool]?
-- Do I need to use kse with Kiro, or can I use it with other AI tools?
+- What is sce and why do I need it?
+- How is sce different from [other tool]?
+- Do I need to use sce with Kiro, or can I use it with other AI tools?
 - What's the difference between the three integration modes?
-- Can I use kse for non-AI development?
-- How do I update kse?
-- How do I migrate existing projects to kse?
+- Can I use sce for non-AI development?
+- How do I update sce?
+- How do I migrate existing projects to sce?
 - What if my AI tool doesn't support file uploads?
 - Can I customize the Spec templates?
 - How do I share Specs with my team?
@@ -321,12 +321,12 @@ sequenceDiagram
 - [Integration Modes](integration-modes.md) - Three ways to integrate
 
 ## Tool-Specific Guides
-- [Cursor](tools/cursor-guide.md) - Using kse with Cursor
-- [Claude Code](tools/claude-guide.md) - Using kse with Claude
-- [Windsurf](tools/windsurf-guide.md) - Using kse with Windsurf
-- [Kiro](tools/kiro-guide.md) - Using kse with Kiro
-- [VS Code](tools/vscode-guide.md) - Using kse with VS Code + Copilot
-- [Generic AI Tools](tools/generic-guide.md) - Using kse with any AI tool
+- [Cursor](tools/cursor-guide.md) - Using sce with Cursor
+- [Claude Code](tools/claude-guide.md) - Using sce with Claude
+- [Windsurf](tools/windsurf-guide.md) - Using sce with Windsurf
+- [Kiro](tools/kiro-guide.md) - Using sce with Kiro
+- [VS Code](tools/vscode-guide.md) - Using sce with VS Code + Copilot
+- [Generic AI Tools](tools/generic-guide.md) - Using sce with any AI tool
 
 ## Examples
 - [API Feature Example](examples/add-rest-api/) - RESTful API Spec
@@ -335,8 +335,8 @@ sequenceDiagram
 
 ## Reference
 - [Troubleshooting](troubleshooting.md) - Common issues and solutions
-- [Command Reference](command-reference.md) - All kse commands
-- [Configuration](configuration.md) - kse.json options
+- [Command Reference](command-reference.md) - All sce commands
+- [Configuration](configuration.md) - sce.json options
 
 ## Contributing
 - [Contributing Guide](../CONTRIBUTING.md) - How to contribute
@@ -449,7 +449,7 @@ Property 4: Diagram Explanations
 **Validates: Requirements 3.5**
 
 Property 5: Terminology Consistency
-*For any* key term (Spec, kse, Context_Provider, AI_Tool, Integration_Mode), the term must be used with consistent capitalization and spelling across all documentation files.
+*For any* key term (Spec, sce, Context_Provider, AI_Tool, Integration_Mode), the term must be used with consistent capitalization and spelling across all documentation files.
 **Validates: Requirements 6.2**
 
 Property 6: Documentation Metadata
@@ -457,7 +457,7 @@ Property 6: Documentation Metadata
 **Validates: Requirements 6.4**
 
 Property 7: Command Documentation Examples
-*For any* kse command documented in the documentation, the command description must include at least one example usage with a code block showing the command syntax.
+*For any* sce command documented in the documentation, the command description must include at least one example usage with a code block showing the command syntax.
 **Validates: Requirements 8.2**
 
 Property 8: Cross-Document Linking
@@ -474,7 +474,7 @@ Property 10: Descriptive File Naming
 
 ## Error Handling
 
-Since this is a documentation-focused specification with no code changes to kse itself, error handling primarily concerns documentation validation and maintenance processes.
+Since this is a documentation-focused specification with no code changes to sce itself, error handling primarily concerns documentation validation and maintenance processes.
 
 ### Documentation Validation Errors
 
@@ -505,7 +505,7 @@ Since this is a documentation-focused specification with no code changes to kse 
 - Handling: Provide a helpful 404-style message with links to the documentation index
 
 **Outdated Information**:
-- Error: User follows instructions that no longer work due to kse updates
+- Error: User follows instructions that no longer work due to sce updates
 - Handling: Include version numbers in all documentation and maintain a changelog
 
 **Platform-Specific Issues**:
@@ -564,7 +564,7 @@ For each documentation file, reviewers should verify:
 - [ ] Links work and point to correct destinations
 
 **User Testing**:
-- Recruit 3-5 users unfamiliar with kse
+- Recruit 3-5 users unfamiliar with sce
 - Ask them to follow the Quick Start guide
 - Observe where they get stuck or confused
 - Collect feedback on clarity and completeness
@@ -684,8 +684,8 @@ Each test file validates one or more correctness properties and includes clear c
 
 ## Conclusion
 
-This design provides a comprehensive approach to improving kse's documentation and user onboarding experience. By restructuring existing documentation, creating tool-specific guides, adding visual aids, and implementing validation testing, we will significantly reduce the learning curve for new users.
+This design provides a comprehensive approach to improving sce's documentation and user onboarding experience. By restructuring existing documentation, creating tool-specific guides, adding visual aids, and implementing validation testing, we will significantly reduce the learning curve for new users.
 
-The focus on three integration modes (native, manual export, watch mode) and tool-specific guidance ensures that users can quickly find relevant information for their specific AI development environment. The 5-minute Quick Start guide and progressive disclosure approach will help users get value from kse immediately while providing paths to deeper learning.
+The focus on three integration modes (native, manual export, watch mode) and tool-specific guidance ensures that users can quickly find relevant information for their specific AI development environment. The 5-minute Quick Start guide and progressive disclosure approach will help users get value from sce immediately while providing paths to deeper learning.
 
-The correctness properties and automated validation ensure documentation quality remains high as the project evolves, while the bilingual approach makes kse accessible to both English and Chinese-speaking developers.
+The correctness properties and automated validation ensure documentation quality remains high as the project evolves, while the bilingual approach makes sce accessible to both English and Chinese-speaking developers.

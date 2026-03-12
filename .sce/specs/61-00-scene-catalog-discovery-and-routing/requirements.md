@@ -2,7 +2,7 @@
 
 ## Introduction
 
-KSE already supports scene validate/doctor/run/eval workflows, but users still lack one command to discover
+SCE already supports scene validate/doctor/run/eval workflows, but users still lack one command to discover
 which scene manifests exist across specs and route to the right scene entrypoint quickly.
 
 ## Requirements

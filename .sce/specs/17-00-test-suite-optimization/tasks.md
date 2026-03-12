@@ -325,7 +325,7 @@ This implementation plan breaks down the test suite optimization feature into di
 - Unit tests validate specific examples and edge cases
 - The implementation follows a bottom-up approach: build components first, then integrate
 - All analysis tools are implemented as standalone scripts in the spec directory
-- The optimizer can be run independently without modifying the main kse codebase
+- The optimizer can be run independently without modifying the main sce codebase
 - Results are stored in the spec's results directory for review
 
 ## Estimated Timeline
@@ -353,7 +353,7 @@ This implementation plan breaks down the test suite optimization feature into di
 - Local test execution time remains under 30 seconds
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

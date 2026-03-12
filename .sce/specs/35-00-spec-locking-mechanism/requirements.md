@@ -23,7 +23,7 @@ This document specifies the requirements for a Spec-level locking mechanism that
 
 #### Acceptance Criteria
 
-1. WHEN a developer runs `kse lock <spec-name>`, THE Lock_Manager SHALL create a Lock_File in the Spec directory
+1. WHEN a developer runs `sce lock <spec-name>`, THE Lock_Manager SHALL create a Lock_File in the Spec directory
 2. WHEN a Lock_File is created, THE Lock_Manager SHALL include Lock_Metadata with owner name, Machine_ID, timestamp, and optional reason
 3. IF a Spec is already locked by another developer, THEN THE Lock_Manager SHALL reject the lock request and display the current Lock_Owner information
 4. WHEN a lock is successfully acquired, THE Lock_Manager SHALL display a confirmation message with lock details
@@ -35,7 +35,7 @@ This document specifies the requirements for a Spec-level locking mechanism that
 
 #### Acceptance Criteria
 
-1. WHEN a developer runs `kse unlock <spec-name>`, THE Lock_Manager SHALL remove the Lock_File from the Spec directory
+1. WHEN a developer runs `sce unlock <spec-name>`, THE Lock_Manager SHALL remove the Lock_File from the Spec directory
 2. IF the lock is owned by a different Machine_ID, THEN THE Lock_Manager SHALL reject the unlock request unless `--force` flag is provided
 3. WHEN `--force` flag is used, THE Lock_Manager SHALL release the lock regardless of ownership and log the forced release
 4. WHEN a lock is successfully released, THE Lock_Manager SHALL display a confirmation message
@@ -47,8 +47,8 @@ This document specifies the requirements for a Spec-level locking mechanism that
 
 #### Acceptance Criteria
 
-1. WHEN a developer runs `kse lock status`, THE Lock_Manager SHALL display all locked Specs with their Lock_Metadata
-2. WHEN a developer runs `kse lock status <spec-name>`, THE Lock_Manager SHALL display the lock status of the specific Spec
+1. WHEN a developer runs `sce lock status`, THE Lock_Manager SHALL display all locked Specs with their Lock_Metadata
+2. WHEN a developer runs `sce lock status <spec-name>`, THE Lock_Manager SHALL display the lock status of the specific Spec
 3. THE Lock_Manager SHALL display Lock_Owner, Machine_ID, lock timestamp, duration held, and reason (if provided)
 4. THE Lock_Manager SHALL indicate if a lock is stale based on Lock_Timeout configuration
 5. WHEN no Specs are locked, THE Lock_Manager SHALL display an informational message
@@ -61,7 +61,7 @@ This document specifies the requirements for a Spec-level locking mechanism that
 
 1. THE Lock_Manager SHALL consider a lock stale if it exceeds the configured Lock_Timeout (default: 24 hours)
 2. WHEN displaying lock status, THE Lock_Manager SHALL mark stale locks with a warning indicator
-3. WHEN a developer runs `kse lock cleanup`, THE Lock_Manager SHALL remove all stale locks and report the cleanup results
+3. WHEN a developer runs `sce lock cleanup`, THE Lock_Manager SHALL remove all stale locks and report the cleanup results
 4. THE Lock_Manager SHALL support configurable Lock_Timeout via project configuration
 5. WHEN a stale lock is cleaned up, THE Lock_Manager SHALL log the cleanup action with original lock details
 
@@ -83,8 +83,8 @@ This document specifies the requirements for a Spec-level locking mechanism that
 
 #### Acceptance Criteria
 
-1. WHEN running `kse spec list`, THE System SHALL display lock status indicator for each Spec
-2. WHEN running `kse spec edit <spec-name>` on a locked Spec, THE System SHALL display a warning with Lock_Owner information
+1. WHEN running `sce spec list`, THE System SHALL display lock status indicator for each Spec
+2. WHEN running `sce spec edit <spec-name>` on a locked Spec, THE System SHALL display a warning with Lock_Owner information
 3. THE System SHALL support `--ignore-lock` flag to bypass lock warnings for read-only operations
 4. WHEN a Spec is locked by the current machine, THE System SHALL indicate "locked by you" in status displays
 5. THE System SHALL not block read operations on locked Specs, only warn about potential conflicts
@@ -98,7 +98,7 @@ This document specifies the requirements for a Spec-level locking mechanism that
 1. THE Lock_Manager SHALL generate a unique Machine_ID on first use and persist it in user configuration
 2. THE Machine_ID SHALL be a combination of hostname and a random UUID for uniqueness
 3. WHEN displaying lock information, THE Lock_Manager SHALL show both Machine_ID and a human-readable hostname
-4. THE Lock_Manager SHALL support `kse lock whoami` command to display current machine's identifier
+4. THE Lock_Manager SHALL support `sce lock whoami` command to display current machine's identifier
 5. IF Machine_ID cannot be determined, THEN THE Lock_Manager SHALL generate a temporary ID and warn the user
 
 ### Requirement 8: Lock Serialization and Deserialization

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Adds a `kse scene tag` subcommand group to manage distribution tags on scene packages in the local registry. The group contains three sub-subcommands: `add`, `rm`, and `ls`. Each operates on a `tags` object within package entries in `registry-index.json`. Follows the normalize → validate → run → print pattern with a single `runSceneTagCommand` dispatcher. All code in `lib/commands/scene.js`. No new dependencies.
+Adds a `sce scene tag` subcommand group to manage distribution tags on scene packages in the local registry. The group contains three sub-subcommands: `add`, `rm`, and `ls`. Each operates on a `tags` object within package entries in `registry-index.json`. Follows the normalize → validate → run → print pattern with a single `runSceneTagCommand` dispatcher. All code in `lib/commands/scene.js`. No new dependencies.
 
 Tags are stored as a `tags` object on the package entry: `{ "stable": "1.1.0", "beta": "1.3.0-beta.1" }`. The `latest` field remains separate and auto-managed by publish. The `tag add` command prevents overwriting the `latest` tag to avoid conflicts with the publish flow.
 

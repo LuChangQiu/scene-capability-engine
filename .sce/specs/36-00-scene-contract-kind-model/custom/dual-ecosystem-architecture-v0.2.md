@@ -11,7 +11,7 @@ without mixing safety-critical real-time control into LLM execution.
 
 ## Positioning
 
-- KSE remains the control plane and governance plane.
+- SCE remains the control plane and governance plane.
 - Scene runtime handles planning, policy, and orchestration.
 - Domain adapters execute domain-native operations.
 - Robot low-level control remains deterministic and external to LLM loop.
@@ -33,7 +33,7 @@ Scene adds domain profile:
    - policy and eval binding
 
 2. Physical layer (Artifacts/Adapters)
-   - KSE specs and templates
+   - SCE specs and templates
    - ERP adapter (Moqui service/query/event)
    - Robot adapter (mission API/device gateway/PLC/ROS-like bridge)
 

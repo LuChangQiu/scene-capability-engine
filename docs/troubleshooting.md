@@ -1045,7 +1045,7 @@ ls -la .sce/
 
 **4. Community:**
 - Discord: [Join our Discord](https://discord.gg/sce)
-- Twitter: [@kse_dev](https://twitter.com/kse_dev)
+- Twitter: [@sce_dev](https://twitter.com/sce_dev)
 
 ### Creating a Good Issue Report
 

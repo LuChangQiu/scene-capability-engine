@@ -200,9 +200,9 @@ This implementation plan breaks down the document governance automation system i
   - **Validates: Requirements 8.4**
 
 - [x] 14. Implement configuration commands
-  - Add `kse config docs` subcommand
-  - Add `kse config docs --set` functionality
-  - Add `kse config docs --reset` functionality
+  - Add `sce config docs` subcommand
+  - Add `sce config docs --set` functionality
+  - Add `sce config docs --reset` functionality
   - Display current configuration
   - Add unit tests for config commands
   - _Requirements: 6.1, 6.2, 6.3, 6.6_
@@ -223,9 +223,9 @@ This implementation plan breaks down the document governance automation system i
   - **Validates: Requirements 7.1**
 
 - [x] 16. Implement statistics and reporting
-  - Add `kse docs stats` command
+  - Add `sce docs stats` command
   - Implement statistics calculation from history
-  - Add `kse docs report` command
+  - Add `sce docs report` command
   - Generate markdown compliance reports
   - Save reports to `.sce/reports/`
   - Add unit tests for stats and reporting
@@ -240,7 +240,7 @@ This implementation plan breaks down the document governance automation system i
   - **Validates: Requirements 7.7**
 
 - [x] 17. Update CLI entry point
-  - Update `bin/kiro-spec-engine.js`
+  - Update `bin/scene-capability-engine.js`
   - Register new document governance commands
   - Update help text to include new commands
   - Ensure proper command routing
@@ -284,7 +284,7 @@ This implementation plan breaks down the document governance automation system i
 - Reports are saved to `.sce/reports/document-compliance-{timestamp}.md`
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

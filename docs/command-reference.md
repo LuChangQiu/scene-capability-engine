@@ -1574,7 +1574,7 @@ Moqui template library lexicon audit (script-level governance helper):
 - `node scripts/moqui-lexicon-audit.js [--manifest <path>] [--template-dir <path>] [--lexicon <path>] [--out <path>] [--markdown-out <path>] [--fail-on-gap] [--json]`: audit manifest/template capability names against canonical Moqui lexicon; reports unknown aliases and uncovered expected capabilities.
   - Expected capability scope uses `manifest.capabilities` first; when empty, it infers canonical expected capabilities from `manifest.templates` and emits `expected_scope` metadata (`source`, `inferred_*`, `unresolved_templates`).
   - By default, template capability auditing is scoped to `manifest.templates` (when matched), reducing noise from unrelated templates.
-  - Template scope matching normalizes `sce.scene--*` / `kse.scene--*` prefixes, so renamed template namespaces still map correctly.
+  - Template scope matching normalizes `sce.scene--*` / `sce.scene--*` prefixes, so renamed template namespaces still map correctly.
 
 Moqui release summary helper (script-level consolidated gate view):
 - `node scripts/moqui-release-summary.js [--evidence <path>] [--baseline <path>] [--lexicon <path>] [--capability-matrix <path>] [--interactive-governance <path>] [--matrix-remediation-plan <path>] [--out <path>] [--markdown-out <path>] [--fail-on-gate-fail] [--json]`: merge handoff release-evidence + baseline + lexicon + capability-matrix + interactive-governance into one Moqui release gate summary (`passed | failed | incomplete`) with executable remediation recommendations.
@@ -2126,10 +2126,10 @@ Release workflow default:
 - Runs interactive flow smoke (`npm run test:interactive-flow-smoke`) in test/release test jobs.
 - Runs interactive governance gate by default (`interactive-governance-report --period weekly --fail-on-alert`) in test and release pipelines.
 - Evaluates matrix regression gate in CI/release with configurable policy:
-  - `KSE_MATRIX_REGRESSION_GATE_ENFORCE` (`true|false`, default advisory/disabled)
-  - `KSE_MATRIX_REGRESSION_GATE_MAX` (default `0`)
+  - `SCE_MATRIX_REGRESSION_GATE_ENFORCE` (`true|false`, default advisory/disabled)
+  - `SCE_MATRIX_REGRESSION_GATE_MAX` (default `0`)
 - Optional release summary hard-gate:
-  - `KSE_MOQUI_RELEASE_SUMMARY_ENFORCE` (`true|false`, default advisory/disabled)
+  - `SCE_MOQUI_RELEASE_SUMMARY_ENFORCE` (`true|false`, default advisory/disabled)
 - Publishes `moqui-template-baseline.json` + `moqui-template-baseline.md` as release assets.
 - Publishes `moqui-release-summary.json` + `moqui-release-summary.md` as release review assets.
 - Publishes `interactive-governance-<tag>.json` + `interactive-governance-<tag>.md` as release evidence assets.
@@ -2138,7 +2138,7 @@ Release workflow default:
 - Evaluates weekly ops risk gate by default (`release-weekly-ops-gate`; default block when `risk > medium` or summary missing).
 - Publishes `release-risk-remediation-<tag>.json|.md|.lines` derived from unified weekly+drift gate signals.
 - Evaluates and publishes release asset integrity audit (`release-asset-integrity-<tag>.json|.md`) before `npm publish`.
-- Enforces baseline portfolio gate by default (`KSE_MOQUI_BASELINE_ENFORCE` defaults to `true` when unset).
+- Enforces baseline portfolio gate by default (`SCE_MOQUI_BASELINE_ENFORCE` defaults to `true` when unset).
 
 ### Moqui ERP Integration
 

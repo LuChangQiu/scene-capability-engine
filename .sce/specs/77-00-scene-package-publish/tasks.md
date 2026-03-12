@@ -2,7 +2,7 @@
 
 ## Overview
 
-Implement `kse scene publish` and `kse scene unpublish` commands that bundle scene packages into `.tgz` tarballs and manage a local registry with a central index. All code goes in `lib/commands/scene.js` following existing patterns. Tests in `tests/unit/commands/scene.test.js`.
+Implement `sce scene publish` and `sce scene unpublish` commands that bundle scene packages into `.tgz` tarballs and manage a local registry with a central index. All code goes in `lib/commands/scene.js` following existing patterns. Tests in `tests/unit/commands/scene.test.js`.
 
 ## Tasks
 
@@ -78,7 +78,7 @@ Implement `kse scene publish` and `kse scene unpublish` commands that bundle sce
 - [x] 5. Implement registry index management
   - [x] 5.1 Implement `loadRegistryIndex(registryRoot, fileSystem)` function
     - Read `registry-index.json` from registryRoot
-    - If file doesn't exist, return default `{ apiVersion: 'kse.scene.registry/v0.1', packages: {} }`
+    - If file doesn't exist, return default `{ apiVersion: 'sce.scene.registry/v0.1', packages: {} }`
     - If invalid JSON, throw parse error
     - Validate structure has `packages` object
     - _Requirements: 9.2, 9.3_

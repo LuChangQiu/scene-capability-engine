@@ -2,7 +2,7 @@
 
 ## 简介
 
-借鉴 Palantir Foundry 架构（Ontology、AIP、Data Lineage），为 KSE Scene Runtime 引入四项核心增强：Ontology 语义关联图、Action Abstraction（Intent/Precondition/Postcondition）、Data Lineage 数据血缘追踪、Agent-Ready Metadata。这些增强使 binding refs 之间的关系可查询可推理，使 AI Agent 能理解操作语义，使数据流转路径可追踪审计，使场景包具备 AI 可读性。
+借鉴 Palantir Foundry 架构（Ontology、AIP、Data Lineage），为 SCE Scene Runtime 引入四项核心增强：Ontology 语义关联图、Action Abstraction（Intent/Precondition/Postcondition）、Data Lineage 数据血缘追踪、Agent-Ready Metadata。这些增强使 binding refs 之间的关系可查询可推理，使 AI Agent 能理解操作语义，使数据流转路径可追踪审计，使场景包具备 AI 可读性。
 
 ## 术语表
 
@@ -147,12 +147,12 @@
 
 #### 验收标准
 
-1. WHEN 执行 `kse scene ontology show` 并提供场景包路径时，THE CLI SHALL 显示该包的 ontology 图（文本格式或 JSON 格式）
-2. WHEN 执行 `kse scene ontology deps --ref <ref>` 时，THE CLI SHALL 显示指定 ref 的依赖链
-3. WHEN 执行 `kse scene ontology validate` 并提供场景包路径时，THE CLI SHALL 执行 ontology 一致性验证并显示结果
-4. WHEN 执行 `kse scene ontology actions --ref <ref>` 时，THE CLI SHALL 显示指定 ref 的 action abstraction 信息
-5. WHEN 执行 `kse scene ontology lineage --ref <ref>` 时，THE CLI SHALL 显示指定 ref 的数据血缘链
-6. WHEN 执行 `kse scene ontology agent-info` 并提供场景包路径时，THE CLI SHALL 显示场景包的 agent hints 信息
+1. WHEN 执行 `sce scene ontology show` 并提供场景包路径时，THE CLI SHALL 显示该包的 ontology 图（文本格式或 JSON 格式）
+2. WHEN 执行 `sce scene ontology deps --ref <ref>` 时，THE CLI SHALL 显示指定 ref 的依赖链
+3. WHEN 执行 `sce scene ontology validate` 并提供场景包路径时，THE CLI SHALL 执行 ontology 一致性验证并显示结果
+4. WHEN 执行 `sce scene ontology actions --ref <ref>` 时，THE CLI SHALL 显示指定 ref 的 action abstraction 信息
+5. WHEN 执行 `sce scene ontology lineage --ref <ref>` 时，THE CLI SHALL 显示指定 ref 的数据血缘链
+6. WHEN 执行 `sce scene ontology agent-info` 并提供场景包路径时，THE CLI SHALL 显示场景包的 agent hints 信息
 7. WHEN 任何 ontology 子命令使用 `--json` 选项时，THE CLI SHALL 以 JSON 格式输出结果
 8. WHEN 任何 ontology 子命令的输入无效时，THE CLI SHALL 显示清晰的错误信息并以非零退出码退出
 

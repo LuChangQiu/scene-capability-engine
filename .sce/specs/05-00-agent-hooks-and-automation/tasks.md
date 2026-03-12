@@ -157,37 +157,37 @@ This implementation plan delivers automation capabilities across all tools:
   - Ensure all tests pass, ask the user if questions arise.
 
 - [x] 7. Implement watch CLI commands
-  - [x] 7.1 Create `kse watch start` command
+  - [x] 7.1 Create `sce watch start` command
     - Start watch mode
     - Support custom config
     - Support pattern override
     - _Requirements: 2.1_
   
-  - [x] 7.2 Create `kse watch stop` command
+  - [x] 7.2 Create `sce watch stop` command
     - Stop watch mode gracefully
     - Clean up resources
     - Save state
     - _Requirements: 2.5_
   
-  - [x] 7.3 Create `kse watch status` command
+  - [x] 7.3 Create `sce watch status` command
     - Show watch mode status
     - Show active patterns
     - Show recent activity
     - _Requirements: 6.2_
   
-  - [x] 7.4 Create `kse watch logs` command
+  - [x] 7.4 Create `sce watch logs` command
     - Display execution logs
     - Support tail mode
     - Support follow mode
     - _Requirements: 8.3_
   
-  - [x] 7.5 Create `kse watch metrics` command
+  - [x] 7.5 Create `sce watch metrics` command
     - Display automation metrics
     - Show time saved
     - Show success rates
     - _Requirements: 8.4_
   
-  - [x] 7.6 Create `kse watch init` command
+  - [x] 7.6 Create `sce watch init` command
     - Initialize watch configuration
     - Create default config
     - Provide interactive setup
@@ -225,7 +225,7 @@ This implementation plan delivers automation capabilities across all tools:
     - _Requirements: 5.1, 5.2_
   
   - [x] 8.5 Implement preset installation
-    - `kse watch install <preset>`
+    - `sce watch install <preset>`
     - Merge with existing config
     - Validate before installation
     - _Requirements: 5.2, 5.3_
@@ -246,7 +246,7 @@ This implementation plan delivers automation capabilities across all tools:
     - Provide tool-specific tips
     - _Requirements: 10.3, 10.4_
   
-  - [x] 10.3 Update `kse adopt` command
+  - [x] 10.3 Update `sce adopt` command
     - Integrate tool detection
     - Offer automation setup
     - Document choices
@@ -277,7 +277,7 @@ This implementation plan delivers automation capabilities across all tools:
     - Progress tracking
     - _Requirements: 3.1, 3.2_
   
-  - [x] 11.5 Add `kse workflows` command
+  - [x] 11.5 Add `sce workflows` command
     - List available workflows
     - Show workflow details
     - Track workflow completion

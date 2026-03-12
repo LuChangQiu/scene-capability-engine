@@ -8,7 +8,7 @@ applicable_scenarios:
   - Designing API architecture
   - Planning endpoint structure
   - Defining data models
-author: kse-team
+author: sce-team
 created_at: 2025-01-30
 updated_at: 2025-01-30
 version: 1.0.0

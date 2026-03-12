@@ -10,7 +10,7 @@
 
 ## Task Overview
 
-This task list implements the zero-interaction, smart adoption system for the `kse adopt` command.
+This task list implements the zero-interaction, smart adoption system for the `sce adopt` command.
 
 **Total Tasks**: 16  
 **Estimated Effort**: 9-12 days  
@@ -714,7 +714,7 @@ Follow the phase order strictly:
 
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Smart adoption orchestrator capability delivered
 - [x] 2 Strategy selector and project-state detection delivered

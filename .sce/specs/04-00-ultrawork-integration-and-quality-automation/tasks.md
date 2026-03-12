@@ -306,7 +306,7 @@ This implementation plan transforms the Ultrawork tool from an analysis-only too
 - Integration tests validate end-to-end workflows
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

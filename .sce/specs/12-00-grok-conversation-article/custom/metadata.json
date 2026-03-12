@@ -47,7 +47,7 @@
     "discussions_template": ".sce/specs/12-00-grok-conversation-article/github-discussions-template.md"
   },
   "related_links": {
-    "project": "https://github.com/heguangyong/kiro-spec-engine",
-    "npm": "https://www.npmjs.com/package/kiro-spec-engine"
+    "project": "https://github.com/heguangyong/scene-capability-engine",
+    "npm": "https://www.npmjs.com/package/scene-capability-engine"
   }
 }

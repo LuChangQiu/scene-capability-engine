@@ -2,13 +2,13 @@
 
 ## Introduction
 
-This document specifies requirements for improving the `kse adopt` command's conflict handling mechanism. Currently, when conflicts are detected during adoption (existing steering files, README.md, etc.), users are not given interactive options to resolve them. The `--force` flag exists but is not exposed in the interactive flow, leading to a poor user experience. This feature will provide users with clear, interactive choices for handling conflicts during the adoption process.
+This document specifies requirements for improving the `sce adopt` command's conflict handling mechanism. Currently, when conflicts are detected during adoption (existing steering files, README.md, etc.), users are not given interactive options to resolve them. The `--force` flag exists but is not exposed in the interactive flow, leading to a poor user experience. This feature will provide users with clear, interactive choices for handling conflicts during the adoption process.
 
 ## Glossary
 
-- **Adoption_System**: The kse adopt command and its supporting modules that integrate projects into the Kiro Spec Engine
+- **Adoption_System**: The sce adopt command and its supporting modules that integrate projects into the Scene Capability Engine
 - **Conflict**: A situation where a template file would overwrite an existing file in the project
-- **Template_File**: A file from the kse template directory that would be copied during adoption
+- **Template_File**: A file from the sce template directory that would be copied during adoption
 - **Backup**: A timestamped copy of files before they are modified or overwritten
 - **Interactive_Flow**: The user-facing prompts and choices during the adoption process
 - **Conflict_Resolution_Strategy**: The user's choice for how to handle conflicts (skip, overwrite, or review)
@@ -17,7 +17,7 @@ This document specifies requirements for improving the `kse adopt` command's con
 
 ### Requirement 1: Interactive Conflict Detection
 
-**User Story:** As a developer running `kse adopt`, I want to be clearly informed when conflicts are detected, so that I understand what files would be affected.
+**User Story:** As a developer running `sce adopt`, I want to be clearly informed when conflicts are detected, so that I understand what files would be affected.
 
 #### Acceptance Criteria
 

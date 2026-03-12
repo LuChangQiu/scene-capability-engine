@@ -48,8 +48,8 @@ jobs:
 
       - name: Evaluate matrix regression gate (CI)
         env:
-          MATRIX_REGRESSION_GATE_ENFORCE: ${{ vars.KSE_MATRIX_REGRESSION_GATE_ENFORCE }}
-          MATRIX_REGRESSION_GATE_MAX: ${{ vars.KSE_MATRIX_REGRESSION_GATE_MAX }}
+          MATRIX_REGRESSION_GATE_ENFORCE: ${{ vars.SCE_MATRIX_REGRESSION_GATE_ENFORCE }}
+          MATRIX_REGRESSION_GATE_MAX: ${{ vars.SCE_MATRIX_REGRESSION_GATE_MAX }}
         run: |
           set -euo pipefail
           ENFORCE_RAW="${MATRIX_REGRESSION_GATE_ENFORCE:-false}"

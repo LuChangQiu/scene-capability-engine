@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This feature adds a `kse scene info` command that displays detailed information about a specific scene package in the local registry, including all published versions, metadata, and integrity hashes.
+This feature adds a `sce scene info` command that displays detailed information about a specific scene package in the local registry, including all published versions, metadata, and integrity hashes.
 
 ## Glossary
 
-- **Info_Command**: The `kse scene info` CLI command.
+- **Info_Command**: The `sce scene info` CLI command.
 - **Package_Detail**: Complete metadata for a package including all versions, descriptions, and publish timestamps.
 
 ## Requirements

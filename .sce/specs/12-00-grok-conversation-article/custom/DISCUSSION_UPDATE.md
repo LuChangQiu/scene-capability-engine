@@ -2,7 +2,7 @@
 
 ## 在现有 Discussion 开头添加
 
-在你现有的 Discussion (https://github.com/heguangyong/kiro-spec-engine/discussions/1) 的**最开头**添加以下内容：
+在你现有的 Discussion (https://github.com/heguangyong/scene-capability-engine/discussions/1) 的**最开头**添加以下内容：
 
 ```markdown
 > 关于 AI 发展趋势、心学哲学与软件工程实践的探讨
@@ -11,7 +11,7 @@
 **对话对象**：Grok (xAI)  
 **日期**：2026-01-24
 
-📖 **English Version**: [The Philosophy and Practice of AI-Driven Development](https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md)
+📖 **English Version**: [The Philosophy and Practice of AI-Driven Development](https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md)
 
 ---
 ```
@@ -25,15 +25,15 @@
 **对话对象**：Grok (xAI)  
 **日期**：2026-01-24
 
-📖 **English Version**: [The Philosophy and Practice of AI-Driven Development](https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md)
+📖 **English Version**: [The Philosophy and Practice of AI-Driven Development](https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md)
 
 ---
 
 ## 📖 完整文章
 
 完整对话内容请查看：
-- **中文版**：[AI 驱动开发的哲学与实践](https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md)
-- **English**: [The Philosophy and Practice of AI-Driven Development](https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md)
+- **中文版**：[AI 驱动开发的哲学与实践](https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md)
+- **English**: [The Philosophy and Practice of AI-Driven Development](https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md)
 
 ## 🎯 核心观点
 
@@ -53,7 +53,7 @@
 
 ## 🚀 实践项目
 
-这些理念在 [kiro-spec-engine](https://github.com/heguangyong/kiro-spec-engine) 项目中得到了实践：
+这些理念在 [kiro-spec-engine](https://github.com/heguangyong/scene-capability-engine) 项目中得到了实践：
 
 - 精确解决 session 上下文吞噬问题
 - 文档驱动 + 自动化治理
@@ -91,10 +91,10 @@ For international readers, the English version includes a glossary explaining ke
 
 ## 🔗 相关资源
 
-- **项目地址**：https://github.com/heguangyong/kiro-spec-engine
-- **npm 包**：https://www.npmjs.com/package/kiro-spec-engine
-- **完整文章（中文）**：[docs/articles/ai-driven-development-philosophy-and-practice.md](https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md)
-- **Full Article (English)**: [docs/articles/ai-driven-development-philosophy-and-practice.en.md](https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md)
+- **项目地址**：https://github.com/heguangyong/scene-capability-engine
+- **npm 包**：https://www.npmjs.com/package/scene-capability-engine
+- **完整文章（中文）**：[docs/articles/ai-driven-development-philosophy-and-practice.md](https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md)
+- **Full Article (English)**: [docs/articles/ai-driven-development-philosophy-and-practice.en.md](https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.en.md)
 
 ---
 
@@ -107,7 +107,7 @@ For international readers, the English version includes a glossary explaining ke
 
 ## 操作步骤
 
-1. 访问：https://github.com/heguangyong/kiro-spec-engine/discussions/1
+1. 访问：https://github.com/heguangyong/scene-capability-engine/discussions/1
 2. 点击右上角的 **Edit** (编辑) 按钮
 3. 复制上面的完整内容
 4. 替换原有内容

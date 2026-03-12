@@ -10,7 +10,7 @@
 
 ### DevOps Integration Foundation
 
-kse v1.8.0 introduces a complete DevOps integration foundation that enables AI to progressively manage operations across multiple environments. This release transforms kse from a development tool into a comprehensive DevOps platform.
+sce v1.8.0 introduces a complete DevOps integration foundation that enables AI to progressively manage operations across multiple environments. This release transforms sce from a development tool into a comprehensive DevOps platform.
 
 ---
 
@@ -116,78 +116,78 @@ kse v1.8.0 introduces a complete DevOps integration foundation that enables AI t
 
 ## 📦 New CLI Commands
 
-### `kse ops init <project-name>`
+### `sce ops init <project-name>`
 
 Initialize operations specs from templates.
 
 ```bash
-kse ops init my-service
+sce ops init my-service
 ```
 
 Creates `.sce/specs/my-service/operations/` with all required documents.
 
-### `kse ops validate [<project-name>]`
+### `sce ops validate [<project-name>]`
 
 Validate operations spec completeness.
 
 ```bash
-kse ops validate my-service
+sce ops validate my-service
 ```
 
 Checks structure and content against validation rules.
 
-### `kse ops audit [options]`
+### `sce ops audit [options]`
 
 Query audit logs with filtering.
 
 ```bash
 # Query all audit logs
-kse ops audit
+sce ops audit
 
 # Filter by project
-kse ops audit --project my-service
+sce ops audit --project my-service
 
 # Filter by date range
-kse ops audit --from 2026-01-01 --to 2026-01-27
+sce ops audit --from 2026-01-01 --to 2026-01-27
 
 # Filter by operation type
-kse ops audit --type deployment
+sce ops audit --type deployment
 
 # Export to CSV
-kse ops audit --format csv --output audit-report.csv
+sce ops audit --format csv --output audit-report.csv
 ```
 
-### `kse ops takeover <action> [options]`
+### `sce ops takeover <action> [options]`
 
 Manage AI takeover levels.
 
 ```bash
 # Get current takeover level
-kse ops takeover get my-service
+sce ops takeover get my-service
 
 # Set takeover level
-kse ops takeover set L3_SEMI_AUTO my-service --reason "Successful operation history"
+sce ops takeover set L3_SEMI_AUTO my-service --reason "Successful operation history"
 
 # Request permission elevation
-kse ops takeover request my-service --operation deployment --reason "Emergency fix"
+sce ops takeover request my-service --operation deployment --reason "Emergency fix"
 ```
 
-### `kse ops feedback <action> [options]`
+### `sce ops feedback <action> [options]`
 
 Manage user feedback.
 
 ```bash
 # List all feedback
-kse ops feedback list
+sce ops feedback list
 
 # Filter by severity
-kse ops feedback list --severity critical
+sce ops feedback list --severity critical
 
 # Filter by status
-kse ops feedback list --status investigating
+sce ops feedback list --status investigating
 
 # Respond to feedback
-kse ops feedback respond fb-2026-01-27-001 --message "Fixed in v1.8.1"
+sce ops feedback respond fb-2026-01-27-001 --message "Fixed in v1.8.1"
 ```
 
 ---
@@ -270,20 +270,20 @@ kse ops feedback respond fb-2026-01-27-001 --message "Fixed in v1.8.1"
 
 **To use new features**:
 
-1. **Update kse**:
+1. **Update sce**:
    ```bash
    npm update -g kiro-spec-engine
    ```
 
 2. **Initialize operations specs** (optional):
    ```bash
-   kse ops init your-project
+   sce ops init your-project
    ```
 
 3. **Start using ops commands**:
    ```bash
-   kse ops validate
-   kse ops audit
+   sce ops validate
+   sce ops audit
    ```
 
 ### For New Users
@@ -301,13 +301,13 @@ Follow the standard quick start guide. DevOps features are available immediately
 **Solution**:
 ```bash
 # Initialize operations specs
-kse ops init user-service
+sce ops init user-service
 
 # Fill in deployment procedures
 # Edit .sce/specs/user-service/operations/deployment.md
 
 # Validate completeness
-kse ops validate user-service
+sce ops validate user-service
 ```
 
 ### Use Case 2: Progressive AI Takeover
@@ -317,13 +317,13 @@ kse ops validate user-service
 **Solution**:
 ```bash
 # Start with observation mode
-kse ops takeover set L1_OBSERVATION user-service
+sce ops takeover set L1_OBSERVATION user-service
 
 # After successful observation, upgrade to suggestion mode
-kse ops takeover set L2_SUGGESTION user-service --reason "100+ operations observed"
+sce ops takeover set L2_SUGGESTION user-service --reason "100+ operations observed"
 
 # Eventually reach semi-auto mode
-kse ops takeover set L3_SEMI_AUTO user-service --reason "High confidence"
+sce ops takeover set L3_SEMI_AUTO user-service --reason "High confidence"
 ```
 
 ### Use Case 3: Audit and Compliance
@@ -333,13 +333,13 @@ kse ops takeover set L3_SEMI_AUTO user-service --reason "High confidence"
 **Solution**:
 ```bash
 # Query all operations in production
-kse ops audit --environment production --from 2026-01-01
+sce ops audit --environment production --from 2026-01-01
 
 # Export to CSV for compliance team
-kse ops audit --environment production --format csv --output compliance-report.csv
+sce ops audit --environment production --format csv --output compliance-report.csv
 
 # Check for anomalies
-kse ops audit --anomalies-only
+sce ops audit --anomalies-only
 ```
 
 ### Use Case 4: Feedback-Driven Improvements
@@ -349,13 +349,13 @@ kse ops audit --anomalies-only
 **Solution**:
 ```bash
 # List critical feedback
-kse ops feedback list --severity critical
+sce ops feedback list --severity critical
 
 # Respond to feedback
-kse ops feedback respond fb-001 --message "Fixed in v1.8.1"
+sce ops feedback respond fb-001 --message "Fixed in v1.8.1"
 
 # Generate analytics
-kse ops feedback analytics --project user-service --from 2026-01-01
+sce ops feedback analytics --project user-service --from 2026-01-01
 ```
 
 ---
@@ -441,17 +441,17 @@ This release focuses on the **foundation** for DevOps integration. The following
 ### Getting Help
 
 - **Documentation**: [DevOps Integration Guide](docs/devops-integration.md) (coming soon)
-- **Issues**: [GitHub Issues](https://github.com/heguangyong/kiro-spec-engine/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/heguangyong/kiro-spec-engine/discussions)
+- **Issues**: [GitHub Issues](https://github.com/heguangyong/scene-capability-engine/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/heguangyong/scene-capability-engine/discussions)
 
 ### Reporting Bugs
 
 If you encounter issues with DevOps features:
 
 1. Check the [Troubleshooting Guide](docs/troubleshooting.md)
-2. Run `kse doctor` for diagnostics
+2. Run `sce doctor` for diagnostics
 3. Report issues with:
-   - kse version (`kse --version`)
+   - sce version (`sce --version`)
    - Command that failed
    - Error message
    - Expected vs actual behavior
@@ -464,7 +464,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ---
 
-**Thank you for using kse!** 🎉
+**Thank you for using sce!** 🎉
 
 We're excited to bring DevOps integration to the Spec-driven development workflow. Your feedback helps us improve - please share your experience!
 

@@ -20,10 +20,10 @@ This playbook defines how to turn validated Moqui interactive customization flow
 
 Primary package for the interactive loop:
 
-- `.sce/templates/scene-packages/kse.scene--moqui-interactive-customization-loop--0.1.0/scene-package.json`
-- `.sce/templates/scene-packages/kse.scene--moqui-interactive-customization-loop--0.1.0/scene.template.yaml`
-- `.sce/templates/scene-packages/kse.scene--moqui-interactive-customization-loop--0.1.0/custom/scene.yaml`
-- `.sce/templates/scene-packages/kse.scene--moqui-interactive-customization-loop--0.1.0/template.manifest.json`
+- `.sce/templates/scene-packages/sce.scene--moqui-interactive-customization-loop--0.1.0/scene-package.json`
+- `.sce/templates/scene-packages/sce.scene--moqui-interactive-customization-loop--0.1.0/scene.template.yaml`
+- `.sce/templates/scene-packages/sce.scene--moqui-interactive-customization-loop--0.1.0/custom/scene.yaml`
+- `.sce/templates/scene-packages/sce.scene--moqui-interactive-customization-loop--0.1.0/template.manifest.json`
 
 ## Capability Matrix Mapping
 

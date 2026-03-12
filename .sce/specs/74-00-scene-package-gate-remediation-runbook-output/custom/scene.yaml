@@ -1,4 +1,4 @@
-apiVersion: kse.scene/v0.2
+apiVersion: sce.scene/v0.2
 kind: scene
 metadata:
   obj_id: scene.erp.74-00-scene-package-gate-remediation-runbook-output
@@ -10,13 +10,13 @@ spec:
     goal: Generate executable remediation runbooks from package gate output
   model_scope:
     read:
-      - kse.SceneTemplateGateRemediation.actionId
-      - kse.SceneTemplateGateRemediation.priority
-      - kse.SceneTemplateGateRemediation.commandHint
+      - sce.SceneTemplateGateRemediation.actionId
+      - sce.SceneTemplateGateRemediation.priority
+      - sce.SceneTemplateGateRemediation.commandHint
     write:
-      - kse.SceneTemplateGateRunbook.runbookId
-      - kse.SceneTemplateGateRunbook.outputPath
-      - kse.SceneTemplateGateRunbook.status
+      - sce.SceneTemplateGateRunbook.runbookId
+      - sce.SceneTemplateGateRunbook.outputPath
+      - sce.SceneTemplateGateRunbook.status
   capability_contract:
     bindings:
       - type: query

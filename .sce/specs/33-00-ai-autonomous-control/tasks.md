@@ -2,7 +2,7 @@
 
 ## Overview
 
-This implementation plan breaks down the AI Autonomous Control feature into discrete, executable tasks. The plan follows an incremental approach, building core infrastructure first, then adding autonomous capabilities, and finally integrating with existing kse features.
+This implementation plan breaks down the AI Autonomous Control feature into discrete, executable tasks. The plan follows an incremental approach, building core infrastructure first, then adding autonomous capabilities, and finally integrating with existing sce features.
 
 **Implementation Strategy**:
 1. Core infrastructure (state management, configuration)
@@ -314,7 +314,7 @@ This implementation plan breaks down the AI Autonomous Control feature into disc
     - Implement command routing
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5, 6.6_
   
-  - [x] 12.2 Implement `kse auto create` command
+  - [x] 12.2 Implement `sce auto create` command
     - Parse feature description
     - Initialize AutonomousEngine
     - Execute autonomous Spec creation
@@ -324,7 +324,7 @@ This implementation plan breaks down the AI Autonomous Control feature into disc
     - Test command parsing and execution
     - **Validates: Requirements 6.2**
   
-  - [x] 12.4 Implement `kse auto run` command
+  - [x] 12.4 Implement `sce auto run` command
     - Load existing Spec
     - Resume from current state
     - Execute remaining tasks
@@ -334,7 +334,7 @@ This implementation plan breaks down the AI Autonomous Control feature into disc
     - Test with various Spec states
     - **Validates: Requirements 6.1**
   
-  - [x] 12.6 Implement `kse auto resume` command
+  - [x] 12.6 Implement `sce auto resume` command
     - Load saved state
     - Resume from last checkpoint
     - _Requirements: 6.3_
@@ -343,7 +343,7 @@ This implementation plan breaks down the AI Autonomous Control feature into disc
     - Test resumption from checkpoint
     - **Validates: Requirements 6.3**
   
-  - [x] 12.8 Implement `kse auto status` command
+  - [x] 12.8 Implement `sce auto status` command
     - Display current execution state
     - Show progress and active tasks
     - _Requirements: 6.4, 7.6_
@@ -352,7 +352,7 @@ This implementation plan breaks down the AI Autonomous Control feature into disc
     - Verify all required information is displayed
     - **Validates: Requirements 6.4**
   
-  - [x] 12.10 Implement `kse auto config` command
+  - [x] 12.10 Implement `sce auto config` command
     - Display current configuration
     - Allow configuration updates
     - Validate and save configuration
@@ -362,7 +362,7 @@ This implementation plan breaks down the AI Autonomous Control feature into disc
     - Test configuration updates
     - **Validates: Requirements 6.5**
   
-  - [x] 12.12 Implement `kse auto stop` command
+  - [x] 12.12 Implement `sce auto stop` command
     - Gracefully halt execution
     - Save current state
     - _Requirements: 6.6_
@@ -397,7 +397,7 @@ This implementation plan breaks down the AI Autonomous Control feature into disc
 - [ ] 14. Checkpoint - Ensure CLI and learning features tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 15. Implement integration with existing kse features
+- [ ] 15. Implement integration with existing sce features
   - [ ] 15.1 Integrate with Spec-level collaboration system
     - Use collaboration metadata when available
     - Respect Spec assignments
@@ -500,11 +500,11 @@ This implementation plan breaks down the AI Autonomous Control feature into disc
 - Unit tests validate specific examples and edge cases
 - Integration tests validate end-to-end workflows
 - The implementation follows an incremental approach, building infrastructure first then adding capabilities
-- All code should follow existing kse patterns and conventions
+- All code should follow existing sce patterns and conventions
 - Safety and user control are prioritized throughout implementation
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This feature adds a `kse scene version` command that bumps the `metadata.version` field in a `scene-package.json` file. It follows the established normalize → validate → run → print pattern. The command supports `major`, `minor`, `patch` increments and explicit semver strings, with `--dry-run` and `--json` output modes. All code lives in `lib/commands/scene.js` using the existing `semver` dependency.
+This feature adds a `sce scene version` command that bumps the `metadata.version` field in a `scene-package.json` file. It follows the established normalize → validate → run → print pattern. The command supports `major`, `minor`, `patch` increments and explicit semver strings, with `--dry-run` and `--json` output modes. All code lives in `lib/commands/scene.js` using the existing `semver` dependency.
 
 ## Architecture
 

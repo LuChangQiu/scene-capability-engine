@@ -7,8 +7,8 @@
 ## 命令接口
 
 ```bash
-kse orchestrate plan --specs "97-00,98-00,99-00"
-kse orchestrate plan --specs "97-00,98-00,99-00" --json
+sce orchestrate plan --specs "97-00,98-00,99-00"
+sce orchestrate plan --specs "97-00,98-00,99-00" --json
 ```
 
 ## 设计要点

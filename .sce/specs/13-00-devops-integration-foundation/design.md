@@ -2,7 +2,7 @@
 
 ## Overview
 
-This design establishes the foundation for transforming kse from a development tool into a DevOps integration platform. The system enables AI to progressively manage operations across multiple computers by building operations knowledge directly into the development process.
+This design establishes the foundation for transforming sce from a development tool into a DevOps integration platform. The system enables AI to progressively manage operations across multiple computers by building operations knowledge directly into the development process.
 
 ### Core Philosophy
 
@@ -16,7 +16,7 @@ This design establishes the foundation for transforming kse from a development t
 
 The MVP focuses on:
 1. **Operations Spec Structure** (Req 1): Directory structure and document templates
-2. **Operations Knowledge for kse-Developed Projects** (Req 4): Capturing ops knowledge during development
+2. **Operations Knowledge for sce-Developed Projects** (Req 4): Capturing ops knowledge during development
 3. **Operations Spec Templates and Validation** (Req 9): Templates and validation rules
 4. **User Feedback Integration** (Req 10): Feedback channels and response procedures
 5. **AI Operations Audit** (Req 11): Audit logging and safety mechanisms
@@ -70,10 +70,10 @@ Deferred to post-MVP:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                         kse CLI                              │
+│                         sce CLI                              │
 │  ┌────────────────────────────────────────────────────────┐ │
 │  │              Operations Command Layer                   │ │
-│  │  (kse ops init, validate, execute, audit)              │ │
+│  │  (sce ops init, validate, execute, audit)              │ │
 │  └────────────────────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────┘
                             │
@@ -143,11 +143,11 @@ Deferred to post-MVP:
 **Operations Spec Creation Flow**:
 ```
 Developer completes Spec
-    → kse ops init {project-name}
+    → sce ops init {project-name}
     → System creates operations/ directory
     → System generates templates from library
     → Developer fills in operations specs
-    → kse ops validate
+    → sce ops validate
     → System validates completeness
     → Operations specs committed with code
 ```
@@ -185,24 +185,24 @@ Feedback received via channel
 
 ```javascript
 // Initialize operations specs for a project
-kse ops init <project-name> [--template <template-name>]
+sce ops init <project-name> [--template <template-name>]
 
 // Validate operations specs
-kse ops validate [<project-name>]
+sce ops validate [<project-name>]
 
 // Execute an operation
-kse ops execute <operation-name> [--project <project-name>] [--dry-run]
+sce ops execute <operation-name> [--project <project-name>] [--dry-run]
 
 // Query audit logs
-kse ops audit [--project <project-name>] [--from <date>] [--to <date>] [--type <operation-type>]
+sce ops audit [--project <project-name>] [--from <date>] [--to <date>] [--type <operation-type>]
 
 // Manage takeover levels
-kse ops takeover get [<project-name>]
-kse ops takeover set <level> <project-name> --reason <reason>
+sce ops takeover get [<project-name>]
+sce ops takeover set <level> <project-name> --reason <reason>
 
 // Manage feedback
-kse ops feedback list [--status <status>] [--severity <severity>]
-kse ops feedback respond <feedback-id> [--message <message>]
+sce ops feedback list [--status <status>] [--severity <severity>]
+sce ops feedback respond <feedback-id> [--message <message>]
 ```
 
 **Command Interfaces**:
@@ -808,7 +808,7 @@ After analyzing all acceptance criteria, I identified several areas where proper
 **Validates: Requirements 2.4**
 
 **Property 7: Default Takeover Level for New Projects**
-*For any* new kse-developed project, the initial takeover level must be L3_SEMI_AUTO
+*For any* new sce-developed project, the initial takeover level must be L3_SEMI_AUTO
 **Validates: Requirements 2.2**
 
 **Property 8: Default Takeover Level for Adopted Systems**
@@ -1092,7 +1092,7 @@ describe('Feature: devops-integration-foundation, Property 1: Operations spec st
 
 ### Technology Choices
 
-**CLI Framework**: Commander.js (already used in kse)
+**CLI Framework**: Commander.js (already used in sce)
 **Markdown Parsing**: markdown-it or remark
 **JSON Schema Validation**: ajv
 **Property Testing**: fast-check
@@ -1244,7 +1244,7 @@ lib/
 | Req 1: Operations Spec Structure | Operations Manager, Template Library | P1, P2, P3, P4 |
 | Req 2: Takeover Strategy | Permission Manager | P5, P6, P7, P8, P10 |
 | Req 3: Security Environments | Permission Manager, Environment Policies | P9, P10, P21 |
-| Req 4: Ops Knowledge for kse Projects | Operations Manager, Template Library | P3, P4 |
+| Req 4: Ops Knowledge for sce Projects | Operations Manager, Template Library | P3, P4 |
 | Req 9: Templates and Validation | Operations Manager, Validator | P2, P3 |
 | Req 10: Feedback Integration | Feedback Manager | P11-P15, P22-P24 |
 | Req 11: Audit and Safety | Audit Logger | P10, P16-P21, P25 |

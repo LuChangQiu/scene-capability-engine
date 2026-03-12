@@ -7,7 +7,7 @@ The command builds a catalog by reusing existing manifest discovery rules and sc
 
 ## Command Surface
 
-- `kse scene catalog`
+- `sce scene catalog`
 - Options:
   - `--spec <spec-name>`
   - `--spec-manifest <relative-path>` (default `custom/scene.yaml`)

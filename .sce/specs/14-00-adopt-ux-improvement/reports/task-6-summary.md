@@ -17,7 +17,7 @@
 - **Routing Logic**: Automatically routes to appropriate handler based on flags
 
 ### 2. Added New CLI Options ✅
-- **File**: `bin/kiro-spec-engine.js`
+- **File**: `bin/scene-capability-engine.js`
 - **New Options**:
   - `--interactive` - Enable interactive mode (legacy behavior)
   - `--verbose` - Show detailed logs
@@ -107,7 +107,7 @@ From tasks.md:
 
 ### Modified
 1. `lib/commands/adopt.js` - Complete refactor (300+ lines)
-2. `bin/kiro-spec-engine.js` - Updated CLI options
+2. `bin/scene-capability-engine.js` - Updated CLI options
 3. `tests/unit/adoption/smart-orchestrator.test.js` - Fixed 3 failing tests
 4. `lib/adoption/smart-orchestrator.js` - Fixed preserved files path format
 
@@ -155,8 +155,8 @@ From tasks.md:
 
 ### Smart Mode (Default)
 ```bash
-$ kse adopt
-🔥 Kiro Spec Engine - Project Adoption
+$ sce adopt
+🔥 Scene Capability Engine - Project Adoption
 
 🚀 Starting adoption...
 
@@ -185,20 +185,20 @@ Finalizing adoption... ✅
   Preserved: 2 file(s)
 
 💡 Your original files are safely backed up.
-   To restore: kse rollback backup-20260127-143022
+   To restore: sce rollback backup-20260127-143022
 
 💡 Next steps:
   1. Tell your AI: "Read .sce/README.md to understand project methodology"
   2. Start working: Ask AI to implement features following Spec-driven approach
-  3. Check progress: kse status
+  3. Check progress: sce status
 
 🔥 Project now follows Spec-driven development!
 ```
 
 ### Interactive Mode (Legacy)
 ```bash
-$ kse adopt --interactive
-🔥 Kiro Spec Engine - Project Adoption
+$ sce adopt --interactive
+🔥 Scene Capability Engine - Project Adoption
 
 📦 Analyzing project structure...
 ...

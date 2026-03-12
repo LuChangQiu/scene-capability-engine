@@ -152,18 +152,18 @@ describe('WorkspaceContextResolver', () => {
     });
   });
 
-  describe('isValidKseDirectory', () => {
+  describe('isValidSceDirectory', () => {
     test('should return true for valid sce directory', async () => {
-      const isValid = await resolver.isValidKseDirectory(workspace1Dir);
+      const isValid = await resolver.isValidSceDirectory(workspace1Dir);
       
       expect(isValid).toBe(true);
     });
 
     test('should return false for directory without .sce', async () => {
-      const nonKseDir = path.join(testDir, 'non-kse');
-      await fs.ensureDir(nonKseDir);
+      const nonSceDir = path.join(testDir, 'non-sce');
+      await fs.ensureDir(nonSceDir);
       
-      const isValid = await resolver.isValidKseDirectory(nonKseDir);
+      const isValid = await resolver.isValidSceDirectory(nonSceDir);
       
       expect(isValid).toBe(false);
     });
@@ -171,7 +171,7 @@ describe('WorkspaceContextResolver', () => {
     test('should return false for non-existent directory', async () => {
       const nonExistentDir = path.join(testDir, 'non-existent');
       
-      const isValid = await resolver.isValidKseDirectory(nonExistentDir);
+      const isValid = await resolver.isValidSceDirectory(nonExistentDir);
       
       expect(isValid).toBe(false);
     });
@@ -254,10 +254,10 @@ describe('WorkspaceContextResolver', () => {
 
   describe('shouldPromptForRegistration', () => {
     test('should return true for unregistered sce directory', async () => {
-      const newKseDir = path.join(testDir, 'new-kse');
-      await fs.ensureDir(path.join(newKseDir, '.sce'));
+      const newSceDir = path.join(testDir, 'new-sce');
+      await fs.ensureDir(path.join(newSceDir, '.sce'));
       
-      const shouldPrompt = await resolver.shouldPromptForRegistration(newKseDir);
+      const shouldPrompt = await resolver.shouldPromptForRegistration(newSceDir);
       
       expect(shouldPrompt).toBe(true);
     });
@@ -268,11 +268,11 @@ describe('WorkspaceContextResolver', () => {
       expect(shouldPrompt).toBe(false);
     });
 
-    test('should return false for non-kse directory', async () => {
-      const nonKseDir = path.join(testDir, 'non-kse');
-      await fs.ensureDir(nonKseDir);
+    test('should return false for non-sce directory', async () => {
+      const nonSceDir = path.join(testDir, 'non-sce');
+      await fs.ensureDir(nonSceDir);
       
-      const shouldPrompt = await resolver.shouldPromptForRegistration(nonKseDir);
+      const shouldPrompt = await resolver.shouldPromptForRegistration(nonSceDir);
       
       expect(shouldPrompt).toBe(false);
     });
@@ -289,11 +289,11 @@ describe('WorkspaceContextResolver', () => {
     });
 
     test('should throw helpful error for unregistered sce directory', async () => {
-      const newKseDir = path.join(testDir, 'new-kse');
-      await fs.ensureDir(path.join(newKseDir, '.sce'));
+      const newSceDir = path.join(testDir, 'new-sce');
+      await fs.ensureDir(path.join(newSceDir, '.sce'));
       
       await expect(async () => {
-        await resolver.resolveWorkspaceOrError(null, newKseDir);
+        await resolver.resolveWorkspaceOrError(null, newSceDir);
       }).rejects.toThrow('not registered as a workspace');
     });
 
@@ -303,20 +303,20 @@ describe('WorkspaceContextResolver', () => {
       await registry.removeWorkspace('workspace-2');
       await registry.removeWorkspace('workspace-3');
       
-      const nonKseDir = path.join(testDir, 'non-kse');
-      await fs.ensureDir(nonKseDir);
+      const nonSceDir = path.join(testDir, 'non-sce');
+      await fs.ensureDir(nonSceDir);
       
       await expect(async () => {
-        await resolver.resolveWorkspaceOrError(null, nonKseDir);
+        await resolver.resolveWorkspaceOrError(null, nonSceDir);
       }).rejects.toThrow('No workspaces are registered');
     });
 
     test('should throw helpful error with available workspaces', async () => {
-      const nonKseDir = path.join(testDir, 'non-kse');
-      await fs.ensureDir(nonKseDir);
+      const nonSceDir = path.join(testDir, 'non-sce');
+      await fs.ensureDir(nonSceDir);
       
       await expect(async () => {
-        await resolver.resolveWorkspaceOrError(null, nonKseDir);
+        await resolver.resolveWorkspaceOrError(null, nonSceDir);
       }).rejects.toThrow('Available workspaces');
     });
   });

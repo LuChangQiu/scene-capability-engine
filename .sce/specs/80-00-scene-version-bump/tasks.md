@@ -2,7 +2,7 @@
 
 ## Overview
 
-Implement `kse scene version` command following the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`, tests in `tests/unit/commands/scene.test.js`. Uses existing `semver` dependency, no new dependencies.
+Implement `sce scene version` command following the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`, tests in `tests/unit/commands/scene.test.js`. Uses existing `semver` dependency, no new dependencies.
 
 ## Tasks
 

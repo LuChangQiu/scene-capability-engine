@@ -13,28 +13,28 @@
 - ✅ KnowledgeManager - 核心协调器
 
 ### Phase 4: CLI 命令 ✅
-- ✅ `kse knowledge init` - 初始化知识库
-- ✅ `kse knowledge add` - 添加知识条目
-- ✅ `kse knowledge list` - 列出所有条目
-- ✅ `kse knowledge search` - 搜索条目
-- ✅ `kse knowledge show` - 显示条目详情
-- ✅ `kse knowledge delete` - 删除条目
-- ✅ `kse knowledge stats` - 统计信息
+- ✅ `sce knowledge init` - 初始化知识库
+- ✅ `sce knowledge add` - 添加知识条目
+- ✅ `sce knowledge list` - 列出所有条目
+- ✅ `sce knowledge search` - 搜索条目
+- ✅ `sce knowledge show` - 显示条目详情
+- ✅ `sce knowledge delete` - 删除条目
+- ✅ `sce knowledge stats` - 统计信息
 
 ## 测试验证
 
 ```bash
 # 初始化
-kse knowledge init  ✅
+sce knowledge init  ✅
 
 # 添加条目
-kse knowledge add pattern "Repository Pattern" --tags "design,db" ✅
+sce knowledge add pattern "Repository Pattern" --tags "design,db" ✅
 
 # 列表
-kse knowledge list  ✅
+sce knowledge list  ✅
 
 # 搜索
-kse knowledge search "pattern"  ✅
+sce knowledge search "pattern"  ✅
 ```
 
 ## 待实现功能（后续迭代）
@@ -42,9 +42,9 @@ kse knowledge search "pattern"  ✅
 ### Phase 5: 分析和整合
 - [ ] Analyzer - AI 驱动的知识分析
 - [ ] Integrator - 知识整合到项目文档
-- [ ] `kse knowledge analyze` - 分析知识价值
-- [ ] `kse knowledge integrate` - 整合知识
-- [ ] `kse knowledge query` - AI 查询
+- [ ] `sce knowledge analyze` - 分析知识价值
+- [ ] `sce knowledge integrate` - 整合知识
+- [ ] `sce knowledge query` - AI 查询
 
 ### Phase 6: 导入/导出
 - [ ] 导出功能
@@ -62,7 +62,7 @@ kse knowledge search "pattern"  ✅
 ## 新需求记录
 
 ### 自动依赖安装功能
-**需求**: 当用户尝试读取某种格式文件但缺少解析器时，kse 自动安装对应的 npm 包
+**需求**: 当用户尝试读取某种格式文件但缺少解析器时，sce 自动安装对应的 npm 包
 
 **场景**:
 - 读取 YAML 文件缺少 js-yaml → 自动安装
@@ -89,32 +89,32 @@ kse knowledge search "pattern"  ✅
 
 ```bash
 # 初始化知识库
-kse knowledge init
+sce knowledge init
 
 # 添加设计模式
-kse knowledge add pattern "Singleton Pattern" \
+sce knowledge add pattern "Singleton Pattern" \
   --tags "design-pattern,creational" \
   --category architecture
 
 # 添加经验教训
-kse knowledge add lesson "Database Migration Pitfalls" \
+sce knowledge add lesson "Database Migration Pitfalls" \
   --tags "database,migration" \
   --category backend
 
 # 列出所有条目
-kse knowledge list
+sce knowledge list
 
 # 按类型过滤
-kse knowledge list --type pattern
+sce knowledge list --type pattern
 
 # 搜索
-kse knowledge search "database"
+sce knowledge search "database"
 
 # 查看详情
-kse knowledge show kb-xxx
+sce knowledge show kb-xxx
 
 # 统计
-kse knowledge stats
+sce knowledge stats
 ```
 
 ## 技术亮点

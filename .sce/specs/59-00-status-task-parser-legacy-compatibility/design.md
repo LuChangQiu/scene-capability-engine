@@ -26,7 +26,7 @@ This preserves nested structure and formatting after task state updates.
 ## Status Marker Mode
 
 `TaskClaimer.parseTasks(tasksPath, { preferStatusMarkers: true })` now supports marker-mode extraction:
-- Detect `## KSE Status Markers` section.
+- Detect `## SCE Status Markers` section.
 - Return only tasks in that section when markers exist.
 - Fallback to full parsed task list when marker section is absent.
 
@@ -38,4 +38,4 @@ while preserving historical task plans for traceability.
 - Add `TaskClaimer` tests for legacy parsing and nested indentation preservation.
 - Re-run status command tests and scene/runtime core suites.
 - Re-run lock unit/integration suites after parser signature update.
-- Verify `kse status` shows 100% for all specs with marker-based completion sections.
+- Verify `sce status` shows 100% for all specs with marker-based completion sections.

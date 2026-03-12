@@ -1,15 +1,15 @@
 {
-  "apiVersion": "kse.scene.template/v0.1",
+  "apiVersion": "sce.scene.template/v0.1",
   "kind": "scene-package-template",
   "metadata": {
-    "template_id": "kse.scene--scene-package-contract-declaration--0.2.0",
+    "template_id": "sce.scene--scene-package-contract-declaration--0.2.0",
     "source_spec": "67-00-scene-package-contract-declaration",
-    "package_coordinate": "kse.scene/scene-package-contract-declaration@0.2.0",
+    "package_coordinate": "sce.scene/scene-package-contract-declaration@0.2.0",
     "package_kind": "scene-domain-profile",
     "published_at": "2026-02-09T09:12:22.054Z"
   },
   "compatibility": {
-    "scene_api_version": "kse.scene/v0.2"
+    "scene_api_version": "sce.scene/v0.2"
   },
   "parameters": [
     {

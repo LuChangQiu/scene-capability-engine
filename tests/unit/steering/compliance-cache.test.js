@@ -119,7 +119,7 @@ describe('ComplianceCache', () => {
       const defaultCache = new ComplianceCache();
       const cachePath = defaultCache.getDefaultCachePath();
       
-      expect(cachePath).toContain('.kse');
+      expect(cachePath).toContain('.sce');
       expect(cachePath).toContain('steering-check-cache.json');
       expect(cachePath).toContain(os.homedir());
     });

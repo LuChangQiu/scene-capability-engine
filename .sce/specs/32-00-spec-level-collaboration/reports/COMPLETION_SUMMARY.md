@@ -52,14 +52,14 @@ Successfully implemented a comprehensive Spec-level collaboration system that en
 ### CLI Commands
 
 ✅ **Command Implementation** (`lib/commands/collab.js`)
-- `kse collab init` - Initialize Master Spec with Sub-Specs
-- `kse collab status` - Display collaboration status and dependency graph
-- `kse collab assign` - Assign Specs to Kiro instances
-- `kse collab verify` - Verify interface contracts
-- `kse collab integrate` - Run integration tests
-- `kse collab migrate` - Convert standalone Spec to collaborative mode
+- `sce collab init` - Initialize Master Spec with Sub-Specs
+- `sce collab status` - Display collaboration status and dependency graph
+- `sce collab assign` - Assign Specs to Kiro instances
+- `sce collab verify` - Verify interface contracts
+- `sce collab integrate` - Run integration tests
+- `sce collab migrate` - Convert standalone Spec to collaborative mode
 
-✅ **CLI Integration** (`bin/kiro-spec-engine.js`)
+✅ **CLI Integration** (`bin/scene-capability-engine.js`)
 - Registered collab commands in main CLI
 - Integrated with existing command structure
 
@@ -124,7 +124,7 @@ Successfully implemented a comprehensive Spec-level collaboration system that en
 - `.sce/specs/32-00-spec-level-collaboration/tasks.md`
 
 ### Modified Files (3)
-- `bin/kiro-spec-engine.js` - Added collab command registration
+- `bin/scene-capability-engine.js` - Added collab command registration
 - `README.md` - Added feature section and command overview
 - `CHANGELOG.md` - Added v1.22.0 release notes
 
@@ -145,7 +145,7 @@ Successfully implemented a comprehensive Spec-level collaboration system that en
 2. **User Feedback**: Gather feedback from early adopters
 3. **Refinement**: Iterate based on real-world usage
 4. **Documentation**: Add more examples and use cases
-5. **Integration**: Consider integration with other kse features
+5. **Integration**: Consider integration with other sce features
 
 ## Success Criteria
 
@@ -161,7 +161,7 @@ Successfully implemented a comprehensive Spec-level collaboration system that en
 - This is an MVP implementation focusing on core functionality
 - Optional test tasks were skipped to accelerate delivery
 - The system is designed to be extensible for future enhancements
-- All code follows existing kse patterns and conventions
+- All code follows existing sce patterns and conventions
 - Documentation provides clear guidance for users
 
 ## Conclusion

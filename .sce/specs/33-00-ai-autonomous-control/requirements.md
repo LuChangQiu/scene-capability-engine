@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This feature transforms kse from a step-by-step interactive tool into an autonomous development assistant. Building on Principle 4.1 "完全自主执行权限", this feature enables AI to independently manage the entire development lifecycle - from understanding user goals to delivering working features - with minimal human intervention.
+This feature transforms sce from a step-by-step interactive tool into an autonomous development assistant. Building on Principle 4.1 "完全自主执行权限", this feature enables AI to independently manage the entire development lifecycle - from understanding user goals to delivering working features - with minimal human intervention.
 
 The autonomous control system will handle Spec creation, requirements analysis, design decisions, implementation, testing, debugging, and quality assurance automatically. Users will only be consulted at critical checkpoints or when external resources are needed.
 
@@ -92,12 +92,12 @@ The autonomous control system will handle Spec creation, requirements analysis, 
 
 #### Acceptance Criteria
 
-1. WHEN user runs `kse auto run <spec-name>`, THE system SHALL execute the entire Spec autonomously from current state to completion
-2. WHEN user runs `kse auto create <feature-description>`, THE system SHALL create a new Spec and execute it autonomously end-to-end
-3. WHEN user runs `kse auto resume`, THE system SHALL resume interrupted autonomous execution from the last checkpoint
-4. WHEN user runs `kse auto status`, THE system SHALL display current autonomous execution state, progress, and active tasks
-5. WHEN user runs `kse auto config`, THE system SHALL allow configuration of autonomous behavior settings (aggressive vs conservative mode)
-6. WHEN user runs `kse auto stop`, THE system SHALL gracefully halt autonomous execution and save current state
+1. WHEN user runs `sce auto run <spec-name>`, THE system SHALL execute the entire Spec autonomously from current state to completion
+2. WHEN user runs `sce auto create <feature-description>`, THE system SHALL create a new Spec and execute it autonomously end-to-end
+3. WHEN user runs `sce auto resume`, THE system SHALL resume interrupted autonomous execution from the last checkpoint
+4. WHEN user runs `sce auto status`, THE system SHALL display current autonomous execution state, progress, and active tasks
+5. WHEN user runs `sce auto config`, THE system SHALL allow configuration of autonomous behavior settings (aggressive vs conservative mode)
+6. WHEN user runs `sce auto stop`, THE system SHALL gracefully halt autonomous execution and save current state
 7. WHERE a Spec is already in progress, THE system SHALL detect the current state and resume from the appropriate point
 
 ### Requirement 7: Progress Tracking and Reporting
@@ -141,7 +141,7 @@ The autonomous control system will handle Spec creation, requirements analysis, 
 
 ### Requirement 10: Integration with Existing Features
 
-**User Story:** As a developer, I want autonomous control to work seamlessly with existing kse features, so that I can leverage all capabilities together.
+**User Story:** As a developer, I want autonomous control to work seamlessly with existing sce features, so that I can leverage all capabilities together.
 
 #### Acceptance Criteria
 
@@ -193,7 +193,7 @@ The autonomous control system will handle Spec creation, requirements analysis, 
 
 ## Notes
 
-- This feature represents a significant evolution in kse's capabilities, transforming it from an interactive assistant to an autonomous development partner
+- This feature represents a significant evolution in sce's capabilities, transforming it from an interactive assistant to an autonomous development partner
 - Autonomous execution should feel like having an experienced developer working independently while keeping you informed
 - Safety and user control remain paramount - autonomous mode should enhance productivity without sacrificing oversight
 - The feature should be opt-in, with interactive mode remaining the default for users who prefer more control

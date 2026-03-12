@@ -345,7 +345,7 @@ This hotfix follows the principle of minimal code changes:
 ### Fixed
 - Fixed configuration save failure when discovering multiple nested repositories
 - Fixed parent reference validation to correctly match parent paths with repository paths
-- Fixed git command duplication in `kse repo exec` (e.g., "git branch" no longer becomes "git git branch")
+- Fixed git command duplication in `sce repo exec` (e.g., "git branch" no longer becomes "git git branch")
 - Improved error messages for parent validation failures to include available paths
 
 ### Technical Details

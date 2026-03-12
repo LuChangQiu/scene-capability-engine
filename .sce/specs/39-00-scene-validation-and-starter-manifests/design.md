@@ -7,7 +7,7 @@ Validation reuses `SceneLoader` parsing+schema checks and outputs a normalized s
 
 ## Command Surface
 
-- Command: `kse scene validate`
+- Command: `sce scene validate`
 - Options:
   - `--spec <spec-name>` or `--manifest <path>`
   - `--spec-manifest <relative-path>` (default `custom/scene.yaml`)

@@ -1,0 +1,31 @@
+apiVersion: sce.scene/v0.2
+kind: scene
+metadata:
+  obj_id: scene.moqui-rule-decision-core
+  obj_version: 0.1.0
+  title: Moqui Rule Decision Core
+spec:
+  domain: moqui
+  intent:
+    goal: Recover Moqui business rules and decision strategy.
+  model_scope:
+    read:
+      - spec.moqui.rule.discover
+      - spec.moqui.decision.discover
+    write: []
+  capability_contract:
+    bindings:
+      - type: operation
+        ref: spec.moqui.rule.discover
+        intent: Discover baseline metadata and topology.
+      - type: operation
+        ref: spec.moqui.decision.discover
+        depends_on: spec.moqui.rule.discover
+        intent: Apply normalization and mapping for rebuild.
+  governance_contract:
+    risk_level: medium
+    approval:
+      required: false
+    idempotency:
+      required: true
+      key: moqui-rule-decision-coreFingerprint

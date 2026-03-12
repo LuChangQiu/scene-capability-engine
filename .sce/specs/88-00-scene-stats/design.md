@@ -2,7 +2,7 @@
 
 ## Overview
 
-Adds a `kse scene stats` subcommand that computes and displays aggregate statistics about the local scene package registry. The command reads `registry-index.json` via `loadRegistryIndex`, iterates all package entries to compute metrics (total packages, total versions, total tags, ownership coverage, deprecated count, most recently published), and outputs a human-readable dashboard or structured JSON. Follows the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`. No new dependencies.
+Adds a `sce scene stats` subcommand that computes and displays aggregate statistics about the local scene package registry. The command reads `registry-index.json` via `loadRegistryIndex`, iterates all package entries to compute metrics (total packages, total versions, total tags, ownership coverage, deprecated count, most recently published), and outputs a human-readable dashboard or structured JSON. Follows the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`. No new dependencies.
 
 Unlike owner/tag commands which have sub-subcommands, stats is a single command with no action dispatch — it always computes the full statistics dashboard.
 
@@ -176,7 +176,7 @@ sceneCmd
 
 ```javascript
 {
-  apiVersion: "kse.scene.registry/v0.1",
+  apiVersion: "sce.scene.registry/v0.1",
   packages: {
     "my-package": {
       latest: "1.2.0",

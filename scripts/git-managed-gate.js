@@ -2,7 +2,7 @@
 'use strict';
 
 const path = require('path');
-const { spawnSync } = require('child_process');
+const { execSync, spawnSync } = require('child_process');
 
 function normalizeText(value) {
   if (typeof value !== 'string') {
@@ -108,12 +108,69 @@ function printHelp() {
   process.stdout.write(`${lines.join('\n')}\n`);
 }
 
+let cachedWindowsGitCommand = null;
+
+function quoteShellArg(value) {
+  return JSON.stringify(String(value));
+}
+
+function resolveWindowsGitCommand(projectPath) {
+  if (cachedWindowsGitCommand) {
+    return cachedWindowsGitCommand;
+  }
+
+  const whereResult = spawnSync('where', ['git'], {
+    cwd: projectPath,
+    encoding: 'utf8',
+    windowsHide: true
+  });
+
+  if (whereResult.status === 0) {
+    const candidate = `${whereResult.stdout || ''}`
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .find(Boolean);
+    if (candidate) {
+      cachedWindowsGitCommand = candidate;
+      return cachedWindowsGitCommand;
+    }
+  }
+
+  cachedWindowsGitCommand = 'git';
+  return cachedWindowsGitCommand;
+}
+
 function runGit(projectPath, args) {
+  if (process.platform === 'win32') {
+    const gitCommand = resolveWindowsGitCommand(projectPath);
+    const commandString = [quoteShellArg(gitCommand), ...args.map(quoteShellArg)].join(' ');
+
+    try {
+      const stdout = execSync(commandString, {
+        cwd: projectPath,
+        encoding: 'utf8',
+        windowsHide: true
+      });
+      return {
+        status: 0,
+        stdout: `${stdout || ''}`.trim(),
+        stderr: ''
+      };
+    } catch (error) {
+      return {
+        status: Number.isInteger(error.status) ? error.status : 1,
+        stdout: `${error.stdout || ''}`.trim(),
+        stderr: `${error.stderr || error.message || ''}`.trim()
+      };
+    }
+  }
+
   const result = spawnSync('git', args, {
     cwd: projectPath,
     encoding: 'utf8',
     windowsHide: true
   });
+
   return {
     status: Number.isInteger(result.status) ? result.status : 1,
     stdout: `${result.stdout || ''}`.trim(),

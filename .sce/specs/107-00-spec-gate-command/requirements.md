@@ -2,7 +2,7 @@
 
 ## 简介
 
-为提升 Spec 落地质量，新增 `kse spec gate` 命令，统一检查 mandatory 任务完成度、关键测试命令和文档一致性，输出 go/no-go 建议。
+为提升 Spec 落地质量，新增 `sce spec gate` 命令，统一检查 mandatory 任务完成度、关键测试命令和文档一致性，输出 go/no-go 建议。
 
 ## 术语表
 
@@ -19,7 +19,7 @@
 
 #### 验收标准
 
-1. THE CLI SHALL 提供 `kse spec gate --spec <name>` 命令
+1. THE CLI SHALL 提供 `sce spec gate --spec <name>` 命令
 2. THE 命令 SHALL 支持 `--json` 输出
 3. THE 命令 SHALL 支持 `--strict`（任一 warning 即 no-go）
 

@@ -1,0 +1,172 @@
+{
+    "apiVersion":  "sce.scene.package/v0.1",
+    "kind":  "scene-domain-profile",
+    "metadata":  {
+                     "group":  "sce.scene",
+                     "name":  "moqui-service-contract-core",
+                     "version":  "0.1.0",
+                     "summary":  "Recover Moqui service contracts and entity/service links.",
+                     "description":  "Recover Moqui service contracts and entity/service links."
+                 },
+    "compatibility":  {
+                          "min_sce_version":  "\u003e=3.0.6",
+                          "scene_api_version":  "sce.scene/v0.2",
+                          "moqui_model_version":  "3.x",
+                          "adapter_api_version":  "v1"
+                      },
+    "capabilities":  {
+                         "provides":  [
+                                          "scene.moqui.service.contract.core"
+                                      ],
+                         "requires":  [
+                                          "profile:moqui",
+                                          "moqui.adapter"
+                                      ]
+                     },
+    "parameters":  [
+                       {
+                           "id":  "project_root",
+                           "type":  "string",
+                           "required":  true,
+                           "description":  "Moqui project root path"
+                       },
+                       {
+                           "id":  "target_scope",
+                           "type":  "string",
+                           "required":  false,
+                           "description":  "Optional target module or component scope"
+                       }
+                   ],
+    "artifacts":  {
+                      "entry_scene":  "custom/scene.yaml",
+                      "generates":  [
+                                        "custom/scene.yaml"
+                                    ]
+                  },
+    "governance":  {
+                       "risk_level":  "medium",
+                       "approval_required":  false,
+                       "approval":  {
+                                        "required":  false
+                                    },
+                       "idempotency":  {
+                                           "required":  true,
+                                           "key":  "moqui-service-contract-coreFingerprint"
+                                       },
+                       "rollback_supported":  true
+                   },
+    "capability_contract":  {
+                                "bindings":  [
+                                                 {
+                                                     "type":  "operation",
+                                                     "ref":  "spec.moqui.service.discover",
+                                                     "timeout_ms":  2000,
+                                                     "retry":  1,
+                                                     "intent":  "Discover baseline metadata and topology."
+                                                 },
+                                                 {
+                                                     "type":  "operation",
+                                                     "ref":  "spec.moqui.service.entity.bind",
+                                                     "depends_on":  "spec.moqui.service.discover",
+                                                     "timeout_ms":  2000,
+                                                     "retry":  1,
+                                                     "intent":  "Apply normalization and mapping for rebuild."
+                                                 }
+                                             ]
+                            },
+    "governance_contract":  {
+                                "risk_level":  "medium",
+                                "approval":  {
+                                                 "required":  false
+                                             },
+                                "idempotency":  {
+                                                    "required":  true,
+                                                    "key":  "moqui-service-contract-coreFingerprint"
+                                                },
+                                "data_lineage":  {
+                                                     "sources":  [
+                                                                     {
+                                                                         "ref":  "spec.moqui.service.discover",
+                                                                         "fields":  [
+                                                                                        "rawMetadata"
+                                                                                    ]
+                                                                     }
+                                                                 ],
+                                                     "transforms":  [
+                                                                        {
+                                                                            "operation":  "normalizeMetadata",
+                                                                            "description":  "Normalize extracted metadata for template-safe output."
+                                                                        }
+                                                                    ],
+                                                     "sinks":  [
+                                                                   {
+                                                                       "ref":  "spec.moqui.service.entity.bind",
+                                                                       "fields":  [
+                                                                                      "normalizedMetadata",
+                                                                                      "mappingResult"
+                                                                                  ]
+                                                                   }
+                                                               ]
+                                                 },
+                                "business_rules":  [
+                                                       {
+                                                           "id":  "rule.moqui-service-contract-core.stack-preserve",
+                                                           "description":  "Preserve original Moqui stack without language migration.",
+                                                           "entity_ref":  "rebuild_scope",
+                                                           "bind_to":  "spec.moqui.service.entity.bind",
+                                                           "status":  "enforced"
+                                                       }
+                                                   ],
+                                "decision_logic":  [
+                                                       {
+                                                           "id":  "decision.moqui-service-contract-core.fallback-policy",
+                                                           "description":  "Fallback to advisory-only output when confidence is low.",
+                                                           "bind_to":  "spec.moqui.service.entity.bind",
+                                                           "status":  "resolved",
+                                                           "automated":  true
+                                                       }
+                                                   ]
+                            },
+    "ontology_model":  {
+                           "entities":  [
+                                            {
+                                                "id":  "moqui_project",
+                                                "type":  "context"
+                                            },
+                                            {
+                                                "id":  "metadata_catalog",
+                                                "type":  "artifact"
+                                            },
+                                            {
+                                                "id":  "rebuild_bundle",
+                                                "type":  "artifact"
+                                            }
+                                        ],
+                           "relations":  [
+                                             {
+                                                 "source":  "moqui_project",
+                                                 "target":  "metadata_catalog",
+                                                 "type":  "produces"
+                                             },
+                                             {
+                                                 "source":  "metadata_catalog",
+                                                 "target":  "rebuild_bundle",
+                                                 "type":  "produces"
+                                             }
+                                         ]
+                       },
+    "agent_hints":  {
+                        "summary":  "Recover Moqui service contracts and entity/service links.",
+                        "complexity":  "medium",
+                        "estimated_duration_ms":  2400,
+                        "required_permissions":  [
+                                                     "moqui.read"
+                                                 ],
+                        "suggested_sequence":  [
+                                                   "spec.moqui.service.discover",
+                                                   "spec.moqui.service.entity.bind"
+                                               ],
+                        "rollback_strategy":  "Switch to advisory mode and preserve source artifacts."
+                    }
+}
+

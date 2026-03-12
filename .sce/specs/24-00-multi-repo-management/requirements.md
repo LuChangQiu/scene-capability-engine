@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This document specifies the requirements for a multi-repository management feature in KSE (Kiro Spec Engine). The feature enables developers to manage multiple Git subrepositories within a single project through a unified command-line interface. This addresses the common challenge of coordinating operations across multiple independent repositories that together form a complete project.
+This document specifies the requirements for a multi-repository management feature in SCE (Scene Capability Engine). The feature enables developers to manage multiple Git subrepositories within a single project through a unified command-line interface. This addresses the common challenge of coordinating operations across multiple independent repositories that together form a complete project.
 
 ## Glossary
 
-- **KSE**: Kiro Spec Engine - the CLI tool being enhanced
+- **SCE**: Scene Capability Engine - the CLI tool being enhanced
 - **Multi_Repo_Manager**: The system component that manages multiple Git repositories
 - **Project_Config**: The configuration file (project-repos.json) that defines all subrepositories
 - **Subrepository**: An independent Git repository within the project directory
@@ -139,7 +139,7 @@ This document specifies the requirements for a multi-repository management featu
 
 #### Acceptance Criteria
 
-1. THE Multi_Repo_Manager SHALL provide a `kse repo` command group for all repository operations
+1. THE Multi_Repo_Manager SHALL provide a `sce repo` command group for all repository operations
 2. THE Multi_Repo_Manager SHALL provide help text for each command using the `--help` flag
 3. WHEN an invalid command is entered, THE Multi_Repo_Manager SHALL display available commands and usage examples
 4. THE Multi_Repo_Manager SHALL support common flags like `--verbose`, `--quiet`, and `--dry-run` where applicable

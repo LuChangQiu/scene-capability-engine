@@ -153,9 +153,9 @@ This implementation plan breaks down the nested repository support feature into 
     - _Requirements: 9.3_
 
   - [ ]* 6.3 Write integration tests for CLI flags
-    - Test kse repo init (default nested=true)
-    - Test kse repo init --nested
-    - Test kse repo init --no-nested
+    - Test sce repo init (default nested=true)
+    - Test sce repo init --nested
+    - Test sce repo init --no-nested
     - Verify configuration reflects scan mode
 
 - [x] 7. Checkpoint - Verify CLI integration
@@ -305,7 +305,7 @@ This implementation plan breaks down the nested repository support feature into 
 - Fast-check library will be used for property-based testing with minimum 100 iterations per test
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

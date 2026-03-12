@@ -2,21 +2,21 @@
 
 ## 概述
 
-本设计为 KSE Scene Runtime 引入 Palantir Foundry 启发的四项增强：
+本设计为 SCE Scene Runtime 引入 Palantir Foundry 启发的四项增强：
 
 1. **Ontology Layer** — 将 binding refs 建模为语义关联图（OntologyGraph），支持关系查询和推理
 2. **Action Abstraction** — 为 binding 增加 intent/preconditions/postconditions 声明
 3. **Data Lineage** — 在 governance_contract 中追踪数据流转路径
 4. **Agent-Ready Metadata** — 增加 agent_hints 字段提升 AI 可读性
 
-核心模块为 `lib/scene-runtime/scene-ontology.js`，通过扩展现有 lint 引擎和评分计算器集成检查能力，通过 `kse scene ontology` 子命令组提供 CLI 访问。
+核心模块为 `lib/scene-runtime/scene-ontology.js`，通过扩展现有 lint 引擎和评分计算器集成检查能力，通过 `sce scene ontology` 子命令组提供 CLI 访问。
 
 ## 架构
 
 ```mermaid
 graph TD
     subgraph "CLI Layer"
-        CLI["kse scene ontology *"]
+        CLI["sce scene ontology *"]
     end
 
     subgraph "Core Module: scene-ontology.js"
@@ -245,7 +245,7 @@ ontologyCmd.command('agent-info')
 
 ```json
 {
-  "apiVersion": "kse.scene.package/v0.1",
+  "apiVersion": "sce.scene.package/v0.1",
   "kind": "ScenePackage",
   "metadata": { "name": "...", "version": "...", "description": "..." },
   "capabilities": { "read": [], "write": [] },

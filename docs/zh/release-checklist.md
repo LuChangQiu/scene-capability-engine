@@ -100,28 +100,35 @@ node scripts/git-managed-gate.js --fail-on-violation --json
 
 确认：
 
+- 发布自动化是基于 tag，而不是普通 commit：
+  - `.github/workflows/release.yml` 只在 `push.tags: v*` 时触发
+  - 普通 `git push` 只会跑常规 CI，不会发布 npm 包，也不会创建 GitHub Release
+- GitHub Actions 发版前置条件已配置：
+  - 仓库 Secret `NPM_TOKEN` 必须存在且有效，workflow 会用它执行 `npm publish --access public`
+  - workflow 的 release 资产/回读步骤依赖 `GITHUB_TOKEN`
 - `package.json` 版本号正确；
+- `package.json` 版本号必须大于 npm 当前已发布版本；
 - `CHANGELOG.md` 已记录发布相关变化；
 - 发布说明草稿已就绪（如 `docs/releases/vX.Y.Z.md`）。
 - 可选：通过仓库变量配置 release evidence 门禁（`Settings -> Secrets and variables -> Actions -> Variables`）：
-  - `KSE_RELEASE_GATE_ENFORCE`：`true|false`（默认 advisory，不阻断发布）
-  - `KSE_RELEASE_GATE_REQUIRE_EVIDENCE`：是否要求存在 `handoff-runs.json` 摘要
-  - `KSE_RELEASE_GATE_REQUIRE_GATE_PASS`：是否要求 evidence gate `passed=true`（有 evidence 时默认要求）
-  - `KSE_RELEASE_GATE_MIN_SPEC_SUCCESS_RATE`：最小允许成功率（百分比）
-  - `KSE_RELEASE_GATE_MAX_RISK_LEVEL`：`low|medium|high|unknown`（默认 `unknown`）
-  - `KSE_RELEASE_GATE_MAX_UNMAPPED_RULES`：ontology 业务规则未映射最大允许值
-  - `KSE_RELEASE_GATE_MAX_UNDECIDED_DECISIONS`：ontology 决策未定最大允许值
-  - `KSE_RELEASE_GATE_REQUIRE_SCENE_BATCH_PASS`：是否要求 scene package publish-batch gate 必须通过（`true|false`，默认 `true`）
-  - `KSE_RELEASE_GATE_MAX_SCENE_BATCH_FAILURES`：scene package batch 失败数量最大允许值（默认 `0`）
+  - `SCE_RELEASE_GATE_ENFORCE`：`true|false`（默认 advisory，不阻断发布）
+  - `SCE_RELEASE_GATE_REQUIRE_EVIDENCE`：是否要求存在 `handoff-runs.json` 摘要
+  - `SCE_RELEASE_GATE_REQUIRE_GATE_PASS`：是否要求 evidence gate `passed=true`（有 evidence 时默认要求）
+  - `SCE_RELEASE_GATE_MIN_SPEC_SUCCESS_RATE`：最小允许成功率（百分比）
+  - `SCE_RELEASE_GATE_MAX_RISK_LEVEL`：`low|medium|high|unknown`（默认 `unknown`）
+  - `SCE_RELEASE_GATE_MAX_UNMAPPED_RULES`：ontology 业务规则未映射最大允许值
+  - `SCE_RELEASE_GATE_MAX_UNDECIDED_DECISIONS`：ontology 决策未定最大允许值
+  - `SCE_RELEASE_GATE_REQUIRE_SCENE_BATCH_PASS`：是否要求 scene package publish-batch gate 必须通过（`true|false`，默认 `true`）
+  - `SCE_RELEASE_GATE_MAX_SCENE_BATCH_FAILURES`：scene package batch 失败数量最大允许值（默认 `0`）
 - 可选：通过仓库变量调节 Release Notes 中的漂移告警阈值：
   - CI 中漂移评估由 `scripts/release-drift-evaluate.js` 执行（历史读取、告警计算、gate 报告写回、enforce 退出码）。
-  - `KSE_RELEASE_DRIFT_ENFORCE`：`true|false`（默认 `false`），触发 drift alert 时阻断发布
-  - `KSE_RELEASE_DRIFT_FAIL_STREAK_MIN`：触发告警的最小连续失败次数（默认 `2`）
-  - `KSE_RELEASE_DRIFT_HIGH_RISK_SHARE_MIN_PERCENT`：近 5 版 high 风险占比告警阈值（默认 `60`）
-  - `KSE_RELEASE_DRIFT_HIGH_RISK_SHARE_DELTA_MIN_PERCENT`：短期相对长期 high 风险占比增量阈值（默认 `25`）
-  - `KSE_RELEASE_DRIFT_PREFLIGHT_BLOCK_RATE_MIN_PERCENT`：近 5 版（有 preflight 信号）blocked 占比告警阈值（默认 `40`）
-  - `KSE_RELEASE_DRIFT_HARD_GATE_BLOCK_STREAK_MIN`：hard-gate preflight 连续 blocked 告警阈值（最近窗口，默认 `2`）
-  - `KSE_RELEASE_DRIFT_PREFLIGHT_UNAVAILABLE_STREAK_MIN`：release preflight 连续 unavailable 告警阈值（最近窗口，默认 `2`）
+  - `SCE_RELEASE_DRIFT_ENFORCE`：`true|false`（默认 `false`），触发 drift alert 时阻断发布
+  - `SCE_RELEASE_DRIFT_FAIL_STREAK_MIN`：触发告警的最小连续失败次数（默认 `2`）
+  - `SCE_RELEASE_DRIFT_HIGH_RISK_SHARE_MIN_PERCENT`：近 5 版 high 风险占比告警阈值（默认 `60`）
+  - `SCE_RELEASE_DRIFT_HIGH_RISK_SHARE_DELTA_MIN_PERCENT`：短期相对长期 high 风险占比增量阈值（默认 `25`）
+  - `SCE_RELEASE_DRIFT_PREFLIGHT_BLOCK_RATE_MIN_PERCENT`：近 5 版（有 preflight 信号）blocked 占比告警阈值（默认 `40`）
+  - `SCE_RELEASE_DRIFT_HARD_GATE_BLOCK_STREAK_MIN`：hard-gate preflight 连续 blocked 告警阈值（最近窗口，默认 `2`）
+  - `SCE_RELEASE_DRIFT_PREFLIGHT_UNAVAILABLE_STREAK_MIN`：release preflight 连续 unavailable 告警阈值（最近窗口，默认 `2`）
 - 可选：发布资产 0 字节防护（workflow 默认开启）
   - `scripts/release-asset-nonempty-normalize.js` 会在上传 GitHub Release 资产前，为可选 `.lines` / `.jsonl` 资产自动补齐占位内容，避免 422。
   - 本地 dry-run 示例：
@@ -131,4 +138,20 @@ node scripts/git-managed-gate.js --fail-on-violation --json
 - 可选本地预演 release gate 历史索引产物：
   - `sce auto handoff gate-index --dir .sce/reports/release-evidence --out .sce/reports/release-evidence/release-gate-history.json --json`
 
-然后再执行你的正式发布流程（打 tag、push、npm publish、GitHub Release）。
+然后再执行正式发布流程：
+
+```bash
+# 1. 先升级版本并提交
+# 2. 先 push 分支代码
+git push origin main
+
+# 3. 再创建并 push 发版 tag
+git tag vX.Y.Z
+git push origin vX.Y.Z
+```
+
+预期：
+
+- `git push origin main` 只跑常规 CI；
+- `git push origin vX.Y.Z` 才会触发 GitHub Actions `Release` workflow；
+- 只有 release workflow 全部门禁通过后，才会自动发布 npm 包并创建 GitHub Release。

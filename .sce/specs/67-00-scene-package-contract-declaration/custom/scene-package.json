@@ -1,16 +1,16 @@
 {
-  "apiVersion": "kse.scene.package/v0.1",
+  "apiVersion": "sce.scene.package/v0.1",
   "kind": "scene-domain-profile",
   "metadata": {
-    "group": "kse.scene",
+    "group": "sce.scene",
     "name": "scene-package-contract-declaration",
     "version": "0.2.0",
     "summary": "Template contract for scene-package-contract-declaration",
     "description": "Domain profile template for scene package metadata governance, ontology mapping, and compatibility decision strategy."
   },
   "compatibility": {
-    "kse_version": ">=1.24.0",
-    "scene_api_version": "kse.scene/v0.2",
+    "min_sce_version": ">=1.24.0",
+    "scene_api_version": "sce.scene/v0.2",
     "moqui_model_version": "3.x",
     "adapter_api_version": "v1"
   },
@@ -79,7 +79,7 @@
         "timeout_ms": 1500,
         "retry": 1,
         "depends_on": "spec.erp.scene-package-contract-read",
-        "intent": "Evaluate kse and scene API compatibility against policy baseline",
+        "intent": "Evaluate sce and scene API compatibility against policy baseline",
         "preconditions": [
           "contract metadata is loaded",
           "target runtime policy is available"

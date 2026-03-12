@@ -2,7 +2,7 @@
 
 ## 步骤 1: 启用 Discussions 功能
 
-1. 打开你的 GitHub 仓库：https://github.com/heguangyong/kiro-spec-engine
+1. 打开你的 GitHub 仓库：https://github.com/heguangyong/scene-capability-engine
 2. 点击顶部的 **Settings** 标签
 3. 在左侧菜单找到 **Features** 部分
 4. 勾选 **Discussions** 复选框
@@ -37,7 +37,7 @@ AI 驱动开发的哲学与实践：与 Grok 的深度对话
 
 ## 📖 完整文章
 
-完整对话内容请查看：[AI 驱动开发的哲学与实践](https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md)
+完整对话内容请查看：[AI 驱动开发的哲学与实践](https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md)
 
 ## 🎯 核心观点
 
@@ -57,7 +57,7 @@ AI 驱动开发的哲学与实践：与 Grok 的深度对话
 
 ## 🚀 实践项目
 
-这些理念在 [kiro-spec-engine](https://github.com/heguangyong/kiro-spec-engine) 项目中得到了实践：
+这些理念在 [kiro-spec-engine](https://github.com/heguangyong/scene-capability-engine) 项目中得到了实践：
 
 - 精确解决 session 上下文吞噬问题
 - 文档驱动 + 自动化治理
@@ -76,9 +76,9 @@ AI 驱动开发的哲学与实践：与 Grok 的深度对话
 
 ## 📚 相关资源
 
-- **项目地址**：https://github.com/heguangyong/kiro-spec-engine
-- **npm 包**：https://www.npmjs.com/package/kiro-spec-engine
-- **完整文章**：[docs/articles/ai-driven-development-philosophy-and-practice.md](https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md)
+- **项目地址**：https://github.com/heguangyong/scene-capability-engine
+- **npm 包**：https://www.npmjs.com/package/scene-capability-engine
+- **完整文章**：[docs/articles/ai-driven-development-philosophy-and-practice.md](https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md)
 
 ---
 
@@ -113,8 +113,8 @@ AI 驱动开发的哲学与实践：与 Grok 的深度对话
 
 ## 快速链接
 
-- 仓库设置：https://github.com/heguangyong/kiro-spec-engine/settings
-- Discussions 页面：https://github.com/heguangyong/kiro-spec-engine/discussions
+- 仓库设置：https://github.com/heguangyong/scene-capability-engine/settings
+- Discussions 页面：https://github.com/heguangyong/scene-capability-engine/discussions
 
 ---
 

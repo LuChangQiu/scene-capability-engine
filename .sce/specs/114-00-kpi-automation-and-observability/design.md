@@ -32,7 +32,7 @@
 
 ### 组件 E：CLI 入口（Value Metrics Command）
 
-- 子命令建议：`kse value metrics snapshot`
+- 子命令建议：`sce value metrics snapshot`
 - 支持 `--period`、`--input`、`--out`、`--json`
 - 默认输出人读摘要，`--json` 输出机读对象
 

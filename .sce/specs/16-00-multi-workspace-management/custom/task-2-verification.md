@@ -78,7 +78,7 @@ Beyond the core CRUD operations, the implementation includes:
 
 1. **Path Validation**: `validateWorkspacePath(path)` - Comprehensive validation
 2. **Timestamp Management**: `updateLastAccessed(name)` - Track workspace usage
-3. **Persistence**: Automatic save/load from `~/.kse/workspaces.json`
+3. **Persistence**: Automatic save/load from `~/.sce/workspaces.json`
 4. **Error Handling**: Clear, actionable error messages
 5. **Cross-Platform Support**: Path normalization with forward slashes
 

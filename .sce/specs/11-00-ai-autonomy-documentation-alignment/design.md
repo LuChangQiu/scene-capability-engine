@@ -2,7 +2,7 @@
 
 ## Overview
 
-This design transforms kiro-spec-engine's documentation from a manual, tool-centric approach to an AI-autonomy-focused approach. The core insight is that users express intent to AI agents, and AI agents autonomously use kse as invisible infrastructure. This design provides a systematic approach to audit, classify, and update all documentation files while preserving technical accuracy.
+This design transforms kiro-spec-engine's documentation from a manual, tool-centric approach to an AI-autonomy-focused approach. The core insight is that users express intent to AI agents, and AI agents autonomously use sce as invisible infrastructure. This design provides a systematic approach to audit, classify, and update all documentation files while preserving technical accuracy.
 
 The transformation affects 40+ documentation files across English and Chinese versions, requiring careful coordination to maintain consistency while changing perspective from "you run commands" to "AI handles this for you."
 
@@ -49,7 +49,7 @@ Documentation Transformation System
 **Pattern Scanner**:
 - Scans all .md files for prohibited patterns
 - Patterns to detect:
-  - `run \`kse create-spec\``
+  - `run \`sce create-spec\``
   - `you create/run/execute/manually`
   - `Step 1:`, `Step 2:` (manual instructions)
   - `First, run...`, `Then, execute...`
@@ -79,7 +79,7 @@ Documentation Transformation System
 **Language Transformer**:
 - Transformation rules:
   - `"you create Specs"` → `"AI creates Specs for you based on your intent"`
-  - `"run \`kse create-spec\`"` → `"tell AI to create a Spec, and it will use kse autonomously"`
+  - `"run \`sce create-spec\`"` → `"tell AI to create a Spec, and it will use sce autonomously"`
   - `"Step 1: Run X"` → `"AI will: [describe outcome]"`
   - `"manually edit"` → `"AI generates and refines"`
   - `"you execute"` → `"AI executes autonomously"`
@@ -110,7 +110,7 @@ Documentation Transformation System
 
 **Pattern Validator**:
 - Validates no prohibited patterns remain:
-  - No `run \`kse create-spec\``
+  - No `run \`sce create-spec\``
   - No `you manually create`
   - No `Step 1, Step 2` manual instructions
   - No `First, run...` command sequences
@@ -291,7 +291,7 @@ Documentation Transformation System
 
 ### Property 8: Prohibited Pattern Elimination
 
-*For any* documentation file after validation, it should contain no instances of prohibited patterns including "run \`kse create-spec\`" or "you create/run/execute" language, and should contain AI-centric language instead.
+*For any* documentation file after validation, it should contain no instances of prohibited patterns including "run \`sce create-spec\`" or "you create/run/execute" language, and should contain AI-centric language instead.
 
 **Validates: Requirements 8.1, 8.2**
 
@@ -364,7 +364,7 @@ Documentation Transformation System
 This feature requires both unit tests and property-based tests:
 
 **Unit Tests**: Focus on specific examples, edge cases, and error conditions:
-- Specific pattern detection examples (e.g., detecting "run \`kse create-spec\`")
+- Specific pattern detection examples (e.g., detecting "run \`sce create-spec\`")
 - Specific transformation examples (e.g., transforming a known manual instruction)
 - Error handling scenarios (file not found, encoding errors)
 - Report generation with known inputs

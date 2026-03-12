@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Environment Configuration Management feature provides a lightweight, integrated solution for managing multiple environment configurations within kse projects. This design focuses on simplicity, reliability, and seamless integration with kse's existing workspace management system.
+The Environment Configuration Management feature provides a lightweight, integrated solution for managing multiple environment configurations within sce projects. This design focuses on simplicity, reliability, and seamless integration with sce's existing workspace management system.
 
 The system consists of four main components:
 1. **Environment Registry** - Persistent storage of environment configurations
@@ -23,7 +23,7 @@ The design prioritizes:
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                      CLI Interface                          │
-│  (kse env list|switch|verify|info|run|rollback)            │
+│  (sce env list|switch|verify|info|run|rollback)            │
 └────────────────────┬────────────────────────────────────────┘
                      │
                      ▼
@@ -47,7 +47,7 @@ The design prioritizes:
 
 **Environment Switch Flow**:
 ```
-User: kse env switch production
+User: sce env switch production
   ↓
 CLI validates command and environment name
   ↓
@@ -64,7 +64,7 @@ CLI displays success message
 
 **Environment Verification Flow**:
 ```
-User: kse env verify
+User: sce env verify
   ↓
 CLI requests verification
   ↓
@@ -247,14 +247,14 @@ class BackupSystem {
 
 **Commands**:
 ```bash
-kse env list                          # List all environments
-kse env switch <name>                 # Switch to environment
-kse env verify                        # Verify current environment
-kse env info                          # Show active environment details
-kse env run "<command>"               # Run command in current environment
-kse env rollback                      # Rollback to previous environment
-kse env register <config-file>        # Register new environment from JSON
-kse env unregister <name>             # Remove environment
+sce env list                          # List all environments
+sce env switch <name>                 # Switch to environment
+sce env verify                        # Verify current environment
+sce env info                          # Show active environment details
+sce env run "<command>"               # Run command in current environment
+sce env rollback                      # Rollback to previous environment
+sce env register <config-file>        # Register new environment from JSON
+sce env unregister <name>             # Remove environment
 ```
 
 **Interface**:

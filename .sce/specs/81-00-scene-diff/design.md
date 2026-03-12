@@ -2,7 +2,7 @@
 
 ## Overview
 
-Adds `kse scene diff` command to compare two versions of a scene package in the local registry. Extracts tarballs, computes file-level diffs, and displays results. Follows normalize → validate → run → print pattern. All code in `lib/commands/scene.js`.
+Adds `sce scene diff` command to compare two versions of a scene package in the local registry. Extracts tarballs, computes file-level diffs, and displays results. Follows normalize → validate → run → print pattern. All code in `lib/commands/scene.js`.
 
 ## Architecture
 

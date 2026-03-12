@@ -2,7 +2,7 @@
 
 ## Overview
 
-Implement automatic .gitignore detection and fixing during kse adoption and upgrade. The system will detect old blanket `.sce/` exclusion patterns and replace them with a layered strategy that commits Specs while excluding personal state.
+Implement automatic .gitignore detection and fixing during sce adoption and upgrade. The system will detect old blanket `.sce/` exclusion patterns and replace them with a layered strategy that commits Specs while excluding personal state.
 
 **Implementation Language**: JavaScript (Node.js)
 
@@ -163,7 +163,7 @@ Implement automatic .gitignore detection and fixing during kse adoption and upgr
   - [x] 5.4 Implement layered rules addition
     - Implement `addLayeredRules(content)` method
     - Add complete layered section
-    - Mark as kse-managed section
+    - Mark as sce-managed section
     - Preserve existing content
     - _Requirements: FR-2.2.2_
   
@@ -242,7 +242,7 @@ Implement automatic .gitignore detection and fixing during kse adoption and upgr
   
   - [x] 7.6 Implement standalone doctor command
     - Implement `runDoctor(projectPath)` method
-    - Add `kse doctor --fix-gitignore` command
+    - Add `sce doctor --fix-gitignore` command
     - Provide detailed output
     - _Requirements: FR-2.4.3_
   
@@ -342,7 +342,7 @@ Implement automatic .gitignore detection and fixing during kse adoption and upgr
 **Status**: Draft
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

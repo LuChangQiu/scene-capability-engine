@@ -101,7 +101,7 @@ This implementation plan breaks down the template creation feature into discrete
     - Implement `promptDescription()` with length validation
     - Implement `promptCategory()` with predefined list
     - Implement `promptTags(suggestedTags)` with comma-separated parsing
-    - Implement prompts for author, version, kse_version with defaults
+    - Implement prompts for author, version, min_sce_version with defaults
     - _Requirements: 3.1, 3.2, 3.3, 3.5, 3.6, 3.7, 3.8_
   
   - [x] 4.3 Implement tag suggestion
@@ -404,10 +404,10 @@ This implementation plan breaks down the template creation feature into discrete
 
 **Version**: 1.0.0  
 **Created**: 2025-01-31  
-**Author**: kse-team
+**Author**: sce-team
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

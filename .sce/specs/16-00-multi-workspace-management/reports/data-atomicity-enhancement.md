@@ -7,8 +7,8 @@
 ### 当前设计的问题
 
 ```
-~/.kse/workspaces.json  - 存储工作区列表 + last_accessed
-~/.kse/config.json      - 存储 active_workspace + preferences
+~/.sce/workspaces.json  - 存储工作区列表 + last_accessed
+~/.sce/config.json      - 存储 active_workspace + preferences
 ```
 
 **违反原子性的场景**：
@@ -41,7 +41,7 @@
 **设计思路**：将所有工作区相关数据合并到一个文件中
 
 ```json
-// ~/.kse/workspace-state.json
+// ~/.sce/workspace-state.json
 {
   "version": "1.0",
   "activeWorkspace": "project-alpha",
@@ -81,10 +81,10 @@
 **设计思路**：保持两个文件，但引入事务日志保证一致性
 
 ```
-~/.kse/workspaces.json       - 主数据源（工作区列表）
-~/.kse/config.json           - 从数据源（仅存储 preferences）
-~/.kse/workspace-state.lock  - 事务锁文件
-~/.kse/workspace-state.log   - 操作日志
+~/.sce/workspaces.json       - 主数据源（工作区列表）
+~/.sce/config.json           - 从数据源（仅存储 preferences）
+~/.sce/workspace-state.lock  - 事务锁文件
+~/.sce/workspace-state.log   - 操作日志
 ```
 
 **优点**：
@@ -145,7 +145,7 @@ class WorkspaceStateManager {
 
 ```javascript
 class WorkspaceStateManager {
-  constructor(statePath = '~/.kse/workspace-state.json') {
+  constructor(statePath = '~/.sce/workspace-state.json') {
     this.statePath = statePath;
     this.state = {
       version: '1.0',
@@ -412,4 +412,4 @@ describe('WorkspaceStateManager Atomicity', () => {
 **核心原则**：
 > 系统中的每一类数据应该有且仅有一个权威数据源，所有派生数据和缓存都应该从这个唯一源生成。
 
-这个原则应该被纳入 kse 的核心架构指导原则中。
+这个原则应该被纳入 sce 的核心架构指导原则中。

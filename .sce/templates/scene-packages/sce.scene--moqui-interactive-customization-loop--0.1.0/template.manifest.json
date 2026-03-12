@@ -1,0 +1,44 @@
+{
+  "apiVersion": "sce.scene.template/v0.1",
+  "kind": "scene-package-template",
+  "metadata": {
+    "template_id": "sce.scene--moqui-interactive-customization-loop--0.1.0",
+    "source_spec": "interactive-customization-moqui-loop",
+    "package_coordinate": "sce.scene/moqui-interactive-customization-loop@0.1.0",
+    "package_kind": "scene-domain-profile",
+    "published_at": "2026-02-19T00:00:00.000Z"
+  },
+  "compatibility": {
+    "scene_api_version": "sce.scene/v0.2"
+  },
+  "parameters": [
+    {
+      "id": "project_root",
+      "type": "string",
+      "required": true,
+      "description": "Moqui project root path."
+    },
+    {
+      "id": "module_scope",
+      "type": "string",
+      "required": false,
+      "description": "Optional module scope for context injection and action routing."
+    },
+    {
+      "id": "execution_policy",
+      "type": "string",
+      "required": false,
+      "description": "Execution policy profile, defaulting to advice-first."
+    }
+  ],
+  "template": {
+    "package_contract": "scene-package.json",
+    "scene_manifest": "scene.template.yaml"
+  },
+  "artifacts": {
+    "entry_scene": "custom/scene.yaml",
+    "generates": [
+      "custom/scene.yaml"
+    ]
+  }
+}

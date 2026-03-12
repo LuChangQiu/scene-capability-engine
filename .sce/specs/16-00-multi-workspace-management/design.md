@@ -2,7 +2,7 @@
 
 ## Overview
 
-The multi-workspace management feature extends kse to support simultaneous management of multiple projects. This design introduces a workspace registry system that maintains a global catalog of kse projects, enabling developers to switch between projects, execute cross-workspace operations, and reuse Specs without manual directory navigation.
+The multi-workspace management feature extends sce to support simultaneous management of multiple projects. This design introduces a workspace registry system that maintains a global catalog of sce projects, enabling developers to switch between projects, execute cross-workspace operations, and reuse Specs without manual directory navigation.
 
 The architecture follows a layered approach:
 - **Configuration Layer**: Manages workspace registry and global settings
@@ -23,7 +23,7 @@ Key design principles:
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                        CLI Entry Point                       │
-│                    (kse command parser)                      │
+│                    (sce command parser)                      │
 └────────────────────┬────────────────────────────────────────┘
                      │
                      ▼
@@ -55,13 +55,13 @@ Key design principles:
                      ▼
 ┌─────────────────────────────────────────────────────────────┐
 │                    Configuration Storage                     │
-│  ~/.kse/workspaces.json  |  ~/.kse/config.json              │
+│  ~/.sce/workspaces.json  |  ~/.sce/config.json              │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 ### Workspace Resolution Priority
 
-When executing any kse command, the system resolves the target workspace using this priority order:
+When executing any sce command, the system resolves the target workspace using this priority order:
 
 1. **Explicit `--workspace <name>` parameter** (highest priority)
 2. **Current directory matches a registered workspace path**
@@ -76,7 +76,7 @@ This priority ensures intuitive behavior: explicit parameters override everythin
 ### 1. Workspace Registry Manager
 
 **Responsibilities**:
-- Load and save workspace registry from/to `~/.kse/workspaces.json`
+- Load and save workspace registry from/to `~/.sce/workspaces.json`
 - Validate workspace paths and names
 - Perform CRUD operations on workspace entries
 - Manage active workspace state
@@ -85,7 +85,7 @@ This priority ensures intuitive behavior: explicit parameters override everythin
 
 ```python
 class WorkspaceRegistry:
-    def __init__(self, config_path: str = "~/.kse/workspaces.json"):
+    def __init__(self, config_path: str = "~/.sce/workspaces.json"):
         """Initialize registry from config file"""
         
     def create_workspace(self, name: str, path: str) -> Workspace:
@@ -104,7 +104,7 @@ class WorkspaceRegistry:
         """Update last accessed timestamp"""
         
     def validate_workspace_path(self, path: str) -> bool:
-        """Check if path is a valid kse project"""
+        """Check if path is a valid sce project"""
         
     def save(self) -> None:
         """Persist registry to disk"""
@@ -166,7 +166,7 @@ class WorkspaceContextResolver:
 ### 3. Global Configuration Manager
 
 **Responsibilities**:
-- Manage `~/.kse/config.json` for global settings
+- Manage `~/.sce/config.json` for global settings
 - Store and retrieve active workspace
 - Handle configuration file creation and validation
 
@@ -174,7 +174,7 @@ class WorkspaceContextResolver:
 
 ```python
 class GlobalConfig:
-    def __init__(self, config_path: str = "~/.kse/config.json"):
+    def __init__(self, config_path: str = "~/.sce/config.json"):
         """Initialize from config file"""
         
     def get_active_workspace(self) -> Optional[str]:
@@ -205,19 +205,19 @@ class WorkspaceCommands:
         """Initialize with registry and config"""
         
     def create(self, name: str, path: Optional[str] = None) -> None:
-        """Handle: kse workspace create <name> [path]"""
+        """Handle: sce workspace create <name> [path]"""
         
     def list(self) -> None:
-        """Handle: kse workspace list"""
+        """Handle: sce workspace list"""
         
     def switch(self, name: str) -> None:
-        """Handle: kse workspace switch <name>"""
+        """Handle: sce workspace switch <name>"""
         
     def remove(self, name: str, force: bool = False) -> None:
-        """Handle: kse workspace remove <name>"""
+        """Handle: sce workspace remove <name>"""
         
     def info(self, name: Optional[str] = None) -> None:
-        """Handle: kse workspace info [name]"""
+        """Handle: sce workspace info [name]"""
 ```
 
 ### 5. Cross-Workspace Operations
@@ -276,7 +276,7 @@ class SearchResult:
 
 ### Workspace Registry File Format
 
-**File**: `~/.kse/workspaces.json`
+**File**: `~/.sce/workspaces.json`
 
 ```json
 {
@@ -300,7 +300,7 @@ class SearchResult:
 
 ### Global Configuration File Format
 
-**File**: `~/.kse/config.json`
+**File**: `~/.sce/config.json`
 
 ```json
 {
@@ -429,11 +429,11 @@ Property 19: Explicit Workspace Parameter Isolation
 **Validates: Requirements 9.3**
 
 Property 20: Workspace Parameter Universal Support
-*For any* existing kse command (status, search, spec, adopt), adding the --workspace parameter should execute the command in the context of the specified workspace.
+*For any* existing sce command (status, search, spec, adopt), adding the --workspace parameter should execute the command in the context of the specified workspace.
 **Validates: Requirements 9.4**
 
 Property 21: Configuration Directory Auto-Creation
-*For any* system state where ~/.kse/ does not exist, executing any workspace command should automatically create the directory and initialize configuration files.
+*For any* system state where ~/.sce/ does not exist, executing any workspace command should automatically create the directory and initialize configuration files.
 **Validates: Requirements 10.3**
 
 Property 22: Configuration Corruption Handling
@@ -441,11 +441,11 @@ Property 22: Configuration Corruption Handling
 **Validates: Requirements 10.5**
 
 Property 23: Backward Compatibility with Single-Project Mode
-*For any* valid kse project directory, when no workspaces are registered, all existing commands should function as before without requiring workspace setup.
+*For any* valid sce project directory, when no workspaces are registered, all existing commands should function as before without requiring workspace setup.
 **Validates: Requirements 11.1, 11.2, 11.5**
 
 Property 24: Existing Command Behavior Preservation
-*For any* existing kse command executed without workspace-specific parameters, the command behavior and output should be identical to pre-workspace versions.
+*For any* existing sce command executed without workspace-specific parameters, the command behavior and output should be identical to pre-workspace versions.
 **Validates: Requirements 11.3**
 
 Property 25: Cross-Platform Path Normalization
@@ -462,7 +462,7 @@ Property 26: Non-Existent Entity Error Handling
 
 **1. Validation Errors**
 - Invalid workspace names (empty, special characters, too long)
-- Invalid paths (non-existent, not a kse project, inaccessible)
+- Invalid paths (non-existent, not a sce project, inaccessible)
 - Duplicate workspace names
 - Missing required parameters
 
@@ -477,7 +477,7 @@ Suggestion: [Actionable next step]
 ```
 Error: Invalid Workspace Path
 Details: Path '/home/user/invalid' does not contain a .sce/ directory
-Suggestion: Initialize a kse project in this directory first with 'kse init'
+Suggestion: Initialize a sce project in this directory first with 'sce init'
 ```
 
 **2. Not Found Errors**
@@ -553,14 +553,14 @@ Action Required: [What user needs to do]
 ```
 Error: Invalid State
 Details: No active workspace set and current directory is not a workspace
-Action Required: Run 'kse workspace switch <name>' or 'kse workspace create <name>'
+Action Required: Run 'sce workspace switch <name>' or 'sce workspace create <name>'
 ```
 
 ### Error Recovery Strategies
 
 **Configuration Corruption**:
 1. Detect corrupted JSON during load
-2. Backup corrupted file to `~/.kse/workspaces.json.backup`
+2. Backup corrupted file to `~/.sce/workspaces.json.backup`
 3. Create fresh configuration file
 4. Display recovery instructions to user
 
@@ -571,7 +571,7 @@ Action Required: Run 'kse workspace switch <name>' or 'kse workspace create <nam
 4. Suggest workspace removal or path update
 
 **Missing Configuration**:
-1. Detect missing ~/.kse/ directory
+1. Detect missing ~/.sce/ directory
 2. Automatically create directory structure
 3. Initialize default configuration files
 4. Log initialization for user awareness
@@ -610,7 +610,7 @@ This feature requires both unit tests and property-based tests for comprehensive
 
 ### Property Test Configuration
 
-**Testing Library**: Use `hypothesis` for Python (kse is Python-based)
+**Testing Library**: Use `hypothesis` for Python (sce is Python-based)
 
 **Test Configuration**:
 - Minimum 100 iterations per property test

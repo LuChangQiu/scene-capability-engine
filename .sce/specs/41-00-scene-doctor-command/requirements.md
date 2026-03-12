@@ -8,7 +8,7 @@ This spec adds `scene doctor` for policy, plan, and adapter-readiness diagnostic
 ## Requirements
 
 ### Requirement 1: Scene Doctor Entry
-- Provide `kse scene doctor` command.
+- Provide `sce scene doctor` command.
 - Support source selection via `--spec` or `--manifest`.
 - Support evaluation mode via `--mode dry_run|commit`.
 

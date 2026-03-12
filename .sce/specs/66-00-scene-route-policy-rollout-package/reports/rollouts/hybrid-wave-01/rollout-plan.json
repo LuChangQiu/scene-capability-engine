@@ -43,8 +43,8 @@
     }
   ],
   "commands": {
-    "verify_candidate_route": "kse scene route --query routing --mode dry_run --route-policy .sce/specs/66-00-scene-route-policy-rollout-package/reports/rollouts/hybrid-wave-01/route-policy.next.json",
-    "verify_target_route": "kse scene route --query routing --mode dry_run --route-policy .sce/config/scene-route-policy.json",
+    "verify_candidate_route": "sce scene route --query routing --mode dry_run --route-policy .sce/specs/66-00-scene-route-policy-rollout-package/reports/rollouts/hybrid-wave-01/route-policy.next.json",
+    "verify_target_route": "sce scene route --query routing --mode dry_run --route-policy .sce/config/scene-route-policy.json",
     "apply": "Replace .sce/config/scene-route-policy.json with .sce/specs/66-00-scene-route-policy-rollout-package/reports/rollouts/hybrid-wave-01/route-policy.next.json after verification.",
     "rollback": "Replace .sce/config/scene-route-policy.json with .sce/specs/66-00-scene-route-policy-rollout-package/reports/rollouts/hybrid-wave-01/route-policy.rollback.json if regression appears."
   },

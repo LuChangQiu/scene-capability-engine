@@ -7,7 +7,7 @@ into an auditable package with explicit artifacts for forward apply and rollback
 
 ## Command Surface
 
-- `kse scene route-policy-rollout`
+- `sce scene route-policy-rollout`
 - Options:
   - `--suggestion <path>` (required)
   - `--target-policy <path>` (default `.sce/config/scene-route-policy.json`)

@@ -2,10 +2,10 @@
 
 ## Overview
 
-The Moqui ERP Adapter integrates a live Moqui ERP instance into KSE's scene runtime. It consists of three modules:
+The Moqui ERP Adapter integrates a live Moqui ERP instance into SCE's scene runtime. It consists of three modules:
 
 1. **moqui-client.js** — Low-level HTTP client using Node.js built-in `http`/`https` modules. Handles JWT authentication lifecycle (login, token refresh, re-login, logout), request construction, retry logic, and response normalization.
-2. **moqui-adapter.js** — Binding handler registered in `BindingRegistry`. Parses binding refs, routes operations to the correct Moqui REST endpoint (entity CRUD, service invocation, screen discovery), and maps Moqui responses to KSE `Execution_Result` format.
+2. **moqui-adapter.js** — Binding handler registered in `BindingRegistry`. Parses binding refs, routes operations to the correct Moqui REST endpoint (entity CRUD, service invocation, screen discovery), and maps Moqui responses to SCE `Execution_Result` format.
 3. **scene.js additions** — Two new CLI subcommands (`scene connect`, `scene discover`) following the established normalize → validate → run → print pattern, registered in `registerSceneCommands`.
 
 No external dependencies are added. All HTTP communication uses Node.js built-in `http`/`https` modules.
@@ -37,7 +37,7 @@ graph TD
 2. `BindingRegistry.resolve(node)` matches `spec.erp.*` or `moqui.*` refs → returns `MoquiAdapter` handler
 3. `MoquiAdapter.execute(node, payload)` parses the binding ref, determines operation type, delegates to `MoquiClient`
 4. `MoquiClient` handles JWT auth, constructs HTTP request, applies retry logic, returns normalized response
-5. `MoquiAdapter` maps the Moqui response to KSE `Execution_Result` format
+5. `MoquiAdapter` maps the Moqui response to SCE `Execution_Result` format
 
 ### Readiness Flow
 
@@ -130,7 +130,7 @@ class MoquiClient {
 
 ### Module 2: MoquiAdapter (`lib/scene-runtime/moqui-adapter.js`)
 
-Binding handler that bridges KSE binding nodes to Moqui REST API calls.
+Binding handler that bridges SCE binding nodes to Moqui REST API calls.
 
 ```javascript
 /**
@@ -164,7 +164,7 @@ function validateAdapterConfig(config) {}
 function parseBindingRef(bindingRef) {}
 
 /**
- * Map Moqui API response to KSE Execution_Result.
+ * Map Moqui API response to SCE Execution_Result.
  * @param {Object} moquiResponse - { success, data, meta, error }
  * @param {string} handlerId
  * @param {string} bindingRef
@@ -316,7 +316,7 @@ Optional fields: `timeout` (default 30000), `retryCount` (default 2), `retryDela
 { success: false, error: { code: 'ENTITY_NOT_FOUND', message: '...', details: '...' } }
 ```
 
-### Execution_Result (KSE format)
+### Execution_Result (SCE format)
 
 ```javascript
 // Success
@@ -470,7 +470,7 @@ Optional fields: `timeout` (default 30000), `retryCount` (default 2), `retryDela
 
 ### Error Propagation
 
-All errors are wrapped into KSE `Execution_Result` format with `status: 'failed'`. The adapter never throws exceptions — all errors are returned as result objects. CLI commands catch errors and set `process.exitCode = 1`.
+All errors are wrapped into SCE `Execution_Result` format with `status: 'failed'`. The adapter never throws exceptions — all errors are returned as result objects. CLI commands catch errors and set `process.exitCode = 1`.
 
 ## Testing Strategy
 

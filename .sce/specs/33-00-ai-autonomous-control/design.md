@@ -2,7 +2,7 @@
 
 ## Overview
 
-The AI Autonomous Control system transforms kse from an interactive assistant into an autonomous development partner. Building on CORE_PRINCIPLES 4.1 "完全自主执行权限", this feature provides the infrastructure for AI to independently manage entire development workflows - from understanding user goals to delivering production-ready features.
+The AI Autonomous Control system transforms sce from an interactive assistant into an autonomous development partner. Building on CORE_PRINCIPLES 4.1 "完全自主执行权限", this feature provides the infrastructure for AI to independently manage entire development workflows - from understanding user goals to delivering production-ready features.
 
 The system consists of three core layers:
 
@@ -63,7 +63,7 @@ The system consists of three core layers:
 ### Execution Flow
 
 ```
-User Command (kse auto create "feature")
+User Command (sce auto create "feature")
     ↓
 Autonomous Engine Initialization
     ↓
@@ -695,7 +695,7 @@ interface LogEntry {
 
 ### Property 23: Existing Feature Integration
 
-*For any* autonomous execution, the engine should successfully integrate with and use existing kse features (collaboration system, workspace management, environment management, test infrastructure) without conflicts.
+*For any* autonomous execution, the engine should successfully integrate with and use existing sce features (collaboration system, workspace management, environment management, test infrastructure) without conflicts.
 
 **Validates: Requirements 10.1, 10.2, 10.3, 10.4, 10.5**
 
@@ -1006,7 +1006,7 @@ test('Feature: ai-autonomous-control, Property 20: Rollback State Restoration', 
 - Edge cases (empty task queues, single-task specs, circular dependencies)
 - Checkpoint creation at specific events
 - Configuration validation and hierarchy
-- Integration with existing kse commands
+- Integration with existing sce commands
 
 **Test Structure**:
 ```
@@ -1100,7 +1100,7 @@ describe('Configuration - Hierarchy', () => {
 ### Integration Testing
 
 **Scenarios**:
-1. **Complete Autonomous Workflow**: User runs `kse auto create "user authentication"`, system creates Spec and implements feature end-to-end
+1. **Complete Autonomous Workflow**: User runs `sce auto create "user authentication"`, system creates Spec and implements feature end-to-end
 2. **Error Recovery Flow**: Inject compilation errors, test failures, verify autonomous recovery
 3. **Checkpoint and Resume**: Interrupt execution, verify state saved, resume and verify continuation
 4. **Rollback Scenario**: Create checkpoint, make changes, rollback, verify restoration

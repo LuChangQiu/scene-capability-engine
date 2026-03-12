@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This feature adds a `kse scene diff` command that compares two versions of a scene package in the local registry by extracting their tarballs and diffing file contents.
+This feature adds a `sce scene diff` command that compares two versions of a scene package in the local registry by extracting their tarballs and diffing file contents.
 
 ## Glossary
 
-- **Diff_Command**: The `kse scene diff` CLI command that compares two versions of a scene package.
+- **Diff_Command**: The `sce scene diff` CLI command that compares two versions of a scene package.
 - **From_Version**: The source version to compare from.
 - **To_Version**: The target version to compare to.
 - **Package_Diff**: The computed difference between two versions, categorizing files as added, removed, modified, or unchanged.

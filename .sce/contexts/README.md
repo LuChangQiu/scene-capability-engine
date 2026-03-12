@@ -61,7 +61,7 @@ dir /b .sce\contexts | findstr /v "^\." | findstr /v "README.md"
 
 ## 为什么不放在 steering/ 下？
 
-Kiro IDE 会读取 `steering/` 目录下的所有 `.md` 文件作为上下文。如果把工作区放在 `steering/workspaces/` 下，会导致：
+AI IDE 会读取 `steering/` 目录下的所有 `.md` 文件作为上下文。如果把工作区放在 `steering/workspaces/` 下，会导致：
 
 - ❌ 所有人的 CURRENT_CONTEXT.md 都被读取
 - ❌ 造成上下文污染和混乱
@@ -71,12 +71,12 @@ Kiro IDE 会读取 `steering/` 目录下的所有 `.md` 文件作为上下文。
 
 ## 版本要求
 
-此功能需要手动管理工作区。如果你想使用 kse 的多工作区管理功能（管理多个项目），请使用：
+此功能需要手动管理工作区。如果你想使用 sce 的多工作区管理功能（管理多个项目），请使用：
 
 ```bash
-kse workspace create <name> [path]  # 需要 kse v1.11.0+
+sce workspace create <name> [path]  # 需要 sce v1.11.0+
 ```
 
 注意：这是两个不同的概念：
 - **项目内工作区**（本目录）：同一项目，多人协作，每人有自己的上下文
-- **kse 多工作区**（`kse workspace`）：管理多个不同的 kse 项目
+- **sce 多工作区**（`sce workspace`）：管理多个不同的 sce 项目

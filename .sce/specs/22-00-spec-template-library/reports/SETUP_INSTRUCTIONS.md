@@ -1,9 +1,9 @@
-# Setup Instructions for kse-spec-templates Repository
+# Setup Instructions for sce-spec-templates Repository
 
 ## Step 1: Create GitHub Repository
 
 1. Go to https://github.com/new
-2. Repository name: `kse-spec-templates`
+2. Repository name: `sce-spec-templates`
 3. Description: "Official template library for kiro-spec-engine"
 4. Public repository
 5. **Do NOT** initialize with README (we have our own)
@@ -20,8 +20,8 @@ All template files are prepared in:
 
 ```bash
 # 1. Create a new directory for the repository
-mkdir kse-spec-templates
-cd kse-spec-templates
+mkdir sce-spec-templates
+cd sce-spec-templates
 
 # 2. Initialize Git
 git init
@@ -35,7 +35,7 @@ git add .
 git commit -m "Initial commit: Add REST API template and documentation"
 
 # 5. Push to GitHub
-git remote add origin https://github.com/heguangyong/kse-spec-templates.git
+git remote add origin https://github.com/heguangyong/sce-spec-templates.git
 git push -u origin main
 ```
 
@@ -44,13 +44,13 @@ git push -u origin main
 ```cmd
 REM Run from project root
 cd .sce\specs\22-00-spec-template-library
-xcopy template-repo\* ..\..\..\..\kse-spec-templates\ /E /I /Y
-cd ..\..\..\..\kse-spec-templates
+xcopy template-repo\* ..\..\..\..\sce-spec-templates\ /E /I /Y
+cd ..\..\..\..\sce-spec-templates
 git init
 git branch -M main
 git add .
 git commit -m "Initial commit: Add REST API template and documentation"
-git remote add origin https://github.com/heguangyong/kse-spec-templates.git
+git remote add origin https://github.com/heguangyong/sce-spec-templates.git
 git push -u origin main
 ```
 
@@ -59,7 +59,7 @@ git push -u origin main
 Your repository should look like this:
 
 ```
-kse-spec-templates/
+sce-spec-templates/
 ├── README.md
 ├── CONTRIBUTING.md
 ├── template-registry.json
@@ -77,7 +77,7 @@ Create a LICENSE file (MIT License recommended):
 ```
 MIT License
 
-Copyright (c) 2025 kse-team
+Copyright (c) 2025 sce-team
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -105,15 +105,15 @@ git tag -a v1.0.0 -m "Release v1.0.0: Initial template library with REST API tem
 git push origin v1.0.0
 ```
 
-## Step 6: Test Integration with kse
+## Step 6: Test Integration with sce
 
 Once the repository is created, test it:
 
 ```bash
-# This will be implemented in kse later
-kse templates update
-kse templates list
-kse spec create test-api --template web-features/rest-api
+# This will be implemented in sce later
+sce templates update
+sce templates list
+sce spec create test-api --template web-features/rest-api
 ```
 
 ## Next Steps
@@ -136,7 +136,7 @@ Consider adding branch protection rules:
 ### Topics
 
 Add these topics to the repository:
-- kse
+- sce
 - kiro-spec-engine
 - spec-templates
 - development-templates

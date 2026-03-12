@@ -24,13 +24,13 @@
 - `.sce/ops/` 目录及其内容
 
 **修改的文件**:
-- `bin/kiro-spec-engine.js` (移除 4 个命令注册)
+- `bin/scene-capability-engine.js` (移除 4 个命令注册)
 - `lib/operations/feedback-manager.js` (路径迁移)
 - `tests/unit/operations/feedback-manager.test.js` (路径更新)
 
 **原因**:
 - 旧系统由 traeAI 生成，与当前 MVP 设计不一致
-- 命令名称冲突 (`kse op` vs `kse ops`)
+- 命令名称冲突 (`sce op` vs `sce ops`)
 - 目录结构重叠 (`.sce/ops/`)
 
 **影响**:
@@ -213,8 +213,8 @@
 - 自动化工具很有帮助
 
 **最佳实践**:
-- ✅ 使用 `kse docs archive`
-- ✅ 定期运行 `kse docs diagnose`
+- ✅ 使用 `sce docs archive`
+- ✅ 定期运行 `sce docs diagnose`
 - ✅ 遵循命名规范
 - ✅ 及时清理临时文件
 
@@ -276,7 +276,7 @@ rm lib/commands/op.js
 rm -rf .sce/ops/
 
 # 2. 更新代码
-# (手动编辑 bin/kiro-spec-engine.js)
+# (手动编辑 bin/scene-capability-engine.js)
 # (手动编辑 lib/operations/feedback-manager.js)
 # (手动编辑 tests/unit/operations/feedback-manager.test.js)
 
@@ -284,14 +284,14 @@ rm -rf .sce/ops/
 npm test
 
 # 4. 归档文档
-kse docs archive --spec 13-00-devops-integration-foundation
+sce docs archive --spec 13-00-devops-integration-foundation
 
 # 5. 清理非标准目录
 rm -rf .sce/specs/13-00-devops-integration-foundation/docs/
 rm -rf .sce/specs/13-00-devops-integration-foundation/custom/
 
 # 6. 验证合规性
-kse docs diagnose
+sce docs diagnose
 
 # 7. 最终测试
 npm test

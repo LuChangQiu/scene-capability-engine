@@ -2,11 +2,11 @@
 
 ## 简介
 
-当多个 AI Agent 并行使用 kiro-spec-engine (kse) 驱动同一项目时，会产生资源竞争和数据冲突问题。本功能为 kse 引入多 Agent 并行协调能力，包括 Agent 注册与心跳、任务级细粒度锁、无冲突状态更新、Git 分支策略、Steering 文件冲突避免以及可选的中央协调器。所有新增能力必须向后兼容单 Agent 模式，并以渐进式可选增强的方式提供。
+当多个 AI Agent 并行使用 kiro-spec-engine (sce) 驱动同一项目时，会产生资源竞争和数据冲突问题。本功能为 sce 引入多 Agent 并行协调能力，包括 Agent 注册与心跳、任务级细粒度锁、无冲突状态更新、Git 分支策略、Steering 文件冲突避免以及可选的中央协调器。所有新增能力必须向后兼容单 Agent 模式，并以渐进式可选增强的方式提供。
 
 ## 术语表
 
-- **Agent**: 一个独立运行的 AI 实例，通过 kse CLI 或 API 驱动项目开发
+- **Agent**: 一个独立运行的 AI 实例，通过 sce CLI 或 API 驱动项目开发
 - **Agent_Registry**: Agent 注册表，记录所有活跃 Agent 的元数据（`agent-registry.json`）
 - **Heartbeat**: Agent 定期发送的心跳信号，用于检测 Agent 是否存活
 - **Task_Lock**: 任务级锁，保护单个任务的并发访问

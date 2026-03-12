@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This feature enables users to automatically convert their completed Specs into reusable templates that can be shared with the community. Currently, creating templates from Specs is a manual, error-prone process involving copying files, generalizing content, adding metadata, and submitting to the template repository. This feature automates the entire workflow through a CLI command `kse templates create-from-spec`, reducing the time from hours to minutes and ensuring consistency across all community-contributed templates.
+This feature enables users to automatically convert their completed Specs into reusable templates that can be shared with the community. Currently, creating templates from Specs is a manual, error-prone process involving copying files, generalizing content, adding metadata, and submitting to the template repository. This feature automates the entire workflow through a CLI command `sce templates create-from-spec`, reducing the time from hours to minutes and ensuring consistency across all community-contributed templates.
 
 ## Glossary
 
@@ -24,7 +24,7 @@ This feature enables users to automatically convert their completed Specs into r
 
 #### Acceptance Criteria
 
-1. WHEN a user runs `kse templates create-from-spec`, THE System SHALL prompt for the Spec identifier (number or name)
+1. WHEN a user runs `sce templates create-from-spec`, THE System SHALL prompt for the Spec identifier (number or name)
 2. WHEN a user provides a Spec identifier, THE System SHALL validate that the Spec exists in `.sce/specs/`
 3. WHEN a Spec is selected, THE System SHALL verify that requirements.md, design.md, and tasks.md files exist
 4. IF any required file is missing, THEN THE System SHALL display an error message listing the missing files and terminate
@@ -60,7 +60,7 @@ This feature enables users to automatically convert their completed Specs into r
 5. WHEN metadata collection begins, THE System SHALL prompt for tags (comma-separated) for searchability
 6. WHEN metadata collection begins, THE System SHALL prompt for author name (defaulting to git config user.name)
 7. WHEN metadata collection begins, THE System SHALL prompt for version (defaulting to 1.0.0)
-8. WHEN metadata collection begins, THE System SHALL prompt for minimum kse version required (defaulting to current version)
+8. WHEN metadata collection begins, THE System SHALL prompt for minimum sce version required (defaulting to current version)
 9. WHERE a user provides `--interactive=false` flag, THE System SHALL use default values for all metadata
 10. WHEN all metadata is collected, THE System SHALL display a summary and ask for confirmation
 
@@ -73,7 +73,7 @@ This feature enables users to automatically convert their completed Specs into r
 1. WHEN generating template files, THE System SHALL add YAML frontmatter to requirements.md with all collected metadata
 2. WHEN generating template files, THE System SHALL add YAML frontmatter to design.md with all collected metadata
 3. WHEN generating template files, THE System SHALL add YAML frontmatter to tasks.md with all collected metadata
-4. THE System SHALL include these frontmatter fields: name, description, category, tags, author, version, kse_version, created_at
+4. THE System SHALL include these frontmatter fields: name, description, category, tags, author, version, min_sce_version, created_at
 5. WHEN generating frontmatter, THE System SHALL use ISO 8601 format for created_at timestamp
 6. WHEN generating frontmatter, THE System SHALL ensure proper YAML syntax with `---` delimiters
 7. THE System SHALL preserve any existing content below the frontmatter insertion point
@@ -156,8 +156,8 @@ This feature enables users to automatically convert their completed Specs into r
 
 1. WHEN a template is exported, THE System SHALL ensure it follows the same structure as official templates
 2. WHEN a template is exported, THE System SHALL ensure it passes the same validation as templates from the registry
-3. WHEN a template is exported, THE System SHALL be compatible with `kse templates apply` command
-4. WHEN a template is exported, THE System SHALL be compatible with `kse templates validate` command
+3. WHEN a template is exported, THE System SHALL be compatible with `sce templates apply` command
+4. WHEN a template is exported, THE System SHALL be compatible with `sce templates validate` command
 5. THE System SHALL reuse existing TemplateValidator, TemplateApplicator infrastructure
 6. THE System SHALL follow the same naming conventions as official templates (kebab-case)
 7. THE System SHALL generate registry entries compatible with the existing template-registry.json schema
@@ -168,7 +168,7 @@ This feature enables users to automatically convert their completed Specs into r
 
 #### Acceptance Criteria
 
-1. THE System SHALL provide command `kse templates create-from-spec` as the primary entry point
+1. THE System SHALL provide command `sce templates create-from-spec` as the primary entry point
 2. THE System SHALL support `--spec <identifier>` flag to specify Spec without interactive prompt
 3. THE System SHALL support `--output <path>` flag to specify custom export directory
 4. THE System SHALL support `--preview` flag to show diff before export

@@ -1,0 +1,31 @@
+apiVersion: sce.scene/v0.2
+kind: scene
+metadata:
+  obj_id: scene.moqui-page-copilot-dialog
+  obj_version: 0.1.0
+  title: Moqui Page Copilot Dialog
+spec:
+  domain: moqui
+  intent:
+    goal: Inject page-level copilot dialog for contextual human/AI fix loop.
+  model_scope:
+    read:
+      - spec.moqui.page.context.capture
+      - spec.moqui.page.fix.dialog
+    write: []
+  capability_contract:
+    bindings:
+      - type: operation
+        ref: spec.moqui.page.context.capture
+        intent: Discover baseline metadata and topology.
+      - type: operation
+        ref: spec.moqui.page.fix.dialog
+        depends_on: spec.moqui.page.context.capture
+        intent: Apply normalization and mapping for rebuild.
+  governance_contract:
+    risk_level: medium
+    approval:
+      required: false
+    idempotency:
+      required: true
+      key: moqui-page-copilot-dialogFingerprint

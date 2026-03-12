@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This feature adds a `kse scene audit` subcommand that performs a health check on the local scene package registry. The command scans `registry-index.json`, verifies tarball file existence and SHA-256 integrity for every version entry, identifies orphaned tarballs on disk not referenced in the index, reports deprecated versions, and provides a summary of registry health. An optional `--fix` flag automatically removes orphaned tarballs and cleans up index entries for missing tarballs.
+This feature adds a `sce scene audit` subcommand that performs a health check on the local scene package registry. The command scans `registry-index.json`, verifies tarball file existence and SHA-256 integrity for every version entry, identifies orphaned tarballs on disk not referenced in the index, reports deprecated versions, and provides a summary of registry health. An optional `--fix` flag automatically removes orphaned tarballs and cleans up index entries for missing tarballs.
 
 ## Glossary
 
-- **Audit_Command**: The `kse scene audit` CLI subcommand for scanning and reporting registry health.
+- **Audit_Command**: The `sce scene audit` CLI subcommand for scanning and reporting registry health.
 - **Registry_Index**: The `registry-index.json` file that stores metadata for all published packages and their versions.
 - **Version_Entry**: A single version record within a package in the Registry_Index, containing `published_at`, `integrity`, `tarball`, and optionally `deprecated`.
 - **Tarball**: A `.tgz` archive file stored on disk for a published package version.

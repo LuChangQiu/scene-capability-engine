@@ -74,7 +74,7 @@ describe('TaskClaimer', () => {
 - [ ] 1 Legacy backlog item
 - [x] 2 Legacy done item
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Marker completed item
 - [x] 2 Marker completed item

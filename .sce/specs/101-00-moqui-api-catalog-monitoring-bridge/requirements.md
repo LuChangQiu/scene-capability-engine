@@ -47,7 +47,7 @@
 
 ### 需求 4：Scene 命令验收矩阵
 
-**用户故事：** 作为 KSE 使用者，我希望 API/Monitoring 能力在 scene 命令层具备一致行为。
+**用户故事：** 作为 SCE 使用者，我希望 API/Monitoring 能力在 scene 命令层具备一致行为。
 
 #### 验收标准
 

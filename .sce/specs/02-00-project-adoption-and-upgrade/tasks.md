@@ -224,7 +224,7 @@ This implementation plan breaks down the adoption and upgrade system into discre
 
 ### 9. CLI Commands - Adopt
 
-- [x] 9.1 Implement `kse adopt` command
+- [x] 9.1 Implement `sce adopt` command
   - Create `lib/commands/adopt.js`
   - Integrate DetectionEngine, AdoptionStrategy, BackupSystem
   - Implement interactive prompts for conflict resolution
@@ -243,7 +243,7 @@ This implementation plan breaks down the adoption and upgrade system into discre
 
 ### 10. CLI Commands - Upgrade
 
-- [x] 10.1 Implement `kse upgrade` command
+- [x] 10.1 Implement `sce upgrade` command
   - Create `lib/commands/upgrade.js`
   - Integrate VersionManager, MigrationEngine, BackupSystem
   - Implement upgrade plan display
@@ -269,7 +269,7 @@ This implementation plan breaks down the adoption and upgrade system into discre
 
 ### 11. CLI Commands - Rollback
 
-- [x] 11.1 Implement `kse rollback` command
+- [x] 11.1 Implement `sce rollback` command
   - Create `lib/commands/rollback.js`
   - Integrate BackupSystem
   - Implement backup selection interface
@@ -297,7 +297,7 @@ This implementation plan breaks down the adoption and upgrade system into discre
 
 - [x] 13.1 Implement automatic version checking
   - Create `lib/version/version-checker.js`
-  - Implement version mismatch detection on any kse command
+  - Implement version mismatch detection on any sce command
   - Add warning display with upgrade suggestion
   - Implement `--no-version-check` flag to suppress warnings
   - _Requirements: 2.2_
@@ -305,7 +305,7 @@ This implementation plan breaks down the adoption and upgrade system into discre
 - [ ]* 13.2 Write property test for version mismatch detection
   - **Property 8: Version Mismatch Detection**
   - **Validates: Requirements 2.2**
-  - Generate random project/kse version pairs, verify mismatch detection
+  - Generate random project/sce version pairs, verify mismatch detection
   - _Requirements: 2.2_
 
 - [ ]* 13.3 Write unit tests for version checking
@@ -466,7 +466,7 @@ This implementation plan breaks down the adoption and upgrade system into discre
 - Comprehensive documentation (user + developer)
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

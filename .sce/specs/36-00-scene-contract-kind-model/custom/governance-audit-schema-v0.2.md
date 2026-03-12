@@ -28,7 +28,7 @@
   "scene_ref": "scene.order.query",
   "scene_version": "0.2.0",
   "run_mode": "commit",
-  "actor": "kse.runtime",
+  "actor": "sce.runtime",
   "checksum": "sha256"
 }
 ```

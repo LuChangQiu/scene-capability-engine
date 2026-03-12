@@ -2,7 +2,7 @@
 
 ## Overview
 
-This design enhances the `kse adopt` command to provide interactive conflict resolution when template files would overwrite existing project files. The current implementation detects conflicts but only offers a binary choice: skip all conflicts or use the `--force` flag from the command line. This design introduces a three-tier resolution strategy: skip all, overwrite all (with backup), or review conflicts individually. The enhancement maintains backward compatibility with existing flags (`--force`, `--auto`, `--dry-run`) while significantly improving the user experience for interactive adoption scenarios.
+This design enhances the `sce adopt` command to provide interactive conflict resolution when template files would overwrite existing project files. The current implementation detects conflicts but only offers a binary choice: skip all conflicts or use the `--force` flag from the command line. This design introduces a three-tier resolution strategy: skip all, overwrite all (with backup), or review conflicts individually. The enhancement maintains backward compatibility with existing flags (`--force`, `--auto`, `--dry-run`) while significantly improving the user experience for interactive adoption scenarios.
 
 The design focuses on three key areas:
 1. **Interactive prompting** - Clear, user-friendly prompts for conflict resolution
@@ -48,7 +48,7 @@ The design focuses on three key areas:
 ### Data Flow
 
 ```
-User runs `kse adopt`
+User runs `sce adopt`
     │
     ├─> DetectionEngine.analyze()
     │   └─> Returns conflicts[]

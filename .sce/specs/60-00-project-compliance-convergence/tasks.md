@@ -16,6 +16,6 @@
   - Ensured all specs expose complete marker-based task status and report 100%.
 
 - [x] 5 Verify compliance and regression
-  - `kse doctor --docs` shows compliant.
-  - `kse status` shows compliant + all specs 100%.
+  - `sce doctor --docs` shows compliant.
+  - `sce status` shows compliant + all specs 100%.
   - Ran targeted and full test suites successfully.

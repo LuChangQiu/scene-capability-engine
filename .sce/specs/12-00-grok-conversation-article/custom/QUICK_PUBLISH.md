@@ -3,11 +3,11 @@
 ## 🚀 三步发布
 
 ### 第 1 步：启用 Discussions
-访问：https://github.com/heguangyong/kiro-spec-engine/settings
+访问：https://github.com/heguangyong/scene-capability-engine/settings
 勾选 **Discussions** 复选框
 
 ### 第 2 步：创建 Discussion
-访问：https://github.com/heguangyong/kiro-spec-engine/discussions
+访问：https://github.com/heguangyong/scene-capability-engine/discussions
 点击 **New discussion** → 选择 **Show and tell**
 
 ### 第 3 步：复制粘贴下面的内容
@@ -35,7 +35,7 @@ AI 驱动开发的哲学与实践：与 Grok 的深度对话
 
 ## 📖 完整文章
 
-完整对话内容请查看：[AI 驱动开发的哲学与实践](https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md)
+完整对话内容请查看：[AI 驱动开发的哲学与实践](https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md)
 
 ## 🎯 核心观点
 
@@ -55,7 +55,7 @@ AI 驱动开发的哲学与实践：与 Grok 的深度对话
 
 ## 🚀 实践项目
 
-这些理念在 [kiro-spec-engine](https://github.com/heguangyong/kiro-spec-engine) 项目中得到了实践：
+这些理念在 [kiro-spec-engine](https://github.com/heguangyong/scene-capability-engine) 项目中得到了实践：
 
 - 精确解决 session 上下文吞噬问题
 - 文档驱动 + 自动化治理
@@ -86,9 +86,9 @@ AI 驱动开发的哲学与实践：与 Grok 的深度对话
 
 ## 🔗 相关资源
 
-- **项目地址**：https://github.com/heguangyong/kiro-spec-engine
-- **npm 包**：https://www.npmjs.com/package/kiro-spec-engine
-- **完整文章**：[docs/articles/ai-driven-development-philosophy-and-practice.md](https://github.com/heguangyong/kiro-spec-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md)
+- **项目地址**：https://github.com/heguangyong/scene-capability-engine
+- **npm 包**：https://www.npmjs.com/package/scene-capability-engine
+- **完整文章**：[docs/articles/ai-driven-development-philosophy-and-practice.md](https://github.com/heguangyong/scene-capability-engine/blob/main/docs/articles/ai-driven-development-philosophy-and-practice.md)
 
 ---
 

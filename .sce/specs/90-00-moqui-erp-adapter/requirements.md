@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This feature implements a real Moqui ERP Adapter for KSE's scene runtime binding registry. The adapter replaces the simulated `builtin.erp-sim` handler with a production-ready handler that connects to a Moqui ERP instance's REST API (`/api/v1/`). It enables KSE scene manifests with ERP bindings to execute real entity CRUD operations, invoke Moqui services (sync and async), and query screen definitions against a live Moqui backend. The adapter handles JWT authentication with automatic token refresh, maps Moqui's standardized response format to KSE execution results, and integrates two new CLI subcommands (`kse scene connect` and `kse scene discover`) for connection verification and capability discovery.
+This feature implements a real Moqui ERP Adapter for SCE's scene runtime binding registry. The adapter replaces the simulated `builtin.erp-sim` handler with a production-ready handler that connects to a Moqui ERP instance's REST API (`/api/v1/`). It enables SCE scene manifests with ERP bindings to execute real entity CRUD operations, invoke Moqui services (sync and async), and query screen definitions against a live Moqui backend. The adapter handles JWT authentication with automatic token refresh, maps Moqui's standardized response format to SCE execution results, and integrates two new CLI subcommands (`sce scene connect` and `sce scene discover`) for connection verification and capability discovery.
 
 ## Glossary
 
-- **Moqui_Adapter**: The binding handler registered in KSE's BindingRegistry that routes `spec.erp.*` and `moqui.*` binding refs to a live Moqui instance's REST API.
+- **Moqui_Adapter**: The binding handler registered in SCE's BindingRegistry that routes `spec.erp.*` and `moqui.*` binding refs to a live Moqui instance's REST API.
 - **Moqui_Client**: The HTTP client module that manages low-level communication with a Moqui instance, including request construction, JWT token lifecycle, and response normalization.
 - **Adapter_Config**: A JSON configuration object (loaded from `moqui-adapter.json` or passed programmatically) containing connection settings: baseUrl, credentials, timeout, retry policy.
 - **JWT_Token_Pair**: The access token and refresh token pair returned by Moqui's `/api/v1/auth/login` endpoint, used for authenticating subsequent API requests.
@@ -14,16 +14,16 @@ This feature implements a real Moqui ERP Adapter for KSE's scene runtime binding
 - **Service_Endpoint**: Moqui's `/api/v1/services/{serviceName}` REST endpoint supporting POST for synchronous and asynchronous service invocation.
 - **Screen_Endpoint**: Moqui's `/api/v1/screens` REST endpoint for querying screen catalog and screen definitions.
 - **Moqui_Response**: The standardized response format from Moqui: `{ success: boolean, data: {...}, meta: {...}, error: { code, message, details } }`.
-- **Execution_Result**: KSE's binding execution result format: `{ status: 'success'|'failed', handler_id, binding_ref, ... }`.
-- **Connect_Command**: The `kse scene connect` CLI subcommand for testing and verifying connectivity to a Moqui instance.
-- **Discover_Command**: The `kse scene discover` CLI subcommand for listing available entities, services, and screens from a connected Moqui instance.
+- **Execution_Result**: SCE's binding execution result format: `{ status: 'success'|'failed', handler_id, binding_ref, ... }`.
+- **Connect_Command**: The `sce scene connect` CLI subcommand for testing and verifying connectivity to a Moqui instance.
+- **Discover_Command**: The `sce scene discover` CLI subcommand for listing available entities, services, and screens from a connected Moqui instance.
 - **Binding_Ref**: A string reference in a scene manifest binding (e.g., `spec.erp.order-query-service`, `moqui.OrderHeader.list`) that the Moqui_Adapter matches against.
 
 ## Requirements
 
 ### Requirement 1: Adapter Configuration
 
-**User Story:** As a developer, I want to configure the Moqui adapter with connection settings, so that KSE can connect to my Moqui ERP instance.
+**User Story:** As a developer, I want to configure the Moqui adapter with connection settings, so that SCE can connect to my Moqui ERP instance.
 
 #### Acceptance Criteria
 
@@ -84,7 +84,7 @@ This feature implements a real Moqui ERP Adapter for KSE's scene runtime binding
 
 ### Requirement 6: Binding Registry Integration
 
-**User Story:** As a KSE maintainer, I want the Moqui adapter to integrate with the existing BindingRegistry, so that scene manifests with ERP bindings execute against the real Moqui instance.
+**User Story:** As a SCE maintainer, I want the Moqui adapter to integrate with the existing BindingRegistry, so that scene manifests with ERP bindings execute against the real Moqui instance.
 
 #### Acceptance Criteria
 
@@ -136,7 +136,7 @@ This feature implements a real Moqui ERP Adapter for KSE's scene runtime binding
 
 ### Requirement 10: Command Pattern Compliance
 
-**User Story:** As a KSE maintainer, I want the new commands to follow existing patterns, so that the codebase remains consistent.
+**User Story:** As a SCE maintainer, I want the new commands to follow existing patterns, so that the codebase remains consistent.
 
 #### Acceptance Criteria
 

@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-**Feature**: Automatic .gitignore correction during kse adoption and upgrade
+**Feature**: Automatic .gitignore correction during sce adoption and upgrade
 
 **Problem**: 
 - Users may have old .gitignore that excludes entire `.sce/` directory
@@ -11,7 +11,7 @@
 - Manual .gitignore updates are error-prone
 
 **Solution**:
-- Automatically detect and fix .gitignore during `kse adopt` and `kse upgrade`
+- Automatically detect and fix .gitignore during `sce adopt` and `sce upgrade`
 - Use layered strategy: commit Specs, exclude personal state
 - Create backup before modification
 - Clear messaging about what changed and why
@@ -85,18 +85,18 @@
 
 ### 2.4 Integration Points
 
-**FR-2.4.1**: Integrate with `kse adopt`
+**FR-2.4.1**: Integrate with `sce adopt`
 - Run .gitignore check after adoption
 - Fix before showing "adoption complete" message
 - Include in adoption summary
 
-**FR-2.4.2**: Integrate with `kse upgrade`
+**FR-2.4.2**: Integrate with `sce upgrade`
 - Run .gitignore check after upgrade
 - Fix as part of upgrade process
 - Include in upgrade summary
 
 **FR-2.4.3**: Standalone command (optional)
-- `kse doctor --fix-gitignore` for manual fix
+- `sce doctor --fix-gitignore` for manual fix
 - Useful for existing projects
 - Can be run independently
 
@@ -183,8 +183,8 @@
 
 ### AC-4.5: Integration
 
-- ✅ Works in `kse adopt` flow
-- ✅ Works in `kse upgrade` flow
+- ✅ Works in `sce adopt` flow
+- ✅ Works in `sce upgrade` flow
 - ✅ Can be run standalone
 - ✅ Doesn't break existing workflows
 
@@ -194,24 +194,24 @@
 
 ### US-5.1: New Project Adoption
 
-**As a** developer adopting kse for the first time  
+**As a** developer adopting sce for the first time  
 **I want** .gitignore to be automatically configured  
 **So that** I can share Specs with my team without manual setup
 
 **Acceptance**:
-- Run `kse adopt`
+- Run `sce adopt`
 - .gitignore is created/updated automatically
 - Specs are committable, personal state is excluded
 - Clear message explains what happened
 
 ### US-5.2: Existing Project Upgrade
 
-**As a** developer upgrading from old kse version  
+**As a** developer upgrading from old sce version  
 **I want** .gitignore to be automatically updated  
 **So that** I get the new layered strategy without manual work
 
 **Acceptance**:
-- Run `kse upgrade` or `kse adopt`
+- Run `sce upgrade` or `sce adopt`
 - Old `.sce/` exclusion is replaced
 - Layered rules are added
 - Backup is created
@@ -224,8 +224,8 @@
 **So that** I can see all Specs and contribute immediately
 
 **Acceptance**:
-- Clone project with kse
-- Run `kse adopt`
+- Clone project with sce
+- Run `sce adopt`
 - .gitignore is already optimal
 - Can see all Spec documents
 - Personal state is excluded
@@ -237,7 +237,7 @@
 **So that** I can update without full adoption/upgrade
 
 **Acceptance**:
-- Run `kse doctor --fix-gitignore`
+- Run `sce doctor --fix-gitignore`
 - .gitignore is analyzed and fixed
 - Backup is created
 - Summary shows changes
@@ -270,7 +270,7 @@
 **Mitigation**: 
 - Preserve all user rules
 - Only add/update .sce-related rules
-- Use comments to mark kse-managed section
+- Use comments to mark sce-managed section
 
 ### Risk 2: .gitignore syntax errors
 

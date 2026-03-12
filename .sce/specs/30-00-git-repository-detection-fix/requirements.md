@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This specification addresses a critical bug in the repository scanning logic where `kse repo init --nested` incorrectly identifies regular subdirectories as Git repositories. The current implementation detects 34 "repositories" when only 8 are actual Git repositories (containing .git directories), causing confusion and poor user experience.
+This specification addresses a critical bug in the repository scanning logic where `sce repo init --nested` incorrectly identifies regular subdirectories as Git repositories. The current implementation detects 34 "repositories" when only 8 are actual Git repositories (containing .git directories), causing confusion and poor user experience.
 
 ## Glossary
 

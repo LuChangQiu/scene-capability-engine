@@ -109,7 +109,7 @@ This implementation plan addresses the validation issues preventing users from m
 - Version 1.21.0 is a minor version bump (new feature: manual config support)
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

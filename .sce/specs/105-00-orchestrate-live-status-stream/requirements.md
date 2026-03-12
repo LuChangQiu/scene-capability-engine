@@ -28,7 +28,7 @@
 
 #### 验收标准
 
-1. `kse orchestrate status --watch` SHALL 按固定间隔刷新状态
+1. `sce orchestrate status --watch` SHALL 按固定间隔刷新状态
 2. THE 命令 SHALL 支持 `--interval <ms>` 参数
 3. WHEN 状态进入 completed/failed/stopped THEN watch 模式 SHALL 自动退出
 

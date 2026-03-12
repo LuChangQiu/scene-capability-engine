@@ -2,12 +2,12 @@
 
 ## Overview
 
-This design extends kiro-spec-engine (kse) to support multi-user collaboration and cross-tool compatibility.
+This design extends kiro-spec-engine (sce) to support multi-user collaboration and cross-tool compatibility.
 
 
 The design addresses three core challenges:
 
-1. **Steering Exclusivity**: Kiro IDE loads all files in `.sce/steering/`, requiring exclusive use of either kse or project steering rules
+1. **Steering Exclusivity**: Kiro IDE loads all files in `.sce/steering/`, requiring exclusive use of either sce or project steering rules
 2. **Multi-User Collaboration**: Multiple developers need isolated workspaces to avoid conflicts in context and task state
 3. **Cross-Tool Compatibility**: Developers using Claude Code, Cursor, or other AI tools need explicit context export mechanisms
 
@@ -25,7 +25,7 @@ The solution introduces:
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                      CLI Commands                            │
-│  kse adopt | workspace | task | context | prompt            │
+│  sce adopt | workspace | task | context | prompt            │
 └────────────────────┬────────────────────────────────────────┘
                      │
         ┌────────────┼────────────┐
@@ -61,7 +61,7 @@ The solution introduces:
 
 ```
 .sce/
-├── steering/                    # Exclusive: kse OR project steering
+├── steering/                    # Exclusive: sce OR project steering
 │   ├── CORE_PRINCIPLES.md
 │   ├── ENVIRONMENT.md
 │   ├── CURRENT_CONTEXT.md      # Deprecated in multi-user mode
@@ -98,13 +98,13 @@ class SteeringManager {
   async detectSteering(projectPath)
   async promptStrategy(detection)
   async backupSteering(projectPath)
-  async installKseSteering(projectPath)
+  async installSceSteering(projectPath)
   async restoreSteering(projectPath, backupId)
 }
 ```
 
 **Key Behaviors**:
-- Detects conflicts during `kse adopt`
+- Detects conflicts during `sce adopt`
 - Creates timestamped backups before changes
 - Preserves user choice in `adoption-config.json`
 - Provides rollback capability
@@ -226,7 +226,7 @@ class AgentHooksAnalyzer {
 interface AdoptionConfig {
   version: string;
   adoptedAt: string;
-  steeringStrategy: 'use-kse' | 'use-project';
+  steeringStrategy: 'use-sce' | 'use-project';
   steeringBackupId?: string;
   multiUserMode: boolean;
 }
@@ -273,19 +273,19 @@ interface ClaimedTask {
 
 ### Property 1: Steering Conflict Detection
 
-*For any* project with existing steering files, when running `kse adopt`, the system should detect the conflict and prompt for a strategy choice.
+*For any* project with existing steering files, when running `sce adopt`, the system should detect the conflict and prompt for a strategy choice.
 
 **Validates: Requirements 1.1, 2.1**
 
-### Property 2: Steering Backup on Use-KSE
+### Property 2: Steering Backup on Use-SCE
 
-*For any* project where "use-kse" strategy is selected, the system should create a timestamped backup of existing steering files before installing kse steering files.
+*For any* project where "use-sce" strategy is selected, the system should create a timestamped backup of existing steering files before installing sce steering files.
 
 **Validates: Requirements 1.3**
 
 ### Property 3: Steering Preservation on Use-Project
 
-*For any* project where "use-project" strategy is selected, existing steering files should remain unchanged and no kse steering files should be installed.
+*For any* project where "use-project" strategy is selected, existing steering files should remain unchanged and no sce steering files should be installed.
 
 **Validates: Requirements 1.4**
 
@@ -297,7 +297,7 @@ interface ClaimedTask {
 
 ### Property 5: Workspace Initialization
 
-*For any* developer running `kse workspace init`, the system should create `.sce/workspace/{username}/` with CURRENT_CONTEXT.md and task-state.json files.
+*For any* developer running `sce workspace init`, the system should create `.sce/workspace/{username}/` with CURRENT_CONTEXT.md and task-state.json files.
 
 **Validates: Requirements 3.1, 3.2, 3.3**
 
@@ -315,13 +315,13 @@ interface ClaimedTask {
 
 ### Property 8: Task Claiming
 
-*For any* unclaimed task, when a developer runs `kse task claim {task-id}`, the task should be marked with [@username, claimed: {timestamp}] and status should be "in-progress".
+*For any* unclaimed task, when a developer runs `sce task claim {task-id}`, the task should be marked with [@username, claimed: {timestamp}] and status should be "in-progress".
 
 **Validates: Requirements 4.1, 4.2**
 
 ### Property 9: Task Unclaiming
 
-*For any* claimed task, when the claiming developer runs `kse task unclaim {task-id}`, the claim marker should be removed and status should be reset.
+*For any* claimed task, when the claiming developer runs `sce task unclaim {task-id}`, the claim marker should be removed and status should be reset.
 
 **Validates: Requirements 4.4**
 
@@ -333,7 +333,7 @@ interface ClaimedTask {
 
 ### Property 11: Status Display Completeness
 
-*For any* project, running `kse status` should display all specs with their task completion statistics and claimed tasks grouped by developer.
+*For any* project, running `sce status` should display all specs with their task completion statistics and claimed tasks grouped by developer.
 
 **Validates: Requirements 5.1, 5.2, 5.3, 5.4**
 
@@ -345,19 +345,19 @@ interface ClaimedTask {
 
 ### Property 13: Context Export Completeness
 
-*For any* spec, running `kse context export {spec-name}` should generate a Markdown file at `.sce/specs/{spec-name}/context-export.md` containing requirements, design, tasks, and steering rules.
+*For any* spec, running `sce context export {spec-name}` should generate a Markdown file at `.sce/specs/{spec-name}/context-export.md` containing requirements, design, tasks, and steering rules.
 
 **Validates: Requirements 6.1, 6.2, 6.3, 6.4, 6.5**
 
 ### Property 14: Prompt Generation Completeness
 
-*For any* task, running `kse prompt generate {spec-name} {task-id}` should create a prompt file at `.sce/specs/{spec-name}/prompts/task-{task-id}.md` containing task description, relevant requirements, design sections, and status update instructions.
+*For any* task, running `sce prompt generate {spec-name} {task-id}` should create a prompt file at `.sce/specs/{spec-name}/prompts/task-{task-id}.md` containing task description, relevant requirements, design sections, and status update instructions.
 
 **Validates: Requirements 7.1, 7.2, 7.4, 7.5**
 
 ### Property 15: Workspace Sync Bidirectionality
 
-*For any* developer workspace, running `kse workspace sync` should reconcile personal task state with shared tasks.md in both directions while preserving personal CURRENT_CONTEXT.md.
+*For any* developer workspace, running `sce workspace sync` should reconcile personal task state with shared tasks.md in both directions while preserving personal CURRENT_CONTEXT.md.
 
 **Validates: Requirements 9.1, 9.2, 9.4**
 
@@ -375,7 +375,7 @@ interface ClaimedTask {
 
 ### Property 18: Gradual Migration Support
 
-*For any* single-user project, running `kse workspace init` should enable multi-user mode without breaking existing specs or tasks.
+*For any* single-user project, running `sce workspace init` should enable multi-user mode without breaking existing specs or tasks.
 
 **Validates: Requirements 10.4**
 
@@ -466,7 +466,7 @@ test('Property 8: Task Claiming', () => {
 
 1. **Detection**: Check for `.sce/workspace/` to determine mode
 2. **Graceful Degradation**: Single-user commands work without workspaces
-3. **Migration Path**: `kse workspace init` enables multi-user mode
+3. **Migration Path**: `sce workspace init` enables multi-user mode
 4. **Documentation**: Clear migration guide for existing users
 
 ### Performance Considerations

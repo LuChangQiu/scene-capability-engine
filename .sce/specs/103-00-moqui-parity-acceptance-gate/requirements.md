@@ -6,7 +6,7 @@
 
 ## 术语表
 
-- **Parity_Matrix**: `331-poc` 能力到 kse 能力的映射矩阵
+- **Parity_Matrix**: `331-poc` 能力到 sce 能力的映射矩阵
 - **Acceptance_Gate**: 发布前统一验收检查
 - **Release_Recommendation**: 发布建议（go / conditional-go / no-go）
 
@@ -42,7 +42,7 @@
 2. WHEN 结论为 conditional-go THEN 必须附带明确限制条件
 3. WHEN 结论为 no-go THEN 必须附带阻塞项与下一步计划
 
-### 需求 4：KSE 发布收口
+### 需求 4：SCE 发布收口
 
 **用户故事：** 作为发布者，我希望在 parity gate 通过后有标准化发布收口动作。
 

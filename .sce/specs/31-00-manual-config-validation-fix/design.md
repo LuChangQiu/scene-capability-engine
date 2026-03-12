@@ -276,18 +276,18 @@ Each property test should run minimum 100 iterations and be tagged with:
 
 1. **Manual Configuration Workflow**:
    - User creates minimal config file manually
-   - Run `kse repo status` to trigger validation
+   - Run `sce repo status` to trigger validation
    - Verify command succeeds
 
 2. **Invalid Path Detection**:
    - User creates config with non-existent path
-   - Run `kse repo status`
+   - Run `sce repo status`
    - Verify clear error message is displayed
 
 3. **Git Worktree Detection**:
    - Create a Git worktree
    - Add worktree path to config
-   - Run `kse repo status`
+   - Run `sce repo status`
    - Verify worktree is detected and rejected with helpful message
 
 ### Test Execution

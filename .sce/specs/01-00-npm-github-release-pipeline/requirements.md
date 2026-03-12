@@ -37,12 +37,12 @@ This specification defines the requirements for establishing a complete release 
 #### Acceptance Criteria
 
 1. THE Package_Manager SHALL publish the package with the name "kiro-spec-engine"
-2. WHEN the package is installed globally, THE CLI SHALL be accessible via both "kse" and "kiro-spec-engine" commands
+2. WHEN the package is installed globally, THE CLI SHALL be accessible via both "sce" and "kiro-spec-engine" commands
 3. THE Package_Manager SHALL include all necessary files (bin/, template/, locales/) in the published package
 4. THE Package_Manager SHALL exclude development-only files (.git, tests, .github) from the published package
 5. THE Package_Manager SHALL specify Node.js version requirements (>=14.0.0)
 6. THE Package_Manager SHALL include keywords for npm search discoverability
-7. THE Package_Manager SHALL specify the correct entry point (bin/kiro-spec-engine.js)
+7. THE Package_Manager SHALL specify the correct entry point (bin/scene-capability-engine.js)
 
 ### Requirement 3: Python Dependency Detection
 
@@ -102,11 +102,11 @@ This specification defines the requirements for establishing a complete release 
 
 #### Acceptance Criteria
 
-1. WHEN the package is installed globally, THE CLI SHALL respond to `kse --version` command
+1. WHEN the package is installed globally, THE CLI SHALL respond to `sce --version` command
 2. WHEN the package is installed globally, THE CLI SHALL respond to `kiro-spec-engine --version` command
 3. THE CLI SHALL display the correct version number from package.json
-4. WHEN `kse --help` is executed, THE CLI SHALL display usage information in the user's language
-5. THE CLI SHALL provide a `kse doctor` command that checks system requirements (Node.js, Python)
+4. WHEN `sce --help` is executed, THE CLI SHALL display usage information in the user's language
+5. THE CLI SHALL provide a `sce doctor` command that checks system requirements (Node.js, Python)
 
 ### Requirement 8: Documentation Completeness
 
@@ -165,7 +165,7 @@ This specification defines the requirements for establishing a complete release 
 ### Usability Requirements
 
 1. **Error Message Clarity**: WHEN an error occurs, THEN the CLI SHALL display clear, actionable error messages in the user's language
-2. **Help Documentation**: WHEN a user runs `kse --help`, THEN the CLI SHALL display comprehensive usage information with examples
+2. **Help Documentation**: WHEN a user runs `sce --help`, THEN the CLI SHALL display comprehensive usage information with examples
 3. **Installation Simplicity**: WHEN a user installs the package, THEN the installation SHALL require only a single npm command
 4. **Cross-Platform Consistency**: WHEN the CLI runs on different operating systems, THEN the user experience SHALL be consistent across Windows, Linux, and macOS
 

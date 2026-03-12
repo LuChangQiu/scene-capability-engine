@@ -7,7 +7,7 @@ pipeline, scores candidates with deterministic heuristics, and outputs a selecte
 
 ## Command Surface
 
-- `kse scene route`
+- `sce scene route`
 - Options:
   - `--spec <spec-name>`
   - `--spec-manifest <relative-path>`

@@ -20,7 +20,7 @@ These components integrate seamlessly with existing CLI commands (`doctor`, `sta
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    CLI Entry Point                          │
-│                  (bin/kiro-spec-engine.js)                  │
+│                  (bin/scene-capability-engine.js)                  │
 └────────────────────┬────────────────────────────────────────┘
                      │
          ┌───────────┴───────────┐
@@ -1403,7 +1403,7 @@ Store execution history in `.sce/logs/governance-history.json`:
 
 ### Installation
 
-No changes to installation process - features are part of the kse CLI.
+No changes to installation process - features are part of the sce CLI.
 
 ### Configuration
 
@@ -1423,11 +1423,11 @@ Update existing documentation:
 ### Migration
 
 For existing projects:
-1. Run `kse doctor --docs` to assess current state
-2. Run `kse cleanup --dry-run` to preview changes
-3. Run `kse cleanup` to fix violations
-4. Run `kse validate --all` to confirm compliance
-5. Run `kse hooks install` to prevent future violations
+1. Run `sce doctor --docs` to assess current state
+2. Run `sce cleanup --dry-run` to preview changes
+3. Run `sce cleanup` to fix violations
+4. Run `sce validate --all` to confirm compliance
+5. Run `sce hooks install` to prevent future violations
 
 ## Success Metrics
 

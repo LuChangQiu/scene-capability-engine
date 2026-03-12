@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Project Adoption and Upgrade System provides intelligent onboarding for existing projects and smooth version migration for kiro-spec-engine (kse). The system consists of four core subsystems:
+The Project Adoption and Upgrade System provides intelligent onboarding for existing projects and smooth version migration for kiro-spec-engine (sce). The system consists of four core subsystems:
 
 1. **Detection Engine**: Analyzes project structure and determines adoption strategy
 2. **Version Manager**: Tracks versions and manages compatibility
@@ -53,7 +53,7 @@ graph TB
 
 **Adoption Flow**:
 ```
-User runs `kse adopt`
+User runs `sce adopt`
   ↓
 Detection Engine analyzes project
   ↓
@@ -74,7 +74,7 @@ Report generated
 
 **Upgrade Flow**:
 ```
-User runs `kse upgrade`
+User runs `sce upgrade`
   ↓
 Version Manager detects version gap
   ↓
@@ -195,7 +195,7 @@ class VersionManager {
 **Version File Structure** (`.sce/version.json`):
 ```json
 {
-  "kse-version": "1.0.0",
+  "sce-version": "1.0.0",
   "template-version": "1.0.0",
   "created": "2026-01-23T10:00:00Z",
   "last-upgraded": "2026-01-23T10:00:00Z",
@@ -210,7 +210,7 @@ class VersionManager {
 }
 ```
 
-**Compatibility Matrix** (embedded in kse):
+**Compatibility Matrix** (embedded in sce):
 ```javascript
 const COMPATIBILITY_MATRIX = {
   "1.0.0": { compatible: ["1.0.0", "1.1.0", "1.2.0"], breaking: false },
@@ -263,7 +263,7 @@ class FullAdoption extends AdoptionStrategy {
 }
 ```
 
-**Template Structure** (embedded in kse):
+**Template Structure** (embedded in sce):
 ```
 templates/
   kiro/
@@ -446,7 +446,7 @@ class BackupSystem {
 **Commands**:
 
 ```javascript
-// kse adopt
+// sce adopt
 async function adoptCommand(options) {
   const projectPath = process.cwd();
   
@@ -480,7 +480,7 @@ async function adoptCommand(options) {
   console.log(`📦 Backup: ${backup.id}`);
 }
 
-// kse upgrade
+// sce upgrade
 async function upgradeCommand(options) {
   const projectPath = process.cwd();
   
@@ -489,14 +489,14 @@ async function upgradeCommand(options) {
   const targetVersion = options.to || getCurrentKseVersion();
   
   // 2. Check if upgrade needed
-  if (!versionManager.needsUpgrade(currentVersion.kseVersion, targetVersion)) {
-    console.log(`✅ Already up to date (${currentVersion.kseVersion})`);
+  if (!versionManager.needsUpgrade(currentVersion.sceVersion, targetVersion)) {
+    console.log(`✅ Already up to date (${currentVersion.sceVersion})`);
     return;
   }
   
   // 3. Plan upgrade
   const plan = await migrationEngine.planUpgrade(
-    currentVersion.kseVersion,
+    currentVersion.sceVersion,
     targetVersion
   );
   
@@ -531,10 +531,10 @@ async function upgradeCommand(options) {
   // 10. Report
   console.log(`✅ Upgrade complete!`);
   console.log(`📦 Backup: ${backup.id}`);
-  console.log(`💡 Run 'kse rollback' if you encounter issues`);
+  console.log(`💡 Run 'sce rollback' if you encounter issues`);
 }
 
-// kse rollback
+// sce rollback
 async function rollbackCommand(options) {
   const projectPath = process.cwd();
   
@@ -690,7 +690,7 @@ interface BackupInfo {
 
 ### Property 2: Version File Structure Invariant
 
-*For any* adoption or upgrade operation that completes successfully, the resulting `version.json` file should contain all required fields (kse-version, template-version, created, last-upgraded, upgrade-history) with valid values.
+*For any* adoption or upgrade operation that completes successfully, the resulting `version.json` file should contain all required fields (sce-version, template-version, created, last-upgraded, upgrade-history) with valid values.
 
 **Validates: Requirements 1.2 (Mode A), 2.1**
 
@@ -726,7 +726,7 @@ interface BackupInfo {
 
 ### Property 8: Version Mismatch Detection
 
-*For any* project version and installed kse version, if the versions differ, the version manager should correctly identify this as a mismatch requiring upgrade.
+*For any* project version and installed sce version, if the versions differ, the version manager should correctly identify this as a mismatch requiring upgrade.
 
 **Validates: Requirements 2.2**
 
@@ -782,7 +782,7 @@ interface BackupInfo {
 - Invalid project path
 - Insufficient permissions
 - Missing dependencies (Python for Ultrawork)
-- Incompatible kse version
+- Incompatible sce version
 
 **2. Operation Errors** (rollback to backup):
 - File system errors during adoption/upgrade
@@ -881,8 +881,8 @@ Details:
 
 Recovery:
   1. Review existing file content
-  2. Run 'kse adopt --merge' to merge files
-  3. Or run 'kse adopt --replace' to use template (backup created)
+  2. Run 'sce adopt --merge' to merge files
+  3. Or run 'sce adopt --replace' to use template (backup created)
 
 Backup: adopt-2026-01-23-100000
 ```
@@ -897,7 +897,7 @@ Details:
 
 Recovery:
   1. Project rolled back to version 1.0.0
-  2. Report issue: https://github.com/kse/issues
+  2. Report issue: https://github.com/sce/issues
   3. Include backup ID in report
 
 Backup: upgrade-2026-01-23-110000

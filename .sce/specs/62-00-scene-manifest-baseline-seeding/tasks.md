@@ -11,12 +11,12 @@
   - Used hybrid scaffold for `37-00`, erp scaffold for remaining scoped specs.
 
 - [x] 3 Verify catalog activation
-  - Executed `kse scene catalog` and confirmed non-zero valid entries.
+  - Executed `sce scene catalog` and confirmed non-zero valid entries.
   - Captured baseline catalog snapshot JSON in `reports/`.
 
 - [x] 4 Verify governance integrity
-  - Executed `kse status` to confirm task completion visibility.
-  - Executed `kse doctor --docs` and kept project compliance green.
+  - Executed `sce status` to confirm task completion visibility.
+  - Executed `sce doctor --docs` and kept project compliance green.
 
 - [x] 5 Preserve seeding evidence
   - Added seeding report and command evidence under `reports/`.

@@ -634,7 +634,7 @@ describe('auto close-loop CLI integration', () => {
       cwd: tempDir,
       nodeArgs: ['--require', hookPath],
       env: {
-        KSE_TEST_MOCK_CLOSE_LOOP_RUNNER: '1'
+        SCE_TEST_MOCK_CLOSE_LOOP_RUNNER: '1'
       }
     });
 
@@ -872,7 +872,7 @@ describe('auto close-loop CLI integration', () => {
       cwd: tempDir,
       nodeArgs: ['--require', hookPath],
       env: {
-        KSE_TEST_MOCK_CLOSE_LOOP_RUNNER: '1'
+        SCE_TEST_MOCK_CLOSE_LOOP_RUNNER: '1'
       }
     });
 

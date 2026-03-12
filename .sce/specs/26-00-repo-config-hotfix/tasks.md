@@ -93,7 +93,7 @@ The implementation focuses on minimal code changes to ConfigManager and RepoMana
 - Focus on ConfigManager and RepoManager changes only
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

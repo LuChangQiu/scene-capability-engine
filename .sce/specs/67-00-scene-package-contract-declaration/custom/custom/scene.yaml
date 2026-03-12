@@ -1,4 +1,4 @@
-apiVersion: kse.scene/v0.2
+apiVersion: sce.scene/v0.2
 kind: scene
 metadata:
   obj_id: scene.erp.67-00-scene-package-contract-declaration
@@ -30,7 +30,7 @@ spec:
       - type: query
         ref: spec.erp.scene-package-compatibility-check
         depends_on: spec.erp.scene-package-contract-read
-        intent: Evaluate kse and scene API compatibility against policy baseline
+        intent: Evaluate sce and scene API compatibility against policy baseline
         preconditions:
           - contract metadata is loaded
           - target runtime policy is available

@@ -14,7 +14,7 @@ resolution and traceable output artifacts.
 - Publish should output a deterministic template directory with overwrite guard and JSON summary mode.
 
 ### Requirement 2: Scene Package Template Manifest
-- Publish should generate `template.manifest.json` using `kse.scene.template/v0.1`.
+- Publish should generate `template.manifest.json` using `sce.scene.template/v0.1`.
 - Template manifest should declare template id, source spec, package coordinate, parameter schema, and artifact pointers.
 - Template manifest should preserve compatibility and entry scene metadata for downstream instantiate flows.
 

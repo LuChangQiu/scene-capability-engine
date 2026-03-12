@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This feature adds a `kse scene validate` subcommand that performs comprehensive validation of a scene package directory. It checks that `scene-package.json` exists with required fields, validates semver compliance, verifies referenced files exist on disk, validates template variable schemas, and checks inheritance references. All validation errors are collected and reported together rather than failing on the first error.
+This feature adds a `sce scene validate` subcommand that performs comprehensive validation of a scene package directory. It checks that `scene-package.json` exists with required fields, validates semver compliance, verifies referenced files exist on disk, validates template variable schemas, and checks inheritance references. All validation errors are collected and reported together rather than failing on the first error.
 
 ## Glossary
 
-- **Validate_Command**: The `kse scene validate` CLI subcommand for comprehensive package directory validation.
+- **Validate_Command**: The `sce scene validate` CLI subcommand for comprehensive package directory validation.
 - **Package_Directory**: A directory containing a `scene-package.json` file and its referenced assets.
 - **Validation_Report**: The structured output containing all errors and warnings found during validation.
 

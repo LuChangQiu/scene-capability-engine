@@ -29,7 +29,7 @@
     "valid": true,
     "errors": [],
     "kind": "scene",
-    "api_version": "kse.scene/v0.2",
+    "api_version": "sce.scene/v0.2",
     "scene_ref": "scene.hybrid.37-00-scene-runtime-execution-pilot",
     "scene_version": "0.2.0",
     "title": "Scene Runtime Execution Pilot",
@@ -42,9 +42,9 @@
       "query_tokens:1/1"
     ],
     "commands": {
-      "validate": "kse scene validate --spec 37-00-scene-runtime-execution-pilot --spec-manifest custom/scene.yaml",
-      "doctor": "kse scene doctor --spec 37-00-scene-runtime-execution-pilot --spec-manifest custom/scene.yaml --mode dry_run",
-      "run": "kse scene run --spec 37-00-scene-runtime-execution-pilot --spec-manifest custom/scene.yaml --mode dry_run"
+      "validate": "sce scene validate --spec 37-00-scene-runtime-execution-pilot --spec-manifest custom/scene.yaml",
+      "doctor": "sce scene doctor --spec 37-00-scene-runtime-execution-pilot --spec-manifest custom/scene.yaml --mode dry_run",
+      "run": "sce scene run --spec 37-00-scene-runtime-execution-pilot --spec-manifest custom/scene.yaml --mode dry_run"
     }
   },
   "alternatives": [
@@ -54,7 +54,7 @@
       "valid": true,
       "errors": [],
       "kind": "scene",
-      "api_version": "kse.scene/v0.2",
+      "api_version": "sce.scene/v0.2",
       "scene_ref": "scene.erp.36-00-scene-contract-kind-model",
       "scene_version": "0.2.0",
       "title": "Scene Contract Kind Model",
@@ -67,9 +67,9 @@
         "query_tokens:0"
       ],
       "commands": {
-        "validate": "kse scene validate --spec 36-00-scene-contract-kind-model --spec-manifest custom/scene.yaml",
-        "doctor": "kse scene doctor --spec 36-00-scene-contract-kind-model --spec-manifest custom/scene.yaml --mode dry_run",
-        "run": "kse scene run --spec 36-00-scene-contract-kind-model --spec-manifest custom/scene.yaml --mode dry_run"
+        "validate": "sce scene validate --spec 36-00-scene-contract-kind-model --spec-manifest custom/scene.yaml",
+        "doctor": "sce scene doctor --spec 36-00-scene-contract-kind-model --spec-manifest custom/scene.yaml --mode dry_run",
+        "run": "sce scene run --spec 36-00-scene-contract-kind-model --spec-manifest custom/scene.yaml --mode dry_run"
       }
     },
     {
@@ -78,7 +78,7 @@
       "valid": true,
       "errors": [],
       "kind": "scene",
-      "api_version": "kse.scene/v0.2",
+      "api_version": "sce.scene/v0.2",
       "scene_ref": "scene.erp.38-00-scene-runtime-cli-integration",
       "scene_version": "0.2.0",
       "title": "Scene Runtime Cli Integration",
@@ -91,9 +91,9 @@
         "query_tokens:0"
       ],
       "commands": {
-        "validate": "kse scene validate --spec 38-00-scene-runtime-cli-integration --spec-manifest custom/scene.yaml",
-        "doctor": "kse scene doctor --spec 38-00-scene-runtime-cli-integration --spec-manifest custom/scene.yaml --mode dry_run",
-        "run": "kse scene run --spec 38-00-scene-runtime-cli-integration --spec-manifest custom/scene.yaml --mode dry_run"
+        "validate": "sce scene validate --spec 38-00-scene-runtime-cli-integration --spec-manifest custom/scene.yaml",
+        "doctor": "sce scene doctor --spec 38-00-scene-runtime-cli-integration --spec-manifest custom/scene.yaml --mode dry_run",
+        "run": "sce scene run --spec 38-00-scene-runtime-cli-integration --spec-manifest custom/scene.yaml --mode dry_run"
       }
     },
     {
@@ -102,7 +102,7 @@
       "valid": true,
       "errors": [],
       "kind": "scene",
-      "api_version": "kse.scene/v0.2",
+      "api_version": "sce.scene/v0.2",
       "scene_ref": "scene.erp.39-00-scene-validation-and-starter-manifests",
       "scene_version": "0.2.0",
       "title": "Scene Validation And Starter Manifests",
@@ -115,9 +115,9 @@
         "query_tokens:0"
       ],
       "commands": {
-        "validate": "kse scene validate --spec 39-00-scene-validation-and-starter-manifests --spec-manifest custom/scene.yaml",
-        "doctor": "kse scene doctor --spec 39-00-scene-validation-and-starter-manifests --spec-manifest custom/scene.yaml --mode dry_run",
-        "run": "kse scene run --spec 39-00-scene-validation-and-starter-manifests --spec-manifest custom/scene.yaml --mode dry_run"
+        "validate": "sce scene validate --spec 39-00-scene-validation-and-starter-manifests --spec-manifest custom/scene.yaml",
+        "doctor": "sce scene doctor --spec 39-00-scene-validation-and-starter-manifests --spec-manifest custom/scene.yaml --mode dry_run",
+        "run": "sce scene run --spec 39-00-scene-validation-and-starter-manifests --spec-manifest custom/scene.yaml --mode dry_run"
       }
     },
     {
@@ -126,7 +126,7 @@
       "valid": true,
       "errors": [],
       "kind": "scene",
-      "api_version": "kse.scene/v0.2",
+      "api_version": "sce.scene/v0.2",
       "scene_ref": "scene.erp.40-00-scene-scaffold-command",
       "scene_version": "0.2.0",
       "title": "Scene Scaffold Command",
@@ -139,9 +139,9 @@
         "query_tokens:0"
       ],
       "commands": {
-        "validate": "kse scene validate --spec 40-00-scene-scaffold-command --spec-manifest custom/scene.yaml",
-        "doctor": "kse scene doctor --spec 40-00-scene-scaffold-command --spec-manifest custom/scene.yaml --mode dry_run",
-        "run": "kse scene run --spec 40-00-scene-scaffold-command --spec-manifest custom/scene.yaml --mode dry_run"
+        "validate": "sce scene validate --spec 40-00-scene-scaffold-command --spec-manifest custom/scene.yaml",
+        "doctor": "sce scene doctor --spec 40-00-scene-scaffold-command --spec-manifest custom/scene.yaml --mode dry_run",
+        "run": "sce scene run --spec 40-00-scene-scaffold-command --spec-manifest custom/scene.yaml --mode dry_run"
       }
     }
   ]

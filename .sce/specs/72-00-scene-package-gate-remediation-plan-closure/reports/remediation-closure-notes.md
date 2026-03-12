@@ -3,7 +3,7 @@
 ## Commands
 
 ```bash
-node ./bin/kiro-spec-engine.js scene package-gate \
+node ./bin/scene-capability-engine.js scene package-gate \
   --registry .sce/specs/70-00-scene-package-gate-policy-and-evaluation/reports/package-registry-input.json \
   --policy .sce/specs/70-00-scene-package-gate-policy-and-evaluation/reports/package-gate-policy-three-layer.json \
   --out .sce/specs/72-00-scene-package-gate-remediation-plan-closure/reports/package-gate-remediation-fail.json \
@@ -11,7 +11,7 @@ node ./bin/kiro-spec-engine.js scene package-gate \
 ```
 
 ```bash
-node ./bin/kiro-spec-engine.js scene package-gate \
+node ./bin/scene-capability-engine.js scene package-gate \
   --registry .sce/specs/70-00-scene-package-gate-policy-and-evaluation/reports/package-registry-input.json \
   --policy .sce/specs/70-00-scene-package-gate-policy-and-evaluation/reports/package-gate-policy-baseline.json \
   --out .sce/specs/72-00-scene-package-gate-remediation-plan-closure/reports/package-gate-remediation-pass.json \

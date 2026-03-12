@@ -11,13 +11,13 @@ Add two commands to govern template quality lifecycle:
 
 ## Command Surface
 
-- `kse scene package-gate-template`
+- `sce scene package-gate-template`
   - `--out <path>`
   - `--profile <baseline|three-layer>`
   - `--force`
   - `--json`
 
-- `kse scene package-gate`
+- `sce scene package-gate`
   - `--registry <path>` (required)
   - `--policy <path>`
   - `--out <path>`
@@ -28,7 +28,7 @@ Add two commands to govern template quality lifecycle:
 
 ```json
 {
-  "apiVersion": "kse.scene.package-gate/v0.1",
+  "apiVersion": "sce.scene.package-gate/v0.1",
   "profile": "three-layer",
   "rules": {
     "max_invalid_templates": 0,

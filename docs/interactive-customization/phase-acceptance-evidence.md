@@ -90,8 +90,8 @@ Scope:
 
 Evidence:
 
-- `.sce/templates/scene-packages/kse.scene--moqui-interactive-customization-loop--0.1.0/scene-package.json`
-- `.sce/templates/scene-packages/kse.scene--moqui-interactive-customization-loop--0.1.0/scene.template.yaml`
+- `.sce/templates/scene-packages/sce.scene--moqui-interactive-customization-loop--0.1.0/scene-package.json`
+- `.sce/templates/scene-packages/sce.scene--moqui-interactive-customization-loop--0.1.0/scene.template.yaml`
 - `docs/interactive-customization/moqui-interactive-template-playbook.md`
 - `docs/interactive-customization/adapter-extension-contract.schema.json`
 - `docs/interactive-customization/domain-pack-extension-flow.md`

@@ -2,16 +2,16 @@
 
 ## Introduction
 
-This specification defines the foundation for extending kse from a development tool to a DevOps integration platform. The goal is to enable AI to manage operations across multiple computers, reducing operational overhead by building operations knowledge into the development process. This creates a research and operations integrated service engine where AI can progressively take over operational responsibilities.
+This specification defines the foundation for extending sce from a development tool to a DevOps integration platform. The goal is to enable AI to manage operations across multiple computers, reducing operational overhead by building operations knowledge into the development process. This creates a research and operations integrated service engine where AI can progressively take over operational responsibilities.
 
 The system recognizes that operations are project-specific and version-specific, not generic. Each project has unique operational characteristics that must be captured, managed, and executed according to appropriate security levels.
 
 ## Glossary
 
-- **kse**: Kiro Spec Engine, the CLI tool for Spec-driven development
+- **sce**: Scene Capability Engine, the CLI tool for Spec-driven development
 - **Operations_Spec**: A structured set of documents defining how to deploy, monitor, and maintain a specific project version
 - **Takeover_Level**: The degree of AI autonomy in executing operations (L1-L5: observation → suggestion → semi-auto → auto → fully autonomous)
-- **System_Type**: Classification of systems (kse-developed vs existing systems)
+- **System_Type**: Classification of systems (sce-developed vs existing systems)
 - **Security_Environment**: Deployment environment classification (development, test, pre-production, production)
 - **Change_Level**: Classification of change impact (L1: code → L2: config → L3: API → L4: data structure → L5: architecture)
 - **Operations_Knowledge**: Project-specific operational procedures, monitoring rules, and troubleshooting guides
@@ -24,11 +24,11 @@ The system recognizes that operations are project-specific and version-specific,
 
 ### Requirement 1: Operations Spec Structure
 
-**User Story:** As a developer using kse, I want operations knowledge to be captured alongside development specs, so that operational procedures are built-in from the start and versioned with the code.
+**User Story:** As a developer using sce, I want operations knowledge to be captured alongside development specs, so that operational procedures are built-in from the start and versioned with the code.
 
 #### Acceptance Criteria
 
-1. ✅ WHEN a kse project is created, THE System SHALL support an operations spec directory structure at `.sce/specs/{project-name}/operations/`
+1. ✅ WHEN a sce project is created, THE System SHALL support an operations spec directory structure at `.sce/specs/{project-name}/operations/`
 2. ✅ THE Operations_Spec SHALL include these standard documents: deployment.md, monitoring.md, operations.md, troubleshooting.md, rollback.md, change-impact.md, migration-plan.md, feedback-response.md, tools.yaml
 3. ✅ WHEN an operations spec is created, THE System SHALL validate that all required documents exist
 4. ✅ THE System SHALL version operations specs alongside code versions
@@ -47,7 +47,7 @@ The system recognizes that operations are project-specific and version-specific,
    - L4 (Auto): AI executes most operations, logs critical ones for review
    - L5 (Fully Autonomous): AI executes all operations autonomously
 
-2. ✅ WHEN a new kse-developed project is deployed, THE System SHALL default to L3 (Semi-Auto) takeover level
+2. ✅ WHEN a new sce-developed project is deployed, THE System SHALL default to L3 (Semi-Auto) takeover level
 3. ⚠️ WHEN an existing system is adopted, THE System SHALL default to L1 (Observation) takeover level (user to confirm: should this be configurable per system type?)
 4. ✅ WHEN a takeover level is changed, THE System SHALL log the change with timestamp, user, and reason
 5. 🤔 THE System SHALL provide an upgrade path from lower to higher takeover levels (user to confirm: automatic progression based on success metrics, or manual only?)
@@ -67,13 +67,13 @@ The system recognizes that operations are project-specific and version-specific,
 6. 🤔 WHERE emergency situations occur, THE System SHALL support temporary permission elevation (user to confirm: what triggers emergency mode? who can authorize?)
 7. ✅ THE System SHALL audit all AI operations with environment, permission level, operation type, and outcome
 
-### Requirement 4: Operations Knowledge for kse-Developed Projects (Priority Scenario 1 - MVP)
+### Requirement 4: Operations Knowledge for sce-Developed Projects (Priority Scenario 1 - MVP)
 
-**User Story:** As a developer using kse, I want operations knowledge to be automatically captured during development, so that when my project is deployed, AI already knows how to operate it.
+**User Story:** As a developer using sce, I want operations knowledge to be automatically captured during development, so that when my project is deployed, AI already knows how to operate it.
 
 #### Acceptance Criteria
 
-1. ✅ WHEN a kse spec is completed, THE System SHALL prompt the developer to create corresponding operations specs
+1. ✅ WHEN a sce spec is completed, THE System SHALL prompt the developer to create corresponding operations specs
 2. ✅ THE System SHALL provide templates for each operations spec document type
 3. ✅ WHEN deployment.md is created, THE System SHALL capture deployment steps, dependencies, environment variables, and rollback procedures
 4. ✅ WHEN monitoring.md is created, THE System SHALL capture metrics to monitor, alert thresholds, and response procedures
@@ -272,7 +272,7 @@ The system recognizes that operations are project-specific and version-specific,
 **Question:** For coordinated multi-project deployments:
 - Do we need a central coordinator component?
 - Or can coordination be peer-to-peer between project agents?
-- Should the coordinator be part of kse, or a separate service?
+- Should the coordinator be part of sce, or a separate service?
 
 ### 🤔 Question 9: Feedback Automation Level
 **Context:** Requirement 10.9  

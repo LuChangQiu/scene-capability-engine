@@ -25,16 +25,16 @@ Implement core multi-user collaboration infrastructure:
 
 **Features**:
 - Detect existing steering files
-- Interactive strategy prompting (use-kse / use-project)
+- Interactive strategy prompting (use-sce / use-project)
 - Timestamped backup creation
-- kse steering installation
+- sce steering installation
 - Backup restoration
 
 **Key Methods**:
 - `detectSteering()` - Scan for existing steering files
 - `promptStrategy()` - Interactive strategy selection
 - `backupSteering()` - Create timestamped backups
-- `installKseSteering()` - Install kse templates
+- `installSceSteering()` - Install sce templates
 - `restoreSteering()` - Rollback from backup
 
 ### Task 2: Adoption Integration ✅
@@ -42,21 +42,21 @@ Implement core multi-user collaboration infrastructure:
 
 **Features**:
 - Integrated steering detection into adoption workflow
-- Automatic strategy prompting during `kse adopt`
+- Automatic strategy prompting during `sce adopt`
 - Configuration persistence in `adoption-config.json`
 - Comprehensive steering strategy documentation
 
 **Workflow**:
 ```
-kse adopt
+sce adopt
   ↓
 Detect steering files
   ↓
 Prompt strategy (if conflicts)
   ↓
-Backup (if use-kse)
+Backup (if use-sce)
   ↓
-Install kse steering (if use-kse)
+Install sce steering (if use-sce)
   ↓
 Save config
 ```
@@ -127,9 +127,9 @@ Verified steering management functionality.
 
 **Usage**:
 ```bash
-kse status              # Basic status
-kse status --team       # Team activity view
-kse status --verbose    # Detailed information
+sce status              # Basic status
+sce status --team       # Team activity view
+sce status --verbose    # Detailed information
 ```
 
 ### Task 7: Checkpoint ✅
@@ -187,7 +187,7 @@ Verified workspace and task claiming functionality.
 - ✅ 1.1: Detect steering conflicts during adoption
 - ✅ 1.2: Prompt for strategy selection
 - ✅ 1.3: Backup existing steering files
-- ✅ 1.4: Skip kse steering if use-project
+- ✅ 1.4: Skip sce steering if use-project
 - ✅ 2.1-2.6: Strategy selection and documentation
 
 ### Personal Workspaces (Req 3)
@@ -225,7 +225,7 @@ Verified workspace and task claiming functionality.
 ### Steering Management
 ```bash
 # Adopt project with steering strategy
-kse adopt
+sce adopt
 # → Detects conflicts
 # → Prompts for strategy
 # → Backups and installs
@@ -234,37 +234,37 @@ kse adopt
 ### Workspace Management
 ```bash
 # Initialize personal workspace
-kse workspace init
+sce workspace init
 
 # List all workspaces
-kse workspace list
+sce workspace list
 
 # Sync workspace
-kse workspace sync
+sce workspace sync
 ```
 
 ### Task Claiming
 ```bash
 # Claim a task
-kse task claim my-spec 2.1
+sce task claim my-spec 2.1
 
 # Unclaim a task
-kse task unclaim my-spec 2.1
+sce task unclaim my-spec 2.1
 
 # Force claim (override)
-kse task claim my-spec 2.1 --force
+sce task claim my-spec 2.1 --force
 ```
 
 ### Team Status
 ```bash
 # Basic status
-kse status
+sce status
 
 # Team activity view
-kse status --team
+sce status --team
 
 # Detailed view
-kse status --verbose
+sce status --verbose
 ```
 
 ---

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This specification defines the requirements for enhancing kse's multi-repo management functionality to support nested Git repositories. The current implementation (v1.19.0) stops scanning when it encounters a Git repository, preventing discovery of Git subrepositories nested within parent repositories. This enhancement will enable users to manage complex project structures where Git repositories contain other Git repositories as subdirectories.
+This specification defines the requirements for enhancing sce's multi-repo management functionality to support nested Git repositories. The current implementation (v1.19.0) stops scanning when it encounters a Git repository, preventing discovery of Git subrepositories nested within parent repositories. This enhancement will enable users to manage complex project structures where Git repositories contain other Git repositories as subdirectories.
 
 ## Glossary
 
@@ -17,7 +17,7 @@ This specification defines the requirements for enhancing kse's multi-repo manag
 
 ### Requirement 1: Nested Repository Discovery
 
-**User Story:** As a developer, I want kse to discover all Git repositories including those nested within other repositories, so that I can manage complex project structures with subrepositories.
+**User Story:** As a developer, I want sce to discover all Git repositories including those nested within other repositories, so that I can manage complex project structures with subrepositories.
 
 #### Acceptance Criteria
 
@@ -33,9 +33,9 @@ This specification defines the requirements for enhancing kse's multi-repo manag
 
 #### Acceptance Criteria
 
-1. WHEN the user runs `kse repo init` without options, THE System SHALL scan for nested repositories by default
-2. WHEN the user runs `kse repo init --no-nested`, THE System SHALL stop scanning when encountering the first Git repository in each directory path
-3. WHEN the user runs `kse repo init --nested`, THE System SHALL explicitly enable nested repository scanning
+1. WHEN the user runs `sce repo init` without options, THE System SHALL scan for nested repositories by default
+2. WHEN the user runs `sce repo init --no-nested`, THE System SHALL stop scanning when encountering the first Git repository in each directory path
+3. WHEN the user runs `sce repo init --nested`, THE System SHALL explicitly enable nested repository scanning
 4. THE System SHALL display the scan mode (nested or non-nested) during initialization
 5. WHEN the scan mode changes between runs, THE System SHALL update the Repository_Config accordingly
 
@@ -57,7 +57,7 @@ This specification defines the requirements for enhancing kse's multi-repo manag
 
 #### Acceptance Criteria
 
-1. WHEN running `kse repo status`, THE System SHALL display status for all repositories including nested repositories
+1. WHEN running `sce repo status`, THE System SHALL display status for all repositories including nested repositories
 2. WHEN displaying nested repositories, THE System SHALL visually indicate the parent-child relationship through indentation or markers
 3. WHEN a Parent_Repository and Nested_Repository both have changes, THE System SHALL display both statuses independently
 4. WHEN filtering by repository name, THE System SHALL match both parent and nested repositories
@@ -69,7 +69,7 @@ This specification defines the requirements for enhancing kse's multi-repo manag
 
 #### Acceptance Criteria
 
-1. WHEN running `kse repo health`, THE System SHALL check all repositories including nested repositories
+1. WHEN running `sce repo health`, THE System SHALL check all repositories including nested repositories
 2. WHEN a Nested_Repository has issues, THE System SHALL report the issue with the full repository path
 3. WHEN both Parent_Repository and Nested_Repository have issues, THE System SHALL report both independently
 4. THE System SHALL verify that parent paths referenced in nested repositories exist and are valid Git repositories
@@ -81,7 +81,7 @@ This specification defines the requirements for enhancing kse's multi-repo manag
 
 #### Acceptance Criteria
 
-1. WHEN running `kse repo exec`, THE System SHALL execute commands in all repositories including nested repositories
+1. WHEN running `sce repo exec`, THE System SHALL execute commands in all repositories including nested repositories
 2. WHEN executing in nested repositories, THE System SHALL use the correct working directory for each repository
 3. WHEN filtering by repository name, THE System SHALL match both parent and nested repositories
 4. THE System SHALL display the full repository path when showing command output from nested repositories

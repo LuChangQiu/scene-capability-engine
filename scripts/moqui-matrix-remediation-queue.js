@@ -222,7 +222,7 @@ function deriveCapabilitiesFromTemplateId(templateId = '') {
   const text = `${templateId || ''}`.toLowerCase();
   const normalized = text
     .replace(/^sce\.scene--/g, '')
-    .replace(/^kse\.scene--/g, '')
+    .replace(/^sce\.scene--/g, '')
     .replace(/--\d+\.\d+\.\d+$/g, '')
     .replace(/[._]/g, '-');
   const parts = normalized

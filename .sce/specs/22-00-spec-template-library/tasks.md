@@ -215,26 +215,26 @@ This implementation plan breaks down the Spec Template Library feature into disc
 
 - [x] 12. Implement CLI Commands Integration
   - [x] 12.1 Create templates command group
-    - Add `kse templates list` command
-    - Add `kse templates search` command
-    - Add `kse templates show` command
+    - Add `sce templates list` command
+    - Add `sce templates search` command
+    - Add `sce templates show` command
     - _Requirements: 3.1, 3.2, 3.3, 3.4_
   
   - [x] 12.2 Add template management commands
-    - Add `kse templates update` command
-    - Add `kse templates add-source` command
-    - Add `kse templates remove-source` command
-    - Add `kse templates sources` command
+    - Add `sce templates update` command
+    - Add `sce templates add-source` command
+    - Add `sce templates remove-source` command
+    - Add `sce templates sources` command
     - _Requirements: 6.1, 7.1, 7.4_
   
   - [x] 12.3 Add cache management commands
-    - Add `kse templates cache` command
+    - Add `sce templates cache` command
     - Add cache status display
     - Add cache clearing functionality
     - _Requirements: 4.3, 9.3_
   
   - [x] 12.4 Integrate template usage into spec create
-    - Modify `kse spec create` to accept --template option
+    - Modify `sce spec create` to accept --template option
     - Add template path parsing
     - Integrate TemplateManager.applyTemplate
     - _Requirements: 5.1, 5.2, 5.3_
@@ -260,7 +260,7 @@ This implementation plan breaks down the Spec Template Library feature into disc
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 15. Create Official Template Repository Structure
-  - [ ] 15.1 Set up kse-spec-templates repository
+  - [ ] 15.1 Set up sce-spec-templates repository
     - Create repository structure with category directories
     - Add template-registry.json
     - Create README.md and CONTRIBUTING.md
@@ -333,7 +333,7 @@ This implementation plan breaks down the Spec Template Library feature into disc
 - Cross-platform testing (Task 17.2) should be done on actual platforms, not just simulated
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

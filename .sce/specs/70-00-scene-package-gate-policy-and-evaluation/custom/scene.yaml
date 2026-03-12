@@ -1,4 +1,4 @@
-apiVersion: kse.scene/v0.2
+apiVersion: sce.scene/v0.2
 kind: scene
 metadata:
   obj_id: scene.erp.70-00-scene-package-gate-policy-and-evaluation
@@ -10,11 +10,11 @@ spec:
     goal: Enforce template quality gate policy on scene package registry
   model_scope:
     read:
-      - kse.SceneTemplateRegistry.totalTemplates
-      - kse.SceneTemplateRegistry.invalidTemplates
+      - sce.SceneTemplateRegistry.totalTemplates
+      - sce.SceneTemplateRegistry.invalidTemplates
     write:
-      - kse.SceneTemplateGate.resultId
-      - kse.SceneTemplateGate.status
+      - sce.SceneTemplateGate.resultId
+      - sce.SceneTemplateGate.status
   capability_contract:
     bindings:
       - type: query

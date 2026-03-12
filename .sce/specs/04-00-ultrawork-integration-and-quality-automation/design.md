@@ -2,7 +2,7 @@
 
 ## Overview
 
-This design specifies the architecture for integrating Ultrawork quality automation into the kiro-spec-engine (kse) project. The system enhances the existing Ultrawork tool (`ultrawork_enhancer.py`) to actually modify Spec documents (not just identify improvements) and integrates quality checks into the Spec creation workflow to ensure all generated Specs meet professional-grade standards (9.0/10 quality score).
+This design specifies the architecture for integrating Ultrawork quality automation into the kiro-spec-engine (sce) project. The system enhances the existing Ultrawork tool (`ultrawork_enhancer.py`) to actually modify Spec documents (not just identify improvements) and integrates quality checks into the Spec creation workflow to ensure all generated Specs meet professional-grade standards (9.0/10 quality score).
 
 ### Key Design Goals
 

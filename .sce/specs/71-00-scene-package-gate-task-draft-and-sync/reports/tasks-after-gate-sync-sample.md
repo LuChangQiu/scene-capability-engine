@@ -21,7 +21,7 @@
 - [x] 5 Run regression and capture reports
   - Executed `npx jest tests/unit/commands/scene.test.js --runInBand`.
   - Executed command smoke checks with draft and sync outputs.
-  - Executed `npm test -- --runInBand`, `kse doctor --docs`, and `kse status`.
+  - Executed `npm test -- --runInBand`, `sce doctor --docs`, and `sce status`.
 
 ## Scene Package Gate Suggested Tasks (2026-02-09T10:05:08.142Z)
 

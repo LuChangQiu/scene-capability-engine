@@ -10,7 +10,7 @@
 - ✅ 完整单元测试覆盖
 
 ### Phase 2: CLI 命令（Task 5）✅
-- ✅ `kse workspace create/list/switch/remove/info`
+- ✅ `sce workspace create/list/switch/remove/info`
 - ✅ 17 个单元测试全部通过
 - ✅ 用户友好的输出和错误处理
 
@@ -29,14 +29,14 @@
 ### 问题
 当前设计违反 SSOT 原则：
 ```
-~/.kse/workspaces.json  - 工作区列表 + last_accessed
-~/.kse/config.json      - active_workspace + preferences
+~/.sce/workspaces.json  - 工作区列表 + last_accessed
+~/.sce/config.json      - active_workspace + preferences
 ```
 
 ### 解决方案
 采用单一配置文件：
 ```
-~/.kse/workspace-state.json  - 所有工作区相关数据
+~/.sce/workspace-state.json  - 所有工作区相关数据
 ```
 
 ## 下一步计划

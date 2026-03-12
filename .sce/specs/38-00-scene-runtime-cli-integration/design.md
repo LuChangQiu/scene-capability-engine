@@ -7,7 +7,7 @@ The command acts as a thin orchestration layer over runtime pilot components fro
 
 ## Command Surface
 
-- Command: `kse scene run`
+- Command: `sce scene run`
 - Core options:
   - `--spec` or `--manifest`
   - `--mode dry_run|commit`

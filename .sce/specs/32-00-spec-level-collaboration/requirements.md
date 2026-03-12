@@ -107,11 +107,11 @@ This document specifies the requirements for a Spec-level parallel collaboration
 
 #### Acceptance Criteria
 
-1. THE System SHALL provide a `kse collab init` command to initialize a Master_Spec with Sub_Specs
-2. THE System SHALL provide a `kse collab status` command to display all Specs with dependencies and assignments
-3. THE System SHALL provide a `kse collab assign` command to assign a Spec to a Kiro_Instance
-4. THE System SHALL provide a `kse collab verify` command to validate interface contracts and dependencies
-5. THE System SHALL provide a `kse collab integrate` command to run integration tests across Specs
+1. THE System SHALL provide a `sce collab init` command to initialize a Master_Spec with Sub_Specs
+2. THE System SHALL provide a `sce collab status` command to display all Specs with dependencies and assignments
+3. THE System SHALL provide a `sce collab assign` command to assign a Spec to a Kiro_Instance
+4. THE System SHALL provide a `sce collab verify` command to validate interface contracts and dependencies
+5. THE System SHALL provide a `sce collab integrate` command to run integration tests across Specs
 
 ### Requirement 9: Dependency Visualization
 
@@ -119,7 +119,7 @@ This document specifies the requirements for a Spec-level parallel collaboration
 
 #### Acceptance Criteria
 
-1. WHEN running `kse collab status --graph`, THE System SHALL generate a text-based dependency graph
+1. WHEN running `sce collab status --graph`, THE System SHALL generate a text-based dependency graph
 2. THE System SHALL use different symbols to represent Spec_Status (✓ completed, ⧗ in-progress, ○ not-started, ✗ blocked)
 3. THE System SHALL show dependency arrows between Specs
 4. THE System SHALL highlight the critical path (longest dependency chain)

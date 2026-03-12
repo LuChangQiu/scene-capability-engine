@@ -2,7 +2,7 @@
 
 ## 简介
 
-本 Spec 定义 Moqui 能力补齐项目（Program），目标是让 kse 的 Moqui Scene Runtime 能力与 `331-poc` 的核心 REST 能力达到可用对齐，并为主从 Agent 批次执行提供明确的依赖拆分。
+本 Spec 定义 Moqui 能力补齐项目（Program），目标是让 sce 的 Moqui Scene Runtime 能力与 `331-poc` 的核心 REST 能力达到可用对齐，并为主从 Agent 批次执行提供明确的依赖拆分。
 
 本 Program 不直接落地单一代码特性，而是将缺口拆分为可并行子 Spec，并定义统一验收口径、批次顺序和收敛标准。
 

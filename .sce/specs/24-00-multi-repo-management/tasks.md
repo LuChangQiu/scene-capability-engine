@@ -199,7 +199,7 @@ This implementation plan breaks down the multi-repository management feature int
   - Ask the user if questions arise
 
 - [x] 13. Integrate with CLI
-  - [x] 13.1 Add `kse repo` command group to bin/kiro-spec-engine.js
+  - [x] 13.1 Add `sce repo` command group to bin/scene-capability-engine.js
     - Create `lib/commands/repo.js` with Commander integration
     - Add `init` subcommand with options
     - Add `status` subcommand with --verbose flag
@@ -209,10 +209,10 @@ This implementation plan breaks down the multi-repository management feature int
     - _Requirements: 9.1, 9.2, 9.3, 9.4, 9.5_
 
   - [ ]* 13.2 Write integration tests for CLI commands
-    - Test `kse repo init` end-to-end
-    - Test `kse repo status` end-to-end
-    - Test `kse repo exec` end-to-end
-    - Test `kse repo health` end-to-end
+    - Test `sce repo init` end-to-end
+    - Test `sce repo status` end-to-end
+    - Test `sce repo exec` end-to-end
+    - Test `sce repo health` end-to-end
     - Test help text display
     - Test invalid command handling
     - _Requirements: 9.1, 9.2, 9.3_
@@ -243,7 +243,7 @@ This implementation plan breaks down the multi-repository management feature int
 - The implementation follows a bottom-up approach: utilities → services → handlers → CLI
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

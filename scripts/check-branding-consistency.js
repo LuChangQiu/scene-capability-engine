@@ -6,6 +6,14 @@ const path = require('path');
 
 const LEGACY_PATTERNS = [
   {
+    label: 'legacy CLI alias',
+    regex: /\bkse\b/gi
+  },
+  {
+    label: 'legacy social handle',
+    regex: /@kse_dev/gi
+  },
+  {
     label: 'legacy GitHub repository URL',
     regex: /https:\/\/github\.com\/heguangyong\/kiro-spec-engine/gi
   },
@@ -15,19 +23,11 @@ const LEGACY_PATTERNS = [
   },
   {
     label: 'legacy product naming',
-    regex: /\bKiro Spec Engine\b/gi
+    regex: /\bKiro Spec Engine\b|\bScene Capability Orchestrator\b|场景能力编排引擎/g
   },
   {
     label: 'legacy Kiro IDE wording',
     regex: /\bKiro IDE\b/gi
-  },
-  {
-    label: 'legacy English product name',
-    regex: /\bScene Capability Orchestrator\b/gi
-  },
-  {
-    label: 'legacy Chinese product name',
-    regex: /场景能力编排引擎/g
   },
   {
     label: 'legacy npm package name',
@@ -43,6 +43,15 @@ const EXCLUDE_PREFIXES = [
 
 const EXCLUDE_FILES = new Set([
   'scripts/check-branding-consistency.js'
+]);
+
+const HISTORY_ALLOW_PREFIXES = [
+  'docs/releases/',
+  'docs/zh/releases/'
+];
+
+const HISTORY_ALLOW_FILES = new Set([
+  'CHANGELOG.md'
 ]);
 
 const TEXT_EXTENSIONS = new Set([
@@ -70,6 +79,11 @@ function shouldScan(filePath) {
   return TEXT_EXTENSIONS.has(ext);
 }
 
+function isHistoryDocument(filePath) {
+  return HISTORY_ALLOW_FILES.has(filePath)
+    || HISTORY_ALLOW_PREFIXES.some((prefix) => filePath.startsWith(prefix));
+}
+
 function scanFile(filePath) {
   let content = '';
   try {
@@ -83,6 +97,9 @@ function scanFile(filePath) {
   for (const pattern of LEGACY_PATTERNS) {
     const matches = content.match(pattern.regex);
     if (matches && matches.length > 0) {
+      if (isHistoryDocument(filePath)) {
+        continue;
+      }
       hits.push({
         label: pattern.label,
         count: matches.length

@@ -12,15 +12,15 @@
 ### 1.1 当前问题
 
 **用户痛点**:
-- 首次使用 `kse adopt` 时面临大量选择
+- 首次使用 `sce adopt` 时面临大量选择
 - 用户不理解技术细节，感到陌生和担心
 - 需要回答多个问题才能完成接管
 - 默认行为不够智能
 
 **具体场景**:
 ```bash
-$ kse adopt
-🔥 Kiro Spec Engine - Project Adoption
+$ sce adopt
+🔥 Scene Capability Engine - Project Adoption
 
 📦 Analyzing project structure...
 ...
@@ -48,8 +48,8 @@ $ kse adopt
 
 **理想体验**:
 ```bash
-$ kse adopt
-🔥 Kiro Spec Engine - Project Adoption
+$ sce adopt
+🔥 Scene Capability Engine - Project Adoption
 
 📦 Analyzing project structure...
 ✅ Detected existing .sce/ directory (v1.6.0)
@@ -68,7 +68,7 @@ $ kse adopt
 ✅ Adoption completed successfully!
 
 💡 Your original files are safely backed up.
-   To restore: kse rollback backup-20260127-143022
+   To restore: sce rollback backup-20260127-143022
 ```
 
 **核心原则**:
@@ -203,7 +203,7 @@ $ kse adopt
   Preserved: 3 specs, 2 custom files
   
 💡 Your original files are safely backed up.
-   To restore: kse rollback backup-20260127-143022
+   To restore: sce rollback backup-20260127-143022
 ```
 
 **验收标准**:
@@ -324,12 +324,12 @@ $ kse adopt
 
 **作为** 新用户  
 **我想要** 快速接管项目  
-**以便** 开始使用 Kiro Spec Engine
+**以便** 开始使用 Scene Capability Engine
 
 **场景**:
 ```
-给定 我是第一次使用 kse
-当 我运行 `kse adopt`
+给定 我是第一次使用 sce
+当 我运行 `sce adopt`
 那么 系统应该自动完成接管
 并且 不问我任何问题
 并且 显示清晰的进度
@@ -344,8 +344,8 @@ $ kse adopt
 
 **场景**:
 ```
-给定 我已经在使用 kse v1.6.0
-当 我升级到 v1.7.0 并运行 `kse adopt`
+给定 我已经在使用 sce v1.6.0
+当 我升级到 v1.7.0 并运行 `sce adopt`
 那么 系统应该自动备份我的文件
 并且 更新模板文件到新版本
 并且 保留我的 specs 和自定义内容
@@ -376,7 +376,7 @@ $ kse adopt
 **场景**:
 ```
 给定 我已经完成 adopt
-当 我运行 `kse rollback <backup-id>`
+当 我运行 `sce rollback <backup-id>`
 那么 系统应该恢复所有文件
 并且 确认恢复成功
 ```

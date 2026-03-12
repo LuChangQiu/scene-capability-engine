@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Multi-Repository Management feature extends KSE with capabilities to manage multiple Git subrepositories within a single project. The system provides a unified command-line interface for common operations like status checking, batch command execution, and health diagnostics across all configured repositories.
+The Multi-Repository Management feature extends SCE with capabilities to manage multiple Git subrepositories within a single project. The system provides a unified command-line interface for common operations like status checking, batch command execution, and health diagnostics across all configured repositories.
 
 The design follows a modular architecture with clear separation between configuration management, Git operations, and command-line interface layers. It leverages the `simple-git` library for reliable cross-platform Git operations and implements robust error handling to ensure graceful degradation when individual repositories encounter issues.
 
@@ -13,7 +13,7 @@ The design follows a modular architecture with clear separation between configur
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                     CLI Layer (Commander)                    │
-│  kse repo init | status | exec | health                     │
+│  sce repo init | status | exec | health                     │
 └────────────────────────┬────────────────────────────────────┘
                          │
 ┌────────────────────────▼────────────────────────────────────┐
@@ -43,7 +43,7 @@ sequenceDiagram
     participant RepoMgr
     participant Git
 
-    User->>CLI: kse repo status
+    User->>CLI: sce repo status
     CLI->>Handler: execute(options)
     Handler->>ConfigMgr: loadConfig()
     ConfigMgr-->>Handler: config
@@ -576,7 +576,7 @@ class OutputFormatter {
 ### Error Categories
 
 1. **Configuration Errors**
-   - Missing configuration file → Suggest running `kse repo init`
+   - Missing configuration file → Suggest running `sce repo init`
    - Invalid JSON → Display JSON parse error with line number
    - Schema validation failure → Display all validation errors with suggestions
    - Unsupported version → Display upgrade instructions
@@ -714,9 +714,9 @@ Performance tests should verify:
 
 ### Dependencies
 
-- **simple-git**: Git operations wrapper (already used in KSE)
-- **commander**: CLI framework (already used in KSE)
-- **chalk**: Terminal colors (already used in KSE)
+- **simple-git**: Git operations wrapper (already used in SCE)
+- **commander**: CLI framework (already used in SCE)
+- **chalk**: Terminal colors (already used in SCE)
 - **cli-table3**: Table formatting
 - **fast-check**: Property-based testing
 
@@ -785,18 +785,18 @@ The configuration file should be validated against a JSON schema to ensure consi
 ### Future Enhancements (Phase 2)
 
 1. **Branch Management**
-   - `kse repo branch create <name>` - Create branch in all repos
-   - `kse repo branch checkout <name>` - Checkout branch in all repos
-   - `kse repo branch delete <name>` - Delete branch in all repos
+   - `sce repo branch create <name>` - Create branch in all repos
+   - `sce repo branch checkout <name>` - Checkout branch in all repos
+   - `sce repo branch delete <name>` - Delete branch in all repos
 
 2. **Tag Management**
-   - `kse repo tag create <name>` - Create tag in all repos
-   - `kse repo tag push` - Push tags to all remotes
+   - `sce repo tag create <name>` - Create tag in all repos
+   - `sce repo tag push` - Push tags to all remotes
 
 3. **Bulk Operations**
-   - `kse repo push --all` - Push all repos
-   - `kse repo pull --all` - Pull all repos
-   - `kse repo fetch --all` - Fetch all repos
+   - `sce repo push --all` - Push all repos
+   - `sce repo pull --all` - Pull all repos
+   - `sce repo fetch --all` - Fetch all repos
 
 4. **Advanced Filtering**
    - Filter operations by group

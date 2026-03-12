@@ -2,7 +2,7 @@
 
 ## Overview
 
-This plan focuses on restructuring and enhancing kse's documentation system to improve user onboarding. The work is entirely documentation-focused with no code changes to kse itself. We'll create a three-tier documentation structure, tool-specific guides, visual diagrams, and automated validation tests.
+This plan focuses on restructuring and enhancing sce's documentation system to improve user onboarding. The work is entirely documentation-focused with no code changes to sce itself. We'll create a three-tier documentation structure, tool-specific guides, visual diagrams, and automated validation tests.
 
 The implementation follows a logical progression: restructure core documents first, create tool-specific guides, add visual aids, create examples, implement validation, and finally ensure bilingual coverage.
 
@@ -12,7 +12,7 @@ The implementation follows a logical progression: restructure core documents fir
   - Rewrite README.md following the new structure: concise introduction, embedded quick start, core concepts, tool guide links
   - Create `docs/` directory structure with subdirectories: `tools/`, `examples/`, `zh/`
   - Move existing documentation into new structure
-  - Add "What kse is NOT" section to clarify positioning
+  - Add "What sce is NOT" section to clarify positioning
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5_
 
 - [ ]* 1.1 Write validation test for README structure
@@ -46,7 +46,7 @@ The implementation follows a logical progression: restructure core documents fir
     - _Requirements: 3.2, 3.3, 3.5_
 
   - [x] 3.3 Create context flow sequence diagram
-    - Use Mermaid sequence diagram showing: User → kse → AI Tool flow
+    - Use Mermaid sequence diagram showing: User → sce → AI Tool flow
     - Add to `docs/integration-modes.md`
     - _Requirements: 3.4, 3.3, 3.5_
 
@@ -74,7 +74,7 @@ The implementation follows a logical progression: restructure core documents fir
 
   - [x] 4.4 Write `docs/tools/kiro-guide.md`
     - Cover native integration mode
-    - Explain how kse works seamlessly with Kiro
+    - Explain how sce works seamlessly with Kiro
     - _Requirements: 2.1, 2.2, 2.3, 2.4_
 
   - [x] 4.5 Write `docs/tools/vscode-guide.md`
@@ -118,13 +118,13 @@ The implementation follows a logical progression: restructure core documents fir
     - _Requirements: 5.1, 5.4, 5.5_
 
   - [x] 6.4 Write `docs/faq.md`
-    - Answer common questions about kse's purpose and usage
+    - Answer common questions about sce's purpose and usage
     - Organize by category: General, Integration, Workflow, Advanced
     - Include questions about relationship to other tools
     - _Requirements: 5.3_
 
   - [x] 6.5 Write `docs/command-reference.md`
-    - Document all kse commands with examples
+    - Document all sce commands with examples
     - Include expected output for each command
     - _Requirements: 8.2_
 
@@ -152,7 +152,7 @@ The implementation follows a logical progression: restructure core documents fir
     - _Requirements: 8.1_
 
   - [x] 7.4 Add example prompts to tool guides
-    - Include example prompts for using kse-exported context with AI tools
+    - Include example prompts for using sce-exported context with AI tools
     - Add to each tool-specific guide
     - _Requirements: 8.3_
 
@@ -259,7 +259,7 @@ The implementation follows a logical progression: restructure core documents fir
 
   - [ ] 12.4 Implement terminology checker
     - **Property 5: Terminology Consistency**
-    - Ensure consistent use of key terms (Spec, kse, etc.)
+    - Ensure consistent use of key terms (Spec, sce, etc.)
     - **Validates: Requirements 6.2**
 
   - [ ] 12.5 Implement file naming validator
@@ -286,7 +286,7 @@ The implementation follows a logical progression: restructure core documents fir
     - _Requirements: All_
 
   - [ ] 13.3 User testing with Quick Start guide
-    - Recruit 2-3 users unfamiliar with kse
+    - Recruit 2-3 users unfamiliar with sce
     - Observe them following Quick Start guide
     - Collect feedback and iterate
     - _Requirements: 4.1, 4.2, 4.3, 4.4_
@@ -308,12 +308,12 @@ The implementation follows a logical progression: restructure core documents fir
 - All documentation uses Markdown format for maximum compatibility
 - Mermaid diagrams ensure visual aids render on GitHub and most markdown viewers
 - The three-tier structure (README → Core Guides → Tool Guides) enables progressive disclosure
-- Bilingual support makes kse accessible to both English and Chinese developers
+- Bilingual support makes sce accessible to both English and Chinese developers
 - Automated validation ensures documentation quality remains high as project evolves
-- No code changes to kse itself - this is purely a documentation improvement project
+- No code changes to sce itself - this is purely a documentation improvement project
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

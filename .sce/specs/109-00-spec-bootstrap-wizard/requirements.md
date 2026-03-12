@@ -20,7 +20,7 @@
 
 #### 验收标准
 
-1. THE CLI SHALL 提供 `kse spec bootstrap` 命令
+1. THE CLI SHALL 提供 `sce spec bootstrap` 命令
 2. THE 命令 SHALL 支持 `--name`、`--template`、`--profile`、`--non-interactive`
 3. THE 命令 SHALL 支持 `--dry-run` 预览输出
 

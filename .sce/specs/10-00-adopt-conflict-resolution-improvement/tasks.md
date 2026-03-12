@@ -326,7 +326,7 @@ This implementation plan breaks down the conflict resolution enhancement into di
 - Manual testing ensures real-world usability
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

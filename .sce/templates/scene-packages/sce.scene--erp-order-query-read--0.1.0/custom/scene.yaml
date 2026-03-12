@@ -1,0 +1,73 @@
+apiVersion: sce.scene/v0.2
+kind: scene
+metadata:
+  obj_id: scene.erp.order-query-read
+  obj_version: 0.1.0
+  title: ERP Order Query Read
+spec:
+  domain: erp
+  intent:
+    goal: Read and project order data for downstream AI routing
+  model_scope:
+    read:
+      - spec.erp.order-list-query
+      - spec.erp.order-header-read
+      - spec.erp.order-item-read
+    write: []
+  capability_contract:
+    bindings:
+      - type: query
+        ref: spec.erp.order-list-query
+        intent: Fetch order header candidates by dynamic filter
+        preconditions:
+          - query filters are validated
+          - caller has order read permission
+        postconditions:
+          - candidate order list is available
+        timeout_ms: 1800
+        retry: 1
+      - type: query
+        ref: spec.erp.order-header-read
+        depends_on: spec.erp.order-list-query
+        intent: Hydrate order header details for selected records
+        preconditions:
+          - candidate order list is available
+        postconditions:
+          - order header payload is normalized
+        timeout_ms: 1500
+        retry: 1
+      - type: query
+        ref: spec.erp.order-item-read
+        depends_on: spec.erp.order-header-read
+        intent: Attach order item lines for complete order projection
+        preconditions:
+          - order header payload is normalized
+        postconditions:
+          - order projection includes header and items
+        timeout_ms: 1500
+        retry: 1
+  governance_contract:
+    risk_level: low
+    approval:
+      required: false
+    idempotency:
+      required: true
+      key: orderQueryFingerprint
+    data_lineage:
+      sources:
+        - ref: spec.erp.order-list-query
+          fields:
+            - orderId
+            - partyId
+            - statusId
+      transforms:
+        - operation: normalizeOrderHeader
+          description: Normalize order header schema for template-safe output.
+        - operation: mergeOrderItems
+          description: Merge header and line items into order projection.
+      sinks:
+        - ref: spec.erp.order-item-read
+          fields:
+            - orderProjection
+            - items
+            - totals

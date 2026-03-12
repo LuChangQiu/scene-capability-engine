@@ -28,7 +28,7 @@ This plan systematically transforms all kiro-spec-engine documentation from manu
     - Verify scanner finds all instances
   
   - [ ]* 2.3 Write unit tests for pattern scanner
-    - Test specific pattern examples (run `kse create-spec`, you create, Step 1)
+    - Test specific pattern examples (run `sce create-spec`, you create, Step 1)
     - Test edge cases (empty files, files with only patterns)
     - Test context extraction accuracy
     - _Requirements: 1.1, 1.2, 1.3_
@@ -293,7 +293,7 @@ This plan systematically transforms all kiro-spec-engine documentation from manu
 - Style guide ensures future documentation maintains AI autonomy standards
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

@@ -64,14 +64,14 @@ Detect existing steering files
     │
     └─ Steering files found → Prompt for strategy
            ↓
-           ├─ use-kse → Backup existing → Install sce steering
+           ├─ use-sce → Backup existing → Install sce steering
            │
            └─ use-project → Keep existing → Skip sce steering
 ```
 
 ## Rollback
 
-If you chose "use-kse" and want to restore your original steering files:
+If you chose "use-sce" and want to restore your original steering files:
 
 ```bash
 # List available backups
@@ -100,7 +100,7 @@ Your steering strategy choice is saved in `.sce/adoption-config.json`:
 {
   "version": "1.0.0",
   "adoptedAt": "2026-01-23T10:00:00.000Z",
-  "steeringStrategy": "use-kse",
+  "steeringStrategy": "use-sce",
   "steeringBackupId": "steering-2026-01-23T10-00-00-000Z",
   "multiUserMode": false,
   "lastUpdated": "2026-01-23T10:00:00.000Z"
@@ -111,7 +111,7 @@ Your steering strategy choice is saved in `.sce/adoption-config.json`:
 
 ### For New sce Users
 
-1. **Choose "use-kse"** to get the full experience
+1. **Choose "use-sce"** to get the full experience
 2. Review the installed steering files to understand sce workflow
 3. Customize `ENVIRONMENT.md` for your project specifics
 4. Update `CURRENT_CONTEXT.md` as you work on different Specs
@@ -123,7 +123,7 @@ Your steering strategy choice is saved in `.sce/adoption-config.json`:
 3. Consider creating a hybrid approach:
    - Keep your core steering rules
    - Add sce-specific rules in separate files
-   - Use file naming to control load order (e.g., `00-core.md`, `10-kse.md`)
+   - Use file naming to control load order (e.g., `00-core.md`, `10-sce.md`)
 
 ### For Teams
 
@@ -138,13 +138,13 @@ Your steering strategy choice is saved in `.sce/adoption-config.json`:
 
 **Solution:**
 - Check which steering strategy you chose: `cat .sce/adoption-config.json`
-- If "use-kse", verify sce steering files are present
+- If "use-sce", verify sce steering files are present
 - If "use-project", ensure your steering files are compatible with sce
 
 ### Problem: Want to switch strategies after adoption
 
 **Solution:**
-1. If currently "use-kse":
+1. If currently "use-sce":
    ```bash
    sce rollback {steering-backup-id}
    ```

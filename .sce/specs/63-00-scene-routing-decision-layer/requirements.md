@@ -2,7 +2,7 @@
 
 ## Introduction
 
-After introducing `scene catalog`, KSE can discover available scene manifests. The next layer is routing:
+After introducing `scene catalog`, SCE can discover available scene manifests. The next layer is routing:
 translate user intent selectors into the most appropriate scene target and provide actionable execution commands.
 
 ## Requirements

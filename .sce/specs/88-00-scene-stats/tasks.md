@@ -2,7 +2,7 @@
 
 ## Overview
 
-Add `kse scene stats` subcommand that computes and displays aggregate statistics about the local scene package registry. All code in `lib/commands/scene.js`, following normalize → validate → run → print pattern. Single `runSceneStatsCommand` function computes all metrics in one pass over the registry index.
+Add `sce scene stats` subcommand that computes and displays aggregate statistics about the local scene package registry. All code in `lib/commands/scene.js`, following normalize → validate → run → print pattern. Single `runSceneStatsCommand` function computes all metrics in one pass over the registry index.
 
 ## Tasks
 

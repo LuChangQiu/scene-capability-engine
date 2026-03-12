@@ -1,7 +1,7 @@
 # Kiro Specs 工作流指南
 
 > **用途**: Spec 驱动开发的完整工作流程和设计原则  
-> **适用**: 所有使用 kiro-spec-engine (kse) 的 Spec 驱动开发项目
+> **适用**: 所有使用 kiro-spec-engine (sce) 的 Spec 驱动开发项目
 
 ---
 
@@ -131,4 +131,4 @@ _Requirements: 3.1, 3.2_
 
 **版本**: v2.0  
 **更新**: 2026-01-27  
-**适用范围**: 所有使用 kiro-spec-engine (kse) 的 Spec 驱动开发项目
+**适用范围**: 所有使用 kiro-spec-engine (sce) 的 Spec 驱动开发项目

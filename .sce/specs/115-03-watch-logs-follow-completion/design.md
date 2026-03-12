@@ -25,6 +25,6 @@
 
 ## Verification
 
-1. `kse watch logs --follow` 可持续输出新增日志。
+1. `sce watch logs --follow` 可持续输出新增日志。
 2. `--tail N --follow` 组合行为正确。
 3. 测试覆盖新增逻辑并通过。

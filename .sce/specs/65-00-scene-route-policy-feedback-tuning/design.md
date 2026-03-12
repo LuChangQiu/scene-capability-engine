@@ -8,7 +8,7 @@ candidate exploration, and stable good outcomes improve precision.
 
 ## Command Surface
 
-- `kse scene route-policy-suggest`
+- `sce scene route-policy-suggest`
 - Options:
   - `--eval <path...>`: explicit eval report files
   - `--eval-dir <path>`: discover eval report JSON files in a directory

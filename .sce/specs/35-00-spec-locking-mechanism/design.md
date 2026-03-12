@@ -2,7 +2,7 @@
 
 ## Overview
 
-This design document describes the implementation of a file-based Spec locking mechanism for the kiro-spec-engine (kse) project. The system enables multiple developers to coordinate their work by acquiring exclusive locks on Specs before editing, preventing conflicts from simultaneous modifications.
+This design document describes the implementation of a file-based Spec locking mechanism for the kiro-spec-engine (sce) project. The system enables multiple developers to coordinate their work by acquiring exclusive locks on Specs before editing, preventing conflicts from simultaneous modifications.
 
 The locking mechanism uses JSON-based lock files stored within each Spec directory, combined with machine identification to track lock ownership. The design prioritizes simplicity, reliability, and backward compatibility with existing workflows.
 
@@ -36,7 +36,7 @@ graph TB
 
 The architecture follows a layered approach:
 
-1. **CLI Layer**: Handles user commands (`kse lock`, `kse unlock`, `kse lock status`)
+1. **CLI Layer**: Handles user commands (`sce lock`, `sce unlock`, `sce lock status`)
 2. **Core Layer**: Contains business logic for lock management, machine identification, and lock file operations
 3. **Storage Layer**: Manages file system operations and user configuration persistence
 
@@ -193,11 +193,11 @@ class LockFile {
 ### 4. CLI Commands
 
 ```javascript
-// kse lock <spec-name> [--reason <reason>] [--timeout <hours>]
-// kse unlock <spec-name> [--force]
-// kse lock status [spec-name]
-// kse lock cleanup
-// kse lock whoami
+// sce lock <spec-name> [--reason <reason>] [--timeout <hours>]
+// sce unlock <spec-name> [--force]
+// sce lock status [spec-name]
+// sce lock cleanup
+// sce lock whoami
 ```
 
 ## Data Models

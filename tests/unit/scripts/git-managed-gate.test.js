@@ -3,7 +3,7 @@
 const fs = require('fs-extra');
 const os = require('os');
 const path = require('path');
-const { spawnSync } = require('child_process');
+const { execSync, spawnSync } = require('child_process');
 
 const {
   parseArgs,
@@ -12,6 +12,28 @@ const {
 } = require('../../../scripts/git-managed-gate');
 
 function runGit(repoPath, args) {
+  if (process.platform === 'win32') {
+    const whereResult = spawnSync('where', ['git'], {
+      cwd: repoPath,
+      encoding: 'utf8',
+      windowsHide: true
+    });
+    const gitPath = `${whereResult.stdout || ''}`
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .find(Boolean);
+    const commandString = [JSON.stringify(gitPath || 'git'), ...args.map((arg) => JSON.stringify(String(arg)))].join(' ');
+    try {
+      return `${execSync(commandString, {
+        cwd: repoPath,
+        encoding: 'utf8',
+        windowsHide: true
+      }) || ''}`.trim();
+    } catch (error) {
+      throw new Error(`git ${args.join(' ')} failed: ${error.stderr || error.stdout || error.message}`);
+    }
+  }
+
   const result = spawnSync('git', args, {
     cwd: repoPath,
     encoding: 'utf8',

@@ -9,7 +9,7 @@ This spec adds doctor-driven task sync into target spec `tasks.md`.
 ## Requirements
 
 ### Requirement 1: Task Sync Option
-- Add `--sync-spec-tasks` option to `kse scene doctor`.
+- Add `--sync-spec-tasks` option to `sce scene doctor`.
 - Option must work only when doctor source uses `--spec`.
 
 ### Requirement 2: Actionable Suggestion Filtering

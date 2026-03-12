@@ -71,9 +71,9 @@ node scripts/matrix-regression-gate.js \
 
 Recommended GitHub Variables:
 
-- `KSE_MATRIX_REGRESSION_GATE_ENFORCE=true`
-- `KSE_MATRIX_REGRESSION_GATE_MAX=0`
-- `KSE_MOQUI_RELEASE_SUMMARY_ENFORCE=true` (optional hard gate for release summary `failed` state)
+- `SCE_MATRIX_REGRESSION_GATE_ENFORCE=true`
+- `SCE_MATRIX_REGRESSION_GATE_MAX=0`
+- `SCE_MOQUI_RELEASE_SUMMARY_ENFORCE=true` (optional hard gate for release summary `failed` state)
 
 Security baseline:
 

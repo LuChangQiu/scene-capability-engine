@@ -7,7 +7,7 @@ artifact. The layer includes two CLI commands: one for contract generation and o
 
 ## Command Surface
 
-- `kse scene package-template`
+- `sce scene package-template`
   - `--spec <spec-name>`
   - `--out <path>`
   - `--kind <kind>`
@@ -17,7 +17,7 @@ artifact. The layer includes two CLI commands: one for contract generation and o
   - `--force`
   - `--json`
 
-- `kse scene package-validate`
+- `sce scene package-validate`
   - `--spec <spec-name>` or `--package <path>`
   - `--spec-package <relative-path>`
   - `--json`
@@ -26,16 +26,16 @@ artifact. The layer includes two CLI commands: one for contract generation and o
 
 ```json
 {
-  "apiVersion": "kse.scene.package/v0.1",
+  "apiVersion": "sce.scene.package/v0.1",
   "kind": "scene-template",
   "metadata": {
-    "group": "kse.scene",
+    "group": "sce.scene",
     "name": "erp-order-query",
     "version": "0.1.0"
   },
   "compatibility": {
-    "kse_version": ">=1.24.0",
-    "scene_api_version": "kse.scene/v0.2"
+    "min_sce_version": ">=1.24.0",
+    "scene_api_version": "sce.scene/v0.2"
   },
   "capabilities": {
     "provides": ["scene.erp.query.readonly"],

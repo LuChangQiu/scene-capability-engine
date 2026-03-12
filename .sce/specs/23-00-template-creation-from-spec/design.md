@@ -2,7 +2,7 @@
 
 ## Overview
 
-This feature automates the conversion of completed Specs into reusable templates through the `kse templates create-from-spec` command. The system analyzes Spec files (requirements.md, design.md, tasks.md), replaces project-specific content with template variables, adds YAML frontmatter metadata, validates the output, and exports a complete template package ready for submission to the template repository.
+This feature automates the conversion of completed Specs into reusable templates through the `sce templates create-from-spec` command. The system analyzes Spec files (requirements.md, design.md, tasks.md), replaces project-specific content with template variables, adds YAML frontmatter metadata, validates the output, and exports a complete template package ready for submission to the template repository.
 
 **Key Design Principles**:
 - **Reuse Existing Infrastructure**: Leverage TemplateValidator, TemplateApplicator, and other components from Spec 22-00
@@ -18,7 +18,7 @@ This feature automates the conversion of completed Specs into reusable templates
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    CLI Entry Point                          │
-│              kse templates create-from-spec                 │
+│              sce templates create-from-spec                 │
 └────────────────────┬────────────────────────────────────────┘
                      │
                      ▼
@@ -373,7 +373,7 @@ class MetadataCollector {
   ],
   author: 'John Doe',                 // from git config
   version: '1.0.0',                   // semver
-  kse_version: '1.16.0',              // minimum kse version
+  min_sce_version: '1.16.0',              // minimum sce version
   created_at: '2025-01-31',           // ISO date
   updated_at: '2025-01-31'            // ISO date
 }
@@ -456,7 +456,7 @@ author: John Doe
 created_at: 2025-01-31
 updated_at: 2025-01-31
 version: 1.0.0
-kse_version: 1.16.0
+min_sce_version: 1.16.0
 ---
 ```
 
@@ -646,7 +646,7 @@ class TemplateExporter {
   ],
   author: 'John Doe',
   version: '1.0.0',
-  kse_version: '1.16.0',
+  min_sce_version: '1.16.0',
   created_at: '2025-01-31',
   updated_at: '2025-01-31'
 }
@@ -726,7 +726,7 @@ class TemplateExporter {
 
 ### Property 5: Frontmatter Addition
 
-*For any* template file (requirements.md, design.md, tasks.md), the system should add valid YAML frontmatter containing all required metadata fields (name, description, category, tags, author, version, kse_version, created_at) with proper syntax and delimiters, while preserving the original content below.
+*For any* template file (requirements.md, design.md, tasks.md), the system should add valid YAML frontmatter containing all required metadata fields (name, description, category, tags, author, version, min_sce_version, created_at) with proper syntax and delimiters, while preserving the original content below.
 
 **Validates: Requirements 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7**
 
@@ -762,13 +762,13 @@ class TemplateExporter {
 
 ### Property 11: Template Compatibility
 
-*For any* exported template, the system should ensure it follows the same structure as official templates, passes TemplateValidator validation, is compatible with `kse templates apply` command, is compatible with `kse templates validate` command, uses kebab-case naming, and generates registry entries compatible with the template-registry.json schema.
+*For any* exported template, the system should ensure it follows the same structure as official templates, passes TemplateValidator validation, is compatible with `sce templates apply` command, is compatible with `sce templates validate` command, uses kebab-case naming, and generates registry entries compatible with the template-registry.json schema.
 
 **Validates: Requirements 10.1, 10.2, 10.3, 10.4, 10.6, 10.7**
 
 ### Property 12: Template Application Round-Trip
 
-*For any* template created from a Spec, applying that template with `kse templates apply` should create a new Spec with the same structure and content (with variables replaced), demonstrating that the template creation and application processes are inverses.
+*For any* template created from a Spec, applying that template with `sce templates apply` should create a new Spec with the same structure and content (with variables replaced), demonstrating that the template creation and application processes are inverses.
 
 **Validates: Requirements 10.3**
 
@@ -857,7 +857,7 @@ Details:
   - Identifier: 99-00-nonexistent
   - Searched in: .sce/specs/
 
-Suggestion: Run 'kse specs list' to see available Specs
+Suggestion: Run 'sce specs list' to see available Specs
 ```
 
 ```
@@ -976,7 +976,7 @@ test('generalization replaces all pattern instances', () => {
 
 **Command Structure**:
 ```bash
-kse templates create-from-spec [options]
+sce templates create-from-spec [options]
 
 Options:
   --spec <identifier>      Spec to convert (number or name)
@@ -1030,4 +1030,4 @@ Options:
 
 **Version**: 1.0.0  
 **Created**: 2025-01-31  
-**Author**: kse-team
+**Author**: sce-team

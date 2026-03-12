@@ -8,10 +8,10 @@ source code. The route command keeps deterministic behavior while using policy w
 ## Command Surface
 
 ### Route command extension
-- `kse scene route --route-policy <path>`
+- `sce scene route --route-policy <path>`
 
 ### New template command
-- `kse scene route-policy-template`
+- `sce scene route-policy-template`
 - Options:
   - `--out <path>`
   - `--profile <profile>` (`default|erp|hybrid|robot`)

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Add `kse scene audit` subcommand to perform health checks on the local scene package registry. Scans registry-index.json, verifies tarball existence and SHA-256 integrity, detects orphaned tarballs, reports deprecated versions, and optionally fixes issues. All code in `lib/commands/scene.js`, following normalize → validate → run → print pattern.
+Add `sce scene audit` subcommand to perform health checks on the local scene package registry. Scans registry-index.json, verifies tarball existence and SHA-256 integrity, detects orphaned tarballs, reports deprecated versions, and optionally fixes issues. All code in `lib/commands/scene.js`, following normalize → validate → run → print pattern.
 
 ## Tasks
 

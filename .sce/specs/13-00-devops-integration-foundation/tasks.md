@@ -2,7 +2,7 @@
 
 ## Overview
 
-This implementation plan focuses on the MVP scope: Operations Spec Structure, Operations Knowledge for kse-Developed Projects, Templates and Validation, User Feedback Integration, and AI Operations Audit. The implementation follows a bottom-up approach, building core infrastructure first, then adding features incrementally.
+This implementation plan focuses on the MVP scope: Operations Spec Structure, Operations Knowledge for sce-Developed Projects, Templates and Validation, User Feedback Integration, and AI Operations Audit. The implementation follows a bottom-up approach, building core infrastructure first, then adding features incrementally.
 
 ## Tasks
 
@@ -294,7 +294,7 @@ This implementation plan focuses on the MVP scope: Operations Spec Structure, Op
   - Ensure all tests pass, ask the user if questions arise.
 
 - [x] 12. Implement CLI Commands
-  - [x] 12.1 Implement `kse ops init` command
+  - [x] 12.1 Implement `sce ops init` command
     - Parse command arguments
     - Create operations directory structure
     - Generate templates from library
@@ -306,7 +306,7 @@ This implementation plan focuses on the MVP scope: Operations Spec Structure, Op
     - Test template generation
     - Test error handling
   
-  - [x] 12.3 Implement `kse ops validate` command
+  - [x] 12.3 Implement `sce ops validate` command
     - Parse command arguments
     - Load operations spec
     - Run validation
@@ -318,7 +318,7 @@ This implementation plan focuses on the MVP scope: Operations Spec Structure, Op
     - Test error reporting
     - Test success cases
   
-  - [x] 12.5 Implement `kse ops audit` command
+  - [x] 12.5 Implement `sce ops audit` command
     - Parse command arguments
     - Build audit query from parameters
     - Execute query
@@ -330,7 +330,7 @@ This implementation plan focuses on the MVP scope: Operations Spec Structure, Op
     - Test result formatting
     - Test date range filtering
   
-  - [x] 12.7 Implement `kse ops takeover` command
+  - [x] 12.7 Implement `sce ops takeover` command
     - Parse command arguments (get/set)
     - Get or set takeover level
     - Log level changes
@@ -342,7 +342,7 @@ This implementation plan focuses on the MVP scope: Operations Spec Structure, Op
     - Test set operation with reason
     - Test audit logging
   
-  - [x] 12.9 Implement `kse ops feedback` command
+  - [x] 12.9 Implement `sce ops feedback` command
     - Parse command arguments (list/respond)
     - List feedback with filters
     - Respond to feedback
@@ -464,7 +464,7 @@ This order ensures each component can be tested independently before integration
 
 **2026-01-27**: Removed old `op` command system
 - Deleted `lib/commands/op.js` (old OpSpec system)
-- Removed command registrations from `bin/kiro-spec-engine.js`
+- Removed command registrations from `bin/scene-capability-engine.js`
 - Deleted `.sce/ops/` directory (contained only sample OpSpec)
 - Migrated FeedbackManager path from `.sce/ops/feedback/` to `.sce/feedback/`
 - Reason: Old system conflicted with new `ops` command and used overlapping directory structure
@@ -512,7 +512,7 @@ This order ensures each component can be tested independently before integration
 **总评**: 9/10 - 优秀，生产就绪
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

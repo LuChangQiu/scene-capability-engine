@@ -163,30 +163,30 @@ This plan implements a comprehensive Spec-level collaboration system enabling mu
     - Add help text and usage examples
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5_
   
-  - [x] 9.2 Implement `kse collab init` command
+  - [x] 9.2 Implement `sce collab init` command
     - Parse command arguments (master spec name, sub-specs)
     - Call CollaborationManager.initMasterSpec
     - Display success message with created Specs
     - _Requirements: 8.1_
   
-  - [x] 9.3 Implement `kse collab status` command
+  - [x] 9.3 Implement `sce collab status` command
     - Support --graph flag for visualization
     - Call CollaborationManager.getCollaborationStatus
     - Format and display output
     - _Requirements: 8.2, 9.1_
   
-  - [x] 9.4 Implement `kse collab assign` command
+  - [x] 9.4 Implement `sce collab assign` command
     - Parse spec name and Kiro instance
     - Call CollaborationManager.assignSpec
     - Display assignment confirmation
     - _Requirements: 8.3_
   
-  - [x] 9.5 Implement `kse collab verify` command
+  - [x] 9.5 Implement `sce collab verify` command
     - Call CollaborationManager.verifyContracts
     - Display verification results
     - _Requirements: 8.4_
   
-  - [x] 9.6 Implement `kse collab integrate` command
+  - [x] 9.6 Implement `sce collab integrate` command
     - Parse spec names to test
     - Call CollaborationManager.runIntegrationTests
     - Display test results
@@ -206,7 +206,7 @@ This plan implements a comprehensive Spec-level collaboration system enabling mu
     - _Requirements: 10.1, 10.2, 10.3, 10.5_
   
   - [x] 10.2 Create migration command
-    - Implement `kse collab migrate` to convert standalone Spec to collaborative
+    - Implement `sce collab migrate` to convert standalone Spec to collaborative
     - Generate collaboration.json from existing Spec
     - _Requirements: 10.4_
   
@@ -267,7 +267,7 @@ This plan implements a comprehensive Spec-level collaboration system enabling mu
 - Integration tests verify end-to-end workflows
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

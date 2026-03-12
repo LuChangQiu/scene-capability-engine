@@ -2,7 +2,7 @@
 
 ## Overview
 
-Adds a comprehensive `kse scene validate` subcommand that validates a scene package directory for structural integrity, metadata correctness, file existence, and template variable schema compliance. Follows the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`. No new dependencies.
+Adds a comprehensive `sce scene validate` subcommand that validates a scene package directory for structural integrity, metadata correctness, file existence, and template variable schema compliance. Follows the normalize → validate → run → print pattern. All code in `lib/commands/scene.js`. No new dependencies.
 
 The command name will be `scene validate-package` to avoid collision with the existing `scene validate` (which validates scene manifests). Alternatively, this can be registered as an enhancement to the existing `scene package-validate` by adding `--package <dir>` directory-level validation alongside the existing contract-only validation.
 
@@ -106,7 +106,7 @@ Enhanced to display warnings and strict mode indicator. Existing JSON and human-
     mode: "directory"  // "directory" or "file"
   },
   summary: {
-    coordinate: "kse.scene/my-package@1.0.0",
+    coordinate: "sce.scene/my-package@1.0.0",
     kind: "scene-template",
     parameter_count: 3,
     provides_count: 2,

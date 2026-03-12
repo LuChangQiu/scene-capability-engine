@@ -2,21 +2,21 @@
 
 ## Introduction
 
-This document specifies the requirements for the Spec Template Library feature, which establishes an independent GitHub repository (kse-spec-templates) for storing and sharing high-quality Spec templates. The feature enables users to quickly create well-structured, high-quality Spec documents by providing pre-built templates for common development scenarios.
+This document specifies the requirements for the Spec Template Library feature, which establishes an independent GitHub repository (sce-spec-templates) for storing and sharing high-quality Spec templates. The feature enables users to quickly create well-structured, high-quality Spec documents by providing pre-built templates for common development scenarios.
 
 The system consists of two main components:
-1. A standalone template repository (kse-spec-templates) containing categorized templates
-2. Template management functionality integrated into kse CLI for downloading, updating, and using templates
+1. A standalone template repository (sce-spec-templates) containing categorized templates
+2. Template management functionality integrated into sce CLI for downloading, updating, and using templates
 
 ## Glossary
 
-- **Template_Library**: The standalone GitHub repository (kse-spec-templates) containing all official Spec templates
+- **Template_Library**: The standalone GitHub repository (sce-spec-templates) containing all official Spec templates
 - **Template**: A pre-built Spec structure including requirements.md, design.md, and tasks.md frameworks with guidance
-- **Template_Manager**: The kse component responsible for managing template operations (download, update, use)
+- **Template_Manager**: The sce component responsible for managing template operations (download, update, use)
 - **Template_Registry**: A JSON file (template-registry.json) containing metadata and index of all available templates
 - **Template_Category**: A classification grouping for templates (e.g., web-features, backend-features, infrastructure)
 - **Template_Metadata**: YAML frontmatter in template files containing description, scenarios, difficulty, and tags
-- **Local_Template_Cache**: The directory (~/.kse/templates/) where downloaded templates are stored locally
+- **Local_Template_Cache**: The directory (~/.sce/templates/) where downloaded templates are stored locally
 - **Custom_Template_Source**: User-defined or enterprise-internal template repositories beyond the official library
 
 ## Requirements
@@ -51,10 +51,10 @@ The system consists of two main components:
 
 #### Acceptance Criteria
 
-1. WHEN a user runs `kse templates list`, THE Template_Manager SHALL display all available templates grouped by category
+1. WHEN a user runs `sce templates list`, THE Template_Manager SHALL display all available templates grouped by category
 2. WHEN displaying templates, THE Template_Manager SHALL show template name, description, difficulty level, and tags
-3. WHEN a user runs `kse templates search <keyword>`, THE Template_Manager SHALL return templates matching the keyword in name, description, or tags
-4. WHEN a user runs `kse templates show <category>/<template-name>`, THE Template_Manager SHALL display detailed template information including metadata and applicable scenarios
+3. WHEN a user runs `sce templates search <keyword>`, THE Template_Manager SHALL return templates matching the keyword in name, description, or tags
+4. WHEN a user runs `sce templates show <category>/<template-name>`, THE Template_Manager SHALL display detailed template information including metadata and applicable scenarios
 5. WHEN the local cache is empty, THE Template_Manager SHALL indicate that templates need to be downloaded first
 
 ### Requirement 4: Template Download and Caching
@@ -63,7 +63,7 @@ The system consists of two main components:
 
 #### Acceptance Criteria
 
-1. WHEN a user first uses a template command, THE Template_Manager SHALL automatically clone the Template_Library to ~/.kse/templates/official/
+1. WHEN a user first uses a template command, THE Template_Manager SHALL automatically clone the Template_Library to ~/.sce/templates/official/
 2. WHEN downloading templates, THE Template_Manager SHALL display progress information and handle network errors gracefully
 3. WHEN the local cache exists, THE Template_Manager SHALL use cached templates without re-downloading
 4. WHEN a download fails, THE Template_Manager SHALL provide clear error messages and suggest troubleshooting steps
@@ -75,7 +75,7 @@ The system consists of two main components:
 
 #### Acceptance Criteria
 
-1. WHEN a user runs `kse spec create <name> --template <category>/<template-name>`, THE Template_Manager SHALL copy the template files to .sce/specs/<name>/
+1. WHEN a user runs `sce spec create <name> --template <category>/<template-name>`, THE Template_Manager SHALL copy the template files to .sce/specs/<name>/
 2. WHEN copying template files, THE Template_Manager SHALL remove YAML frontmatter from the final Spec documents
 3. WHEN a template is applied, THE Template_Manager SHALL replace placeholder variables (e.g., {{SPEC_NAME}}, {{DATE}}) with actual values
 4. WHEN the target Spec directory already exists, THE Template_Manager SHALL prompt the user for confirmation before overwriting
@@ -87,7 +87,7 @@ The system consists of two main components:
 
 #### Acceptance Criteria
 
-1. WHEN a user runs `kse templates update`, THE Template_Manager SHALL pull the latest changes from the Template_Library repository
+1. WHEN a user runs `sce templates update`, THE Template_Manager SHALL pull the latest changes from the Template_Library repository
 2. WHEN updating templates, THE Template_Manager SHALL display the number of new, modified, and deleted templates
 3. WHEN an update fails due to local modifications, THE Template_Manager SHALL preserve local changes and report the conflict
 4. WHEN the local cache is corrupted, THE Template_Manager SHALL offer to re-clone the repository
@@ -99,10 +99,10 @@ The system consists of two main components:
 
 #### Acceptance Criteria
 
-1. WHEN a user runs `kse templates add-source <name> <git-url>`, THE Template_Manager SHALL clone the custom repository to ~/.kse/templates/<name>/
+1. WHEN a user runs `sce templates add-source <name> <git-url>`, THE Template_Manager SHALL clone the custom repository to ~/.sce/templates/<name>/
 2. WHEN listing templates, THE Template_Manager SHALL include templates from all configured sources with source indicators
 3. WHEN a template name conflicts across sources, THE Template_Manager SHALL use the format <source>:<category>/<template-name> for disambiguation
-4. WHEN a user runs `kse templates remove-source <name>`, THE Template_Manager SHALL remove the source configuration and optionally delete cached files
+4. WHEN a user runs `sce templates remove-source <name>`, THE Template_Manager SHALL remove the source configuration and optionally delete cached files
 5. THE Template_Manager SHALL validate that custom sources follow the same structure and format as the official Template_Library
 
 ### Requirement 8: Template Quality Standards
@@ -185,7 +185,7 @@ The system consists of two main components:
 
 1. THE Template_Library SHALL use semantic versioning for repository tags (e.g., v1.0.0, v1.1.0)
 2. WHEN templates are updated, THE Template_Library SHALL document changes in a CHANGELOG.md file
-3. THE Template_Manager SHALL allow users to specify a template library version to use (e.g., `kse templates update --version v1.0.0`)
+3. THE Template_Manager SHALL allow users to specify a template library version to use (e.g., `sce templates update --version v1.0.0`)
 4. WHEN a template format changes, THE Template_Library SHALL maintain backward compatibility or provide migration guides
 5. THE Template_Manager SHALL display the current template library version in use
 
@@ -195,8 +195,8 @@ The system consists of two main components:
 
 #### Acceptance Criteria
 
-1. THE Template_Manager SHALL provide help text for all template-related commands via `kse templates --help`
+1. THE Template_Manager SHALL provide help text for all template-related commands via `sce templates --help`
 2. THE Template_Library SHALL include a comprehensive README.md explaining template structure, usage, and contribution
 3. THE Template_Manager SHALL provide examples in help text demonstrating common usage patterns
 4. THE Template_Library SHALL include a docs/ directory with detailed guides for template creation and best practices
-5. WHEN a user runs `kse templates guide`, THE Template_Manager SHALL display or open the template usage guide
+5. WHEN a user runs `sce templates guide`, THE Template_Manager SHALL display or open the template usage guide

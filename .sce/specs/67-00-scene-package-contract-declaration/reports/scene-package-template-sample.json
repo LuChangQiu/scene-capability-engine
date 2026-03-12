@@ -1,15 +1,15 @@
 {
-  "apiVersion": "kse.scene.package/v0.1",
+  "apiVersion": "sce.scene.package/v0.1",
   "kind": "scene-template",
   "metadata": {
-    "group": "kse.scene",
+    "group": "sce.scene",
     "name": "scene-package-contract-declaration",
     "version": "0.2.0",
     "summary": "Template contract for scene-package-contract-declaration"
   },
   "compatibility": {
-    "kse_version": ">=1.24.0",
-    "scene_api_version": "kse.scene/v0.2",
+    "min_sce_version": ">=1.24.0",
+    "scene_api_version": "sce.scene/v0.2",
     "moqui_model_version": "3.x",
     "adapter_api_version": "v1"
   },

@@ -2,13 +2,13 @@
 
 ## Introduction
 
-After adding `kse scene run`, operators still need a safe preflight entry and reusable starter manifests.
+After adding `sce scene run`, operators still need a safe preflight entry and reusable starter manifests.
 This spec adds a dedicated validate command and starter scene templates for ERP-only and ERP+robot hybrid planning.
 
 ## Requirements
 
 ### Requirement 1: Scene Manifest Validation Entry
-- Provide `kse scene validate` as a first-class CLI command.
+- Provide `sce scene validate` as a first-class CLI command.
 - Support `--spec` and `--manifest` source modes.
 - Return non-zero exit semantics for invalid source options or invalid manifests.
 

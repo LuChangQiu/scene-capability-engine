@@ -58,7 +58,7 @@ Fix the repository scanning logic to only detect actual Git repositories (direct
 - Tasks 4-5 prepare for release
 ---
 
-## KSE Status Markers
+## SCE Status Markers
 
 - [x] 1 Legacy spec baseline reconciled for current release state
 - [x] 2 Core capability outcomes validated and retained

@@ -1,13 +1,13 @@
 # Hybrid Scene Manifest Example v0.2
 
 ```yaml
-apiVersion: kse.scene/v0.2
+apiVersion: sce.scene/v0.2
 kind: scene
 metadata:
   obj_id: scene.fulfillment.robot-pick-confirm.001
   obj_version: 0.2.0
   obj_state: draft
-  owner_principal: kse.ops.fulfillment
+  owner_principal: sce.ops.fulfillment
   title: Robot Pick and ERP Confirmation
 spec:
   domain: hybrid

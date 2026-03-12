@@ -172,34 +172,34 @@ Spec 03 successfully extends kiro-spec-engine with **multi-user collaboration** 
 
 ```bash
 # Initialize personal workspace
-kse workspace init
+sce workspace init
 
 # Claim a task
-kse task claim 03-00-multi-user-and-cross-tool-support 9.1
+sce task claim 03-00-multi-user-and-cross-tool-support 9.1
 
 # Work on the task...
 
 # Sync with team
-kse workspace sync
+sce workspace sync
 
 # Unclaim when done
-kse task unclaim 03-00-multi-user-and-cross-tool-support 9.1
+sce task unclaim 03-00-multi-user-and-cross-tool-support 9.1
 
 # Check team status
-kse status
+sce status
 ```
 
 ### Cross-Tool Usage
 
 ```bash
 # Export context for Claude Code
-kse context export 03-00-multi-user-and-cross-tool-support
+sce context export 03-00-multi-user-and-cross-tool-support
 
 # Generate task prompt for Cursor
-kse prompt generate 03-00-multi-user-and-cross-tool-support 10.1 --tool=cursor
+sce prompt generate 03-00-multi-user-and-cross-tool-support 10.1 --tool=cursor
 
 # Export with steering rules
-kse context export 03-00-multi-user-and-cross-tool-support \
+sce context export 03-00-multi-user-and-cross-tool-support \
   --steering \
   --steering-files=CORE_PRINCIPLES.md,ENVIRONMENT.md
 ```
@@ -279,7 +279,7 @@ kse context export 03-00-multi-user-and-cross-tool-support \
 
 ### For Individual Developers
 
-- ✅ Can use kse with any AI coding assistant
+- ✅ Can use sce with any AI coding assistant
 - ✅ Export context without manual copying
 - ✅ Generate task-specific prompts automatically
 - ✅ Maintain single-user workflow if preferred

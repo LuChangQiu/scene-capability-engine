@@ -2,7 +2,7 @@
 
 ## 1. 试点目标
 
-在 Moqui 主线场景下，验证 kse 主路径可执行并具备可观测输出：
+在 Moqui 主线场景下，验证 sce 主路径可执行并具备可观测输出：
 
 `spec bootstrap → spec pipeline run → spec gate run → orchestrate`
 
@@ -17,7 +17,7 @@
 ## 3. 输入前置条件
 
 - `.sce/specs/<spec>/requirements.md` 存在
-- Node 与 kse CLI 可用
+- Node 与 sce CLI 可用
 - orchestrate 所需 agent backend 配置可用（若不可用，先完成 pipeline+gate 基线）
 
 ## 4. 基准链路命令（建议顺序）
@@ -25,7 +25,7 @@
 ### Step A：Bootstrap（如需新建试点 Spec）
 
 ```bash
-kse spec bootstrap --name 113-00-moqui-pilot-sandbox --non-interactive --json
+sce spec bootstrap --name 113-00-moqui-pilot-sandbox --non-interactive --json
 ```
 
 **预期输出：**
@@ -34,7 +34,7 @@ kse spec bootstrap --name 113-00-moqui-pilot-sandbox --non-interactive --json
 ### Step B：Pipeline（单 Spec）
 
 ```bash
-kse spec pipeline run --spec 100-00-moqui-screen-endpoint-expansion --json \
+sce spec pipeline run --spec 100-00-moqui-screen-endpoint-expansion --json \
   --out .sce/specs/112-00-spec-value-realization-program/custom/pilot-evidence/pipeline-100.json
 ```
 
@@ -45,7 +45,7 @@ kse spec pipeline run --spec 100-00-moqui-screen-endpoint-expansion --json \
 ### Step C：Gate（单 Spec）
 
 ```bash
-kse spec gate run --spec 100-00-moqui-screen-endpoint-expansion --json \
+sce spec gate run --spec 100-00-moqui-screen-endpoint-expansion --json \
   --out .sce/specs/112-00-spec-value-realization-program/custom/pilot-evidence/gate-100.json
 ```
 
@@ -55,7 +55,7 @@ kse spec gate run --spec 100-00-moqui-screen-endpoint-expansion --json \
 ### Step D：Orchestrate（多 Spec）
 
 ```bash
-kse orchestrate run --specs "100-00-moqui-screen-endpoint-expansion,101-00-moqui-api-catalog-monitoring-bridge" \
+sce orchestrate run --specs "100-00-moqui-screen-endpoint-expansion,101-00-moqui-api-catalog-monitoring-bridge" \
   --max-parallel 2 --json
 ```
 

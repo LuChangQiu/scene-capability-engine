@@ -84,14 +84,14 @@ class SteeringComplianceChecker {
 class ComplianceCache {
   /**
    * Check if cache is valid for current version
-   * @param {string} currentVersion - Current kse version
+   * @param {string} currentVersion - Current sce version
    * @returns {boolean} True if cache is valid
    */
   isValid(currentVersion)
   
   /**
    * Update cache with successful check
-   * @param {string} version - kse version
+   * @param {string} version - sce version
    * @returns {boolean} True if update succeeded
    */
   update(version)
@@ -103,7 +103,7 @@ class ComplianceCache {
 }
 ```
 
-**Cache File Location**: `~/.kse/steering-check-cache.json`
+**Cache File Location**: `~/.sce/steering-check-cache.json`
 
 **Cache File Format**:
 ```json
@@ -169,7 +169,7 @@ Fix Suggestions:
   • Delete temporary files
 
 To bypass this check (not recommended):
-  kse <command> --skip-steering-check
+  sce <command> --skip-steering-check
 ```
 
 ### 4. CLI Integration
@@ -183,7 +183,7 @@ To bypass this check (not recommended):
 async function main(argv) {
   // Parse flags
   const skipCheck = argv.includes('--skip-steering-check') || 
-                    process.env.KSE_SKIP_STEERING_CHECK === '1';
+                    process.env.SCE_SKIP_STEERING_CHECK === '1';
   const forceCheck = argv.includes('--force-steering-check');
   
   // Run compliance check
@@ -243,7 +243,7 @@ async function main(argv) {
 
 ```javascript
 {
-  version: string,      // kse version (e.g., "1.2.3")
+  version: string,      // sce version (e.g., "1.2.3")
   timestamp: string,    // ISO 8601 timestamp
   lastCheck: 'success'  // Status of last check
 }
@@ -286,19 +286,19 @@ async function main(argv) {
 
 ### Property 6: Cache Creation on Success
 
-*For any* successful compliance check, the system should create or update the cache file with the current kse version and timestamp.
+*For any* successful compliance check, the system should create or update the cache file with the current sce version and timestamp.
 
 **Validates: Requirements 4.1**
 
 ### Property 7: Cache Hit Skips Check
 
-*For any* command execution where the cached version matches the current kse version, the compliance check should be skipped entirely.
+*For any* command execution where the cached version matches the current sce version, the compliance check should be skipped entirely.
 
 **Validates: Requirements 4.2**
 
 ### Property 8: Cache Invalidation on Version Change
 
-*For any* command execution where the cached version differs from the current kse version, the compliance check should run regardless of cache presence.
+*For any* command execution where the cached version differs from the current sce version, the compliance check should run regardless of cache presence.
 
 **Validates: Requirements 4.3**
 
@@ -310,7 +310,7 @@ async function main(argv) {
 
 ### Property 10: Bypass Preserves Cache
 
-*For any* command execution with bypass flags (--skip-steering-check or KSE_SKIP_STEERING_CHECK=1), the version cache should not be modified.
+*For any* command execution with bypass flags (--skip-steering-check or SCE_SKIP_STEERING_CHECK=1), the version cache should not be modified.
 
 **Validates: Requirements 6.5**
 

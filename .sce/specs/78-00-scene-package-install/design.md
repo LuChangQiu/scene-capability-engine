@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `kse scene install` command installs a published scene package from the local registry into a target project directory. It follows the established normalize → validate → run → print pattern used by all scene commands. The command resolves a package from the registry index, verifies tarball integrity via SHA-256, extracts contents using the existing `extractTarBuffer` function, and writes an install manifest (`scene-install-manifest.json`) to the target directory.
+The `sce scene install` command installs a published scene package from the local registry into a target project directory. It follows the established normalize → validate → run → print pattern used by all scene commands. The command resolves a package from the registry index, verifies tarball integrity via SHA-256, extracts contents using the existing `extractTarBuffer` function, and writes an install manifest (`scene-install-manifest.json`) to the target directory.
 
 This feature reuses existing infrastructure from Spec 77: `loadRegistryIndex`, `buildRegistryTarballPath`, `resolveLatestVersion`, and `extractTarBuffer`. No new dependencies are introduced — only Node.js built-in `zlib`, `crypto`, `fs`, and `path` modules are used alongside the existing `fs-extra` already in the project.
 
@@ -12,7 +12,7 @@ The install command integrates into the existing scene command architecture:
 
 ```mermaid
 flowchart TD
-    CLI["kse scene install --name X --version Y"]
+    CLI["sce scene install --name X --version Y"]
     N["normalizeSceneInstallOptions"]
     V["validateSceneInstallOptions"]
     R["runSceneInstallCommand"]
@@ -197,7 +197,7 @@ sceneCmd
   "installed": true,
   "dry_run": false,
   "overwritten": false,
-  "coordinate": "kse.scene/my-scene-template@1.2.0",
+  "coordinate": "sce.scene/my-scene-template@1.2.0",
   "package": {
     "name": "my-scene-template",
     "version": "1.2.0"
@@ -218,11 +218,11 @@ The install command reads from the existing registry index structure:
 
 ```json
 {
-  "apiVersion": "kse.scene.registry/v0.1",
+  "apiVersion": "sce.scene.registry/v0.1",
   "packages": {
     "my-scene-template": {
       "name": "my-scene-template",
-      "group": "kse.scene",
+      "group": "sce.scene",
       "description": "...",
       "latest": "1.2.0",
       "versions": {

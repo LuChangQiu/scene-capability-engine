@@ -26,7 +26,7 @@
 
 - [x] 2.1 创建 `lib/orchestrator/bootstrap-prompt-builder.js`
   - 实现 BootstrapPromptBuilder 类
-  - `buildPrompt(specName)`: 构建包含 Spec 路径、kse 规范、steering 上下文、任务执行指令的 prompt
+  - `buildPrompt(specName)`: 构建包含 Spec 路径、sce 规范、steering 上下文、任务执行指令的 prompt
   - 支持自定义模板（通过 orchestrator.json 的 bootstrapTemplate 配置）
   - 默认模板包含：项目 README 摘要、Spec 路径、steering 上下文、执行指令
   - **验证**: Requirements 2.1, 2.2, 2.3, 2.4
@@ -39,7 +39,7 @@
 - [x] 2.3 🧪 Property 2：Bootstrap Prompt 完整性属性测试
   - 创建 `tests/orchestrator/bootstrap-prompt-builder.property.test.js`
   - 使用 fast-check 生成随机 Spec 名称
-  - 验证：prompt 包含 Spec 路径、kse 规范引用、任务执行指令
+  - 验证：prompt 包含 Spec 路径、sce 规范引用、任务执行指令
   - **Validates: Requirements 2.1, 2.2, 2.3**
 
 ## 任务 3：AgentSpawner — 进程管理器
@@ -160,17 +160,17 @@
 
 - [x] 6 运行全量测试套件，确保所有新增测试通过且不影响现有 2361 个测试
 
-## 任务 7：CLI 命令 — `kse orchestrate`
+## 任务 7：CLI 命令 — `sce orchestrate`
 
 - [x] 7.1 在 `lib/commands/orchestrate.js` 中实现 CLI 命令
-  - `kse orchestrate run --specs "<spec列表>" --max-parallel <N>`: 解析参数、构建引擎、启动编排
-  - `kse orchestrate status`: 读取编排状态并格式化输出
-  - `kse orchestrate stop`: 停止所有子 agent
+  - `sce orchestrate run --specs "<spec列表>" --max-parallel <N>`: 解析参数、构建引擎、启动编排
+  - `sce orchestrate status`: 读取编排状态并格式化输出
+  - `sce orchestrate stop`: 停止所有子 agent
   - 参数验证：Spec 存在性检查、maxParallel ≥ 1
   - 支持 `--json` 结构化输出
   - **验证**: Requirements 6.1, 6.2, 6.3, 6.4, 6.5
 
-- [x] 7.2 在 `bin/kse.js` 中注册 orchestrate 命令
+- [x] 7.2 在 `bin/sce.js` 中注册 orchestrate 命令
 
 - [x] 7.3 CLI 命令单元测试
   - 创建 `tests/orchestrator/orchestrate-command.test.js`

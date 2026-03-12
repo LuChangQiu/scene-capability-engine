@@ -84,12 +84,12 @@ Defaults: `ready>=6`, `partial<=0`, `gap<=0`.
 
 ## Default Moqui Template Matrix
 
-- `kse.scene--moqui-entity-model-core--0.1.0`
-- `kse.scene--moqui-service-contract-core--0.1.0`
-- `kse.scene--moqui-screen-flow-core--0.1.0`
-- `kse.scene--moqui-form-interaction-core--0.1.0`
-- `kse.scene--moqui-rule-decision-core--0.1.0`
-- `kse.scene--moqui-page-copilot-dialog--0.1.0`
+- `sce.scene--moqui-entity-model-core--0.1.0`
+- `sce.scene--moqui-service-contract-core--0.1.0`
+- `sce.scene--moqui-screen-flow-core--0.1.0`
+- `sce.scene--moqui-form-interaction-core--0.1.0`
+- `sce.scene--moqui-rule-decision-core--0.1.0`
+- `sce.scene--moqui-page-copilot-dialog--0.1.0`
 
 ## Next Step for Business Project
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Adds a `kse scene lock` subcommand group to manage version locking on scene packages in the local registry. The group contains three sub-subcommands: `set`, `rm`, and `ls`. Each operates on a `locked` boolean flag on individual version entries in `registry-index.json`. Follows the normalize → validate → run → print pattern with a single `runSceneLockCommand` dispatcher. All code in `lib/commands/scene.js`. No new dependencies.
+Adds a `sce scene lock` subcommand group to manage version locking on scene packages in the local registry. The group contains three sub-subcommands: `set`, `rm`, and `ls`. Each operates on a `locked` boolean flag on individual version entries in `registry-index.json`. Follows the normalize → validate → run → print pattern with a single `runSceneLockCommand` dispatcher. All code in `lib/commands/scene.js`. No new dependencies.
 
 Lock state is stored as `locked: true` on version entries. When absent or falsy, the version is considered unlocked. The `set` command adds the flag, `rm` removes it (deletes the property), and `ls` filters versions that have the flag set.
 

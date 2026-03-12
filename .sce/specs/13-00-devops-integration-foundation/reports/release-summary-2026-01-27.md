@@ -51,11 +51,11 @@
 - Analytics and automation
 
 **CLI Commands**:
-- `kse ops init` - Initialize operations specs
-- `kse ops validate` - Validate operations
-- `kse ops audit` - Query audit logs
-- `kse ops takeover` - Manage takeover levels
-- `kse ops feedback` - Manage feedback
+- `sce ops init` - Initialize operations specs
+- `sce ops validate` - Validate operations
+- `sce ops audit` - Query audit logs
+- `sce ops takeover` - Manage takeover levels
+- `sce ops feedback` - Manage feedback
 
 ### Quality Metrics
 
@@ -89,12 +89,12 @@
 ### Expected Outcomes
 
 ✅ **npm Package**:
-- Published to: https://www.npmjs.com/package/kiro-spec-engine
+- Published to: https://www.npmjs.com/package/scene-capability-engine
 - Version: 1.8.0
 - Install: `npm install -g kiro-spec-engine@1.8.0`
 
 ✅ **GitHub Release**:
-- URL: https://github.com/heguangyong/kiro-spec-engine/releases/tag/v1.8.0
+- URL: https://github.com/heguangyong/scene-capability-engine/releases/tag/v1.8.0
 - Title: v1.8.0 - DevOps Integration Foundation
 - Body: Link to CHANGELOG.md
 
@@ -114,17 +114,17 @@ npm view kiro-spec-engine
 ```
 
 ### 2. GitHub Release
-- Visit: https://github.com/heguangyong/kiro-spec-engine/releases
+- Visit: https://github.com/heguangyong/scene-capability-engine/releases
 - Verify v1.8.0 release is published
 - Check release notes are correct
 
 ### 3. Installation Test
 ```bash
 npm install -g kiro-spec-engine@1.8.0
-kse --version
+sce --version
 # Should show: 1.8.0
 
-kse ops --help
+sce ops --help
 # Should show new ops commands
 ```
 
@@ -204,7 +204,7 @@ npm unpublish kiro-spec-engine@1.8.0
 - [ ] npm package published (1.8.0)
 - [ ] GitHub release created
 - [ ] Installation works (`npm install -g kiro-spec-engine@1.8.0`)
-- [ ] Basic commands work (`kse --version`, `kse ops --help`)
+- [ ] Basic commands work (`sce --version`, `sce ops --help`)
 
 ### Short-term Success (Week 1)
 - [ ] 10+ npm downloads
@@ -243,7 +243,7 @@ None at release time.
 **Prepared by**: Kiro AI  
 **Date**: 2026-01-27  
 **Status**: Automated release in progress  
-**GitHub Actions**: https://github.com/heguangyong/kiro-spec-engine/actions
+**GitHub Actions**: https://github.com/heguangyong/scene-capability-engine/actions
 
 
 ---
@@ -284,7 +284,7 @@ None at release time.
 **GitHub Actions**: Running with v1.8.1 tag  
 **Expected Outcome**: All tests pass → npm publish v1.8.1 → GitHub Release created
 
-**Monitor**: https://github.com/heguangyong/kiro-spec-engine/actions
+**Monitor**: https://github.com/heguangyong/scene-capability-engine/actions
 
 **Install Command** (after release):
 ```bash

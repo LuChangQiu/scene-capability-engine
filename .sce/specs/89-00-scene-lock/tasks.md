@@ -2,7 +2,7 @@
 
 ## Overview
 
-Add `kse scene lock` subcommand group with sub-subcommands (set, rm, ls) to manage version locking on scene packages in the local registry. All code in `lib/commands/scene.js`, following normalize → validate → run → print pattern. Single `runSceneLockCommand` dispatcher handles all three actions.
+Add `sce scene lock` subcommand group with sub-subcommands (set, rm, ls) to manage version locking on scene packages in the local registry. All code in `lib/commands/scene.js`, following normalize → validate → run → print pattern. Single `runSceneLockCommand` dispatcher handles all three actions.
 
 ## Tasks
 

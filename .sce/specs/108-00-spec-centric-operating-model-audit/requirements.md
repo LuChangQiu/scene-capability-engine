@@ -2,7 +2,7 @@
 
 ## 简介
 
-随着 KSE 功能持续扩展（`scene`、`orchestrate`、`auto`、`collab`、`lock`、`docs` 等），用户在“以 Spec 为中心推进工作”时出现路径分散、命令琐碎、状态分裂的问题。
+随着 SCE 功能持续扩展（`scene`、`orchestrate`、`auto`、`collab`、`lock`、`docs` 等），用户在“以 Spec 为中心推进工作”时出现路径分散、命令琐碎、状态分裂的问题。
 
 本 Spec 用于完成一次系统级调研与评估，产出可执行的收敛方案，确保后续新增能力继续锚定 Spec 主线，而非形成平行流程。
 

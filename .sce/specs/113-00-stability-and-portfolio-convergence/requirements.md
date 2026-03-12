@@ -7,7 +7,7 @@
 本 Spec 聚焦两个现实问题：
 
 1. 多 Spec 并行推进时，执行模式与优先级缺少统一约束
-2. `kse docs archive` 与项目 `specSubdirs` 配置存在偏差，可能“修复后再次触发合规告警”
+2. `sce docs archive` 与项目 `specSubdirs` 配置存在偏差，可能“修复后再次触发合规告警”
 
 目标是在不扩张功能面的前提下，先完成治理稳定、组合收敛和回归闭环。
 
@@ -40,7 +40,7 @@
 
 ### 需求 2：Archive 子目录治理一致性
 
-**用户故事：** 作为使用者，我希望 `kse docs archive` 输出始终符合项目治理配置，不再产生无效子目录。
+**用户故事：** 作为使用者，我希望 `sce docs archive` 输出始终符合项目治理配置，不再产生无效子目录。
 
 #### 验收标准
 
@@ -56,7 +56,7 @@
 
 1. THE SYSTEM SHALL 修复既有 `misplaced_artifact` / `invalid_subdirectory` 告警样本
 2. THE 修复 SHALL 保持文件内容和命名不变，仅调整合规位置
-3. AFTER 修复 `kse docs diagnose` SHALL 返回 compliant 状态
+3. AFTER 修复 `sce docs diagnose` SHALL 返回 compliant 状态
 
 ### 需求 4：稳定性回归基线
 

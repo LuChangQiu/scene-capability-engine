@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Template registry visibility is available in Spec 69. To close governance automation, KSE now needs a quality gate layer
+Template registry visibility is available in Spec 69. To close governance automation, SCE now needs a quality gate layer
 that can express policy constraints and evaluate registry payloads in CI-friendly mode.
 
 ## Requirements

@@ -2,10 +2,10 @@
   "instantiated": true,
   "overwritten": true,
   "template": {
-    "id": "kse.scene--scene-package-contract-declaration--0.2.0",
-    "manifest_path": ".sce/templates/scene-packages/kse.scene--scene-package-contract-declaration--0.2.0/template.manifest.json",
-    "package_contract_path": ".sce/templates/scene-packages/kse.scene--scene-package-contract-declaration--0.2.0/scene-package.json",
-    "scene_template_path": ".sce/templates/scene-packages/kse.scene--scene-package-contract-declaration--0.2.0/scene.template.yaml"
+    "id": "sce.scene--scene-package-contract-declaration--0.2.0",
+    "manifest_path": ".sce/templates/scene-packages/sce.scene--scene-package-contract-declaration--0.2.0/template.manifest.json",
+    "package_contract_path": ".sce/templates/scene-packages/sce.scene--scene-package-contract-declaration--0.2.0/scene-package.json",
+    "scene_template_path": ".sce/templates/scene-packages/sce.scene--scene-package-contract-declaration--0.2.0/scene.template.yaml"
   },
   "target": {
     "spec": "68-00-scene-package-template-publish-and-instantiate",

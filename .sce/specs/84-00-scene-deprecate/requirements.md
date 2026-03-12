@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This feature adds a `kse scene deprecate` subcommand that marks a specific version (or all versions) of a published scene package as deprecated in the local registry. The command modifies `registry-index.json` to add or remove a `deprecated` field on version entries. Deprecation warnings are surfaced during `scene install` and `scene info` when a deprecated version is encountered. An `--undo` flag allows removing the deprecation marker.
+This feature adds a `sce scene deprecate` subcommand that marks a specific version (or all versions) of a published scene package as deprecated in the local registry. The command modifies `registry-index.json` to add or remove a `deprecated` field on version entries. Deprecation warnings are surfaced during `scene install` and `scene info` when a deprecated version is encountered. An `--undo` flag allows removing the deprecation marker.
 
 ## Glossary
 
-- **Deprecate_Command**: The `kse scene deprecate` CLI subcommand for marking package versions as deprecated.
+- **Deprecate_Command**: The `sce scene deprecate` CLI subcommand for marking package versions as deprecated.
 - **Registry_Index**: The `registry-index.json` file that stores metadata for all published packages and their versions.
 - **Version_Entry**: A single version record within a package in the Registry_Index, containing `published_at`, `integrity`, `tarball`, and optionally `deprecated`.
 - **Deprecation_Marker**: The `deprecated` field added to a Version_Entry, containing the deprecation message string.

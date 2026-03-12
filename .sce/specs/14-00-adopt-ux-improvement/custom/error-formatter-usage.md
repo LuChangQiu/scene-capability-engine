@@ -161,10 +161,10 @@ Solutions:
   2. Check file permissions: Run with appropriate permissions
   3. Close other programs that might be accessing the files
   4. Try running the command again
-  5. If problem persists, run: kse doctor
+  5. If problem persists, run: sce doctor
 
 💡 Need help?
-   Run: kse doctor
+   Run: sce doctor
    Docs: https://github.com/kiro-ai/kiro-spec-engine#troubleshooting
 ```
 

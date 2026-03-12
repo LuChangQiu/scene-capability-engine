@@ -1,0 +1,266 @@
+{
+  "apiVersion": "sce.scene.package/v0.1",
+  "kind": "scene-domain-profile",
+  "metadata": {
+    "group": "sce.scene",
+    "name": "erp-inventory-reserve-adjust",
+    "version": "0.1.0",
+    "summary": "Inventory reserve and adjust workflow template for Moqui-aligned ERP integration",
+    "description": "Inventory-focused domain profile for reserve and adjustment decisions with ontology-driven governance."
+  },
+  "compatibility": {
+    "min_sce_version": ">=1.47.15",
+    "scene_api_version": "sce.scene/v0.2",
+    "moqui_model_version": "3.x",
+    "adapter_api_version": "v1"
+  },
+  "capabilities": {
+    "provides": [
+      "scene.erp.inventory.reserve.adjust"
+    ],
+    "requires": [
+      "binding:http",
+      "profile:erp",
+      "moqui.adapter"
+    ]
+  },
+  "parameters": [
+    {
+      "id": "product_id",
+      "type": "string",
+      "required": true,
+      "description": "Inventory product identifier"
+    },
+    {
+      "id": "facility_id",
+      "type": "string",
+      "required": true,
+      "description": "Facility identifier"
+    },
+    {
+      "id": "quantity",
+      "type": "number",
+      "required": true,
+      "description": "Requested reserve or adjustment quantity"
+    }
+  ],
+  "artifacts": {
+    "entry_scene": "custom/scene.yaml",
+    "generates": [
+      "custom/scene.yaml"
+    ]
+  },
+  "governance": {
+    "risk_level": "medium",
+    "approval_required": true,
+    "approval": {
+      "required": true
+    },
+    "idempotency": {
+      "required": true,
+      "key": "inventoryOperationId"
+    },
+    "rollback_supported": true
+  },
+  "capability_contract": {
+    "bindings": [
+      {
+        "type": "query",
+        "ref": "spec.erp.inventory-availability-query",
+        "timeout_ms": 1500,
+        "retry": 1,
+        "intent": "Read current ATP and stock balances",
+        "preconditions": [
+          "product and facility identifiers are provided"
+        ],
+        "postconditions": [
+          "availability snapshot is returned"
+        ]
+      },
+      {
+        "type": "invoke",
+        "ref": "spec.erp.inventory-reserve",
+        "depends_on": "spec.erp.inventory-availability-query",
+        "timeout_ms": 2200,
+        "retry": 2,
+        "intent": "Reserve inventory when availability is sufficient",
+        "preconditions": [
+          "availability snapshot is returned"
+        ],
+        "postconditions": [
+          "reservation decision and record are produced"
+        ]
+      },
+      {
+        "type": "invoke",
+        "ref": "spec.erp.inventory-adjust",
+        "depends_on": "spec.erp.inventory-reserve",
+        "timeout_ms": 2200,
+        "retry": 2,
+        "intent": "Apply inventory adjustment when reserve outcome requires correction",
+        "preconditions": [
+          "reservation decision and record are produced"
+        ],
+        "postconditions": [
+          "inventory adjustment record is captured"
+        ]
+      },
+      {
+        "type": "query",
+        "ref": "spec.erp.inventory-reservation-audit",
+        "depends_on": "spec.erp.inventory-adjust",
+        "timeout_ms": 1500,
+        "retry": 1,
+        "intent": "Audit reserve and adjustment outcome for downstream traceability",
+        "preconditions": [
+          "inventory adjustment record is captured"
+        ],
+        "postconditions": [
+          "inventory operation audit projection is generated"
+        ]
+      }
+    ]
+  },
+  "governance_contract": {
+    "risk_level": "medium",
+    "approval": {
+      "required": true
+    },
+    "idempotency": {
+      "required": true,
+      "key": "inventoryOperationId"
+    },
+    "data_lineage": {
+      "sources": [
+        {
+          "ref": "spec.erp.inventory-availability-query",
+          "fields": [
+            "productId",
+            "facilityId",
+            "atp",
+            "qoh"
+          ]
+        },
+        {
+          "ref": "spec.erp.inventory-reserve",
+          "fields": [
+            "reservationId",
+            "reservedQty",
+            "statusId"
+          ]
+        }
+      ],
+      "transforms": [
+        {
+          "operation": "decideReserveOrAdjust",
+          "description": "Evaluate availability and choose reserve-only or reserve-plus-adjust path"
+        },
+        {
+          "operation": "buildInventoryAuditProjection",
+          "description": "Compose audit projection with reserve and adjustment records"
+        }
+      ],
+      "sinks": [
+        {
+          "ref": "spec.erp.inventory-reservation-audit",
+          "fields": [
+            "inventoryOperationId",
+            "reserveStatus",
+            "adjustmentStatus"
+          ]
+        }
+      ]
+    },
+    "business_rules": [
+      {
+        "id": "rule.inventory.non-negative-balance",
+        "description": "Inventory adjustment must never produce negative available balance",
+        "entity_ref": "inventory_item",
+        "bind_to": "spec.erp.inventory-adjust",
+        "status": "enforced"
+      },
+      {
+        "id": "rule.inventory.reserve-before-adjust",
+        "description": "Adjustment path requires reservation attempt evidence",
+        "entity_ref": "inventory_reservation",
+        "bind_to": "spec.erp.inventory-reserve",
+        "status": "active"
+      }
+    ],
+    "decision_logic": [
+      {
+        "id": "decision.inventory.reserve-or-adjust-branch",
+        "description": "Choose reserve-only or reserve-plus-adjust branch from ATP threshold",
+        "bind_to": "spec.erp.inventory-reserve",
+        "status": "resolved",
+        "automated": true
+      },
+      {
+        "id": "decision.inventory.adjust-compensation-policy",
+        "description": "Execute compensation when adjustment fails after reservation",
+        "bind_to": "spec.erp.inventory-adjust",
+        "status": "resolved",
+        "automated": true
+      }
+    ]
+  },
+  "ontology_model": {
+    "entities": [
+      {
+        "id": "inventory_item",
+        "type": "core"
+      },
+      {
+        "id": "inventory_reservation",
+        "type": "transaction"
+      },
+      {
+        "id": "inventory_adjustment",
+        "type": "transaction"
+      },
+      {
+        "id": "inventory_snapshot",
+        "type": "projection"
+      }
+    ],
+    "relations": [
+      {
+        "source": "inventory_reservation",
+        "target": "inventory_item",
+        "type": "depends_on"
+      },
+      {
+        "source": "inventory_adjustment",
+        "target": "inventory_reservation",
+        "type": "depends_on"
+      },
+      {
+        "source": "inventory_item",
+        "target": "inventory_snapshot",
+        "type": "produces"
+      },
+      {
+        "source": "inventory_adjustment",
+        "target": "inventory_snapshot",
+        "type": "produces"
+      }
+    ]
+  },
+  "agent_hints": {
+    "summary": "Inventory reserve and adjustment template with branch decision and audit lineage.",
+    "complexity": "medium",
+    "estimated_duration_ms": 3600,
+    "required_permissions": [
+      "inventory.read",
+      "inventory.write"
+    ],
+    "suggested_sequence": [
+      "spec.erp.inventory-availability-query",
+      "spec.erp.inventory-reserve",
+      "spec.erp.inventory-adjust",
+      "spec.erp.inventory-reservation-audit"
+    ],
+    "rollback_strategy": "Release reservation and restore snapshot when adjustment branch fails"
+  }
+}
+

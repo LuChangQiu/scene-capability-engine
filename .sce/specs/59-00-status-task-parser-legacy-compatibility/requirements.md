@@ -2,7 +2,7 @@
 
 ## Introduction
 
-`kse status` previously relied on strict task parsing and direct counting over historical task plans.
+`sce status` previously relied on strict task parsing and direct counting over historical task plans.
 Legacy task formats and oversized historical plans caused inaccurate or low-signal completion views.
 Status now needs two capabilities: robust legacy parsing and marker-based completion views for archived specs.
 
@@ -22,7 +22,7 @@ Status now needs two capabilities: robust legacy parsing and marker-based comple
 - Existing optional marker and claim metadata behavior should remain compatible.
 
 ### Requirement 4: Status Marker Mode
-- `kse status` should support an explicit `## KSE Status Markers` section in `tasks.md`.
+- `sce status` should support an explicit `## SCE Status Markers` section in `tasks.md`.
 - When present, status progress should use marker tasks under that section for completion calculation.
 - If marker section is absent, status must keep existing full-task counting behavior.
 

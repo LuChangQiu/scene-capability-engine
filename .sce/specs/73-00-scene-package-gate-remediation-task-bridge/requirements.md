@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Spec 72 adds remediation actions in gate payload. To close the execution loop, KSE now needs a stable bridge
+Spec 72 adds remediation actions in gate payload. To close the execution loop, SCE now needs a stable bridge
 that converts remediation actions into task draft entries and spec task sync lines with traceable metadata.
 
 ## Requirements

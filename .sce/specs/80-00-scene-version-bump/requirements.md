@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This feature adds a `kse scene version` command that bumps the `metadata.version` field in a `scene-package.json` file following semver conventions. The command supports major, minor, patch increments as well as explicit version strings, with optional dry-run and JSON output modes.
+This feature adds a `sce scene version` command that bumps the `metadata.version` field in a `scene-package.json` file following semver conventions. The command supports major, minor, patch increments as well as explicit version strings, with optional dry-run and JSON output modes.
 
 ## Glossary
 
-- **Version_Command**: The `kse scene version` CLI command that reads, bumps, and writes the version in a scene-package.json file.
+- **Version_Command**: The `sce scene version` CLI command that reads, bumps, and writes the version in a scene-package.json file.
 - **Scene_Package_File**: The `scene-package.json` file located in a scene package directory, containing a `metadata.version` field.
 - **Bump_Type**: One of `major`, `minor`, or `patch`, indicating which semver component to increment.
 - **Explicit_Version**: A user-supplied semver string (e.g. `2.0.0`) used to set the version directly instead of incrementing.

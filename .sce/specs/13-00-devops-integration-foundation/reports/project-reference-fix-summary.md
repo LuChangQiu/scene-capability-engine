@@ -15,7 +15,7 @@
 - ✅ `template/.sce/specs/SPEC_WORKFLOW_GUIDE.md`
 
 **修改内容**:
-- 第 4 行: "上海图书馆 MinIO 文件存储系统" → "所有使用 kiro-spec-engine (kse) 的 Spec 驱动开发项目"
+- 第 4 行: "上海图书馆 MinIO 文件存储系统" → "所有使用 kiro-spec-engine (sce) 的 Spec 驱动开发项目"
 - 第 134 行: 同上修改
 - 更新日期: 2026-01-22 → 2026-01-27
 
@@ -25,7 +25,7 @@
 - ✅ `.sce/steering/ENVIRONMENT.md`
 
 **修改内容**:
-- 项目名称: "测试项目" → "kiro-spec-engine (kse)"
+- 项目名称: "测试项目" → "kiro-spec-engine (sce)"
 - 项目类型: "Kiro Spec 驱动开发项目" → "npm package and CLI tool for spec-driven development"
 - 核心技术: "Kiro Spec + Ultrawork 精神增强" → "Node.js + Jest + Spec-driven methodology"
 - 开发语言: "[根据项目调整]" → "JavaScript (Node.js 16+)"
