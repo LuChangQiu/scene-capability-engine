@@ -114,4 +114,39 @@ describe('spec-delivery-audit', () => {
     expect(report.git.ahead).toBe(2);
     expect(report.git.behind).toBe(0);
   });
+
+  test('passes tracked deliverables in detached HEAD release checkout when upstream proof is unavailable', async () => {
+    const specDir = path.join(tempDir, '.sce', 'specs', '121-00-spec-delivery-sync-integrity-gate');
+    const filePath = path.join(tempDir, 'src', 'feature.js');
+
+    await fs.ensureDir(specDir);
+    await fs.ensureDir(path.dirname(filePath));
+    await fs.writeFile(filePath, 'module.exports = true;\n', 'utf8');
+    await fs.writeJson(path.join(specDir, 'deliverables.json'), {
+      verification_mode: 'blocking',
+      declared_files: ['src/feature.js']
+    }, { spaces: 2 });
+
+    const report = await auditSpecDeliverySync(tempDir, {
+      allowDetachedHead: true
+    }, {
+      runGit: buildRunGitMock({
+        'rev-parse --is-inside-work-tree': { status: 0, stdout: 'true\n', stderr: '' },
+        'ls-files': { status: 0, stdout: 'src/feature.js\n', stderr: '' },
+        'status --porcelain': { status: 0, stdout: '', stderr: '' },
+        'remote -v': {
+          status: 0,
+          stdout: 'origin https://github.com/acme/demo.git (fetch)\norigin https://github.com/acme/demo.git (push)\n',
+          stderr: ''
+        },
+        'rev-parse --abbrev-ref HEAD': { status: 0, stdout: 'HEAD\n', stderr: '' }
+      })
+    });
+
+    expect(report.passed).toBe(true);
+    expect(report.reason).toBe('passed');
+    expect(report.git.branch).toBe('HEAD');
+    expect(report.git.violations).toEqual([]);
+    expect(report.git.warnings).toContain('detached HEAD release checkout detected; upstream tracking check skipped');
+  });
 });

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.44] - 2026-03-13
+
+### Fixed
+- Fixed spec delivery sync auditing in GitHub tag-release workflows so detached `HEAD` checkouts no longer fail the hard gate for missing upstream tracking, while declared deliverable tracking and worktree integrity checks remain enforced.
+
 ## [3.6.43] - 2026-03-13
 
 ### Changed
