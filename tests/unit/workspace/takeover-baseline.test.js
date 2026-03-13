@@ -4,7 +4,9 @@ const path = require('path');
 const {
   applyTakeoverBaseline,
   TAKEOVER_DEFAULTS,
-  CLARIFICATION_FIRST_CORE_PRINCIPLE_HEADING
+  CLARIFICATION_FIRST_CORE_PRINCIPLE_HEADING,
+  ERRORBOOK_REGISTRY_DEFAULTS,
+  ERRORBOOK_CONVERGENCE_DEFAULTS
 } = require('../../../lib/workspace/takeover-baseline');
 
 describe('takeover-baseline', () => {
@@ -39,12 +41,14 @@ describe('takeover-baseline', () => {
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'adoption-config.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'auto', 'config.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'takeover-baseline.json'))).toBe(true);
+    expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'errorbook-registry.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'session-governance.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'spec-domain-policy.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'problem-eval-policy.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'problem-closure-policy.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'studio-intake-policy.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'state-storage-policy.json'))).toBe(true);
+    expect(await fs.pathExists(path.join(tempDir, '.sce', 'errorbook', 'project-intake', 'custom-mechanism-inventory.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'steering', 'manifest.yaml'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'steering', 'CORE_PRINCIPLES.md'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'reports', 'takeover-baseline-latest.json'))).toBe(true);
@@ -56,6 +60,7 @@ describe('takeover-baseline', () => {
       legacy_kiro_supported: false
     }));
     expect(adoptionConfig.defaults).toEqual(TAKEOVER_DEFAULTS);
+    expect(adoptionConfig.defaults.errorbook_convergence).toEqual(ERRORBOOK_CONVERGENCE_DEFAULTS);
 
     const autoConfig = await fs.readJson(path.join(tempDir, '.sce', 'auto', 'config.json'));
     expect(autoConfig.mode).toBe('aggressive');
@@ -64,6 +69,15 @@ describe('takeover-baseline', () => {
       require_step_confirmation: false,
       apply_all_work_by_default: true
     }));
+
+    const errorbookRegistry = await fs.readJson(path.join(tempDir, '.sce', 'config', 'errorbook-registry.json'));
+    expect(errorbookRegistry).toEqual(ERRORBOOK_REGISTRY_DEFAULTS);
+
+    const errorbookInventory = await fs.readJson(
+      path.join(tempDir, '.sce', 'errorbook', 'project-intake', 'custom-mechanism-inventory.json')
+    );
+    expect(errorbookInventory.summary.detected_custom_mechanisms).toBe(0);
+    expect(errorbookInventory.strategy).toBe('absorb_into_sce_errorbook');
 
     const corePrinciples = await fs.readFile(path.join(tempDir, '.sce', 'steering', 'CORE_PRINCIPLES.md'), 'utf8');
     expect(corePrinciples).toContain(CLARIFICATION_FIRST_CORE_PRINCIPLE_HEADING);
@@ -140,6 +154,36 @@ describe('takeover-baseline', () => {
     const corePrinciples = await fs.readFile(path.join(tempDir, '.sce', 'steering', 'CORE_PRINCIPLES.md'), 'utf8');
     expect(corePrinciples).toContain('## 1. Existing Rule');
     expect(corePrinciples).toContain(CLARIFICATION_FIRST_CORE_PRINCIPLE_HEADING);
+  });
+
+  test('inventories project-defined mistake-book style artifacts into SCE errorbook convergence intake', async () => {
+    await fs.ensureDir(path.join(tempDir, '.sce'));
+    await fs.ensureDir(path.join(tempDir, 'docs'));
+    await fs.ensureDir(path.join(tempDir, 'postmortem'));
+    await fs.writeFile(path.join(tempDir, 'docs', '支付故障复盘.md'), '# payment retrospective\n', 'utf8');
+    await fs.writeFile(path.join(tempDir, 'postmortem', 'checkout-incident.md'), '# postmortem\n', 'utf8');
+
+    const report = await applyTakeoverBaseline(tempDir, {
+      apply: true,
+      writeReport: false,
+      sceVersion: '3.6.46'
+    });
+
+    expect(report.errorbook_convergence).toEqual(expect.objectContaining({
+      canonical_mechanism: 'errorbook',
+      strategy: 'absorb_into_sce_errorbook',
+      detected_custom_mechanism_count: 3
+    }));
+
+    const inventory = await fs.readJson(
+      path.join(tempDir, '.sce', 'errorbook', 'project-intake', 'custom-mechanism-inventory.json')
+    );
+    expect(inventory.summary.detected_custom_mechanisms).toBe(3);
+    expect(inventory.findings).toEqual(expect.arrayContaining([
+      expect.objectContaining({ path: 'docs/支付故障复盘.md', kind: 'file', action: 'absorb_into_sce_errorbook' }),
+      expect.objectContaining({ path: 'postmortem', kind: 'directory', action: 'absorb_into_sce_errorbook' }),
+      expect.objectContaining({ path: 'postmortem/checkout-incident.md', kind: 'file', action: 'absorb_into_sce_errorbook' })
+    ]));
   });
 
   test('skips takeover when .sce directory is missing', async () => {
