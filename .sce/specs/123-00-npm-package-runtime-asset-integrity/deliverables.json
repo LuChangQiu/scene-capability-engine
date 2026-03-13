@@ -1,0 +1,20 @@
+{
+  "verification_mode": "blocking",
+  "declared_files": [
+    "package.json",
+    "package-lock.json",
+    "scripts/npm-package-runtime-asset-check.js",
+    "tests/unit/scripts/npm-package-runtime-asset-check.test.js",
+    "CHANGELOG.md",
+    "docs/releases/v3.6.46.md",
+    "docs/zh/releases/v3.6.46.md",
+    "docs/releases/README.md",
+    "docs/zh/releases/README.md",
+    ".sce/specs/123-00-npm-package-runtime-asset-integrity/requirements.md",
+    ".sce/specs/123-00-npm-package-runtime-asset-integrity/design.md",
+    ".sce/specs/123-00-npm-package-runtime-asset-integrity/tasks.md",
+    ".sce/specs/123-00-npm-package-runtime-asset-integrity/deliverables.json"
+  ],
+  "optional_files": [],
+  "ignored_patterns": []
+}

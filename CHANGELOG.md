@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.46] - 2026-03-13
+
+### Added
+- Added `scripts/npm-package-runtime-asset-check.js` and the `npm run gate:npm-runtime-assets` release gate to verify that every runtime `scripts/*.js` file is present in the npm pack dry-run payload before publish.
+- Added Spec `123-00-npm-package-runtime-asset-integrity` with requirements, design, tasks, and deliverables to formalize the npm runtime asset integrity fix.
+- Added unit coverage for runtime script discovery, pack payload parsing, missing-script detection, and pack execution failure reporting.
+
+### Fixed
+- Fixed npm package publish contents by including the root `scripts/` directory in the package `files` allowlist, so installed `sce` tarballs no longer crash on missing runtime assets such as `scripts/git-managed-gate.js`.
+- Fixed the new runtime asset gate on Windows by executing `npm pack --json --dry-run` through a shell-compatible path and raising the output buffer ceiling for large package manifests.
+
 ## [3.6.45] - 2026-03-13
 
 ### Added
