@@ -21,13 +21,13 @@ Implement the template engine foundation in `lib/commands/scene.js` following th
     - Return `{ valid, errors, resolved }`
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8_
 
-  - [ ]* 1.3 Write property tests for schema validation
+  - [x]* 1.3 Write property tests for schema validation
     - **Property 1: Valid schema acceptance**
     - **Validates: Requirements 1.1, 1.2**
     - **Property 2: Invalid type rejection**
     - **Validates: Requirements 1.3**
 
-  - [ ]* 1.4 Write property tests for variable validation
+  - [x]* 1.4 Write property tests for variable validation
     - **Property 3: Valid schema and values acceptance**
     - **Validates: Requirements 2.1**
     - **Property 4: Default value filling**
@@ -39,7 +39,7 @@ Implement the template engine foundation in `lib/commands/scene.js` following th
     - **Property 7: All errors collected**
     - **Validates: Requirements 2.8**
 
-  - [ ]* 1.5 Write unit tests for schema and variable validation edge cases
+  - [x]* 1.5 Write unit tests for schema and variable validation edge cases
     - Empty schema array, empty values object
     - Variable with no name, variable with no type
     - Boolean/array type validation
@@ -59,7 +59,7 @@ Implement the template engine foundation in `lib/commands/scene.js` following th
     - Return `{ rendered, errors, files, summary }`
     - _Requirements: 3.1, 3.5, 3.6_
 
-  - [ ]* 2.3 Write property tests for template rendering
+  - [x]* 2.3 Write property tests for template rendering
     - **Property 8: Placeholder substitution**
     - **Validates: Requirements 3.2**
     - **Property 9: Conditional block evaluation**
@@ -73,7 +73,7 @@ Implement the template engine foundation in `lib/commands/scene.js` following th
     - **Property 13: Unknown placeholder passthrough**
     - **Validates: Requirements 3.7**
 
-  - [ ]* 2.4 Write unit tests for renderTemplateFiles
+  - [x]* 2.4 Write unit tests for renderTemplateFiles
     - Test validation-before-render gate (invalid variables → no output)
     - Test directory structure preservation
     - Test empty template directory
@@ -90,7 +90,7 @@ Implement the template engine foundation in `lib/commands/scene.js` following th
     - Return `{ resolved, chain, mergedVariables, mergedFiles, errors }`
     - _Requirements: 5.2, 5.3, 5.4, 5.5, 5.6, 5.7_
 
-  - [ ]* 4.2 Write property tests for inheritance resolution
+  - [x]* 4.2 Write property tests for inheritance resolution
     - **Property 14: Inheritance chain traversal**
     - **Validates: Requirements 5.3**
     - **Property 15: Inheritance merge override**
@@ -98,7 +98,7 @@ Implement the template engine foundation in `lib/commands/scene.js` following th
     - **Property 16: Circular inheritance detection**
     - **Validates: Requirements 5.6**
 
-  - [ ]* 4.3 Write unit tests for inheritance edge cases
+  - [x]* 4.3 Write unit tests for inheritance edge cases
     - Missing parent package, single-level (no extends), deeply nested chain (3+ levels)
     - _Requirements: 5.6, 5.7_
 
@@ -134,11 +134,11 @@ Implement the template engine foundation in `lib/commands/scene.js` following th
     - Wire options and action handlers
     - _Requirements: 6.1, 7.1, 8.1_
 
-  - [ ]* 5.7 Write unit tests for CLI option normalization and validation
+  - [x]* 5.7 Write unit tests for CLI option normalization and validation
     - Test all normalize/validate functions for the three commands
     - _Requirements: 6.1, 7.1, 8.1_
 
-  - [ ]* 5.8 Write unit tests for command runners
+  - [x]* 5.8 Write unit tests for command runners
     - Happy path, error paths, --json mode for all three commands
     - _Requirements: 6.1-6.4, 7.1-7.4, 8.1-8.3_
 
@@ -148,7 +148,7 @@ Implement the template engine foundation in `lib/commands/scene.js` following th
     - Export: normalize/validate/run functions for all three commands
     - _Requirements: 9.1, 9.2, 9.3_
 
-  - [ ]* 6.2 Write property test for backward compatibility
+  - [x]* 6.2 Write property test for backward compatibility
     - **Property 17: Backward compatibility**
     - **Validates: Requirements 9.4**
 
@@ -162,3 +162,4 @@ Implement the template engine foundation in `lib/commands/scene.js` following th
 - No new external dependencies — template rendering is pure JS string processing
 - Property tests use fast-check with minimum 100 iterations each
 - Each task references specific requirements for traceability
+- Test evidence for the optional backlog closeout is recorded in `custom/template-test-closeout-2026-03-12.md`

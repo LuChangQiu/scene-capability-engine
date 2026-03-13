@@ -18,7 +18,7 @@ Implement the Moqui ERP Adapter in three modules: MoquiClient (HTTP + JWT), Moqu
     - Retry logic: retry on network errors and 5xx up to `retryCount` times with `retryDelay` delay
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 7.1, 7.2, 7.3, 7.4_
 
-  - [ ]* 1.2 Write unit tests for MoquiClient
+  - [x]* 1.2 Write unit tests for MoquiClient
     - Test login success/failure with mocked HTTP
     - Test token refresh flow (401 → refresh → retry)
     - Test re-login fallback when refresh fails
@@ -27,7 +27,7 @@ Implement the Moqui ERP Adapter in three modules: MoquiClient (HTTP + JWT), Moqu
     - Test timeout handling
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 7.1, 7.2, 7.3, 7.4_
 
-  - [ ]* 1.3 Write property test for retry count
+  - [x]* 1.3 Write property test for retry count
     - **Property 9: Retry logic respects retryCount**
     - **Validates: Requirements 7.3, 7.4**
 
@@ -39,27 +39,27 @@ Implement the Moqui ERP Adapter in three modules: MoquiClient (HTTP + JWT), Moqu
     - `mapMoquiResponseToResult(moquiResponse, handlerId, bindingRef)` — map Moqui response to Execution_Result
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 6.6, 3.6, 3.7, 7.5_
 
-  - [ ]* 2.2 Write property test for config round-trip
+  - [x]* 2.2 Write property test for config round-trip
     - **Property 1: Config load round-trip**
     - **Validates: Requirements 1.1**
 
-  - [ ]* 2.3 Write property test for config defaults
+  - [x]* 2.3 Write property test for config defaults
     - **Property 2: Config defaults for optional fields**
     - **Validates: Requirements 1.4**
 
-  - [ ]* 2.4 Write property test for config validation
+  - [x]* 2.4 Write property test for config validation
     - **Property 3: Config validation catches missing required fields**
     - **Validates: Requirements 1.6**
 
-  - [ ]* 2.5 Write property test for invalid JSON config
+  - [x]* 2.5 Write property test for invalid JSON config
     - **Property 4: Invalid JSON config produces descriptive error**
     - **Validates: Requirements 1.5**
 
-  - [ ]* 2.6 Write property test for parseBindingRef
+  - [x]* 2.6 Write property test for parseBindingRef
     - **Property 5: parseBindingRef correctly extracts components**
     - **Validates: Requirements 6.6**
 
-  - [ ]* 2.7 Write property test for response mapping
+  - [x]* 2.7 Write property test for response mapping
     - **Property 8: Moqui response maps to correct Execution_Result**
     - **Validates: Requirements 3.6, 3.7, 7.5**
 
@@ -75,15 +75,15 @@ Implement the Moqui ERP Adapter in three modules: MoquiClient (HTTP + JWT), Moqu
     - Operation-to-HTTP mapping: list→GET entities, get→GET entities/id, create→POST, update→PUT, delete→DELETE, invoke→POST services, job-status→GET, screen-catalog→GET screens, screen-definition→GET screens/path
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5, 3.1, 3.2, 3.3, 3.4, 3.5, 4.1, 4.2, 4.3, 4.4, 5.1, 5.2_
 
-  - [ ]* 4.2 Write property test for binding ref matcher
+  - [x]* 4.2 Write property test for binding ref matcher
     - **Property 6: Binding ref matcher matches correct prefixes**
     - **Validates: Requirements 6.1**
 
-  - [ ]* 4.3 Write property test for operation-to-HTTP mapping
+  - [x]* 4.3 Write property test for operation-to-HTTP mapping
     - **Property 7: Operation descriptor maps to correct HTTP method and path**
     - **Validates: Requirements 3.1, 3.2, 3.3, 3.4, 3.5, 4.1, 4.2, 4.3, 5.1, 5.2**
 
-  - [ ]* 4.4 Write unit tests for MoquiAdapter handler
+  - [x]* 4.4 Write unit tests for MoquiAdapter handler
     - Test execute with mocked MoquiClient for each operation type
     - Test readiness success, unreachable, auth-failed cases
     - Test BindingRegistry.resolve matches moqui/spec.erp refs to adapter handler
@@ -109,13 +109,13 @@ Implement the Moqui ERP Adapter in three modules: MoquiClient (HTTP + JWT), Moqu
     - Add all 8 new functions to `module.exports`
     - _Requirements: 10.4, 10.5_
 
-  - [ ]* 5.4 Write unit tests for connect command
+  - [x]* 5.4 Write unit tests for connect command
     - Test normalize/validate/run/print with mocked adapter
     - Test success and failure scenarios
     - Test --json output mode
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6_
 
-  - [ ]* 5.5 Write unit tests for discover command
+  - [x]* 5.5 Write unit tests for discover command
     - Test normalize/validate/run/print with mocked adapter
     - Test each --type variant and summary mode
     - Test --json output mode

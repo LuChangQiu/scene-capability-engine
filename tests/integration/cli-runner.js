@@ -64,6 +64,9 @@ function runCliWithRetry(args, options = {}) {
         timedOut = true;
         child.kill('SIGTERM');
       }, timeoutMs);
+      if (typeof timeout.unref === 'function') {
+        timeout.unref();
+      }
 
       child.stdout.on('data', (data) => {
         stdout += data.toString();

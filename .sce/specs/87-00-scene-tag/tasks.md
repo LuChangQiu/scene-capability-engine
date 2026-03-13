@@ -42,8 +42,8 @@ Add `sce scene tag` subcommand group with sub-subcommands (add, rm, ls) to manag
 - [x] 2. Checkpoint
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ]* 3. Write tests
-  - [ ]* 3.1 Write unit tests for tag command
+- [x]* 3. Write tests
+  - [x]* 3.1 Write unit tests for tag command
     - Test add tag persists value
     - Test add tag overwrites existing tag
     - Test add with non-existent package returns error
@@ -60,19 +60,19 @@ Add `sce scene tag` subcommand group with sub-subcommands (add, rm, ls) to manag
     - Test normalize defaults
     - Test validate rejects missing options
     - _Requirements: 1.1–1.5, 2.1–2.4, 3.1–3.4, 4.1–4.3_
-  - [ ]* 3.2 Write property test: add-then-ls round trip
+  - [x]* 3.2 Write property test: add-then-ls round trip
     - **Property 1: Add-then-ls round trip**
     - **Validates: Requirements 1.1, 3.1, 3.3**
-  - [ ]* 3.3 Write property test: add-then-rm round trip
+  - [x]* 3.3 Write property test: add-then-rm round trip
     - **Property 2: Add-then-rm round trip**
     - **Validates: Requirements 1.1, 2.1**
-  - [ ]* 3.4 Write property test: package-not-found error
+  - [x]* 3.4 Write property test: package-not-found error
     - **Property 3: Package-not-found error across all actions**
     - **Validates: Requirements 1.3, 2.3, 3.4**
-  - [ ]* 3.5 Write property test: version-not-found error
+  - [x]* 3.5 Write property test: version-not-found error
     - **Property 4: Version-not-found error for add**
     - **Validates: Requirements 1.4**
-  - [ ]* 3.6 Write property test: rm rejects non-existent tag
+  - [x]* 3.6 Write property test: rm rejects non-existent tag
     - **Property 5: Rm rejects non-existent tag**
     - **Validates: Requirements 2.2**
 

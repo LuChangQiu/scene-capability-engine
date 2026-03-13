@@ -1,6 +1,12 @@
 const { spawn } = require('child_process');
 const path = require('path');
 
+function unrefTimer(timer) {
+  if (timer && typeof timer.unref === 'function') {
+    timer.unref();
+  }
+}
+
 /**
  * CommandTestHelper - Provides utilities for executing commands and validating output
  * in integration tests. Handles command execution, output capture, and validation.
@@ -43,6 +49,7 @@ class CommandTestHelper {
         timedOut = true;
         child.kill('SIGTERM');
       }, timeout);
+      unrefTimer(timeoutId);
 
       // Capture stdout
       child.stdout.on('data', (data) => {
@@ -166,6 +173,7 @@ class CommandTestHelper {
           reject(error);
         }
       }, 100);
+      unrefTimer(checkInterval);
     });
   }
 
@@ -196,6 +204,7 @@ class CommandTestHelper {
           reject(error);
         }
       }, 100);
+      unrefTimer(checkInterval);
     });
   }
 

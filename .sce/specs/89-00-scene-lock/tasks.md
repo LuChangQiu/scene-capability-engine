@@ -41,8 +41,8 @@ Add `sce scene lock` subcommand group with sub-subcommands (set, rm, ls) to mana
 - [x] 2. Checkpoint
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ]* 3. Write tests
-  - [ ]* 3.1 Write unit tests for lock command
+- [x]* 3. Write tests
+  - [x]* 3.1 Write unit tests for lock command
     - Test set lock persists `locked: true` on version entry
     - Test set lock on already-locked version returns error
     - Test set lock with non-existent package returns error
@@ -58,19 +58,19 @@ Add `sce scene lock` subcommand group with sub-subcommands (set, rm, ls) to mana
     - Test normalize defaults
     - Test validate rejects missing options per action
     - _Requirements: 1.1–1.4, 2.1–2.4, 3.1–3.3, 4.1–4.3_
-  - [ ]* 3.2 Write property test: set-then-ls round trip
+  - [x]* 3.2 Write property test: set-then-ls round trip
     - **Property 1: Set-then-ls round trip**
     - **Validates: Requirements 1.1, 3.1**
-  - [ ]* 3.3 Write property test: set-then-rm round trip
+  - [x]* 3.3 Write property test: set-then-rm round trip
     - **Property 2: Set-then-rm round trip**
     - **Validates: Requirements 1.1, 2.1**
-  - [ ]* 3.4 Write property test: package-not-found error
+  - [x]* 3.4 Write property test: package-not-found error
     - **Property 3: Package-not-found error across all actions**
     - **Validates: Requirements 1.2, 2.2, 3.3**
-  - [ ]* 3.5 Write property test: version-not-found error
+  - [x]* 3.5 Write property test: version-not-found error
     - **Property 4: Version-not-found error for set and rm**
     - **Validates: Requirements 1.3, 2.3**
-  - [ ]* 3.6 Write property test: ls filtering is exact
+  - [x]* 3.6 Write property test: ls filtering is exact
     - **Property 5: Ls filtering is exact**
     - **Validates: Requirements 3.1**
 

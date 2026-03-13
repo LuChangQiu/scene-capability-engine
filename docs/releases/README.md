@@ -9,6 +9,7 @@ This directory stores release-facing documents:
 ## Archived Versions
 
 - [Release checklist](../release-checklist.md)
+- [v3.6.39 release notes](./v3.6.39.md)
 - [v3.6.38 release notes](./v3.6.38.md)
 - [v3.6.37 release notes](./v3.6.37.md)
 - [v1.46.2 release notes](./v1.46.2.md) (historical)

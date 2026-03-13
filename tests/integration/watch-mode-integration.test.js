@@ -1,5 +1,6 @@
 const WatchManager = require('../../lib/watch/watch-manager');
 const fs = require('fs-extra');
+const os = require('os');
 const path = require('path');
 
 describe('Watch Mode Integration', () => {
@@ -7,8 +8,7 @@ describe('Watch Mode Integration', () => {
   let testDir;
 
   beforeEach(async () => {
-    testDir = path.join(__dirname, '../fixtures/integration-test');
-    await fs.ensureDir(testDir);
+    testDir = await fs.mkdtemp(path.join(os.tmpdir(), 'sce-watch-mode-integration-'));
     
     manager = new WatchManager({
       basePath: testDir,

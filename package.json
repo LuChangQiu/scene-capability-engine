@@ -1,6 +1,6 @@
 {
   "name": "scene-capability-engine",
-  "version": "3.6.38",
+  "version": "3.6.39",
   "description": "SCE (Scene Capability Engine) - A CLI tool and npm package for spec-driven development with AI coding assistants.",
   "main": "index.js",
   "bin": {
@@ -39,7 +39,11 @@
     "test:sce-tracking": "node scripts/check-sce-tracking.js",
     "test:brand-consistency": "node scripts/check-branding-consistency.js",
     "audit:steering": "node scripts/steering-content-audit.js --fail-on-error",
+    "audit:state-storage": "node scripts/state-storage-tiering-audit.js",
     "report:steering-audit": "node scripts/steering-content-audit.js --json",
+    "report:state-storage": "node scripts/state-storage-tiering-audit.js --json",
+    "report:interactive-approval-projection": "node scripts/interactive-approval-event-projection.js --action doctor --json",
+    "audit:interactive-approval-projection": "node scripts/interactive-approval-event-projection.js --action doctor --fail-on-drift --fail-on-parse-error",
     "test:watch": "npx jest --watch",
     "coverage": "npx jest --coverage",
     "report:moqui-metadata": "node scripts/moqui-metadata-extract.js --json",

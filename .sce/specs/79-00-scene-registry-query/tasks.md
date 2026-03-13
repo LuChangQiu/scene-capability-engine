@@ -21,10 +21,10 @@ Implement `sce scene list` and `sce scene search` commands following the normali
   - [x] 1.4 Export new functions in `module.exports`
     - Export: `buildRegistryPackageList`, `filterRegistryPackages`, `normalizeSceneListOptions`, `validateSceneListOptions`, `runSceneListCommand`, `printSceneListSummary`
     - _Requirements: 3.1_
-  - [ ]* 1.5 Write unit tests for `buildRegistryPackageList` and `filterRegistryPackages`
+  - [x] 1.5 Write unit tests for `buildRegistryPackageList` and `filterRegistryPackages`
     - Test empty input, sorting, field mapping, case-insensitive matching, no matches
     - _Requirements: 1.2, 1.3, 2.2, 2.3, 2.4, 2.5_
-  - [ ]* 1.6 Write property tests for helpers
+  - [x] 1.6 Write property tests for helpers
     - **Property 1: Package list preserves all entries**
     - **Validates: Requirements 1.2**
     - **Property 2: Search filter completeness**
@@ -43,7 +43,7 @@ Implement `sce scene list` and `sce scene search` commands following the normali
   - [x] 2.3 Export new functions in `module.exports`
     - Export: `normalizeSceneSearchOptions`, `validateSceneSearchOptions`, `runSceneSearchCommand`, `printSceneSearchSummary`
     - _Requirements: 3.2_
-  - [ ]* 2.4 Write unit tests for scene search command
+  - [x] 2.4 Write unit tests for scene search command
     - Test normalize/validate options, runSceneSearchCommand with mock fileSystem, printSceneSearchSummary output
     - Test no matches message, empty query returns all, JSON output
     - _Requirements: 2.1, 2.5, 2.6, 2.7, 2.8, 3.4_
@@ -51,14 +51,15 @@ Implement `sce scene list` and `sce scene search` commands following the normali
 - [x] 3. Checkpoint
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 4. Integration tests and list command tests
-  - [ ]* 4.1 Write unit tests for scene list command
+- [x] 4. Integration tests and list command tests
+  - [x] 4.1 Write unit tests for scene list command
     - Test normalize/validate options, runSceneListCommand with mock fileSystem, printSceneListSummary output
     - Test empty registry message, JSON output, error handling
     - _Requirements: 1.1, 1.3, 1.4, 1.5, 3.4_
-  - [ ]* 4.2 Write property test for JSON round-trip
+  - [x] 4.2 Write property test for JSON round-trip
     - **Property 4: JSON output round-trip**
     - **Validates: Requirements 1.4, 2.7**
+    - Evidence captured in `custom/query-test-closeout-2026-03-12.md`.
 
 - [x] 5. Final checkpoint
   - Ensure all tests pass, ask the user if questions arise.

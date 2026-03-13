@@ -1,4 +1,5 @@
 const fs = require('fs-extra');
+const os = require('os');
 const path = require('path');
 
 /**
@@ -8,7 +9,19 @@ const path = require('path');
 class IntegrationTestFixture {
   constructor(testName) {
     this.testName = testName;
-    this.testDir = path.join(__dirname, 'integration-test', testName);
+    this.fixtureRoot = path.join(os.tmpdir(), 'sce-integration-fixtures');
+    this.testDir = path.join(this.fixtureRoot, this.sanitizeTestName(testName));
+    this.updateDerivedPaths();
+  }
+
+  sanitizeTestName(value) {
+    return String(value || 'integration-test')
+      .replace(/[^A-Za-z0-9._-]+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '') || 'integration-test';
+  }
+
+  updateDerivedPaths() {
     this.sceDir = path.join(this.testDir, '.sce');
     this.specsDir = path.join(this.sceDir, 'specs');
     this.configFile = path.join(this.sceDir, 'config.json');
@@ -19,6 +32,9 @@ class IntegrationTestFixture {
    * Creates test directory structure and default configuration
    */
   async setup() {
+    await fs.ensureDir(this.fixtureRoot);
+    this.testDir = await fs.mkdtemp(path.join(this.fixtureRoot, `${this.sanitizeTestName(this.testName)}-`));
+    this.updateDerivedPaths();
     await fs.ensureDir(this.testDir);
     await fs.ensureDir(this.sceDir);
     await fs.ensureDir(this.specsDir);

@@ -41,8 +41,8 @@ Add `sce scene owner` subcommand group with sub-subcommands (set, show, list, tr
 - [x] 2. Checkpoint
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ]* 3. Write tests
-  - [ ]* 3.1 Write unit tests for owner command
+- [x]* 3. Write tests
+  - [x]* 3.1 Write unit tests for owner command
     - Test set owner persists value
     - Test set owner with empty string removes field
     - Test set owner with --remove removes field
@@ -58,19 +58,19 @@ Add `sce scene owner` subcommand group with sub-subcommands (set, show, list, tr
     - Test normalize defaults
     - Test validate rejects missing options
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 2.1, 2.2, 2.3, 3.1, 3.2, 4.1, 4.2, 4.3, 4.4, 5.1, 5.2_
-  - [ ]* 3.2 Write property test: set-then-show round trip
+  - [x]* 3.2 Write property test: set-then-show round trip
     - **Property 1: Set-then-show round trip**
     - **Validates: Requirements 1.1, 2.1**
-  - [ ]* 3.3 Write property test: package-not-found error
+  - [x]* 3.3 Write property test: package-not-found error
     - **Property 2: Package-not-found error across all actions**
     - **Validates: Requirements 1.4, 2.3, 4.3**
-  - [ ]* 3.4 Write property test: list filtering is exact
+  - [x]* 3.4 Write property test: list filtering is exact
     - **Property 3: List filtering is exact**
     - **Validates: Requirements 3.1**
-  - [ ]* 3.5 Write property test: transfer updates owner
+  - [x]* 3.5 Write property test: transfer updates owner
     - **Property 4: Transfer updates owner when from matches**
     - **Validates: Requirements 4.1**
-  - [ ]* 3.6 Write property test: transfer rejects mismatch
+  - [x]* 3.6 Write property test: transfer rejects mismatch
     - **Property 5: Transfer rejects mismatched from**
     - **Validates: Requirements 4.2**
 

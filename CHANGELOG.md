@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.39] - 2026-03-13
+
+### Added
+- Added state storage tiering policy artifacts and guidance in `docs/state-storage-tiering.md`, `docs/state-migration-reconciliation-runbook.md`, `.sce/config/state-storage-policy.json`, and `template/.sce/config/state-storage-policy.json`.
+- Added append-only evidence projection and audit tooling via `scripts/interactive-approval-event-projection.js`, `scripts/state-storage-tiering-audit.js`, and the `audit:state-storage` / `report:state-storage` package scripts.
+- Added scene command coverage and helper fixtures for the expanded `scene` subcommand surface, including publish/install/info/diff/validate/owner/tag/stats/lock/contribute/version and related property tests.
+- Added release-facing closeout evidence for the scene command specs and the quality hardening master spec under `.sce/specs/*/custom/`.
+
+### Changed
+- Expanded `lib/commands/scene.js` to cover the newer scene command flows and stabilized JSON summary output so CLI JSON mode preserves edge-case numeric payloads such as `-0`.
+- Hardened state migration and storage behavior in `lib/state/sce-state-store.js`, `lib/state/state-migration-manager.js`, `lib/runtime/session-store.js`, and related governance/config plumbing while keeping file sources canonical.
+- Completed the `115-00-sce-quality-hardening-program` integration closeout, including `watch logs --follow` completion, open-handle governance follow-through, and master/sub-spec status convergence.
+- Updated `docs/command-reference.md`, `docs/document-governance.md`, and multiple Spec task ledgers to reflect the shipped command surface and governance posture.
+
+### Fixed
+- Removed the remaining `forceExit` dependency from the validated Jest path and confirmed `npm run test:handles` passes without open-handle leakage.
+- Stabilized watch/integration helper timing and watcher cleanup paths so `test:smoke`, `test:full`, and `test:handles` can run cleanly in sequence.
+
 ## [3.6.38] - 2026-03-12
 
 ### Added

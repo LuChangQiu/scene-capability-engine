@@ -19,6 +19,7 @@ describe('ValidationEngine', () => {
     // Default config
     config = {
       rootAllowedFiles: ['README.md', 'README.zh.md', 'CHANGELOG.md', 'CONTRIBUTING.md'],
+      specAllowedRootFiles: ['requirements.md', 'design.md', 'tasks.md', 'collaboration.json'],
       specSubdirs: ['reports', 'scripts', 'tests', 'results', 'docs'],
       temporaryPatterns: ['*-SUMMARY.md', 'SESSION-*.md', '*-COMPLETE.md']
     };
@@ -74,11 +75,13 @@ describe('ValidationEngine', () => {
       await fs.writeFile(path.join(specPath, 'requirements.md'), '# Requirements');
       await fs.writeFile(path.join(specPath, 'design.md'), '# Design');
       await fs.writeFile(path.join(specPath, 'tasks.md'), '# Tasks');
+      await fs.writeFile(path.join(specPath, 'collaboration.json'), '{}');
       
       const report = await engine.validate({ spec: 'test-spec' });
       
       expect(report.valid).toBe(true);
       expect(report.errors).toHaveLength(0);
+      expect(report.warnings).toHaveLength(0);
     });
     
     test('should detect missing required files', async () => {

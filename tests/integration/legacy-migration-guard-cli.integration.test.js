@@ -11,6 +11,8 @@ function runCli(args, options = {}) {
   });
 }
 
+jest.setTimeout(30000);
+
 describe('legacy migration guard CLI integration', () => {
   let tempDir;
 

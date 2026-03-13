@@ -24,11 +24,11 @@ Implement `sce scene publish` and `sce scene unpublish` commands that bundle sce
     - Compute SHA-256 hash of compressed buffer using `crypto.createHash('sha256')`
     - Return `{ tarball: Buffer, integrity: string, fileCount: number, size: number }`
     - _Requirements: 2.2, 2.4_
-  - [ ]* 1.4 Write property test: Tarball round-trip integrity
+  - [x] 1.4 Write property test: Tarball round-trip integrity
     - **Property 1: Tarball round-trip integrity**
     - Generate random file sets (name + content), create tar, extract, compare
     - **Validates: Requirements 2.1, 2.2**
-  - [ ]* 1.5 Write property test: SHA-256 hash determinism
+  - [x] 1.5 Write property test: SHA-256 hash determinism
     - **Property 3: SHA-256 hash determinism**
     - Generate random buffers, compute hash twice, verify equality
     - **Validates: Requirements 2.4**
@@ -44,15 +44,15 @@ Implement `sce scene publish` and `sce scene unpublish` commands that bundle sce
     - Accept object keys (version strings), sort with `semver.rcompare`
     - Return highest version string, or null if empty
     - _Requirements: 5.2, 5.3_
-  - [ ]* 2.4 Write property test: Tarball naming and registry path construction
+  - [x] 2.4 Write property test: Tarball naming and registry path construction
     - **Property 2: Tarball naming and registry path construction**
     - Generate random valid names and semver versions, verify path format
     - **Validates: Requirements 2.3, 3.1**
-  - [ ]* 2.5 Write property test: Semver validation consistency
+  - [x] 2.5 Write property test: Semver validation consistency
     - **Property 4: Semver validation consistency**
     - Generate random strings, compare publish validation with `semver.valid()`
     - **Validates: Requirements 1.5, 5.1**
-  - [ ]* 2.6 Write property test: Latest pointer equals highest semver
+  - [x] 2.6 Write property test: Latest pointer equals highest semver
     - **Property 10: Latest pointer equals highest semver**
     - Generate random sets of valid semver strings, verify `resolveLatestVersion` returns max
     - **Validates: Requirements 5.2, 5.3**
@@ -66,7 +66,7 @@ Implement `sce scene publish` and `sce scene unpublish` commands that bundle sce
     - Verify all `artifacts.generates` files exist relative to packageDir
     - Return `{ valid, contract, errors, files: [{ relativePath, absolutePath }] }`
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5_
-  - [ ]* 3.2 Write property test: File existence verification
+  - [x] 3.2 Write property test: File existence verification
     - **Property 5: File existence verification**
     - Generate contracts with random file refs, mock filesystem with subset existing
     - Verify validation fails iff at least one referenced file is missing
@@ -98,15 +98,15 @@ Implement `sce scene publish` and `sce scene unpublish` commands that bundle sce
     - If no versions remain, delete the package entry entirely
     - Return `{ index, removed: boolean }`
     - _Requirements: 4.4, 4.5_
-  - [ ]* 5.5 Write property test: Index entry completeness after publish
+  - [x] 5.5 Write property test: Index entry completeness after publish
     - **Property 8: Index entry completeness after publish**
     - Generate random contracts, call addVersionToIndex, verify all required fields present
     - **Validates: Requirements 4.1, 4.2, 9.2**
-  - [ ]* 5.6 Write property test: Unpublish removes version and updates index
+  - [x] 5.6 Write property test: Unpublish removes version and updates index
     - **Property 9: Unpublish removes version and updates index**
     - Generate index with multiple versions, remove one, verify version absent and latest updated
     - **Validates: Requirements 4.4, 7.1, 7.3**
-  - [ ]* 5.7 Write property test: Registry index JSON round-trip
+  - [x] 5.7 Write property test: Registry index JSON round-trip
     - **Property 13: Registry index JSON round-trip**
     - Generate random valid index objects, serialize with JSON.stringify, parse back, deep equal
     - **Validates: Requirements 9.4**
@@ -125,11 +125,11 @@ Implement `sce scene publish` and `sce scene unpublish` commands that bundle sce
     - Attempt to remove empty version directory and package directory
     - Return `{ removed: boolean }`
     - _Requirements: 7.1_
-  - [ ]* 6.3 Write property test: Duplicate version detection without force
+  - [x] 6.3 Write property test: Duplicate version detection without force
     - **Property 6: Duplicate version detection without force**
     - Generate index with existing entry, attempt publish same name@version without force, verify error
     - **Validates: Requirements 3.3**
-  - [ ]* 6.4 Write property test: Force overwrite succeeds
+  - [x] 6.4 Write property test: Force overwrite succeeds
     - **Property 7: Force overwrite succeeds**
     - Generate index with existing entry, publish same name@version with force, verify success and updated entry
     - **Validates: Requirements 3.4, 6.4**
@@ -163,7 +163,7 @@ Implement `sce scene publish` and `sce scene unpublish` commands that bundle sce
   - [x] 8.5 Update CLI registration for `scene publish` command
     - Register `scene publish` command with `--package`, `--registry`, `--dry-run`, `--force`, `--json` options
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5_
-  - [ ]* 8.6 Write property test: Dry-run produces no side effects
+  - [x] 8.6 Write property test: Dry-run produces no side effects
     - **Property 11: Dry-run produces no side effects**
     - Generate valid package, run publish with dry-run, verify no files written to registry
     - **Validates: Requirements 6.3, 8.1, 8.2, 8.3**
@@ -192,7 +192,7 @@ Implement `sce scene publish` and `sce scene unpublish` commands that bundle sce
   - [x] 9.5 Register `scene unpublish` CLI command
     - Register with `--name`, `--version`, `--registry`, `--json` options
     - _Requirements: 7.1_
-  - [ ]* 9.6 Write property test: Not-found error on unpublish
+  - [x] 9.6 Write property test: Not-found error on unpublish
     - **Property 12: Not-found error on unpublish**
     - Generate random name/version not in index, verify unpublish fails and index unchanged
     - **Validates: Requirements 7.2**
@@ -201,19 +201,20 @@ Implement `sce scene publish` and `sce scene unpublish` commands that bundle sce
   - [x] 10.1 Add all new functions to module.exports
     - Export: createTarBuffer, extractTarBuffer, bundlePackageTarball, buildRegistryTarballPath, buildTarballFilename, resolveLatestVersion, validatePackageForPublish, loadRegistryIndex, saveRegistryIndex, addVersionToIndex, removeVersionFromIndex, storeToRegistry, removeFromRegistry, normalizeSceneUnpublishOptions, validateSceneUnpublishOptions, runSceneUnpublishCommand, printScenePublishSummary (updated), printSceneUnpublishSummary
     - _Requirements: 6.1, 7.1_
-  - [ ]* 10.2 Write unit tests for option normalization and validation
+  - [x] 10.2 Write unit tests for option normalization and validation
     - Test normalizeScenePackagePublishOptions defaults
     - Test validateScenePackagePublishOptions error cases
     - Test normalizeSceneUnpublishOptions defaults
     - Test validateSceneUnpublishOptions error cases
     - _Requirements: 6.1, 7.1_
-  - [ ]* 10.3 Write unit tests for edge cases
+  - [x] 10.3 Write unit tests for edge cases
     - First publish (no existing registry-index.json)
     - Unpublish last version of a package (removes package entry)
     - Invalid JSON in registry-index.json
     - Pre-release versions like "1.0.0-beta.1"
     - Empty artifacts.generates array
     - _Requirements: 4.3, 4.5, 9.3_
+    - Consolidated evidence in `custom/property-test-closeout-2026-03-12.md`.
 
 - [x] 11. Final checkpoint - Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.

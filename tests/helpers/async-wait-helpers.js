@@ -5,6 +5,15 @@
  * These helpers use condition-based waiting instead of fixed delays.
  */
 
+function sleep(ms) {
+  return new Promise(resolve => {
+    const timer = setTimeout(resolve, ms);
+    if (typeof timer.unref === 'function') {
+      timer.unref();
+    }
+  });
+}
+
 /**
  * Wait for a condition to become true
  * 
@@ -36,7 +45,7 @@ async function waitForCondition(predicate, options = {}) {
       // This allows predicates that check for existence of properties
     }
     
-    await new Promise(resolve => setTimeout(resolve, interval));
+    await sleep(interval);
   }
 
   throw new Error(message);
@@ -91,6 +100,9 @@ async function waitForFileSystemEvent(watcher, eventType, options = {}) {
       watcher.off(eventType, handler);
       reject(new Error(`Event "${eventType}" not received within ${timeout}ms`));
     }, timeout);
+    if (typeof timer.unref === 'function') {
+      timer.unref();
+    }
 
     const handler = (data) => {
       if (filter(data)) {
@@ -166,7 +178,7 @@ async function waitForAny(predicates, options = {}) {
       }
     }
     
-    await new Promise(resolve => setTimeout(resolve, interval));
+    await sleep(interval);
   }
 
   throw new Error(`No condition met within ${timeout}ms`);
@@ -195,7 +207,7 @@ async function waitForStable(getValue, options = {}) {
   let stableStartTime = Date.now();
 
   while (Date.now() - startTime < timeout) {
-    await new Promise(resolve => setTimeout(resolve, interval));
+    await sleep(interval);
     
     const currentValue = await getValue();
     
@@ -244,7 +256,7 @@ async function retryOperation(operation, options = {}) {
       lastError = error;
       
       if (attempt < maxAttempts && shouldRetry(error)) {
-        await new Promise(resolve => setTimeout(resolve, delay));
+        await sleep(delay);
       } else {
         throw error;
       }

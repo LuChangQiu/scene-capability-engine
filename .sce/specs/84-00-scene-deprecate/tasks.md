@@ -44,29 +44,29 @@ Add `sce scene deprecate` subcommand to mark/unmark package versions as deprecat
 - [x] 3. Checkpoint
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ]* 4. Write tests
-  - [ ]* 4.1 Write unit tests for deprecate command
+- [x]* 4. Write tests
+  - [x]* 4.1 Write unit tests for deprecate command
     - Test deprecate single version, deprecate all, undo single, undo all
     - Test missing package error, missing version error
     - Test --json output, validation errors
     - _Requirements: 1.1, 1.3, 1.4, 2.1, 3.1, 3.2, 3.3, 6.5_
-  - [ ]* 4.2 Write unit tests for install/info deprecation warnings
+  - [x]* 4.2 Write unit tests for install/info deprecation warnings
     - Test install prints warning for deprecated version
     - Test info includes deprecated field in payload
     - _Requirements: 4.1, 5.1, 5.2_
-  - [ ]* 4.3 Write property test: deprecate sets marker on targeted versions
+  - [x]* 4.3 Write property test: deprecate sets marker on targeted versions
     - **Property 1: Deprecate sets the marker on targeted versions**
     - **Validates: Requirements 1.1, 2.1**
-  - [ ]* 4.4 Write property test: deprecate-then-undo round trip
+  - [x]* 4.4 Write property test: deprecate-then-undo round trip
     - **Property 2: Deprecate-then-undo round trip restores original state**
     - **Validates: Requirements 3.1, 3.2**
-  - [ ]* 4.5 Write property test: error on invalid target
+  - [x]* 4.5 Write property test: error on invalid target
     - **Property 3: Error on invalid package or version target**
     - **Validates: Requirements 1.3, 1.4**
-  - [ ]* 4.6 Write property test: deprecation count matches affected versions
+  - [x]* 4.6 Write property test: deprecation count matches affected versions
     - **Property 4: Deprecation count matches affected versions**
     - **Validates: Requirements 2.2**
-  - [ ]* 4.7 Write property test: info output includes deprecation data
+  - [x]* 4.7 Write property test: info output includes deprecation data
     - **Property 5: Info output includes deprecation data for deprecated versions**
     - **Validates: Requirements 5.1, 5.2**
 

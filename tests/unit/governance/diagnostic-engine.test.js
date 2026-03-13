@@ -141,10 +141,23 @@ describe('DiagnosticEngine', () => {
       await fs.writeFile(path.join(specPath, 'requirements.md'), '# Requirements');
       await fs.writeFile(path.join(specPath, 'design.md'), '# Design');
       await fs.writeFile(path.join(specPath, 'tasks.md'), '# Tasks');
+      await fs.writeFile(path.join(specPath, 'collaboration.json'), '{}');
       
       const engine = new DiagnosticEngine(tempDir, config);
       await engine.scanSpecDirectory(specPath);
       
+      expect(engine.violations).toEqual([]);
+    });
+
+    it('should allow collaboration metadata at the Spec root', async () => {
+      await fs.writeFile(path.join(specPath, 'requirements.md'), '# Requirements');
+      await fs.writeFile(path.join(specPath, 'design.md'), '# Design');
+      await fs.writeFile(path.join(specPath, 'tasks.md'), '# Tasks');
+      await fs.writeFile(path.join(specPath, 'collaboration.json'), '{}');
+
+      const engine = new DiagnosticEngine(tempDir, config);
+      await engine.scanSpecDirectory(specPath);
+
       expect(engine.violations).toEqual([]);
     });
     

@@ -35,15 +35,16 @@ Implement `sce scene diff` command following the normalize → validate → run 
 - [x] 3. Checkpoint
   - Ensure all tests pass.
 
-- [ ]* 4. Write tests
-  - [ ]* 4.1 Write unit tests for `buildPackageDiff`
+- [x] 4. Write tests
+  - [x] 4.1 Write unit tests for `buildPackageDiff`
     - Test empty inputs, added/removed/modified/unchanged categorization
     - _Requirements: 2.1, 2.2, 2.3_
-  - [ ]* 4.2 Write property tests for diff
+  - [x] 4.2 Write property tests for diff
     - **Property 1: Diff symmetry**
     - **Validates: Requirements 2.1**
     - **Property 2: Diff completeness**
     - **Validates: Requirements 2.1**
+    - Evidence captured in `custom/diff-test-closeout-2026-03-12.md`.
 
 - [x] 5. Final checkpoint
   - Ensure all tests pass.

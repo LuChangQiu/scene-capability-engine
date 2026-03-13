@@ -35,8 +35,8 @@ Add `sce scene stats` subcommand that computes and displays aggregate statistics
 - [x] 2. Checkpoint
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ]* 3. Write tests
-  - [ ]* 3.1 Write unit tests for stats command
+- [x]* 3. Write tests
+  - [x]* 3.1 Write unit tests for stats command
     - Test stats on registry with multiple packages returns correct counts
     - Test stats on empty registry returns all zeros and null mostRecentlyPublished
     - Test ownership counting (with/without owner, empty owner string)
@@ -48,13 +48,13 @@ Add `sce scene stats` subcommand that computes and displays aggregate statistics
     - Test validate returns null
     - Test error when registry index cannot be read
     - _Requirements: 1.1, 1.2, 2.1, 3.1, 3.2, 4.1, 4.2, 5.1, 5.2, 6.1, 7.2, 7.3, 8.1, 8.2_
-  - [ ]* 3.2 Write property test: aggregate counts correctness
+  - [x]* 3.2 Write property test: aggregate counts correctness
     - **Property 1: Aggregate counts correctness**
     - **Validates: Requirements 1.1, 2.1, 3.1, 3.2, 6.1**
-  - [ ]* 3.3 Write property test: ownership partition invariant
+  - [x]* 3.3 Write property test: ownership partition invariant
     - **Property 2: Ownership partition invariant**
     - **Validates: Requirements 4.1, 4.2, 4.3**
-  - [ ]* 3.4 Write property test: most recently published correctness
+  - [x]* 3.4 Write property test: most recently published correctness
     - **Property 3: Most recently published correctness**
     - **Validates: Requirements 5.1, 5.2**
 
@@ -69,3 +69,4 @@ Add `sce scene stats` subcommand that computes and displays aggregate statistics
 - Follow existing command patterns (see `runSceneOwnerCommand`, `runSceneTagCommand` for reference)
 - Stats is a single command with no sub-subcommands (no action dispatch needed)
 - `loadRegistryIndex` returns empty index when file doesn't exist, so empty registry is handled naturally
+- Optional backlog closeout evidence is recorded in `custom/stats-test-closeout-2026-03-12.md`

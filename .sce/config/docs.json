@@ -5,6 +5,12 @@
     "CHANGELOG.md",
     "CONTRIBUTING.md"
   ],
+  "specAllowedRootFiles": [
+    "requirements.md",
+    "design.md",
+    "tasks.md",
+    "collaboration.json"
+  ],
   "specSubdirs": [
     "reports",
     "scripts",

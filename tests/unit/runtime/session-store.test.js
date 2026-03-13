@@ -132,6 +132,7 @@ describe('SessionStore', () => {
     const diagnostics = await store.getSceneIndexDiagnostics();
     expect(diagnostics).toEqual(expect.objectContaining({
       read_preference: 'sqlite',
+      read_source: 'sqlite',
       status: expect.any(String)
     }));
   });

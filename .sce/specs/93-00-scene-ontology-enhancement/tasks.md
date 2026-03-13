@@ -16,13 +16,13 @@
     - toJSON 返回 { nodes: [...], edges: [...] } 格式
     - fromJSON 从 JSON 重建完整图实例
     - _Requirements: 1.7, 1.8, 13.1_
-  - [ ]* 1.3 编写 OntologyGraph 属性测试
+  - [x]* 1.3 编写 OntologyGraph 属性测试
     - **Property 1: 节点添加/获取往返一致性**
     - **Validates: Requirements 1.1, 1.5**
-  - [ ]* 1.4 编写 OntologyGraph 边操作属性测试
+  - [x]* 1.4 编写 OntologyGraph 边操作属性测试
     - **Property 2: 边添加/获取往返一致性与类型验证**
     - **Validates: Requirements 1.2, 1.3, 1.4, 1.6**
-  - [ ]* 1.5 编写 OntologyGraph 序列化属性测试
+  - [x]* 1.5 编写 OntologyGraph 序列化属性测试
     - **Property 3: OntologyGraph 序列化往返一致性**
     - **Validates: Requirements 1.7, 1.8, 13.1**
 
@@ -33,7 +33,7 @@
     - 实现显式 depends_on 字段解析
     - 处理空 bindings 返回空图
     - _Requirements: 2.1, 2.2, 2.3, 2.4_
-  - [ ]* 2.2 编写 Manifest 构建属性测试
+  - [x]* 2.2 编写 Manifest 构建属性测试
     - **Property 4: Manifest 到 Graph 构建正确性**
     - **Validates: Requirements 2.1, 2.2, 2.3**
 
@@ -48,13 +48,13 @@
     - 循环检测与 hasCycle 标记
     - ref 不存在时返回错误
     - _Requirements: 4.1, 4.2, 4.3_
-  - [ ]* 3.3 编写悬空引用检测属性测试
+  - [x]* 3.3 编写悬空引用检测属性测试
     - **Property 5: 悬空引用检测**
     - **Validates: Requirements 3.1, 3.2, 3.5**
-  - [ ]* 3.4 编写循环依赖检测属性测试
+  - [x]* 3.4 编写循环依赖检测属性测试
     - **Property 6: 循环依赖检测**
     - **Validates: Requirements 3.3, 3.4**
-  - [ ]* 3.5 编写依赖链查询属性测试
+  - [x]* 3.5 编写依赖链查询属性测试
     - **Property 7: 依赖链完整性**
     - **Validates: Requirements 4.1, 4.3**
 
@@ -73,7 +73,7 @@
   - [x] 5.3 实现 getAgentHints(contract) 函数
     - 解析 agent_hints 字段，不存在时返回 null
     - _Requirements: 9.1, 9.2, 9.3, 9.4_
-  - [ ]* 5.4 编写 Action Abstraction 属性测试
+  - [x]* 5.4 编写 Action Abstraction 属性测试
     - **Property 8: Action Abstraction 存储与查询往返一致性**
     - **Validates: Requirements 5.1, 5.2, 5.3**
 
@@ -91,13 +91,13 @@
     - 在现有检查步骤后添加 action abstraction、data lineage、agent hints 检查
     - 更新 checks_run 计数
     - _Requirements: 6.1, 6.2, 6.3, 8.1, 8.2, 10.1, 10.2, 10.3_
-  - [ ]* 6.5 编写 Action Abstraction Lint 属性测试
+  - [x]* 6.5 编写 Action Abstraction Lint 属性测试
     - **Property 9: Action Abstraction Lint 检查正确性**
     - **Validates: Requirements 6.1, 6.2, 6.3**
-  - [ ]* 6.6 编写 Lineage Lint 属性测试
+  - [x]* 6.6 编写 Lineage Lint 属性测试
     - **Property 10: Lineage Ref 一致性 Lint 检查**
     - **Validates: Requirements 8.1, 8.2**
-  - [ ]* 6.7 编写 Agent Hints Lint 属性测试
+  - [x]* 6.7 编写 Agent Hints Lint 属性测试
     - **Property 11: Agent Hints Lint 检查正确性**
     - **Validates: Requirements 10.1, 10.2, 10.3**
 
@@ -109,7 +109,7 @@
   - [x] 7.2 将 agent_readiness 维度集成到 calculateQualityScore()
     - 作为可选加分项添加到总分计算中
     - _Requirements: 11.1_
-  - [ ]* 7.3 编写 Agent Readiness 评分属性测试
+  - [x]* 7.3 编写 Agent Readiness 评分属性测试
     - **Property 12: Agent Readiness 评分正确性**
     - **Validates: Requirements 11.1, 11.2, 11.3, 11.4**
 
@@ -129,7 +129,7 @@
     - runSceneOntologyLineageCommand、runSceneOntologyAgentInfoCommand
     - 对应的 print 函数（文本和 JSON 双模式）
     - _Requirements: 12.1, 12.2, 12.3, 12.4, 12.5, 12.6, 12.7, 12.8_
-  - [ ]* 9.3 编写 CLI 命令单元测试
+  - [x]* 9.3 编写 CLI 命令单元测试
     - 测试各子命令的 normalize、validate、run 函数
     - 测试 --json 输出格式
     - 测试无效输入的错误处理
@@ -155,3 +155,4 @@
 - 所有新代码在 `lib/scene-runtime/scene-ontology.js` 和 `lib/scene-runtime/scene-template-linter.js` 中
 - CLI 集成在 `lib/commands/scene.js` 中
 - 测试在 `tests/unit/scene-runtime/scene-ontology.test.js` 和 `tests/unit/commands/scene.test.js` 中
+- 本轮补充的属性测试与 CLI 证据记录在 `custom/property-and-cli-closeout-2026-03-12.md`

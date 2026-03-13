@@ -6,7 +6,7 @@
 
 ## Tasks
 
-- [ ] 1. 创建 Lint 引擎核心模块
+- [x] 1. 创建 Lint 引擎核心模块
   - [x] 1.1 创建 `lib/scene-runtime/scene-template-linter.js`，实现 `createLintItem`、`checkManifestCompleteness`、`checkSceneManifestCompleteness` 函数
     - `createLintItem(level, code, message)` 返回 `{ level, code, message }`
     - `checkManifestCompleteness(contract)` 检查 scene-package.json 必需字段（apiVersion, kind, metadata, capabilities, artifacts, governance）
@@ -27,7 +27,7 @@
     - 处理 MANIFEST_READ_FAILED 和 SCENE_YAML_READ_FAILED 边界情况
     - _Requirements: 1.1, 1.6, 1.7, 1.9, 1.10_
 
-  - [ ]* 1.4 为 Lint 引擎编写 property tests
+  - [x]* 1.4 为 Lint 引擎编写 property tests
     - **Property 1: Lint 结果结构不变量**
     - **Validates: Requirements 1.1, 1.8**
     - **Property 2: 缺失必需字段产生错误**
@@ -43,7 +43,7 @@
     - **Property 7: 文档存在性检查**
     - **Validates: Requirements 1.7**
 
-  - [ ]* 1.5 为 Lint 引擎编写 unit tests
+  - [x]* 1.5 为 Lint 引擎编写 unit tests
     - 测试 `lintScenePackage` 完整有效包、缺失 scene-package.json、缺失 scene.yaml、空目录
     - 测试各 check 函数的具体示例和边界情况
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 1.10_
@@ -57,7 +57,7 @@
     - `calculateQualityScore(lintResult, options)` 汇总四个维度，返回 ScoreResult
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7_
 
-  - [ ]* 2.2 为评分计算器编写 property tests
+  - [x]* 2.2 为评分计算器编写 property tests
     - **Property 8: 评分总分不变量**
     - **Validates: Requirements 2.1, 2.6**
     - **Property 9: 评分维度公式正确性**
@@ -65,7 +65,7 @@
     - **Property 15: 评分阈值决定通过/失败**
     - **Validates: Requirements 5.3, 5.6**
 
-  - [ ]* 2.3 为评分计算器编写 unit tests
+  - [x]* 2.3 为评分计算器编写 unit tests
     - 测试满分包（100分）、空包（0分）、中等质量包
     - 测试各维度边界值（0分、满分）
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6_
@@ -81,7 +81,7 @@
     - 在 `registerSceneCommands` 中注册 `scene lint` 子命令
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7_
 
-  - [ ]* 4.2 为 `scene lint` 命令编写 unit tests
+  - [x]* 4.2 为 `scene lint` 命令编写 unit tests
     - 测试成功路径、失败路径、strict 模式、json 输出、默认 package 目录
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7_
 
@@ -94,7 +94,7 @@
     - 在 `registerSceneCommands` 中注册 `scene score` 子命令
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8_
 
-  - [ ]* 5.2 为 `scene score` 命令编写 unit tests
+  - [x]* 5.2 为 `scene score` 命令编写 unit tests
     - 测试成功路径、低于阈值、json 输出、自定义阈值
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8_
 
@@ -110,7 +110,7 @@
     - 在 `registerSceneCommands` 中注册 `scene contribute` 子命令
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12_
 
-  - [ ]* 6.2 为 `scene contribute` 命令编写 property tests
+  - [x]* 6.2 为 `scene contribute` 命令编写 property tests
     - **Property 10: Strict 模式将警告视为错误**
     - **Validates: Requirements 3.4, 4.3**
     - **Property 11: Dry-run 阻止发布**
@@ -122,17 +122,17 @@
     - **Property 14: Normalize 保留所有 CLI 选项**
     - **Validates: Requirements 3.2, 4.1, 5.1**
 
-  - [ ]* 6.3 为 `scene contribute` 命令编写 unit tests
+  - [x]* 6.3 为 `scene contribute` 命令编写 unit tests
     - 测试完整流水线成功路径、dry-run、skip-lint、strict、validation 失败、lint 失败
     - 测试 normalize/validate 函数各选项组合
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10_
 
-- [ ] 7. 序列化往返测试和错误处理
-  - [ ]* 7.1 编写 JSON 序列化往返 property test
+- [x] 7. 序列化往返测试和错误处理
+  - [x]* 7.1 编写 JSON 序列化往返 property test
     - **Property 16: JSON 序列化往返一致性**
     - **Validates: Requirements 6.1, 6.2, 6.3**
 
-  - [ ]* 7.2 编写错误处理 unit tests
+  - [x]* 7.2 编写错误处理 unit tests
     - 测试 Package_Dir 不存在、scene-package.json 缺失/无效 JSON、scene.yaml 缺失
     - 测试 registry 目录不存在时自动创建
     - 测试意外错误捕获和 exitCode 设置

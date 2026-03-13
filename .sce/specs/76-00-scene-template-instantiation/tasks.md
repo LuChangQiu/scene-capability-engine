@@ -17,7 +17,7 @@ Implement the `scene instantiate` command in `lib/commands/scene.js` following t
     - Reuse existing scanning logic pattern from `runScenePackageRegistryCommand`
     - _Requirements: 1.1, 6.1, 10.1_
 
-  - [ ]* 1.3 Write unit tests for option normalization and validation
+  - [x]* 1.3 Write unit tests for option normalization and validation
     - Test all normalize/validate combinations: list mode, dry-run, interactive, missing required options
     - _Requirements: 1.1, 4.1, 6.1_
 
@@ -38,15 +38,15 @@ Implement the `scene instantiate` command in `lib/commands/scene.js` following t
     - Return `{ executed: false }` if no hook command
     - _Requirements: 7.1, 7.2, 7.4_
 
-  - [ ]* 2.4 Write property test for manifest completeness
+  - [x]* 2.4 Write property test for manifest completeness
     - **Property 1: Manifest completeness and validity**
     - **Validates: Requirements 1.5, 2.1, 2.2, 2.3**
 
-  - [ ]* 2.5 Write property test for log accumulation
+  - [x]* 2.5 Write property test for log accumulation
     - **Property 7: Instantiation log accumulation**
     - **Validates: Requirements 8.1, 8.3, 8.4**
 
-  - [ ]* 2.6 Write property test for post-hook failure tolerance
+  - [x]* 2.6 Write property test for post-hook failure tolerance
     - **Property 11: Post-hook failure does not fail instantiation**
     - **Validates: Requirements 7.2**
 
@@ -63,11 +63,11 @@ Implement the `scene instantiate` command in `lib/commands/scene.js` following t
     - Return parsed object or throw descriptive error
     - _Requirements: 9.1, 9.2, 9.3, 9.4_
 
-  - [ ]* 3.3 Write property test for values parsing dispatch
+  - [x]* 3.3 Write property test for values parsing dispatch
     - **Property 8: Values parsing dispatch**
     - **Validates: Requirements 9.1, 9.2**
 
-  - [ ]* 3.4 Write property test for interactive prompting
+  - [x]* 3.4 Write property test for interactive prompting
     - **Property 4: Interactive prompting merges missing variables**
     - **Validates: Requirements 3.1, 3.3**
 
@@ -103,27 +103,27 @@ Implement the `scene instantiate` command in `lib/commands/scene.js` following t
     - Export: `normalizeSceneInstantiateOptions`, `validateSceneInstantiateOptions`, `buildInstantiateRegistry`, `buildInstantiationManifest`, `appendInstantiationLog`, `executePostInstantiateHook`, `promptMissingVariables`, `parseInstantiateValues`, `printSceneInstantiateSummary`, `runSceneInstantiateCommand`
     - _Requirements: 10.1, 10.2, 10.3, 10.4_
 
-  - [ ]* 5.7 Write property test for dry-run writes no files
+  - [x]* 5.7 Write property test for dry-run writes no files
     - **Property 2: Dry-run writes no files**
     - **Validates: Requirements 4.1, 4.3, 8.5**
 
-  - [ ]* 5.8 Write property test for missing package error
+  - [x]* 5.8 Write property test for missing package error
     - **Property 6: Missing package produces error**
     - **Validates: Requirements 1.6**
 
-  - [ ]* 5.9 Write property test for non-interactive missing variables
+  - [x]* 5.9 Write property test for non-interactive missing variables
     - **Property 5: Non-interactive missing variables produce errors**
     - **Validates: Requirements 3.4, 1.7**
 
-  - [ ]* 5.10 Write property test for list mode
+  - [x]* 5.10 Write property test for list mode
     - **Property 9: List mode shows all registry packages**
     - **Validates: Requirements 6.1**
 
-  - [ ]* 5.11 Write property test for backward compatibility
+  - [x]* 5.11 Write property test for backward compatibility
     - **Property 13: Backward compatibility for existing contracts**
     - **Validates: Requirements 10.5**
 
-  - [ ]* 5.12 Write unit tests for command runner integration
+  - [x]* 5.12 Write unit tests for command runner integration
     - Test all modes: normal happy path, list, dry-run, interactive (mocked inquirer), JSON output
     - Test error paths: missing package, validation failure, values parse error
     - _Requirements: 1.1-1.7, 4.1-4.3, 5.1-5.2, 6.1-6.3, 7.1-7.4, 8.1-8.5_
@@ -139,3 +139,4 @@ Implement the `scene instantiate` command in `lib/commands/scene.js` following t
 - Property tests use fast-check with minimum 100 iterations each
 - Each task references specific requirements for traceability
 - Reuses existing functions: `resolveTemplateInheritance`, `validateTemplateVariables`, `renderTemplateFiles`, registry scanning logic
+- Optional backlog closeout evidence is recorded in `custom/instantiate-test-closeout-2026-03-12.md`

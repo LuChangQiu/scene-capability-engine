@@ -18,12 +18,13 @@ Implement `sce scene info` command following normalize → validate → run → 
 - [x] 2. Checkpoint
   - Ensure all tests pass.
 
-- [ ]* 3. Write tests
-  - [ ]* 3.1 Write unit tests for info command
+- [x] 3. Write tests
+  - [x] 3.1 Write unit tests for info command
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 2.1, 2.2, 2.3_
-  - [ ]* 3.2 Write property test for version list completeness
+  - [x] 3.2 Write property test for version list completeness
     - **Property 1: Version list completeness**
     - **Validates: Requirements 1.2, 1.3**
+    - Evidence captured in `custom/info-test-closeout-2026-03-12.md`.
 
 - [x] 4. Final checkpoint
   - Ensure all tests pass.

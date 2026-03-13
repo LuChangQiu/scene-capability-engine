@@ -32,26 +32,26 @@ Enhance the existing `scene package-validate` command to support comprehensive d
 - [x] 2. Checkpoint
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ]* 3. Write tests
-  - [ ]* 3.1 Write unit tests for directory validation
+- [x]* 3. Write tests
+  - [x]* 3.1 Write unit tests for directory validation
     - Test missing scene-package.json
     - Test valid package directory
     - Test --json output
     - Test --strict with warnings
     - _Requirements: 1.1, 1.2, 5.3, 5.4, 6.2, 6.3_
-  - [ ]* 3.2 Write property test: required metadata fields
+  - [x]* 3.2 Write property test: required metadata fields
     - **Property 1: Required metadata fields produce errors when missing**
     - **Validates: Requirements 1.3**
-  - [ ]* 3.3 Write property test: semver validation consistency
+  - [x]* 3.3 Write property test: semver validation consistency
     - **Property 2: Semver validation consistency**
     - **Validates: Requirements 2.1, 2.2**
-  - [ ]* 3.4 Write property test: file existence check completeness
+  - [x]* 3.4 Write property test: file existence check completeness
     - **Property 3: File existence check completeness**
     - **Validates: Requirements 3.1, 3.2, 3.3**
-  - [ ]* 3.5 Write property test: error collection and validity semantics
+  - [x]* 3.5 Write property test: error collection and validity semantics
     - **Property 4: Error collection completeness and validity semantics**
     - **Validates: Requirements 5.1, 5.2, 5.3, 5.4**
-  - [ ]* 3.6 Write property test: strict mode promotes warnings
+  - [x]* 3.6 Write property test: strict mode promotes warnings
     - **Property 5: Strict mode promotes warnings to errors**
     - **Validates: Requirements 6.3**
 

@@ -34,33 +34,33 @@ Implement `sce scene version` command following the normalize → validate → r
 - [x] 3. Checkpoint
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ]* 4. Write unit tests
-  - [ ]* 4.1 Write unit tests for normalize, validate, and print functions
+- [x]* 4. Write unit tests
+  - [x]* 4.1 Write unit tests for normalize, validate, and print functions
     - Test `normalizeSceneVersionOptions` defaults and overrides
     - Test `validateSceneVersionOptions` missing bump, invalid bump, valid types, valid explicit semver
     - Test `printSceneVersionSummary` human-readable, JSON, dry-run indicator
     - _Requirements: 2.4, 2.5, 4.1, 4.2, 4.3_
-  - [ ]* 4.2 Write unit tests for `runSceneVersionCommand`
+  - [x]* 4.2 Write unit tests for `runSceneVersionCommand`
     - Test successful patch/minor/major bump with mock fileSystem
     - Test explicit version bump
     - Test error: file not found, invalid current version, explicit version not greater
     - Test dry-run mode (no write calls)
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 2.1, 2.2, 2.3, 3.1, 3.2, 3.3_
 
-- [ ]* 5. Write property tests
-  - [ ]* 5.1 Property test: Semver increment correctness
+- [x]* 5. Write property tests
+  - [x]* 5.1 Property test: Semver increment correctness
     - **Property 1: Semver increment correctness**
     - **Validates: Requirements 2.1**
-  - [ ]* 5.2 Property test: Explicit version ordering enforcement
+  - [x]* 5.2 Property test: Explicit version ordering enforcement
     - **Property 2: Explicit version ordering enforcement**
     - **Validates: Requirements 2.2, 2.3**
-  - [ ]* 5.3 Property test: Version bump write round-trip
+  - [x]* 5.3 Property test: Version bump write round-trip
     - **Property 3: Version bump write round-trip**
     - **Validates: Requirements 3.1**
-  - [ ]* 5.4 Property test: Validation rejects invalid inputs
+  - [x]* 5.4 Property test: Validation rejects invalid inputs
     - **Property 4: Validation rejects invalid inputs**
     - **Validates: Requirements 1.4, 2.4**
-  - [ ]* 5.5 Property test: JSON output contains all required fields
+  - [x]* 5.5 Property test: JSON output contains all required fields
     - **Property 5: JSON output contains all required fields**
     - **Validates: Requirements 4.2**
 

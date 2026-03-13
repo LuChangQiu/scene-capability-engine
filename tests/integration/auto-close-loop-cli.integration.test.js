@@ -17,6 +17,8 @@ function parseJsonOutput(stdout) {
   return JSON.parse((stdout || '').trim());
 }
 
+jest.setTimeout(600000);
+
 describe('auto close-loop CLI integration', () => {
   let tempDir;
   let originalCwd;

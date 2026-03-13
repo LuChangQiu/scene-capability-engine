@@ -876,6 +876,29 @@ Runtime read preference:
 - `sce state doctor --json` now includes:
   - `summary` aggregate (`pending_components`, `total_record_drift`, `blocking_count`, `alert_count`)
   - runtime read diagnostics (`runtime.timeline`, `runtime.scene_session`) with read-source/read-preference and consistency status
+  - hardened severity model:
+    - `blocking`: `sqlite-unavailable`, `source-parse-error`, `sqlite-ahead`, `sqlite-only`
+    - `alert`: `pending-migration`, `missing-source`, runtime `pending-sync`
+  - current release guidance:
+    - treat `sqlite-ahead` and `sqlite-only` as anomalies requiring repair before release
+    - treat `pending-migration` as repairable drift, not a steady-state
+    - only allow `missing-source` to persist when the component is intentionally out of scope for the project
+
+State storage tiering policy:
+- Policy file: `.sce/config/state-storage-policy.json`
+- Audit command: `npm run audit:state-storage`
+- Machine-readable report: `npm run report:state-storage`
+- Tier meanings:
+  - `file-source`: canonical evidence, audit, recovery payloads, and low-cardinality personal state
+  - `sqlite-index`: query-oriented registry/index layer with files still canonical
+  - `derived-sqlite-projection`: rebuildable SQLite projection for append-only stream queries
+- Explicit non-candidates for SQLite source replacement:
+  - `~/.sce/workspace-state.json`
+  - `.sce/reports/**/*.jsonl`
+  - `.sce/audit/**/*.jsonl`
+- Supporting docs:
+  - `docs/state-storage-tiering.md`
+  - `docs/state-migration-reconciliation-runbook.md`
 
 Write lease model (optional, policy-driven, SQLite-backed):
 - Policy file: `.sce/config/authorization-policy.json`
@@ -1836,6 +1859,10 @@ Interactive approval workflow helper (script-level stage-B approval state machin
 - `node scripts/interactive-approval-workflow.js --action <init|submit|approve|reject|execute|verify|archive|status> [--plan <path>] [--state-file <path>] [--audit-file <path>] [--actor <id>] [--actor-role <name>] [--role-policy <path>] [--comment <text>] [--password <text>] [--password-hash <sha256>] [--password-hash-env <name>] [--password-required] [--password-scope <csv>] [--json]`: maintain approval lifecycle state for interactive change plans and append approval events to JSONL audit logs.
   - Default state file: `.sce/reports/interactive-approval-state.json`
   - Default audit file: `.sce/reports/interactive-approval-events.jsonl`
+- `node scripts/interactive-approval-event-projection.js --action <rebuild|doctor|query> [--input <path>] [--read-source <auto|file|projection>] [--workflow-id <id>] [--actor <id>] [--approval-action <name>] [--event-type <type>] [--blocked|--not-blocked] [--limit <n>] [--fail-on-drift] [--fail-on-parse-error] [--json]`: build and inspect a rebuildable SQLite projection for `interactive-approval-events.jsonl` while keeping raw JSONL as canonical evidence.
+  - `rebuild` clears and rebuilds the projection for the target audit file
+  - `doctor` compares raw file count vs projection count and flags `projection-missing`, `pending-projection`, `projection-ahead`, or parse errors
+  - `query` discloses `read_source=file|projection`
   - `init` requires `--plan`; high-risk plans are marked as `approval_required=true`.
   - Password authorization can be required per plan (`plan.authorization.password_required=true`) or overridden in `init`.
   - `execute` is blocked (exit code `2`) when approval is required but current status is not `approved`.

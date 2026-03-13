@@ -21,7 +21,7 @@ Document governance ensures your project follows these rules:
 
 1. **Root Directory** - Only 4 markdown files allowed: `README.md`, `README.zh.md`, `CHANGELOG.md`, `CONTRIBUTING.md`
 2. **Spec Structure** - Each Spec must have `requirements.md`, `design.md`, `tasks.md`
-3. **Artifact Organization** - Spec artifacts must be in subdirectories: `reports/`, `scripts/`, `tests/`, `results/`, `docs/`
+3. **Artifact Organization** - Spec artifacts must be in subdirectories, except approved Spec-root metadata such as `requirements.md`, `design.md`, `tasks.md`, and `collaboration.json`
 4. **No Temporary Files** - Temporary documents (like `*-SUMMARY.md`, `SESSION-*.md`) must be deleted after use
 
 ### Why Use Document Governance?
@@ -128,7 +128,7 @@ sce docs diagnose
 - Root directory for non-allowed markdown files
 - Root directory for temporary documents
 - Spec directories for missing required files
-- Spec directories for misplaced artifacts
+- Spec directories for misplaced artifacts outside approved Spec-root metadata
 - Spec directories for temporary documents
 
 **Output:**
@@ -240,6 +240,7 @@ sce docs validate [options]
 **What it validates:**
 - Root directory has only allowed markdown files
 - Spec directories have required files (requirements.md, design.md, tasks.md)
+- Spec root contains only approved metadata files plus governed subdirectories
 - Spec subdirectories follow naming conventions
 - No misplaced artifacts
 
@@ -443,6 +444,7 @@ sce docs config [options]
 
 **Configuration keys:**
 - `root-allowed-files` - Allowed markdown files in root
+- `spec-allowed-root-files` - Allowed files at Spec root before artifact warnings apply
 - `spec-subdirs` - Recognized Spec subdirectories
 - `temporary-patterns` - Patterns for temporary files
 
@@ -466,6 +468,12 @@ Spec Subdirectories:
   • tests
   • results
   • docs
+
+Spec Allowed Root Files:
+  • requirements.md
+  • design.md
+  • tasks.md
+  • collaboration.json
 
 Temporary Patterns:
   • *-SUMMARY.md
@@ -724,6 +732,12 @@ The default configuration is:
     "CHANGELOG.md",
     "CONTRIBUTING.md"
   ],
+  "specAllowedRootFiles": [
+    "requirements.md",
+    "design.md",
+    "tasks.md",
+    "collaboration.json"
+  ],
   "specSubdirs": [
     "reports",
     "scripts",
@@ -749,6 +763,11 @@ The default configuration is:
 sce docs config --set root-allowed-files "README.md,README.zh.md,CHANGELOG.md,CONTRIBUTING.md,LICENSE.md,SECURITY.md"
 ```
 
+**Allow additional Spec-root metadata:**
+```bash
+sce docs config --set spec-allowed-root-files "requirements.md,design.md,tasks.md,collaboration.json"
+```
+
 **Add custom subdirectories:**
 ```bash
 sce docs config --set spec-subdirs "reports,scripts,tests,results,docs,diagrams,examples"
@@ -768,6 +787,7 @@ You can also edit this file directly:
 ```json
 {
   "rootAllowedFiles": ["README.md", "CUSTOM.md"],
+  "specAllowedRootFiles": ["requirements.md", "design.md", "tasks.md", "collaboration.json"],
   "specSubdirs": ["reports", "scripts", "custom"],
   "temporaryPatterns": ["*-TEMP.md"]
 }

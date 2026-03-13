@@ -463,4 +463,106 @@ describe('state-migration-manager', () => {
     expect(exportPayload.summary.release_gate_history_registry).toBe(2);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'reports', 'state-migration', 'export.json'))).toBe(true);
   });
+
+  test('doctor blocks sqlite-only when a file source disappears after migration', async () => {
+    await seedFileBasedState();
+
+    const stateStore = new SceStateStore(tempDir, {
+      fileSystem: fs,
+      env: { NODE_ENV: 'test' },
+      sqliteModule: {}
+    });
+
+    await runStateMigration({
+      all: true,
+      apply: true
+    }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: { NODE_ENV: 'test' },
+      stateStore
+    });
+
+    await fs.remove(path.join(tempDir, '.sce', 'timeline', 'index.json'));
+
+    const doctor = await runStateDoctor({}, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: { NODE_ENV: 'test' },
+      stateStore
+    });
+
+    expect(doctor.success).toBe(false);
+    expect(doctor.blocking).toEqual(expect.arrayContaining(['sqlite-only']));
+    expect(doctor.checks).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        id: 'runtime.timeline-index',
+        sync_status: 'sqlite-only'
+      })
+    ]));
+  });
+
+  test('doctor blocks sqlite-ahead when sqlite index contains records not present in files', async () => {
+    await seedFileBasedState();
+
+    const stateStore = new SceStateStore(tempDir, {
+      fileSystem: fs,
+      env: { NODE_ENV: 'test' },
+      sqliteModule: {}
+    });
+
+    await runStateMigration({
+      all: true,
+      apply: true
+    }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: { NODE_ENV: 'test' },
+      stateStore
+    });
+
+    await stateStore.upsertTimelineSnapshotIndex([
+      {
+        snapshot_id: 'tl-extra',
+        created_at: '2026-03-05T02:00:00.000Z',
+        trigger: 'manual',
+        event: 'manual.save',
+        summary: 'sqlite ahead',
+        scene_id: 'scene.demo',
+        session_id: 'sess-extra',
+        command: 'sce timeline save',
+        file_count: 1,
+        total_bytes: 128,
+        snapshot_path: '.sce/timeline/snapshots/tl-extra',
+        git: {}
+      }
+    ], {
+      source: 'test.sqlite-ahead'
+    });
+
+    const doctor = await runStateDoctor({}, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: { NODE_ENV: 'test' },
+      stateStore
+    });
+
+    expect(doctor.success).toBe(false);
+    expect(doctor.blocking).toEqual(expect.arrayContaining([
+      'sqlite-ahead',
+      'runtime timeline index sqlite-ahead'
+    ]));
+    expect(doctor.checks).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        id: 'runtime.timeline-index',
+        sync_status: 'sqlite-ahead'
+      })
+    ]));
+    expect(doctor.runtime.timeline).toEqual(expect.objectContaining({
+      read_source: 'sqlite',
+      consistency: expect.objectContaining({
+        status: 'sqlite-ahead'
+      })
+    }));
+  });
 });

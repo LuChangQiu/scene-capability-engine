@@ -27,10 +27,12 @@ describe('ConfigManager', () => {
       const defaults = configManager.getDefaults();
       
       expect(defaults).toHaveProperty('rootAllowedFiles');
+      expect(defaults).toHaveProperty('specAllowedRootFiles');
       expect(defaults).toHaveProperty('specSubdirs');
       expect(defaults).toHaveProperty('temporaryPatterns');
       
       expect(Array.isArray(defaults.rootAllowedFiles)).toBe(true);
+      expect(Array.isArray(defaults.specAllowedRootFiles)).toBe(true);
       expect(Array.isArray(defaults.specSubdirs)).toBe(true);
       expect(Array.isArray(defaults.temporaryPatterns)).toBe(true);
     });
@@ -42,6 +44,10 @@ describe('ConfigManager', () => {
       expect(defaults.rootAllowedFiles).toContain('README.zh.md');
       expect(defaults.rootAllowedFiles).toContain('CHANGELOG.md');
       expect(defaults.rootAllowedFiles).toContain('CONTRIBUTING.md');
+      expect(defaults.specAllowedRootFiles).toContain('requirements.md');
+      expect(defaults.specAllowedRootFiles).toContain('design.md');
+      expect(defaults.specAllowedRootFiles).toContain('tasks.md');
+      expect(defaults.specAllowedRootFiles).toContain('collaboration.json');
     });
     
     it('should include standard spec subdirectories', () => {
@@ -74,6 +80,7 @@ describe('ConfigManager', () => {
     it('should load existing config file', async () => {
       const customConfig = {
         rootAllowedFiles: ['README.md', 'CUSTOM.md'],
+        specAllowedRootFiles: ['requirements.md', 'design.md', 'tasks.md', 'meta.json'],
         specSubdirs: ['reports', 'custom'],
         temporaryPatterns: ['TEMP-*.md']
       };
@@ -86,6 +93,7 @@ describe('ConfigManager', () => {
       const config = await configManager.load();
       
       expect(config.rootAllowedFiles).toEqual(customConfig.rootAllowedFiles);
+      expect(config.specAllowedRootFiles).toEqual(customConfig.specAllowedRootFiles);
       expect(config.specSubdirs).toEqual(customConfig.specSubdirs);
       expect(config.temporaryPatterns).toEqual(customConfig.temporaryPatterns);
     });
@@ -104,6 +112,7 @@ describe('ConfigManager', () => {
       const defaults = configManager.getDefaults();
       
       expect(config.rootAllowedFiles).toEqual(partialConfig.rootAllowedFiles);
+      expect(config.specAllowedRootFiles).toEqual(defaults.specAllowedRootFiles);
       expect(config.specSubdirs).toEqual(defaults.specSubdirs);
       expect(config.temporaryPatterns).toEqual(defaults.temporaryPatterns);
     });
@@ -131,6 +140,7 @@ describe('ConfigManager', () => {
     it('should save configuration to file', async () => {
       const customConfig = {
         rootAllowedFiles: ['README.md'],
+        specAllowedRootFiles: ['requirements.md', 'tasks.md'],
         specSubdirs: ['reports'],
         temporaryPatterns: ['TEMP-*.md']
       };
@@ -146,6 +156,7 @@ describe('ConfigManager', () => {
     it('should create config directory if it does not exist', async () => {
       const customConfig = {
         rootAllowedFiles: ['README.md'],
+        specAllowedRootFiles: ['requirements.md', 'tasks.md'],
         specSubdirs: ['reports'],
         temporaryPatterns: ['TEMP-*.md']
       };
@@ -161,6 +172,7 @@ describe('ConfigManager', () => {
     it('should update internal config state after save', async () => {
       const customConfig = {
         rootAllowedFiles: ['README.md'],
+        specAllowedRootFiles: ['requirements.md', 'tasks.md'],
         specSubdirs: ['reports'],
         temporaryPatterns: ['TEMP-*.md']
       };
@@ -251,6 +263,7 @@ describe('ConfigManager', () => {
       // Set custom config
       const customConfig = {
         rootAllowedFiles: ['CUSTOM.md'],
+        specAllowedRootFiles: ['requirements.md', 'design.md'],
         specSubdirs: ['custom'],
         temporaryPatterns: ['CUSTOM-*.md']
       };
@@ -267,6 +280,7 @@ describe('ConfigManager', () => {
       // Set custom config
       const customConfig = {
         rootAllowedFiles: ['CUSTOM.md'],
+        specAllowedRootFiles: ['requirements.md', 'design.md'],
         specSubdirs: ['custom'],
         temporaryPatterns: ['CUSTOM-*.md']
       };
@@ -287,6 +301,7 @@ describe('ConfigManager', () => {
     it('should validate correct configuration', () => {
       const validConfig = {
         rootAllowedFiles: ['README.md'],
+        specAllowedRootFiles: ['requirements.md', 'tasks.md'],
         specSubdirs: ['reports'],
         temporaryPatterns: ['TEMP-*.md']
       };
@@ -299,6 +314,7 @@ describe('ConfigManager', () => {
     
     it('should detect missing rootAllowedFiles', () => {
       const invalidConfig = {
+        specAllowedRootFiles: ['requirements.md'],
         specSubdirs: ['reports'],
         temporaryPatterns: ['TEMP-*.md']
       };
@@ -312,6 +328,7 @@ describe('ConfigManager', () => {
     it('should detect non-array rootAllowedFiles', () => {
       const invalidConfig = {
         rootAllowedFiles: 'not-an-array',
+        specAllowedRootFiles: ['requirements.md'],
         specSubdirs: ['reports'],
         temporaryPatterns: ['TEMP-*.md']
       };
@@ -325,6 +342,7 @@ describe('ConfigManager', () => {
     it('should detect non-string values in rootAllowedFiles', () => {
       const invalidConfig = {
         rootAllowedFiles: ['README.md', 123, null],
+        specAllowedRootFiles: ['requirements.md'],
         specSubdirs: ['reports'],
         temporaryPatterns: ['TEMP-*.md']
       };
@@ -335,9 +353,37 @@ describe('ConfigManager', () => {
       expect(result.errors).toContain('rootAllowedFiles must contain only strings');
     });
     
+    it('should detect missing specAllowedRootFiles', () => {
+      const invalidConfig = {
+        rootAllowedFiles: ['README.md'],
+        specSubdirs: ['reports'],
+        temporaryPatterns: ['TEMP-*.md']
+      };
+
+      const result = configManager.validate(invalidConfig);
+
+      expect(result.valid).toBe(false);
+      expect(result.errors).toContain('specAllowedRootFiles must be an array');
+    });
+
+    it('should detect non-string values in specAllowedRootFiles', () => {
+      const invalidConfig = {
+        rootAllowedFiles: ['README.md'],
+        specAllowedRootFiles: ['requirements.md', false],
+        specSubdirs: ['reports'],
+        temporaryPatterns: ['TEMP-*.md']
+      };
+
+      const result = configManager.validate(invalidConfig);
+
+      expect(result.valid).toBe(false);
+      expect(result.errors).toContain('specAllowedRootFiles must contain only strings');
+    });
+
     it('should detect missing specSubdirs', () => {
       const invalidConfig = {
         rootAllowedFiles: ['README.md'],
+        specAllowedRootFiles: ['requirements.md'],
         temporaryPatterns: ['TEMP-*.md']
       };
       
@@ -350,6 +396,7 @@ describe('ConfigManager', () => {
     it('should detect non-string values in specSubdirs', () => {
       const invalidConfig = {
         rootAllowedFiles: ['README.md'],
+        specAllowedRootFiles: ['requirements.md'],
         specSubdirs: ['reports', 123],
         temporaryPatterns: ['TEMP-*.md']
       };
@@ -363,6 +410,7 @@ describe('ConfigManager', () => {
     it('should detect missing temporaryPatterns', () => {
       const invalidConfig = {
         rootAllowedFiles: ['README.md'],
+        specAllowedRootFiles: ['requirements.md'],
         specSubdirs: ['reports']
       };
       
@@ -375,6 +423,7 @@ describe('ConfigManager', () => {
     it('should detect non-string values in temporaryPatterns', () => {
       const invalidConfig = {
         rootAllowedFiles: ['README.md'],
+        specAllowedRootFiles: ['requirements.md'],
         specSubdirs: ['reports'],
         temporaryPatterns: ['TEMP-*.md', false]
       };
@@ -388,6 +437,7 @@ describe('ConfigManager', () => {
     it('should detect multiple validation errors', () => {
       const invalidConfig = {
         rootAllowedFiles: 'not-an-array',
+        specAllowedRootFiles: null,
         specSubdirs: null,
         temporaryPatterns: 123
       };
