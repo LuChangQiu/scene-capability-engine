@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Added `scripts/release-doc-version-audit.js` and wired it into package scripts, CI, release, and steering-hygiene workflows so README release metadata drift now blocks publish instead of relying on manual sync.
 - Synced `README.md`, `README.zh.md`, `.sce/README.md`, and `template/.sce/README.md` release footers to the current package version/date and removed stale hardcoded capability-version headings from long-lived project guide READMEs.
+- Added a new project-calibrated refactor trigger capability via `scripts/refactor-trigger-audit.js`, plus a matching steering baseline rule: each SCE project should periodically evaluate its own file-size distribution, while `2000 / 4000 / 10000` remains the default source-file fallback when no project-specific threshold is set.
 
 ## [3.6.48] - 2026-03-14
 

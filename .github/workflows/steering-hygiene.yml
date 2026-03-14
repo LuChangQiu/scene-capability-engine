@@ -31,6 +31,9 @@ jobs:
       - name: Run release doc audit
         run: node scripts/release-doc-version-audit.js --fail-on-error --json --out .sce/reports/steering-hygiene/release-doc-version-audit.json
 
+      - name: Run refactor trigger audit
+        run: node scripts/refactor-trigger-audit.js --json --out .sce/reports/steering-hygiene/refactor-trigger-audit.json
+
       - name: Upload steering audit artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -41,3 +44,4 @@ jobs:
             .sce/reports/steering-hygiene/audit.json
             .sce/reports/steering-hygiene/clarification-first-audit.json
             .sce/reports/steering-hygiene/release-doc-version-audit.json
+            .sce/reports/steering-hygiene/refactor-trigger-audit.json

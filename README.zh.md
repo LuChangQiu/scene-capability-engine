@@ -148,6 +148,7 @@ SCE 默认是强治理的。
 - 当 spec 绑定时，`verify` 和 `release` 默认执行 problem-closure 等相关门禁
 - `close-loop-program` 默认带 gate 评估、fallback-chain、governance replay、auto-remediation
 - 状态持久化默认优先走 SQLite，而不是零散本地缓存
+- 超大源文件必须定期触发重构评估；SCE 优先建议按项目给出阈值，若项目尚未设定，则默认参考 `2000 / 4000 / 10000`
 - 发布默认验证走 integration gate：`npm run test:release`
 
 ---

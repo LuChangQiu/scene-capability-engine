@@ -143,6 +143,7 @@ SCE is opinionated by default.
 - `verify` and `release` enforce problem-closure and related gates when a spec is bound.
 - Autonomous program execution applies gate evaluation, fallback-chain logic, governance replay, and auto-remediation.
 - State persistence prefers SQLite, not ad hoc local caches.
+- Oversized source files must trigger periodic refactor assessment; SCE recommends project-specific thresholds, with `2000 / 4000 / 10000` as the default source-file fallback.
 - Release validation defaults to integration test coverage via `npm run test:release` for faster publish feedback.
 
 ---
