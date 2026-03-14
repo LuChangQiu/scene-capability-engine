@@ -43,12 +43,16 @@ describe('takeover baseline CLI integration', () => {
     expect(payload.summary.pending).toBe(0);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'takeover-baseline.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'errorbook-registry.json'))).toBe(true);
+    expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'multi-agent.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'problem-eval-policy.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'problem-closure-policy.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'studio-intake-policy.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'state-storage-policy.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'errorbook', 'project-intake', 'custom-mechanism-inventory.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'reports', 'takeover-baseline-latest.json'))).toBe(true);
+    const multiAgentConfig = await fs.readJson(path.join(tempDir, '.sce', 'config', 'multi-agent.json'));
+    expect(multiAgentConfig.enabled).toBe(true);
+    expect(multiAgentConfig.coordinatorEnabled).toBe(false);
   });
 
   test('takeover-audit reports non-sce directory gracefully', async () => {

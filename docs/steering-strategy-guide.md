@@ -102,7 +102,7 @@ Your steering strategy choice is saved in `.sce/adoption-config.json`:
   "adoptedAt": "2026-01-23T10:00:00.000Z",
   "steeringStrategy": "use-sce",
   "steeringBackupId": "steering-2026-01-23T10-00-00-000Z",
-  "multiUserMode": false,
+  "multiUserMode": true,
   "lastUpdated": "2026-01-23T10:00:00.000Z"
 }
 ```

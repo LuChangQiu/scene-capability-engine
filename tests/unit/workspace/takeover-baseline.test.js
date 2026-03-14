@@ -13,6 +13,9 @@ const {
   ERRORBOOK_REGISTRY_DEFAULTS,
   ERRORBOOK_CONVERGENCE_DEFAULTS
 } = require('../../../lib/workspace/takeover-baseline');
+const {
+  DEFAULT_CONFIG: MULTI_AGENT_CONFIG_DEFAULTS
+} = require('../../../lib/collab/multi-agent-config');
 
 describe('takeover-baseline', () => {
   let tempDir;
@@ -47,6 +50,7 @@ describe('takeover-baseline', () => {
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'auto', 'config.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'takeover-baseline.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'errorbook-registry.json'))).toBe(true);
+    expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'multi-agent.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'session-governance.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'spec-domain-policy.json'))).toBe(true);
     expect(await fs.pathExists(path.join(tempDir, '.sce', 'config', 'problem-eval-policy.json'))).toBe(true);
@@ -64,8 +68,13 @@ describe('takeover-baseline', () => {
       auto_detect_on_startup: true,
       legacy_kiro_supported: false
     }));
+    expect(adoptionConfig.multiUserMode).toBe(true);
     expect(adoptionConfig.defaults).toEqual(TAKEOVER_DEFAULTS);
     expect(adoptionConfig.defaults.errorbook_convergence).toEqual(ERRORBOOK_CONVERGENCE_DEFAULTS);
+    expect(adoptionConfig.defaults.collaboration).toEqual(expect.objectContaining({
+      multi_user_mode: true,
+      multi_agent: MULTI_AGENT_CONFIG_DEFAULTS
+    }));
 
     const autoConfig = await fs.readJson(path.join(tempDir, '.sce', 'auto', 'config.json'));
     expect(autoConfig.mode).toBe('aggressive');
@@ -77,6 +86,9 @@ describe('takeover-baseline', () => {
 
     const errorbookRegistry = await fs.readJson(path.join(tempDir, '.sce', 'config', 'errorbook-registry.json'));
     expect(errorbookRegistry).toEqual(ERRORBOOK_REGISTRY_DEFAULTS);
+
+    const multiAgentConfig = await fs.readJson(path.join(tempDir, '.sce', 'config', 'multi-agent.json'));
+    expect(multiAgentConfig).toEqual(MULTI_AGENT_CONFIG_DEFAULTS);
 
     const errorbookInventory = await fs.readJson(
       path.join(tempDir, '.sce', 'errorbook', 'project-intake', 'custom-mechanism-inventory.json')

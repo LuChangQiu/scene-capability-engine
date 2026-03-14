@@ -2,8 +2,8 @@
 
 > Enable multiple AI agents to work on the same sce project simultaneously without conflicts.
 
-**Version**: 1.44.0  
-**Last Updated**: 2026-02-12
+**Version**: 3.6.49  
+**Last Updated**: 2026-03-14
 
 ---
 
@@ -25,31 +25,31 @@ The Multi-Agent Parallel Coordination system solves this with six layers of prot
 10. **Spec Lifecycle Manager** — Spec state machine and auto-completion (v1.44.0)
 11. **Sync Barrier** — Agent Spec-switch synchronization (v1.44.0)
 
-All components are **zero overhead in single-agent mode** — they become no-ops when multi-agent mode is not enabled.
+SCE provisions the co-work baseline by default. If a project explicitly sets `enabled: false`, all components fall back to single-agent no-op behavior.
 
 ---
 
 ## Quick Start
 
-### 1. Enable Multi-Agent Mode
+### 1. Review Multi-Agent Mode Baseline
 
-Create the configuration file `.sce/config/multi-agent.json`:
+SCE provisions `.sce/config/multi-agent.json` by default:
 
 ```json
 {
   "enabled": true,
-  "coordinator": false,
-  "heartbeatIntervalMs": 30000,
-  "heartbeatTimeoutMs": 120000
+  "coordinatorEnabled": false,
+  "heartbeatIntervalMs": 60000,
+  "heartbeatTimeoutMs": 180000
 }
 ```
 
 | Field | Description | Default |
 |-------|-------------|---------|
-| `enabled` | Enable multi-agent coordination | `false` |
-| `coordinator` | Enable central task assignment | `false` |
-| `heartbeatIntervalMs` | Heartbeat interval in ms | `30000` |
-| `heartbeatTimeoutMs` | Agent considered inactive after this | `120000` |
+| `enabled` | Enable multi-agent coordination | `true` |
+| `coordinatorEnabled` | Enable central task assignment | `false` |
+| `heartbeatIntervalMs` | Heartbeat interval in ms | `60000` |
+| `heartbeatTimeoutMs` | Agent considered inactive after this | `180000` |
 
 ### 2. Each Agent Registers Itself
 
@@ -504,9 +504,9 @@ All components check `MultiAgentConfig.isEnabled()` before doing anything:
 ```json
 {
   "enabled": true,
-  "coordinator": false,
-  "heartbeatIntervalMs": 30000,
-  "heartbeatTimeoutMs": 120000
+  "coordinatorEnabled": false,
+  "heartbeatIntervalMs": 60000,
+  "heartbeatTimeoutMs": 180000
 }
 ```
 

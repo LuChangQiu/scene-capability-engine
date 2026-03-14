@@ -112,6 +112,17 @@
       "max_direct_fix_rounds_before_debug": 2,
       "forbid_bypass_workarounds": true
     },
+    "collaboration": {
+      "multi_user_mode": true,
+      "multi_agent": {
+        "enabled": true,
+        "heartbeatIntervalMs": 60000,
+        "heartbeatTimeoutMs": 180000,
+        "coordinatorEnabled": false,
+        "maxRetries": 5,
+        "retryBaseDelayMs": 100
+      }
+    },
     "migration_policy": {
       "legacy_kiro_supported": false,
       "require_manual_legacy_migration_confirmation": true

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- Switched the SCE co-work baseline to default-on: multi-agent config defaults to `enabled=true`, `init/adopt/takeover` now provision `.sce/config/multi-agent.json`, and adoption metadata defaults `multiUserMode` to true while keeping the central coordinator opt-in.
 - Added `scripts/collab-governance-gate.js` and a shared collaboration-governance gate helper so co-work governance can run as a reusable push/publish preflight instead of remaining a report-only audit.
 - Updated `sce timeline push` to fail fast on collaboration governance drift before creating a push checkpoint or executing `git push`, ensuring managed push flow respects `.gitignore` collaboration boundaries, runtime-state tracking hygiene, multi-agent config validity, legacy naming cleanup, and steering boundary rules.
 - Wired `gate:collab-governance` into `prepublishOnly` so npm publish now enforces the same co-work governance baseline as managed push.

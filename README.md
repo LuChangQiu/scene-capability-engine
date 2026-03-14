@@ -142,6 +142,7 @@ SCE is opinionated by default.
 - When business scene/module/page/entity context is missing, SCE must route to clarification first; unknown business scope must not be turned into blanket disable.
 - `verify` and `release` enforce problem-closure and related gates when a spec is bound.
 - Autonomous program execution applies gate evaluation, fallback-chain logic, governance replay, and auto-remediation.
+- Co-work baseline is enabled by default: initialized/adopted SCE projects provision `.sce/config/multi-agent.json` with `enabled=true`, while the central coordinator stays opt-in.
 - State persistence prefers SQLite, not ad hoc local caches.
 - Oversized source files must trigger periodic refactor assessment; SCE recommends project-specific thresholds, with `2000 / 4000 / 10000` as the default source-file fallback.
 - Release validation defaults to integration test coverage via `npm run test:release` for faster publish feedback.

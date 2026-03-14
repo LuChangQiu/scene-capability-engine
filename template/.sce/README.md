@@ -71,8 +71,8 @@ When multiple AI agents work on the same project simultaneously:
 - **SteeringFileLock** (`lib/lock`) — Steering file write serialization
 - **MergeCoordinator** (`lib/collab`) — Git branch isolation per agent
 - **Coordinator** (`lib/collab`) — Central task assignment (optional)
-- Config: `.sce/config/multi-agent.json` (`enabled: true` to activate)
-- All components are no-ops in single-agent mode (zero overhead)
+- Config: `.sce/config/multi-agent.json` (default `enabled: true`; set `enabled: false` to opt out)
+- If a project opts out with `enabled: false`, all components fall back to single-agent no-op behavior
 - See `docs/multi-agent-coordination-guide.md` for full API reference
 
 ### Spec-Level Steering & Context Sync
@@ -83,7 +83,7 @@ Fourth steering layer (L4) and Spec lifecycle coordination for multi-agent scena
 - **SpecLifecycleManager** (`lib/collab`) — Spec state machine (planned → assigned → in-progress → completed → released) with auto-completion detection
 - **SyncBarrier** (`lib/collab`) — Agent Spec-switch synchronization barrier (uncommitted changes check, steering reload)
 - **Coordinator Integration** — `completeTask` auto-checks Spec completion; `assignTask` runs SyncBarrier
-- All components are no-ops in single-agent mode (zero overhead)
+- If needed, a project can still opt out by setting `enabled: false`, which restores single-agent no-op behavior
 - See `docs/multi-agent-coordination-guide.md` for full API reference
 
 ### Autonomous Control
@@ -151,7 +151,7 @@ Look in .sce/specs/ directory
 
 ### When Working in Multi-Agent Mode
 
-If `.sce/config/multi-agent.json` exists with `enabled: true`:
+By default `.sce/config/multi-agent.json` is provisioned with `enabled: true`:
 1. Register with AgentRegistry before starting work
 2. Acquire task locks before modifying any task
 3. Use TaskStatusStore for concurrent-safe tasks.md updates
