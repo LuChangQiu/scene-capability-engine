@@ -8,6 +8,7 @@ const {
   NO_BLIND_FIX_CORE_PRINCIPLE_HEADING,
   STEERING_CHANGE_EVALUATION_CORE_PRINCIPLE_HEADING,
   BACKEND_API_PRECEDENCE_CORE_PRINCIPLE_HEADING,
+  DELIVERY_SYNC_REQUIRED_LINES,
   LARGE_FILE_REFACTOR_CORE_PRINCIPLE_HEADING,
   REQUIRED_CORE_PRINCIPLE_SECTIONS,
   ERRORBOOK_REGISTRY_DEFAULTS,
@@ -102,6 +103,9 @@ describe('takeover-baseline', () => {
     expect(corePrinciples).toContain(STEERING_CHANGE_EVALUATION_CORE_PRINCIPLE_HEADING);
     expect(corePrinciples).toContain(BACKEND_API_PRECEDENCE_CORE_PRINCIPLE_HEADING);
     expect(corePrinciples).toContain(LARGE_FILE_REFACTOR_CORE_PRINCIPLE_HEADING);
+    DELIVERY_SYNC_REQUIRED_LINES.forEach((line) => {
+      expect(corePrinciples).toContain(line);
+    });
   });
 
   test('audit mode reports drift without mutating project files', async () => {
@@ -181,6 +185,9 @@ describe('takeover-baseline', () => {
     expect(corePrinciples).toContain(STEERING_CHANGE_EVALUATION_CORE_PRINCIPLE_HEADING);
     expect(corePrinciples).toContain(BACKEND_API_PRECEDENCE_CORE_PRINCIPLE_HEADING);
     expect(corePrinciples).toContain(LARGE_FILE_REFACTOR_CORE_PRINCIPLE_HEADING);
+    DELIVERY_SYNC_REQUIRED_LINES.forEach((line) => {
+      expect(corePrinciples).toContain(line);
+    });
   });
 
   test('inventories project-defined mistake-book style artifacts into SCE errorbook convergence intake', async () => {

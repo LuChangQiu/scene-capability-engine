@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.51] - 2026-03-15
+
+### Changed
+- Added a new core steering baseline rule requiring rewrite-style changes to remove obsolete code, dead branches, abandoned adapters, and stale references in the same change unless an explicit temporary compatibility plan exists.
+
 ## [3.6.50] - 2026-03-14
 
 ### Changed
