@@ -2,8 +2,8 @@
 
 > Quick reference for all `sce` commands
 
-**Version**: 3.6.34
-**Last Updated**: 2026-03-08
+**Version**: 3.6.49
+**Last Updated**: 2026-03-14
 
 ---
 
@@ -127,7 +127,7 @@ sce timeline restore <snapshot-id> --prune --json
 # Update timeline policy
 sce timeline config --enabled true --interval 30 --max-entries 120 --json
 
-# Push with pre-push snapshot
+# Push with co-work governance gate + pre-push snapshot
 sce timeline push origin main
 ```
 
@@ -135,6 +135,7 @@ Timeline policy:
 - default enabled with local retention under `.sce/timeline/snapshots/`
 - stage/key-event checkpoints are automatically captured for `studio` and `session` commands
 - interval auto-checkpoints are integrated in the same flow via timeline checkpoint capture
+- `timeline push` now blocks before snapshot/push when collaboration governance drifts, so tracked runtime state, missing co-work ignore rules, legacy `.kiro*` references, invalid multi-agent config, or steering boundary drift cannot pass through managed push flow
 
 ### Value Metrics
 

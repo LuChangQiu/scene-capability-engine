@@ -8,7 +8,8 @@ const {
   runTimelineListCommand,
   runTimelineShowCommand,
   runTimelineRestoreCommand,
-  runTimelineConfigCommand
+  runTimelineConfigCommand,
+  runTimelinePushCommand
 } = require('../../../lib/commands/timeline');
 
 describe('timeline commands', () => {
@@ -156,5 +157,63 @@ describe('timeline commands', () => {
     expect(updated.updated).toBe(true);
     expect(updated.config.auto_interval_minutes).toBe(12);
     expect(updated.config.max_entries).toBe(50);
+  });
+
+  test('timeline push blocks before checkpoint when collaboration governance gate fails', async () => {
+    const gateMock = jest.fn().mockResolvedValue({
+      passed: false,
+      violations: ['missing ignore rule: .sce/config/coordination-log.json']
+    });
+    const checkpointMock = jest.fn();
+    const spawnMock = jest.fn();
+
+    await expect(runTimelinePushCommand(['origin', 'main'], {
+      json: true
+    }, {
+      projectPath: tempDir,
+      evaluateCollabGovernanceGate: gateMock,
+      captureTimelineCheckpoint: checkpointMock,
+      spawnSync: spawnMock
+    })).rejects.toMatchObject({
+      exitCode: 2,
+      message: expect.stringContaining('collaboration governance gate blocked push')
+    });
+
+    expect(gateMock).toHaveBeenCalledTimes(1);
+    expect(checkpointMock).not.toHaveBeenCalled();
+    expect(spawnMock).not.toHaveBeenCalled();
+  });
+
+  test('timeline push runs governance gate before checkpoint and git push', async () => {
+    const gateMock = jest.fn().mockResolvedValue({
+      passed: true,
+      violations: [],
+      warnings: [],
+      summary: {}
+    });
+    const checkpointMock = jest.fn().mockResolvedValue({
+      snapshot_id: 'tl-push-1'
+    });
+    const spawnMock = jest.fn().mockReturnValue({
+      status: 0
+    });
+
+    const result = await runTimelinePushCommand(['origin', 'main'], {
+      json: true,
+      summary: 'push now'
+    }, {
+      projectPath: tempDir,
+      evaluateCollabGovernanceGate: gateMock,
+      captureTimelineCheckpoint: checkpointMock,
+      spawnSync: spawnMock
+    });
+
+    expect(result.success).toBe(true);
+    expect(result.checkpoint.snapshot_id).toBe('tl-push-1');
+    expect(gateMock.mock.invocationCallOrder[0]).toBeLessThan(checkpointMock.mock.invocationCallOrder[0]);
+    expect(checkpointMock.mock.invocationCallOrder[0]).toBeLessThan(spawnMock.mock.invocationCallOrder[0]);
+    expect(spawnMock).toHaveBeenCalledWith('git', ['push', 'origin', 'main'], expect.objectContaining({
+      cwd: tempDir
+    }));
   });
 });
