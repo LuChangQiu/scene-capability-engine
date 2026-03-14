@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.50] - 2026-03-14
+
 ### Changed
 - Switched the SCE co-work baseline to default-on: multi-agent config defaults to `enabled=true`, `init/adopt/takeover` now provision `.sce/config/multi-agent.json`, and adoption metadata defaults `multiUserMode` to true while keeping the central coordinator opt-in.
 - Added `scripts/collab-governance-gate.js` and a shared collaboration-governance gate helper so co-work governance can run as a reusable push/publish preflight instead of remaining a report-only audit.

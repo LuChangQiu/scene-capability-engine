@@ -2,7 +2,7 @@
 
 > Quick reference for all `sce` commands
 
-**Version**: 3.6.49
+**Version**: 3.6.50
 **Last Updated**: 2026-03-14
 
 ---
