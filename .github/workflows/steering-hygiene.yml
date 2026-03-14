@@ -28,6 +28,9 @@ jobs:
       - name: Run clarification-first audit
         run: node scripts/clarification-first-audit.js --fail-on-violation --json --out .sce/reports/steering-hygiene/clarification-first-audit.json
 
+      - name: Run release doc audit
+        run: node scripts/release-doc-version-audit.js --fail-on-error --json --out .sce/reports/steering-hygiene/release-doc-version-audit.json
+
       - name: Upload steering audit artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -37,3 +40,4 @@ jobs:
           path: |
             .sce/reports/steering-hygiene/audit.json
             .sce/reports/steering-hygiene/clarification-first-audit.json
+            .sce/reports/steering-hygiene/release-doc-version-audit.json

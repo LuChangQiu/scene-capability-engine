@@ -20,7 +20,7 @@ This project uses **Spec-driven development** - a structured approach where:
 
 ---
 
-## 🚀 sce Capabilities (v1.45.x)
+## 🚀 sce Capabilities
 
 **IMPORTANT**: After installing or updating sce, read this section to understand all available capabilities. Using the right tool for the job ensures efficient, high-quality development.
 
@@ -63,7 +63,7 @@ This project uses **Spec-driven development** - a structured approach where:
 - Master Spec + Sub-Specs with dependency management
 - Interface contracts for cross-Spec compatibility
 
-### Multi-Agent Parallel Coordination (v1.43.0)
+### Multi-Agent Parallel Coordination
 When multiple AI agents work on the same project simultaneously:
 - **AgentRegistry** (`lib/collab`) — Agent lifecycle with heartbeat monitoring
 - **TaskLockManager** (`lib/lock`) — File-based task mutual exclusion
@@ -75,7 +75,7 @@ When multiple AI agents work on the same project simultaneously:
 - All components are no-ops in single-agent mode (zero overhead)
 - See `docs/multi-agent-coordination-guide.md` for full API reference
 
-### Spec-Level Steering & Context Sync (v1.44.0)
+### Spec-Level Steering & Context Sync
 Fourth steering layer (L4) and Spec lifecycle coordination for multi-agent scenarios:
 - **SpecSteering** (`lib/steering`) — Per-Spec `steering.md` CRUD with template generation, Markdown ↔ structured object roundtrip
 - **SteeringLoader** (`lib/steering`) — Unified L1-L4 four-layer steering loader with merged output
@@ -92,7 +92,7 @@ Fourth steering layer (L4) and Spec lifecycle coordination for multi-agent scena
 - `sce auto status/resume/stop/config` — Manage autonomous execution
 - Intelligent error recovery, checkpoint system, learning from history
 
-### Agent Orchestrator — Multi-Agent Spec Execution (v1.45.0)
+### Agent Orchestrator — Multi-Agent Spec Execution
 Automate parallel Spec execution via Codex CLI sub-agents (replaces manual multi-terminal workflow):
 - `sce orchestrate run --specs "spec-a,spec-b,spec-c" --max-parallel 3` — Start multi-agent orchestration
 - `sce orchestrate status` — View orchestration progress (per-Spec status, overall state)
@@ -243,6 +243,6 @@ A Spec is a complete feature definition with three parts:
 ---
 
 **Project Type**: Spec-driven development  
-**sce Version**: 1.44.x  
-**Last Updated**: 2026-02-12  
+**sce Version**: 3.6.48  
+**Last Updated**: 2026-03-14  
 **Purpose**: Guide AI tools to work effectively with this project

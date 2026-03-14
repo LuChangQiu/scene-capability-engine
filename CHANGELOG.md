@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Added `scripts/release-doc-version-audit.js` and wired it into package scripts, CI, release, and steering-hygiene workflows so README release metadata drift now blocks publish instead of relying on manual sync.
+- Synced `README.md`, `README.zh.md`, `.sce/README.md`, and `template/.sce/README.md` release footers to the current package version/date and removed stale hardcoded capability-version headings from long-lived project guide READMEs.
+
 ## [3.6.48] - 2026-03-14
 
 ### Changed

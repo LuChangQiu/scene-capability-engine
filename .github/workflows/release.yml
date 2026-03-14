@@ -41,6 +41,13 @@ jobs:
             --out .sce/reports/clarification-first-audit-release-test.json \
             --json
 
+      - name: Run release doc audit
+        run: |
+          node scripts/release-doc-version-audit.js \
+            --fail-on-error \
+            --out .sce/reports/release-doc-version-audit-release-test.json \
+            --json
+
       - name: Run interactive governance gate
         run: node scripts/interactive-governance-report.js --period weekly --fail-on-alert --json
       
@@ -77,6 +84,23 @@ jobs:
           mkdir -p "${NOTES_DIR}"
           node scripts/clarification-first-audit.js \
             --fail-on-violation \
+            --out "${AUDIT_JSON}" \
+            --json
+
+          echo "json_file=${AUDIT_JSON}" >> "$GITHUB_OUTPUT"
+
+      - name: Build release doc audit report
+        id: release_doc_audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG="${GITHUB_REF_NAME}"
+          NOTES_DIR=".sce/reports/release-evidence"
+          AUDIT_JSON="${NOTES_DIR}/release-doc-version-audit-${TAG}.json"
+
+          mkdir -p "${NOTES_DIR}"
+          node scripts/release-doc-version-audit.js \
+            --fail-on-error \
             --out "${AUDIT_JSON}" \
             --json
 
