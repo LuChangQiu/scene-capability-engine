@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.53] - 2026-03-16
+
 ### Added
 - Added a tracked project-shared high-value errorbook projection at `.sce/knowledge/errorbook/project-shared-registry.json`, seeded by default in template/takeover baselines so same-project work on another computer can recover curated `verified` and `promoted` knowledge through Git without committing raw `.sce/errorbook/**`.
 
