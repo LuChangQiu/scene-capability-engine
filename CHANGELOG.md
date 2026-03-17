@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Human-readable `spec gate` and `spec pipeline` output now print an explicit strategy advisory for broad or clarification-heavy Specs, without auto-rerouting execution or changing the underlying execution decision itself.
+- Shared project problem projection sync is now idempotent when content does not change, so collaboration governance checks no longer dirty the worktree just by refreshing `generated_at`.
 
 ## [3.6.56] - 2026-03-17
 

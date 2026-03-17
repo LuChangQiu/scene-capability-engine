@@ -155,4 +155,35 @@ describe('project-problem-projection', () => {
     expect(result.enabled).toBe(false);
     expect(result.refreshed).toBe(false);
   });
+
+  test('sync is idempotent when projection content has not changed', async () => {
+    await writeSpec(tempDir, '01-00-active-problem', {
+      problemStatement: 'Active problem',
+      tasks: '- [ ] todo\n',
+      updatedAt: '2026-03-16T00:00:00.000Z'
+    });
+
+    const first = await syncProjectSharedProblemProjection(tempDir, {
+      projectSharedProjection: {
+        enabled: true,
+        file: DEFAULT_PROJECT_SHARED_PROBLEM_FILE,
+        scope: 'non_completed'
+      }
+    });
+    const before = await fs.readJson(path.join(tempDir, DEFAULT_PROJECT_SHARED_PROBLEM_FILE));
+
+    const second = await syncProjectSharedProblemProjection(tempDir, {
+      projectSharedProjection: {
+        enabled: true,
+        file: DEFAULT_PROJECT_SHARED_PROBLEM_FILE,
+        scope: 'non_completed'
+      }
+    });
+    const after = await fs.readJson(path.join(tempDir, DEFAULT_PROJECT_SHARED_PROBLEM_FILE));
+
+    expect(first.refreshed).toBe(true);
+    expect(second.refreshed).toBe(false);
+    expect(after.generated_at).toBe(before.generated_at);
+    expect(after.entries).toEqual(before.entries);
+  });
 });
