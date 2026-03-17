@@ -146,6 +146,8 @@ sce spec bootstrap --specs "spec-a,spec-b" --max-parallel 3
 sce auto close-loop-program "broad complex goal" --program-goals 4 --json
 ```
 
+`sce spec gate run --spec <spec-id>` and `sce spec pipeline run --spec <spec-id>` now both carry a read-only strategy advisory for single-Spec runs. If the current Spec is assessed as `multi-spec-program` or `research-program`, SCE surfaces that explicitly instead of silently pushing more decomposition into the same Spec.
+
 The strategic gap currently being formalized is:
 
 - how SCE should assess this threshold explicitly

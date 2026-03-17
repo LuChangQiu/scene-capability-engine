@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.57] - 2026-03-17
+
+### Added
+- Added a read-only `strategy_assessment` advisory to `sce spec gate run --spec <id>` and `sce spec pipeline run --spec <id>` single-Spec output so workflow consumers can see when the current Spec should escalate to `multi-spec-program` or `research-program`.
+
+### Changed
+- Human-readable `spec gate` and `spec pipeline` output now print an explicit strategy advisory for broad or clarification-heavy Specs, without auto-rerouting execution or changing the underlying execution decision itself.
+
 ## [3.6.56] - 2026-03-17
 
 ### Added

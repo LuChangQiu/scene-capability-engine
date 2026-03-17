@@ -140,6 +140,7 @@ SCE is opinionated by default.
 
 - `studio plan` runs intake and scene/spec governance unless policy explicitly allows bypass.
 - When business scene/module/page/entity context is missing, SCE must route to clarification first; unknown business scope must not be turned into blanket disable.
+- `spec pipeline` and `spec gate` now carry a read-only strategy advisory for single-Spec runs, so broad or clarification-heavy work is surfaced as `multi-spec-program` / `research-program` instead of being blindly forced deeper into one Spec.
 - `verify` and `release` enforce problem-closure and related gates when a spec is bound.
 - Autonomous program execution applies gate evaluation, fallback-chain logic, governance replay, and auto-remediation.
 - Co-work baseline is enabled by default: initialized/adopted SCE projects provision `.sce/config/multi-agent.json` with `enabled=true`, while the central coordinator stays opt-in.
@@ -227,5 +228,5 @@ MIT. See [LICENSE](LICENSE).
 
 ---
 
-**Version**: 3.6.56
+**Version**: 3.6.57
 **Last Updated**: 2026-03-17

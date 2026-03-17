@@ -101,6 +101,10 @@ Spec session governance:
 - When multiple active scenes exist, you must pass `--scene` explicitly.
 - Multi-Spec orchestrate fallback (`--specs ...`) follows the same scene binding and writes per-spec child-session archive records.
 - `sce spec strategy assess` is read-only and should be used when you are not sure whether the current problem still fits one Spec.
+- `sce spec pipeline run --spec <id> --json` now includes the same read-only `strategy_assessment` block for single-Spec runs.
+- `sce spec gate run --spec <id> --json` now includes a read-only `strategy_assessment` block for single-Spec runs.
+- Human-readable `spec gate` output now prints a strategy advisory when the assessed decision is `multi-spec-program` or `research-program`, but it does not auto-reroute execution.
+- Human-readable `spec pipeline` output now prints the same advisory after stage results for single-Spec runs.
 - `spec bootstrap` always generates problem-domain, scene-spec, and `problem-contract` artifacts to force domain-first exploration.
 - `spec gate` now hard-fails when either of the following is missing or structurally incomplete:
   - `.sce/specs/<spec>/custom/problem-domain-map.md`

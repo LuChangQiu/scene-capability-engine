@@ -1,6 +1,7 @@
 const fs = require('fs-extra');
 const os = require('os');
 const path = require('path');
+const chalk = require('chalk');
 
 const {
   runSpecGate,
@@ -141,20 +142,32 @@ describe('spec-gate command', () => {
   });
 
   test('returns standard json contract and writes report file', async () => {
+    const strategyAssessor = jest.fn(async () => ({
+      decision: 'single-spec',
+      decision_reason: 'bounded change',
+      next_actions: ['continue']
+    }));
     const result = await runSpecGate({
       spec: '111-01-gate-contract-test',
       json: true,
       out: 'reports/spec-gate-result.json'
     }, {
-      projectPath: tempDir
+      projectPath: tempDir,
+      strategyAssessor
     });
 
     expect(result).toHaveProperty('spec_id', '111-01-gate-contract-test');
     expect(result).toHaveProperty('run_id');
     expect(result).toHaveProperty('decision');
     expect(result).toHaveProperty('score');
+    expect(result).toHaveProperty('strategy_assessment.decision', 'single-spec');
     expect(Array.isArray(result.failed_checks)).toBe(true);
     expect(Array.isArray(result.next_actions)).toBe(true);
+    expect(strategyAssessor).toHaveBeenCalledWith({
+      spec: '111-01-gate-contract-test'
+    }, expect.objectContaining({
+      projectPath: tempDir
+    }));
 
     const outPath = path.join(tempDir, 'reports', 'spec-gate-result.json');
     expect(await fs.pathExists(outPath)).toBe(true);
@@ -287,5 +300,28 @@ describe('spec-gate command', () => {
     expect(result.failed_checks).toEqual(expect.arrayContaining([
       expect.objectContaining({ id: 'domain_scene_modeling', hard_fail: true })
     ]));
+  });
+
+  test('prints strategy advisory in text mode when spec should escalate to program handling', async () => {
+    const strategyAssessor = jest.fn(async () => ({
+      decision: 'research-program',
+      decision_reason: 'clarification pressure is too high for one spec',
+      next_actions: [
+        'create a master program spec before implementation splitting',
+        'split clarification specs first'
+      ]
+    }));
+
+    await runSpecGate({
+      spec: '111-01-gate-contract-test'
+    }, {
+      projectPath: tempDir,
+      strategyAssessor
+    });
+
+    expect(console.log).toHaveBeenCalledWith(chalk.yellow('⚠ Strategy Advisory'));
+    expect(console.log).toHaveBeenCalledWith('  research-program: clarification pressure is too high for one spec');
+    expect(console.log).toHaveBeenCalledWith('  - create a master program spec before implementation splitting');
+    expect(console.log).toHaveBeenCalledWith('  - split clarification specs first');
   });
 });

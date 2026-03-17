@@ -1,6 +1,7 @@
 const fs = require('fs-extra');
 const os = require('os');
 const path = require('path');
+const chalk = require('chalk');
 
 const { runSpecPipeline, _parseSpecTargets } = require('../../../lib/commands/spec-pipeline');
 const { SessionStore } = require('../../../lib/runtime/session-store');
@@ -39,6 +40,11 @@ describe('spec-pipeline command', () => {
       gate: jest.fn(async () => ({ success: true }))
     };
 
+    const strategyAssessor = jest.fn(async () => ({
+      decision: 'single-spec',
+      decision_reason: 'pipeline scope is bounded',
+      next_actions: ['continue']
+    }));
     const result = await runSpecPipeline({
       spec: '110-01-pipeline-test',
       json: true,
@@ -46,13 +52,20 @@ describe('spec-pipeline command', () => {
       continueOnWarning: true
     }, {
       projectPath: tempDir,
-      adapters
+      adapters,
+      strategyAssessor
     });
 
     expect(result.status).toBe('completed');
     expect(result.stage_results).toHaveLength(4);
+    expect(result).toHaveProperty('strategy_assessment.decision', 'single-spec');
     expect(adapters.requirements).toHaveBeenCalled();
     expect(adapters.gate).toHaveBeenCalled();
+    expect(strategyAssessor).toHaveBeenCalledWith({
+      spec: '110-01-pipeline-test'
+    }, expect.objectContaining({
+      projectPath: tempDir
+    }));
 
     const outPath = path.join(tempDir, 'reports', 'pipeline-result.json');
     expect(await fs.pathExists(outPath)).toBe(true);
@@ -215,5 +228,33 @@ describe('spec-pipeline command', () => {
     })).rejects.toThrow('No active scene session found');
 
     await fs.remove(isolated);
+  });
+
+  test('prints strategy advisory in text mode when pipeline spec should escalate', async () => {
+    const adapters = {
+      requirements: jest.fn(async () => ({ success: true })),
+      design: jest.fn(async () => ({ success: true })),
+      tasks: jest.fn(async () => ({ success: true })),
+      gate: jest.fn(async () => ({ success: true }))
+    };
+    const strategyAssessor = jest.fn(async () => ({
+      decision: 'multi-spec-program',
+      decision_reason: 'implementation tracks should be split explicitly',
+      next_actions: [
+        'create a coordinated multi-Spec portfolio with explicit dependencies'
+      ]
+    }));
+
+    await runSpecPipeline({
+      spec: '110-01-pipeline-test'
+    }, {
+      projectPath: tempDir,
+      adapters,
+      strategyAssessor
+    });
+
+    expect(console.log).toHaveBeenCalledWith(chalk.yellow('⚠ Strategy Advisory'));
+    expect(console.log).toHaveBeenCalledWith('  multi-spec-program: implementation tracks should be split explicitly');
+    expect(console.log).toHaveBeenCalledWith('  - create a coordinated multi-Spec portfolio with explicit dependencies');
   });
 });

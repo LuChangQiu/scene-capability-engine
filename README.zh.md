@@ -145,6 +145,7 @@ SCE 默认是强治理的。
 
 - `studio plan` 默认执行 intake 与 scene/spec 治理，除非策略显式允许绕过
 - 缺少业务场景/模块/页面/实体上下文时，SCE 必须先进入澄清，而不是把未知业务范围直接变成一刀切禁用
+- 单 spec 的 `spec pipeline` 和 `spec gate` 现在都会附带只读策略建议；当问题已经更适合 `multi-spec-program` / `research-program` 时，SCE 会显式提示，而不是继续把复杂问题盲目压进同一个 spec
 - 当 spec 绑定时，`verify` 和 `release` 默认执行 problem-closure 等相关门禁
 - `close-loop-program` 默认带 gate 评估、fallback-chain、governance replay、auto-remediation
 - co-work 基线默认开启：初始化或接管后的 SCE 项目会落地 `.sce/config/multi-agent.json` 且 `enabled=true`，但中央 coordinator 仍保持按需开启
@@ -232,5 +233,5 @@ MIT，见 [LICENSE](LICENSE)。
 
 ---
 
-**版本**：3.6.56
+**版本**：3.6.57
 **最后更新**：2026-03-17

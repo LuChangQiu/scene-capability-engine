@@ -97,6 +97,8 @@ Suggested preflight:
 sce spec strategy assess --goal "broad complex goal" --json
 ```
 
+If you are already inside a single Spec flow, `sce spec gate run --spec <spec-id>` and `sce spec pipeline run --spec <spec-id>` now echo the same strategy concern as a non-blocking advisory when one Spec is no longer the right execution container.
+
 # Controller command: drain queue goals with autonomous close-loop-program runtime
 sce auto close-loop-controller .sce/auto/program-queue.lines \
   --dequeue-limit 2 \
