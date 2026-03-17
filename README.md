@@ -227,5 +227,5 @@ MIT. See [LICENSE](LICENSE).
 
 ---
 
-**Version**: 3.6.55
-**Last Updated**: 2026-03-16
+**Version**: 3.6.56
+**Last Updated**: 2026-03-17

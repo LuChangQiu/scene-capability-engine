@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.56] - 2026-03-17
+
 ### Added
 - Added Spec `129-00-complex-problem-program-escalation` to formalize how SCE should decide between `single-spec`, `multi-spec-program`, and `research-program` for highly entangled problems.
 - Added read-only `sce spec strategy assess` so SCE can explicitly recommend `single-spec`, `multi-spec-program`, or `research-program` from either a broad goal or an existing Spec.
