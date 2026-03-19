@@ -1,16 +1,165 @@
 {
   "api_version": "sce.project-problem-projection/v0.1",
-  "generated_at": "2026-03-16T09:06:39.414Z",
+  "generated_at": "2026-03-19T11:15:40.187Z",
   "source": {
     "project": "kiro-spec-engine",
-    "scope": "non_completed",
-    "stale_days": 14
+    "stale_days": 14,
+    "scope": "non_completed"
   },
   "summary": {
-    "total_entries": 0,
-    "active_entries": 0,
+    "total_entries": 4,
+    "active_entries": 4,
     "stale_entries": 0,
     "completed_entries": 0
   },
-  "entries": []
+  "entries": [
+    {
+      "spec_id": "133-03-engineering-scaffold-and-ownership-extension",
+      "scene_id": "scene.sce-ide-companion",
+      "lifecycle_state": "active",
+      "updated_at": "2026-03-19T08:10:12.639Z",
+      "age_days": 0.13,
+      "tasks_total": 7,
+      "tasks_done": 0,
+      "tasks_progress": 0,
+      "problem_statement": "SCE needs canonical scaffold and ownership extension semantics, but they should be delivered after preview/open and without creating adapter-owned ownership truth.",
+      "expected_outcome": "SCE exposes one canonical scaffold result and one ownership relation extension point without blocking phase-1 IDE projection work.",
+      "impact_scope": "engineering scaffold behavior, workspace relation semantics, later IDE/CLI onboarding enhancement",
+      "reproduction_steps": [
+        "Read the broader onboarding drafts",
+        "Observe that scaffold and ownership are mixed with preview/open semantics",
+        "Observe that this makes rollout order and implementation scope unstable"
+      ],
+      "forbidden_workarounds": [
+        "Do not make frontend store long-lived ownership truth to compensate",
+        "Do not let scaffold semantics block the first preview/open or Delivery projection rollout"
+      ],
+      "verification_gates": [],
+      "ontology_counts": {
+        "entity": 0,
+        "relation": 0,
+        "business_rule": 0,
+        "decision_policy": 0,
+        "execution_flow": 0
+      },
+      "evidence_binding_count": 0,
+      "hypothesis_count": 0,
+      "risk_count": 0,
+      "paths": {
+        "problem_contract": ".sce/specs/133-03-engineering-scaffold-and-ownership-extension/custom/problem-contract.json",
+        "problem_domain_chain": ".sce/specs/133-03-engineering-scaffold-and-ownership-extension/custom/problem-domain-chain.json"
+      }
+    },
+    {
+      "spec_id": "133-02-engineering-project-preview-and-open-envelope",
+      "scene_id": "scene.sce-ide-companion",
+      "lifecycle_state": "active",
+      "updated_at": "2026-03-19T08:10:12.636Z",
+      "age_days": 0.13,
+      "tasks_total": 6,
+      "tasks_done": 0,
+      "tasks_progress": 0,
+      "problem_statement": "SCE needs one canonical engineering project preview and open/import result envelope so IDE and CLI stop inferring readiness from partial engineering commands.",
+      "expected_outcome": "SCE exposes one canonical preview payload and one open/import result envelope so adapters can display engineering readiness without guessing.",
+      "impact_scope": "app engineering projection, project preview/open flows, IDE and CLI engineering onboarding",
+      "reproduction_steps": [
+        "Read existing engineering projection data for one app",
+        "Try to explain readiness and next action from separate attach/hydrate/activate states",
+        "Observe that adapters still need field synthesis and command-order inference"
+      ],
+      "forbidden_workarounds": [
+        "Do not solve readiness explanation by duplicating a frontend-owned registry",
+        "Do not mix scaffold/ownership fields into the preview/open contract"
+      ],
+      "verification_gates": [],
+      "ontology_counts": {
+        "entity": 0,
+        "relation": 0,
+        "business_rule": 0,
+        "decision_policy": 0,
+        "execution_flow": 0
+      },
+      "evidence_binding_count": 0,
+      "hypothesis_count": 0,
+      "risk_count": 0,
+      "paths": {
+        "problem_contract": ".sce/specs/133-02-engineering-project-preview-and-open-envelope/custom/problem-contract.json",
+        "problem_domain_chain": ".sce/specs/133-02-engineering-project-preview-and-open-envelope/custom/problem-domain-chain.json"
+      }
+    },
+    {
+      "spec_id": "133-01-scene-delivery-projection-read-model",
+      "scene_id": "scene.sce-ide-companion",
+      "lifecycle_state": "active",
+      "updated_at": "2026-03-19T08:08:23.948Z",
+      "age_days": 0.13,
+      "tasks_total": 8,
+      "tasks_done": 0,
+      "tasks_progress": 0,
+      "problem_statement": "SCE needs one canonical delivery projection read model for the IDE Delivery column instead of frontend heuristics across mixed files and evidence.",
+      "expected_outcome": "SCE publishes one scene-scoped delivery projection contract and command surface that both IDE and CLI can consume directly.",
+      "impact_scope": "scene delivery projection, handoff/release evidence reuse, IDE Delivery column integration",
+      "reproduction_steps": [
+        "Attempt to render delivery-governance status from only existing task, handoff, and release files",
+        "Observe that object identity and scope back-links are not exposed through one canonical payload",
+        "Observe that frontend would need to synthesize long-lived delivery truth"
+      ],
+      "forbidden_workarounds": [
+        "Do not create a frontend-owned permanent delivery registry",
+        "Do not encode IDE layout semantics into the engine payload"
+      ],
+      "verification_gates": [],
+      "ontology_counts": {
+        "entity": 0,
+        "relation": 0,
+        "business_rule": 0,
+        "decision_policy": 0,
+        "execution_flow": 0
+      },
+      "evidence_binding_count": 0,
+      "hypothesis_count": 0,
+      "risk_count": 0,
+      "paths": {
+        "problem_contract": ".sce/specs/133-01-scene-delivery-projection-read-model/custom/problem-contract.json",
+        "problem_domain_chain": ".sce/specs/133-01-scene-delivery-projection-read-model/custom/problem-domain-chain.json"
+      }
+    },
+    {
+      "spec_id": "133-00-ide-delivery-and-engineering-projection-program",
+      "scene_id": "scene.sce-ide-companion",
+      "lifecycle_state": "active",
+      "updated_at": "2026-03-19T08:07:14.510Z",
+      "age_days": 0.13,
+      "tasks_total": 7,
+      "tasks_done": 0,
+      "tasks_progress": 0,
+      "problem_statement": "SCE needs a smaller, phaseable spec group for IDE delivery projection and engineering onboarding instead of broad mixed specs.",
+      "expected_outcome": "A smaller spec group exists so SCE can land the IDE Delivery column and engineering onboarding contracts in stable, phaseable steps.",
+      "impact_scope": "engine=scene/spec/task/app projection; consumer=frontend IDE and CLI adapters",
+      "reproduction_steps": [
+        "Read the current broad draft specs for delivery projection and onboarding",
+        "Observe that delivery projection, preview/open, scaffold, and ownership are mixed across wide contracts",
+        "Try to pick one implementation order without additional decomposition"
+      ],
+      "forbidden_workarounds": [
+        "Do not let the frontend build permanent parallel truth from partial backend commands",
+        "Do not mix multi-agent runtime work into this phase-1 IDE projection task"
+      ],
+      "verification_gates": [],
+      "ontology_counts": {
+        "entity": 0,
+        "relation": 0,
+        "business_rule": 0,
+        "decision_policy": 0,
+        "execution_flow": 0
+      },
+      "evidence_binding_count": 0,
+      "hypothesis_count": 0,
+      "risk_count": 0,
+      "paths": {
+        "problem_contract": ".sce/specs/133-00-ide-delivery-and-engineering-projection-program/custom/problem-contract.json",
+        "problem_domain_chain": ".sce/specs/133-00-ide-delivery-and-engineering-projection-program/custom/problem-domain-chain.json"
+      }
+    }
+  ]
 }
