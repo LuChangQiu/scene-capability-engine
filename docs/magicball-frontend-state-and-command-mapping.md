@@ -22,6 +22,7 @@ The current frontend-sensitive surfaces are:
 2. ontology empty-state and starter-seed initialization
 3. write-error presentation and retry boundaries
 4. timeline / task feedback handoff points
+5. multi-project portfolio / routing / supervision
 
 ## 2. Page State Ownership
 
@@ -38,7 +39,9 @@ interface AppWorkspaceState {
   applicationHome: Record<string, unknown> | null
   ontologyHome: Record<string, unknown> | null
   engineeringHome: Record<string, unknown> | null
-  engineeringDetail: Record<string, unknown> | null
+  sceneDelivery: Record<string, unknown> | null
+  engineeringPreview: Record<string, unknown> | null
+  engineeringOwnership: Record<string, unknown> | null
   boot: ModeBootState
 }
 ```
@@ -48,10 +51,34 @@ Owned commands:
 - `sce mode application home --app <app-key> --json`
 - `sce mode ontology home --app <app-key> --json`
 - `sce mode engineering home --app <app-key> --json`
-- `sce app engineering show --app <app-key> --json`
+- `sce scene delivery show --scene <scene-id> --json`
+- `sce app engineering preview --app <app-key> --json`
+- `sce app engineering ownership --app <app-key> --json`
 
 Rule:
 - this shell owns mode bootstrap and should not delegate command ordering to nested tabs
+
+### 2.1.1 Multi-project shell state
+
+Recommended shape:
+
+```ts
+interface ProjectWorkspaceShellState {
+  projectPortfolio: Record<string, unknown> | null
+  currentProjectId: string | null
+  projectTarget: Record<string, unknown> | null
+  projectSupervision: Record<string, unknown> | null
+}
+```
+
+Owned commands:
+- `sce project portfolio show --json`
+- `sce project target resolve --request <text> --current-project <project-id> --json`
+- `sce project supervision show --project <project-id> --json`
+
+Rule:
+- multi-project shell must consume engine-owned project truth directly
+- target resolution must be treated as preflight and must not mutate active workspace selection implicitly
 
 ### 2.2 Ontology Page State
 
@@ -122,10 +149,12 @@ Rule:
 | Bootstrap step 1 | `sce mode application home --app <app-key> --json` | `applicationHome` | render app hero / release status | stop boot, allow step retry |
 | Bootstrap step 2 | `sce mode ontology home --app <app-key> --json` | `ontologyHome` | render ontology summary shell | keep app section visible, allow step retry |
 | Bootstrap step 3 | `sce mode engineering home --app <app-key> --json` | `engineeringHome` | render engineering summary shell | keep prior sections visible, allow step retry |
-| Bootstrap step 4 | `sce app engineering show --app <app-key> --json` | `engineeringDetail` | render repo/workspace detail | keep engineering summary visible, allow step retry |
+| Bootstrap step 4 | `sce scene delivery show --scene <scene-id> --json` | `sceneDelivery` | render delivery column with phase/status evidence | keep engineering summary visible, allow step retry |
+| Bootstrap step 5 | `sce app engineering preview --app <app-key> --json` | `engineeringPreview` | render readiness flags and next actions without client synthesis | keep engineering summary visible, allow step retry |
+| Bootstrap step 6 | `sce app engineering ownership --app <app-key> --json` | `engineeringOwnership` | render local/shared/unresolved ownership relation conservatively | keep engineering summary visible, allow step retry |
 
 Implementation rule:
-- all four steps execute sequentially
+- all six steps execute sequentially
 - each step updates `boot.activeStep`
 - each success appends to `boot.completedSteps`
 - each failure writes a `CommandFailureState`
@@ -168,7 +197,7 @@ Read errors should be rendered inline at the section that failed.
 Examples:
 - ontology summary failed -> show summary card error, not full page crash
 - ER list failed -> show ER table error, keep BR/DL areas usable
-- engineering detail failed -> keep engineering summary visible
+- engineering preview/ownership failed -> keep engineering summary visible
 
 ### 6.2 Write Errors
 
@@ -224,6 +253,14 @@ Use existing SCE view contracts for those surfaces:
 
 Recommended connection point:
 - when a write or seed command fails, store the exact command failure bundle so MagicBall can pass it into its AI assistant or timeline/task views later
+
+## 8.1 Multi-project supervision and routing
+
+| UI event | SCE command | State target | Success behavior | Failure behavior |
+| --- | --- | --- | --- | --- |
+| Open multi-project shell | `sce project portfolio show --json` | `projectPortfolio` | render project switcher and current active project marker | show shell-level error and preserve stale local shell state if available |
+| Enter cross-project request | `sce project target resolve --request <text> --current-project <project-id> --json` | `projectTarget` | route to current project, resolved project, or candidate chooser | preserve request text and show clarification UI |
+| Open project health panel | `sce project supervision show --project <project-id> --json` | `projectSupervision` | render blocked / handoff / risk / active summary and drillback items | keep project shell visible and show panel-level error |
 
 ## 9. Minimal Acceptance Checklist
 

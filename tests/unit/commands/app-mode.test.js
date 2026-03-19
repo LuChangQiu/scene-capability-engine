@@ -15,9 +15,14 @@ const {
   runAppRuntimeInstallCommand,
   runAppRuntimeActivateCommand,
   runAppRuntimeUninstallCommand,
+  runAppEngineeringPreviewCommand,
+  runAppEngineeringOwnershipCommand,
+  runAppEngineeringOpenCommand,
+  runAppEngineeringImportCommand,
   runAppEngineeringShowCommand,
   runAppEngineeringAttachCommand,
   runAppEngineeringHydrateCommand,
+  runAppEngineeringScaffoldCommand,
   runAppEngineeringActivateCommand
 } = require('../../../lib/commands/app');
 const {
@@ -559,7 +564,311 @@ describe('app and mode commands', () => {
     })).rejects.toThrow('cannot uninstall active runtime release rel.demo.2026030802; activate another release first');
   });
 
-  test('attaches, hydrates, activates, and shows engineering projection', async () => {
+  test('previews engineering readiness and next actions before activation', async () => {
+    await stateStore.registerAppBundle({
+      app_id: 'app.demo',
+      app_key: 'demo',
+      app_name: 'Demo App',
+      status: 'active',
+      environment: 'dev',
+      default_scene_id: 'scene.demo'
+    });
+
+    const initialPreview = await runAppEngineeringPreviewCommand({ app: 'demo', json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(initialPreview.mode).toBe('app-engineering-preview');
+    expect(initialPreview.summary).toEqual(expect.objectContaining({
+      attached: false,
+      hydrated: false,
+      active: false,
+      sourceKnown: false,
+      projectionReady: false
+    }));
+    expect(initialPreview.summary.readinessReasonCodes).toEqual([
+      'engineering.source_missing',
+      'engineering.projection_missing',
+      'engineering.workspace_unavailable'
+    ]);
+    expect(initialPreview.summary.nextActions).toEqual(['attach', 'hydrate']);
+
+    const attached = await runAppEngineeringAttachCommand({
+      app: 'demo',
+      repo: 'https://git.example.com/demo.git',
+      branch: 'main',
+      projectName: 'Demo App Project',
+      codeVersion: 'main@abc123',
+      json: true
+    }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(attached.summary).toEqual(expect.objectContaining({
+      sourceKnown: true,
+      projectionReady: false,
+      hydrated: false,
+      active: false
+    }));
+    expect(attached.summary.readinessReasonCodes).toEqual([
+      'engineering.projection_missing',
+      'engineering.workspace_unavailable'
+    ]);
+    expect(attached.summary.nextActions).toEqual(['hydrate']);
+  });
+
+  test('projects conservative engineering ownership relations without inventing missing links', async () => {
+    await stateStore.registerAppBundle({
+      app_id: 'app.demo',
+      app_key: 'demo',
+      app_name: 'Demo App',
+      workspace_id: 'sales',
+      status: 'active',
+      environment: 'dev',
+      engineering: {
+        engineering_project_id: 'eng.demo',
+        workspace_path: path.join(tempDir, 'workspace'),
+        metadata: {
+          ownership: {
+            shared_policy: 'team-readonly'
+          }
+        }
+      }
+    });
+
+    const owned = await runAppEngineeringOwnershipCommand({ app: 'demo', json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(owned.mode).toBe('app-engineering-ownership');
+    expect(owned.summary).toEqual(expect.objectContaining({
+      appKey: 'demo',
+      workspaceId: 'sales',
+      userId: null,
+      ownershipType: 'shared',
+      sharedPolicy: 'team-readonly'
+    }));
+    expect(owned.summary.deviceId).toBeNull();
+
+    await stateStore.registerAppBundle({
+      app_id: 'app.local-demo',
+      app_key: 'local-demo',
+      app_name: 'Local Demo',
+      status: 'active',
+      environment: 'dev',
+      engineering: {
+        engineering_project_id: 'eng.local-demo',
+        workspace_path: path.join(tempDir, 'local-workspace')
+      }
+    });
+
+    const local = await runAppEngineeringOwnershipCommand({ app: 'local-demo', json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(local.summary.ownershipType).toBe('local');
+    expect(local.summary.deviceId).toBeTruthy();
+    expect(local.summary.userId).toBeNull();
+    expect(local.summary.sharedPolicy).toBeNull();
+
+    await stateStore.registerAppBundle({
+      app_id: 'app.unresolved-demo',
+      app_key: 'unresolved-demo',
+      app_name: 'Unresolved Demo',
+      status: 'active',
+      environment: 'dev',
+      engineering: {
+        engineering_project_id: 'eng.unresolved-demo'
+      }
+    });
+
+    const unresolved = await runAppEngineeringOwnershipCommand({ app: 'unresolved-demo', json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(unresolved.summary).toEqual(expect.objectContaining({
+      appKey: 'unresolved-demo',
+      workspaceId: null,
+      userId: null,
+      deviceId: null,
+      ownershipType: 'unresolved',
+      sharedPolicy: null
+    }));
+  });
+
+  test('returns canonical open/import envelopes with ordered step statuses', async () => {
+    await stateStore.registerAppBundle({
+      app_id: 'app.demo',
+      app_key: 'demo',
+      app_name: 'Demo App',
+      status: 'active',
+      environment: 'dev',
+      default_scene_id: 'scene.demo'
+    });
+
+    const openedBeforeAttach = await runAppEngineeringOpenCommand({ app: 'demo', json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(openedBeforeAttach.mode).toBe('open');
+    expect(openedBeforeAttach.success).toBe(false);
+    expect(openedBeforeAttach.steps).toEqual([
+      expect.objectContaining({ key: 'register', status: 'done' }),
+      expect.objectContaining({ key: 'attach', status: 'pending', reasonCode: 'engineering.source_missing' }),
+      expect.objectContaining({ key: 'hydrate', status: 'skipped', reasonCode: 'engineering.source_missing' }),
+      expect.objectContaining({ key: 'activate', status: 'skipped', reasonCode: 'engineering.source_missing' })
+    ]);
+
+    const hydratePath = path.join(tempDir, '.sce', 'apps', 'demo', 'engineering');
+    await runAppEngineeringAttachCommand({
+      app: 'demo',
+      repo: 'https://git.example.com/demo.git',
+      branch: 'main',
+      projectName: 'Demo App Project',
+      json: true
+    }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    await runAppEngineeringHydrateCommand({
+      app: 'demo',
+      workspacePath: hydratePath,
+      json: true
+    }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+
+    const imported = await runAppEngineeringImportCommand({ app: 'demo', json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(imported.mode).toBe('import');
+    expect(imported.success).toBe(true);
+    expect(imported.preview).toEqual(expect.objectContaining({
+      attached: true,
+      hydrated: true,
+      active: false,
+      workspacePath: hydratePath
+    }));
+    expect(imported.steps).toEqual([
+      expect.objectContaining({ key: 'register', status: 'done' }),
+      expect.objectContaining({ key: 'attach', status: 'done' }),
+      expect.objectContaining({ key: 'hydrate', status: 'done' }),
+      expect.objectContaining({ key: 'activate', status: 'skipped' })
+    ]);
+
+    const openedAfterHydrate = await runAppEngineeringOpenCommand({ app: 'demo', json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(openedAfterHydrate.success).toBe(false);
+    expect(openedAfterHydrate.steps[3]).toEqual(expect.objectContaining({
+      key: 'activate',
+      status: 'pending',
+      reasonCode: 'engineering.activate_required'
+    }));
+  });
+
+  test('scaffolds SCE baseline files into the engineering workspace with idempotent reporting', async () => {
+    await stateStore.registerAppBundle({
+      app_id: 'app.demo',
+      app_key: 'demo',
+      app_name: 'Demo App',
+      status: 'active',
+      environment: 'dev',
+      default_scene_id: 'scene.demo',
+      engineering: {
+        engineering_project_id: 'eng.demo',
+        repo_url: 'https://git.example.com/demo.git',
+        workspace_path: path.join(tempDir, 'workspace')
+      }
+    });
+
+    const templateRoot = path.join(tempDir, 'template', '.sce');
+    await fs.ensureDir(path.join(templateRoot, 'config'));
+    await fs.ensureDir(path.join(templateRoot, 'steering'));
+    await fs.ensureDir(path.join(templateRoot, 'knowledge', 'problem'));
+    await fs.ensureDir(path.join(templateRoot, 'specs'));
+    await fs.writeFile(path.join(templateRoot, 'README.md'), 'template readme\n', 'utf8');
+    await fs.writeFile(path.join(templateRoot, 'config', 'studio-intake-policy.json'), '{}\n', 'utf8');
+    await fs.writeFile(path.join(templateRoot, 'steering', 'CORE_PRINCIPLES.md'), '# Core\n', 'utf8');
+    await fs.writeFile(path.join(templateRoot, 'knowledge', 'problem', 'project-shared-problems.json'), '[]\n', 'utf8');
+    await fs.writeFile(path.join(templateRoot, 'specs', 'SPEC_WORKFLOW_GUIDE.md'), '# Workflow\n', 'utf8');
+
+    const first = await runAppEngineeringScaffoldCommand({
+      app: 'demo',
+      overwritePolicy: 'missing-only',
+      json: true
+    }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore,
+      templateRoot
+    });
+    expect(first.mode).toBe('app-engineering-scaffold');
+    expect(first.success).toBe(true);
+    expect(first.summary).toEqual(expect.objectContaining({
+      workspacePath: path.join(tempDir, 'workspace'),
+      createdDirectoryCount: 6,
+      skippedDirectoryCount: 0,
+      failedDirectoryCount: 0,
+      createdFileCount: 5,
+      skippedFileCount: 0,
+      failedFileCount: 0,
+      overwritePolicy: 'missing-only'
+    }));
+    expect(await fs.pathExists(path.join(tempDir, 'workspace', '.sce', 'README.md'))).toBe(true);
+    expect(await fs.pathExists(path.join(tempDir, 'workspace', '.sce', 'config', 'studio-intake-policy.json'))).toBe(true);
+    expect(await fs.pathExists(path.join(tempDir, 'workspace', '.sce', 'steering', 'CORE_PRINCIPLES.md'))).toBe(true);
+    expect(await fs.pathExists(path.join(tempDir, 'workspace', '.sce', 'knowledge', 'problem', 'project-shared-problems.json'))).toBe(true);
+    expect(await fs.pathExists(path.join(tempDir, 'workspace', '.sce', 'specs', 'SPEC_WORKFLOW_GUIDE.md'))).toBe(true);
+
+    const second = await runAppEngineeringScaffoldCommand({
+      app: 'demo',
+      overwritePolicy: 'missing-only',
+      json: true
+    }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore,
+      templateRoot
+    });
+    expect(second.success).toBe(true);
+    expect(second.summary).toEqual(expect.objectContaining({
+      createdDirectoryCount: 0,
+      skippedDirectoryCount: 6,
+      failedDirectoryCount: 0,
+      createdFileCount: 0,
+      skippedFileCount: 5,
+      failedFileCount: 0,
+      overwritePolicy: 'missing-only'
+    }));
+  });
+
+  test('attaches, hydrates, activates, previews, and shows engineering projection', async () => {
     await stateStore.registerAppBundle({
       app_id: 'app.demo',
       app_key: 'demo',
@@ -612,15 +921,77 @@ describe('app and mode commands', () => {
     });
     expect(activated.activated_workspace_path).toBe(hydratePath);
 
+    const preview = await runAppEngineeringPreviewCommand({ app: 'demo', json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(preview.mode).toBe('app-engineering-preview');
+    expect(preview.summary).toEqual(expect.objectContaining({
+      attached: true,
+      hydrated: true,
+      active: true,
+      sourceKnown: true,
+      projectionReady: true,
+      workspacePath: hydratePath
+    }));
+    expect(preview.summary.readinessReasonCodes).toEqual([]);
+    expect(preview.summary.nextActions).toEqual([]);
+    expect(preview.preview).toEqual(preview.summary);
+
+    const opened = await runAppEngineeringOpenCommand({ app: 'demo', json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(opened.mode).toBe('open');
+    expect(opened.success).toBe(true);
+    expect(opened.steps).toEqual([
+      expect.objectContaining({ key: 'register', status: 'done' }),
+      expect.objectContaining({ key: 'attach', status: 'done' }),
+      expect.objectContaining({ key: 'hydrate', status: 'done' }),
+      expect.objectContaining({ key: 'activate', status: 'done' })
+    ]);
+
+    const imported = await runAppEngineeringImportCommand({ app: 'demo', json: true }, {
+      projectPath: tempDir,
+      fileSystem: fs,
+      env: testEnv,
+      stateStore
+    });
+    expect(imported.mode).toBe('import');
+    expect(imported.success).toBe(true);
+    expect(imported.steps).toEqual([
+      expect.objectContaining({ key: 'register', status: 'done' }),
+      expect.objectContaining({ key: 'attach', status: 'done' }),
+      expect.objectContaining({ key: 'hydrate', status: 'done' }),
+      expect.objectContaining({ key: 'activate', status: 'done' })
+    ]);
+
     const shown = await runAppEngineeringShowCommand({ app: 'demo', json: true }, {
       projectPath: tempDir,
       fileSystem: fs,
       env: testEnv,
       stateStore
     });
+    expect(shown.mode).toBe('app-engineering-show');
     expect(shown.summary).toEqual(expect.objectContaining({
+      attached: true,
       hydrated: true,
       active: true,
+      sourceKnown: true,
+      projectionReady: true,
+      workspacePath: hydratePath
+    }));
+    expect(shown.preview).toEqual(shown.summary);
+    expect(shown.summary.readinessReasonCodes).toEqual([]);
+    expect(shown.summary.nextActions).toEqual([]);
+    expect(shown.summary).not.toHaveProperty('workspace_path');
+    expect(shown.summary).not.toHaveProperty('engineering_project_id');
+    expect(shown.engineering_project).toEqual(expect.objectContaining({
+      engineering_project_id: 'eng.demo',
       workspace_path: hydratePath
     }));
   });

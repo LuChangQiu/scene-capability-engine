@@ -1,0 +1,98 @@
+{
+  "api_version": "sce.problem-domain-chain/v0.1",
+  "scene_id": "scene.sce-ide-companion",
+  "spec_id": "134-05-engineering-ownership-relation-extension",
+  "problem": {
+    "statement": "Engineering projection still needs one canonical ownership relation shape instead of guessed or duplicated local state.",
+    "scope": "Ownership relation shape only.",
+    "symptom": "Ownership links are not yet expressed through one stable engine-owned relation shape."
+  },
+  "ontology": {
+    "entity": [
+      "ownership_relation",
+      "ownership_state"
+    ],
+    "relation": [
+      "ownership_relation->identity_link"
+    ],
+    "business_rule": [
+      "unknown links stay explicit"
+    ],
+    "decision_policy": [
+      "no parallel ownership registry"
+    ],
+    "execution_flow": [
+      "project stable ownership relation state"
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "One ownership relation shape will let later projection work stay consistent without parallel local registries."
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "type": "ownership-drift",
+      "statement": "Ownership state may fragment if unknown links are guessed locally."
+    }
+  ],
+  "decision_execution_path": [
+    {
+      "step": 1,
+      "decision": "lock the relation shape"
+    },
+    {
+      "step": 2,
+      "decision": "lock the ownership states"
+    },
+    {
+      "step": 3,
+      "decision": "keep ownership deferred from phase-1"
+    }
+  ],
+  "research_coverage": {
+    "mode": "scene-closed-loop",
+    "required_dimensions": [
+      "scene_boundary",
+      "entity",
+      "relation",
+      "business_rule",
+      "decision_policy",
+      "execution_flow",
+      "failure_signal",
+      "debug_evidence_plan",
+      "verification_gate"
+    ],
+    "checklist": {
+      "scene_boundary": true,
+      "entity": true,
+      "relation": true,
+      "business_rule": true,
+      "decision_policy": true,
+      "execution_flow": true,
+      "failure_signal": true,
+      "debug_evidence_plan": true,
+      "verification_gate": true
+    },
+    "status": "draft"
+  },
+  "correction_loop": {
+    "triggers": [
+      "ownership links are guessed locally",
+      "delivery scope is mixed into ownership"
+    ],
+    "actions": [
+      "keep unknown links explicit",
+      "keep ownership separate from delivery projection",
+      "attach debug evidence for unresolved ownership links"
+    ]
+  },
+  "verification": {
+    "gates": [
+      "ownership-relation-review",
+      "ownership-state-review"
+    ]
+  }
+}

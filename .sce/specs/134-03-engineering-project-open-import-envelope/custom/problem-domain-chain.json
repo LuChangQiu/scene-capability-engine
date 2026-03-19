@@ -1,0 +1,98 @@
+{
+  "api_version": "sce.problem-domain-chain/v0.1",
+  "scene_id": "scene.sce-ide-companion",
+  "spec_id": "134-03-engineering-project-open-import-envelope",
+  "problem": {
+    "statement": "Engineering open and import still need one canonical result envelope with ordered step state.",
+    "scope": "Open/import result envelope only.",
+    "symptom": "Adapters cannot rely on one ordered action result contract."
+  },
+  "ontology": {
+    "entity": [
+      "open_result",
+      "step_result"
+    ],
+    "relation": [
+      "open_result->step_result"
+    ],
+    "business_rule": [
+      "non applicable work reports skipped"
+    ],
+    "decision_policy": [
+      "reuse the current action paths"
+    ],
+    "execution_flow": [
+      "run action path and return ordered result"
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "One ordered result envelope will remove action-result guesswork for open and import."
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "type": "result-drift",
+      "statement": "Step reporting may drift if preview readiness is redefined in this spec."
+    }
+  ],
+  "decision_execution_path": [
+    {
+      "step": 1,
+      "decision": "lock the result envelope"
+    },
+    {
+      "step": 2,
+      "decision": "lock ordered step reporting"
+    },
+    {
+      "step": 3,
+      "decision": "bind the envelope to open and import"
+    }
+  ],
+  "research_coverage": {
+    "mode": "scene-closed-loop",
+    "required_dimensions": [
+      "scene_boundary",
+      "entity",
+      "relation",
+      "business_rule",
+      "decision_policy",
+      "execution_flow",
+      "failure_signal",
+      "debug_evidence_plan",
+      "verification_gate"
+    ],
+    "checklist": {
+      "scene_boundary": true,
+      "entity": true,
+      "relation": true,
+      "business_rule": true,
+      "decision_policy": true,
+      "execution_flow": true,
+      "failure_signal": true,
+      "debug_evidence_plan": true,
+      "verification_gate": true
+    },
+    "status": "draft"
+  },
+  "correction_loop": {
+    "triggers": [
+      "preview readiness is redefined here",
+      "step order is lost"
+    ],
+    "actions": [
+      "reuse preview from 134-02",
+      "keep ordered step reporting explicit",
+      "attach debug evidence when step order or status drift appears"
+    ]
+  },
+  "verification": {
+    "gates": [
+      "open-result-review",
+      "step-order-review"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "spec_id": "133-02-engineering-project-preview-and-open-envelope",
+  "scene_id": "scene.sce-ide-companion",
+  "issue_statement": "Companion tools still infer engineering project readiness and open/import semantics from a mix of partial reads and action commands, which creates inconsistent frontend and CLI behavior.",
+  "expected_outcome": "SCE exposes one canonical preview payload and one open/import result envelope so adapters can display engineering readiness without guessing.",
+  "impact_scope": "app engineering projection, project preview/open flows, IDE and CLI engineering onboarding",
+  "reproduction_steps": [
+    "Read existing engineering projection data for one app",
+    "Try to explain readiness and next action from separate attach/hydrate/activate states",
+    "Observe that adapters still need field synthesis and command-order inference"
+  ],
+  "forbidden_workarounds": [
+    "Do not solve readiness explanation by duplicating a frontend-owned registry",
+    "Do not mix scaffold/ownership fields into the preview/open contract"
+  ]
+}

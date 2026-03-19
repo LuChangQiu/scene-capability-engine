@@ -10,6 +10,8 @@ Do not use it as the source of truth for state ownership, command mapping, or de
 
 Use together with:
 - `docs/magicball-frontend-state-and-command-mapping.md`
+- `docs/magicball-engineering-projection-contract.md`
+- `docs/magicball-project-portfolio-contract.md`
 - `docs/magicball-mode-home-and-ontology-empty-state-playbook.md`
 - `docs/magicball-cli-invocation-examples.md`
 - `docs/magicball-write-auth-adaptation-guide.md`
@@ -75,12 +77,16 @@ Use together with:
 
 ### Must render
 - delivery summary
+- delivery column from `scene delivery show`
+- engineering readiness state from `app engineering preview`
+- engineering ownership state from `app engineering ownership`
 - requirement / tracking / planning / change / issue tabs
 - assurance tabs
 - engineering workspace detail
 
 ### Done when
 - engineering tables use SCE table payloads directly
+- delivery / preview / ownership panels render backend contracts directly
 - empty engineering tables render as empty states, not legacy markdown fallbacks by default
 
 ## 6. Write Authorization
@@ -121,6 +127,25 @@ Detailed state ownership and error boundary rules live in:
 
 MagicBall can treat the current SCE integration as baseline-ready when:
 - workspace shell is serialized and stable
+- multi-project shell uses engine-owned project roster and supervision truth
 - ontology empty-state is explicit and usable
 - write authorization is shared capability, not page-by-page improvisation
 - task/timeline surfaces use SCE view contracts instead of raw event-first rendering
+
+## 10. Multi-project Shell
+
+### Must render
+- project switcher from `project portfolio show`
+- current project marker
+- project health summary from `project supervision show`
+- explicit degraded / inaccessible project states
+
+### Must behave correctly
+- cross-project free-text routing preflights through `project target resolve`
+- ambiguous resolution does not auto-select silently
+- target resolution does not implicitly switch active workspace selection
+
+### Done when
+- frontend no longer rebuilds project roster from local workspace cache alone
+- supervision panel uses backend snapshot items directly
+- unresolved or ambiguous routing is visible and auditable

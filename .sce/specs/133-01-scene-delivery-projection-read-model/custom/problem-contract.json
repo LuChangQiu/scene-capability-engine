@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "spec_id": "133-01-scene-delivery-projection-read-model",
+  "scene_id": "scene.sce-ide-companion",
+  "issue_statement": "The IDE cannot add a stable Delivery column until SCE exposes one canonical delivery projection instead of requiring frontend synthesis across mixed engine and evidence sources.",
+  "expected_outcome": "SCE publishes one scene-scoped delivery projection contract and command surface that both IDE and CLI can consume directly.",
+  "impact_scope": "scene delivery projection, handoff/release evidence reuse, IDE Delivery column integration",
+  "reproduction_steps": [
+    "Attempt to render delivery-governance status from only existing task, handoff, and release files",
+    "Observe that object identity and scope back-links are not exposed through one canonical payload",
+    "Observe that frontend would need to synthesize long-lived delivery truth"
+  ],
+  "forbidden_workarounds": [
+    "Do not create a frontend-owned permanent delivery registry",
+    "Do not encode IDE layout semantics into the engine payload"
+  ]
+}

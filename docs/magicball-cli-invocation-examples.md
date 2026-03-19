@@ -21,7 +21,19 @@ Assume:
 
 ## 1. Workspace Bootstrap
 
-### 1.0 Read current device baseline
+### 1.0 Read multi-project portfolio baseline
+```bash
+sce project portfolio show --json
+sce project target resolve --request "continue customer-order-demo" --json
+sce project supervision show --project workspace:customer-order-demo --json
+```
+
+Expected use:
+- build project switcher from engine-owned roster
+- preflight cross-project free-text routing before assistant/orchestration actions
+- render one project-scoped health summary without replaying raw event streams
+
+### 1.1 Read current device baseline
 ```bash
 sce device current --json
 sce device override show --json
@@ -62,7 +74,7 @@ Example local override patch:
 }
 ```
 
-### 1.1 App bundle identity
+### 1.2 App bundle identity
 ```bash
 sce app bundle show --app customer-order-demo --json
 ```
@@ -72,18 +84,20 @@ Expected use:
 - cache `app_key`
 - cache app-level bundle bindings
 
-### 1.2 Serialized mode-home bootstrap
+### 1.3 Serialized mode-home bootstrap
 Run in this order only:
 
 ```bash
 sce mode application home --app customer-order-demo --json
 sce mode ontology home --app customer-order-demo --json
 sce mode engineering home --app customer-order-demo --json
-sce app engineering show --app customer-order-demo --json
+sce scene delivery show --scene scene.customer-order-demo --json
+sce app engineering preview --app customer-order-demo --json
+sce app engineering ownership --app customer-order-demo --json
 ```
 
 Recommended frontend rule:
-- do not parallelize these four calls during current verification window
+- do not parallelize these six calls during current verification window
 
 ## 2. Application Mode Examples
 
@@ -185,9 +199,33 @@ sce assurance backup list --json
 sce assurance config switches --json
 ```
 
-### 4.4 Read engineering project detail
+### 4.4 Read engineering delivery projection
 ```bash
-sce app engineering show --app customer-order-demo --json
+sce scene delivery show --scene scene.customer-order-demo --json
+```
+
+### 4.5 Read engineering project readiness preview
+```bash
+sce app engineering preview --app customer-order-demo --json
+```
+
+### 4.6 Read engineering ownership relation
+```bash
+sce app engineering ownership --app customer-order-demo --json
+```
+
+### 4.7 Read canonical open/import envelopes
+```bash
+sce app engineering open --app customer-order-demo --json
+sce app engineering import --app customer-order-demo --json
+```
+
+### 4.8 Mutate engineering workspace bindings
+```bash
+sce app engineering attach --app customer-order-demo --repo <repo-url> --branch main --json
+sce app engineering hydrate --app customer-order-demo --json
+sce app engineering scaffold --app customer-order-demo --overwrite-policy missing-only --json
+sce app engineering activate --app customer-order-demo --json
 ```
 
 ## 5. Write Authorization Examples
@@ -316,6 +354,7 @@ async function runSceJson(args: string[]) {
 ### 8.2 Serialized workspace bootstrap wrapper
 ```ts
 async function loadWorkspace(appKey: string) {
+  const projectPortfolio = await runSceJson(['project', 'portfolio', 'show', '--json']);
   const appBundle = await runSceJson(['app', 'bundle', 'show', '--app', appKey, '--json']);
   const applicationHome = await runSceJson(['mode', 'application', 'home', '--app', appKey, '--json']);
   const ontologyHome = await runSceJson(['mode', 'ontology', 'home', '--app', appKey, '--json']);
@@ -323,6 +362,7 @@ async function loadWorkspace(appKey: string) {
   const engineeringDetail = await runSceJson(['app', 'engineering', 'show', '--app', appKey, '--json']);
 
   return {
+    projectPortfolio,
     appBundle,
     applicationHome,
     ontologyHome,
@@ -360,11 +400,16 @@ Suggested error bundle:
 Run this full sequence when verifying MagicBall local integration:
 
 ```bash
+sce project portfolio show --json
+sce project target resolve --request "continue customer-order-demo" --json
+sce project supervision show --project workspace:customer-order-demo --json
 sce app bundle show --app customer-order-demo --json
 sce mode application home --app customer-order-demo --json
 sce mode ontology home --app customer-order-demo --json
 sce mode engineering home --app customer-order-demo --json
-sce app engineering show --app customer-order-demo --json
+sce scene delivery show --scene scene.customer-order-demo --json
+sce app engineering preview --app customer-order-demo --json
+sce app engineering ownership --app customer-order-demo --json
 sce ontology triad summary --json
 sce pm requirement list --json
 sce assurance resource status --json

@@ -1,0 +1,98 @@
+{
+  "api_version": "sce.problem-domain-chain/v0.1",
+  "scene_id": "scene.sce-ide-companion",
+  "spec_id": "134-04-engineering-project-scaffold-result",
+  "problem": {
+    "statement": "Engineering scaffold work still needs one canonical result contract with explicit repeated-run reporting.",
+    "scope": "Scaffold result only.",
+    "symptom": "Setup work does not yet expose one stable result contract for created, skipped, failed, and overwrite state."
+  },
+  "ontology": {
+    "entity": [
+      "scaffold_result",
+      "overwrite_policy"
+    ],
+    "relation": [
+      "scaffold_result->overwrite_policy"
+    ],
+    "business_rule": [
+      "repeated runs report skipped work"
+    ],
+    "decision_policy": [
+      "scaffold stays phase-2"
+    ],
+    "execution_flow": [
+      "run scaffold and return counts"
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "One scaffold result contract will make setup feedback stable without widening phase-1."
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "type": "phase-drift",
+      "statement": "Scaffold work may start blocking phase-1 if it is mixed back into preview or action specs."
+    }
+  ],
+  "decision_execution_path": [
+    {
+      "step": 1,
+      "decision": "lock the scaffold result"
+    },
+    {
+      "step": 2,
+      "decision": "lock repeated-run reporting"
+    },
+    {
+      "step": 3,
+      "decision": "keep scaffold deferred from phase-1"
+    }
+  ],
+  "research_coverage": {
+    "mode": "scene-closed-loop",
+    "required_dimensions": [
+      "scene_boundary",
+      "entity",
+      "relation",
+      "business_rule",
+      "decision_policy",
+      "execution_flow",
+      "failure_signal",
+      "debug_evidence_plan",
+      "verification_gate"
+    ],
+    "checklist": {
+      "scene_boundary": true,
+      "entity": true,
+      "relation": true,
+      "business_rule": true,
+      "decision_policy": true,
+      "execution_flow": true,
+      "failure_signal": true,
+      "debug_evidence_plan": true,
+      "verification_gate": true
+    },
+    "status": "draft"
+  },
+  "correction_loop": {
+    "triggers": [
+      "preview concerns appear in scaffold scope",
+      "repeated-run output hides skipped work"
+    ],
+    "actions": [
+      "keep preview concerns upstream",
+      "keep repeated-run reporting explicit",
+      "attach debug evidence when repeated-run counts drift"
+    ]
+  },
+  "verification": {
+    "gates": [
+      "scaffold-result-review",
+      "scaffold-idempotent-review"
+    ]
+  }
+}

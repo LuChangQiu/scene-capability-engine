@@ -82,11 +82,19 @@ Check that key docs are aligned with current version and capabilities:
 Optional sanity scan:
 
 ```bash
+npm run audit:magicball-engineering-contract
+npm run audit:magicball-project-contract
+
 rg -n "yourusername|support@example.com" README.md README.zh.md docs docs/zh -S
 
 # Canonical repository link check (should return no matches)
 rg -n "github.com/scene-capability-engine/sce" README.md README.zh.md docs START_HERE.txt INSTALL_OFFLINE.txt -S -g "!docs/release-checklist.md" -g "!docs/zh/release-checklist.md"
 ```
+
+Additional expectation:
+
+- `audit:magicball-engineering-contract` passes so active MagicBall entry docs stay aligned with `scene delivery`, `engineering preview/ownership`, and `open/import/scaffold` contracts.
+- `audit:magicball-project-contract` passes so active MagicBall entry docs stay aligned with `project portfolio`, `project target resolve`, and `project supervision show` contracts.
 
 ---
 

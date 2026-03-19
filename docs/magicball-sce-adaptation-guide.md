@@ -15,6 +15,8 @@ Use these documents together:
 - `docs/magicball-app-collection-phase-1.md`
 - `docs/app-intent-apply-contract.md`
 - `docs/magicball-ui-surface-checklist.md`
+- `docs/magicball-engineering-projection-contract.md`
+- `docs/magicball-project-portfolio-contract.md`
 - `docs/magicball-mode-home-and-ontology-empty-state-playbook.md`
 - `docs/magicball-frontend-state-and-command-mapping.md`
 - `docs/magicball-cli-invocation-examples.md`
@@ -33,12 +35,13 @@ SCE currently provides MagicBall-facing support for:
 6. `app install-state` local device projection
 7. `application / ontology / engineering home projections`
 8. `app runtime install / activate / uninstall`
-9. `app engineering attach / hydrate / activate`
+9. `app engineering attach / hydrate / scaffold / activate`
 10. `pm` delivery data plane
 11. `ontology` triad data plane
 12. `assurance` data plane
 13. `write authorization`
 14. `task feedback + timeline`
+15. `project portfolio / target resolve / supervision`
 
 ## Planned Next Scope
 
@@ -89,7 +92,9 @@ Current default during `Issue 001` verification:
   1. `mode application home`
   2. `mode ontology home`
   3. `mode engineering home`
-  4. `app engineering show`
+  4. `scene delivery show`
+  5. `app engineering preview`
+  6. `app engineering ownership`
 
 ### 3. Fresh ontology behavior
 
@@ -125,13 +130,20 @@ Use `docs/magicball-cli-invocation-examples.md` for copy-ready commands.
 - `sce mode application home`
 - `sce mode ontology home`
 - `sce mode engineering home`
-- `sce app engineering show`
+- `sce scene delivery show`
+- `sce app engineering preview`
+- `sce app engineering ownership`
 
 ### Runtime and engineering control
 - `sce device override show/upsert`
 - `sce app runtime show/releases/install/activate/uninstall`
-- `sce app engineering show/attach/hydrate/activate`
+- `sce app engineering preview/ownership/open/import/show/attach/hydrate/scaffold/activate`
 - `sce app registry status/configure/sync*`
+
+### Multi-project control
+- `sce project portfolio show`
+- `sce project target resolve`
+- `sce project supervision show`
 
 ### Engineering data plane
 - `sce pm requirement list/show/upsert`
@@ -214,6 +226,7 @@ MagicBall should use `view_model.columns` as the preferred visible-column contra
 
 ### Specialized docs own
 - page-level done criteria: `docs/magicball-ui-surface-checklist.md`
+- multi-project contracts: `docs/magicball-project-portfolio-contract.md`
 - frontend state + command mapping: `docs/magicball-frontend-state-and-command-mapping.md`
 - mode-home + ontology empty-state behavior: `docs/magicball-mode-home-and-ontology-empty-state-playbook.md`
 - copy-ready commands: `docs/magicball-cli-invocation-examples.md`
@@ -230,3 +243,4 @@ MagicBall should now integrate SCE in this order:
 4. keep ontology empty-state explicit and seed apply optional
 5. keep write flows lease-aware
 6. use task/timeline view contracts instead of raw event-first rendering
+7. use `project portfolio / target resolve / supervision` for multi-project shells instead of frontend-rebuilt workspace truth

@@ -17,6 +17,8 @@ These are the current first-line integration documents:
 - `docs/magicball-app-collection-phase-1.md`
 - `docs/app-intent-apply-contract.md`
 - `docs/magicball-ui-surface-checklist.md`
+- `docs/magicball-engineering-projection-contract.md`
+- `docs/magicball-project-portfolio-contract.md`
 - `docs/magicball-mode-home-and-ontology-empty-state-playbook.md`
 - `docs/magicball-frontend-state-and-command-mapping.md`
 - `docs/magicball-cli-invocation-examples.md`
@@ -47,23 +49,31 @@ These are the current first-line integration documents:
    - serialized mode-home loading
    - ontology empty-state and starter-seed behavior
 
-6. `docs/magicball-frontend-state-and-command-mapping.md`
+6. `docs/magicball-engineering-projection-contract.md`
+   - stable engineering-facing payloads
+   - delivery / preview / ownership / open-import / scaffold contracts
+
+7. `docs/magicball-project-portfolio-contract.md`
+   - multi-project roster / target-resolution / supervision contracts
+   - phase-1 project switcher and cross-project preflight boundary
+
+8. `docs/magicball-frontend-state-and-command-mapping.md`
    - page state ownership
    - command-to-action mapping
    - error and retry boundaries
 
-7. `docs/magicball-write-auth-adaptation-guide.md`
+9. `docs/magicball-write-auth-adaptation-guide.md`
    - write authorization and lease handling
 
-8. `docs/magicball-task-feedback-timeline-guide.md`
+10. `docs/magicball-task-feedback-timeline-guide.md`
    - task feedback cards
    - timeline view integration
 
-9. `docs/magicball-cli-invocation-examples.md`
+11. `docs/magicball-cli-invocation-examples.md`
    - copy-ready CLI examples
    - wrapper and smoke verification patterns
 
-10. `docs/magicball-integration-issue-tracker.md`
+12. `docs/magicball-integration-issue-tracker.md`
    - current cross-project truth
    - only open issues, active decisions, and verified resolutions
 
@@ -75,6 +85,8 @@ Use:
 - `docs/magicball-app-collection-phase-1.md`
 - `docs/app-intent-apply-contract.md`
 - `docs/magicball-mode-home-and-ontology-empty-state-playbook.md`
+- `docs/magicball-engineering-projection-contract.md`
+- `docs/magicball-project-portfolio-contract.md`
 - `docs/magicball-frontend-state-and-command-mapping.md`
 
 ### I need to implement ontology empty-state and starter seed
@@ -111,6 +123,8 @@ Use:
 | `app-intent-apply-contract.md` | apply JSON contract | medium |
 | `magicball-adaptation-task-checklist-v1.md` | execution checklist | medium |
 | `magicball-mode-home-and-ontology-empty-state-playbook.md` | frontend behavior policy | medium |
+| `magicball-engineering-projection-contract.md` | engineering payload contract | medium |
+| `magicball-project-portfolio-contract.md` | multi-project payload contract | medium |
 | `magicball-frontend-state-and-command-mapping.md` | frontend implementation mapping | medium |
 | `magicball-write-auth-adaptation-guide.md` | auth/write behavior | low |
 | `magicball-task-feedback-timeline-guide.md` | task/timeline integration | low |

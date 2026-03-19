@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "spec_id": "133-00-ide-delivery-and-engineering-projection-program",
+  "scene_id": "scene.sce-ide-companion",
+  "issue_statement": "The current spec drafts around IDE delivery projection and engineering onboarding are directionally useful but too broad to execute steadily without blind changes.",
+  "expected_outcome": "A smaller spec group exists so SCE can land the IDE Delivery column and engineering onboarding contracts in stable, phaseable steps.",
+  "impact_scope": "engine=scene/spec/task/app projection; consumer=frontend IDE and CLI adapters",
+  "reproduction_steps": [
+    "Read the current broad draft specs for delivery projection and onboarding",
+    "Observe that delivery projection, preview/open, scaffold, and ownership are mixed across wide contracts",
+    "Try to pick one implementation order without additional decomposition"
+  ],
+  "forbidden_workarounds": [
+    "Do not let the frontend build permanent parallel truth from partial backend commands",
+    "Do not mix multi-agent runtime work into this phase-1 IDE projection task"
+  ]
+}

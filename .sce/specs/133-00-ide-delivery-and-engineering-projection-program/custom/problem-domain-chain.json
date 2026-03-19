@@ -1,0 +1,112 @@
+{
+  "api_version": "sce.problem-domain-chain/v0.1",
+  "scene_id": "scene.sce-ide-companion",
+  "spec_id": "133-00-ide-delivery-and-engineering-projection-program",
+  "problem": {
+    "statement": "SCE needs a smaller, phaseable spec group for IDE delivery projection and engineering onboarding instead of broad mixed specs."
+    ,
+    "scope": "Phase-1 IDE-facing delivery projection and engineering onboarding contract planning, excluding project-level multi-agent runtime implementation.",
+    "symptom": "Current draft specs mix phase ordering and onboarding concerns too broadly to support steady implementation."
+  },
+  "ontology": {
+    "entity": [
+      "scene",
+      "spec",
+      "task",
+      "delivery_projection",
+      "engineering_project_preview",
+      "scaffold_result"
+    ],
+    "relation": [
+      "delivery_object->scene",
+      "delivery_object->spec",
+      "engineering_project_preview->workspace",
+      "master_program->child_spec"
+    ],
+    "business_rule": [
+      "engine owns semantics and adapters own presentation",
+      "phase-1 stays incremental and read-heavy"
+    ],
+    "decision_policy": [
+      "delivery projection first",
+      "onboarding preview/open second",
+      "scaffold ownership extension later"
+    ],
+    "execution_flow": [
+      "master program",
+      "133-01",
+      "133-02",
+      "133-03"
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "A tighter spec group will reduce blind implementation and make the IDE feature easier to land."
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "type": "scope-drift",
+      "statement": "Project onboarding and collaboration runtime concerns may be mixed again if the program boundary is not explicit."
+    }
+  ],
+  "decision_execution_path": [
+    {
+      "step": 1,
+      "decision": "split phase-1 into delivery projection, preview/open, and scaffold/ownership"
+    },
+    {
+      "step": 2,
+      "decision": "keep multi-agent runtime outside this task line"
+    },
+    {
+      "step": 3,
+      "decision": "execute child specs in phase order instead of parallel blind implementation"
+    }
+  ],
+  "research_coverage": {
+    "mode": "scene-closed-loop",
+    "required_dimensions": [
+      "scene_boundary",
+      "entity",
+      "relation",
+      "business_rule",
+      "decision_policy",
+      "execution_flow",
+      "failure_signal",
+      "debug_evidence_plan",
+      "verification_gate"
+    ],
+    "checklist": {
+      "scene_boundary": true,
+      "entity": true,
+      "relation": true,
+      "business_rule": true,
+      "decision_policy": true,
+      "execution_flow": true,
+      "failure_signal": true,
+      "debug_evidence_plan": true,
+      "verification_gate": true
+    },
+    "status": "draft"
+  },
+  "correction_loop": {
+    "triggers": [
+      "spec becomes broad again",
+      "frontend starts synthesizing engine truth"
+    ],
+    "actions": [
+      "split spec boundary",
+      "clarify canonical contract first",
+      "attach debug evidence when boundary drift repeats"
+    ]
+  },
+  "verification": {
+    "gates": [
+      "spec-strategy-assess",
+      "spec-boundary-review"
+    ]
+  }
+}

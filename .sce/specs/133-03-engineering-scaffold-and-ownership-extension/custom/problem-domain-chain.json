@@ -1,0 +1,101 @@
+{
+  "api_version": "sce.problem-domain-chain/v0.1",
+  "scene_id": "scene.sce-ide-companion",
+  "spec_id": "133-03-engineering-scaffold-and-ownership-extension",
+  "problem": {
+    "statement": "SCE needs canonical scaffold and ownership extension semantics, but they should be delivered after preview/open and without creating adapter-owned ownership truth.",
+    "scope": "Later-phase scaffold result and ownership relation extension, after preview/open semantics stabilize.",
+    "symptom": "Broader onboarding drafts make scaffold and ownership look like phase-1 blockers even though they are later extensions."
+  },
+  "ontology": {
+    "entity": [
+      "workspace",
+      "engineering_project_scaffold_result",
+      "engineering_ownership_relation"
+    ],
+    "relation": [
+      "scaffold_result->workspace",
+      "ownership_relation->workspace_context"
+    ],
+    "business_rule": [
+      "scaffold must be idempotent"
+    ],
+    "decision_policy": [
+      "deliver after preview/open stabilizes"
+    ],
+    "execution_flow": [
+      "define scaffold result",
+      "define ownership extension point"
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Separating scaffold and ownership from preview/open will reduce onboarding scope drift and preserve a cleaner rollout order."
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "type": "ordering-regression",
+      "statement": "Scaffold work may accidentally block phase-1 preview/open delivery if rollout order is not explicit."
+    }
+  ],
+  "decision_execution_path": [
+    {
+      "step": 1,
+      "decision": "phase-1 preview/open first"
+    },
+    {
+      "step": 2,
+      "decision": "scaffold and ownership second"
+    },
+    {
+      "step": 3,
+      "decision": "ownership extension remains engine-owned and does not create frontend-local truth"
+    }
+  ],
+  "research_coverage": {
+    "mode": "scene-closed-loop",
+    "required_dimensions": [
+      "scene_boundary",
+      "entity",
+      "relation",
+      "business_rule",
+      "decision_policy",
+      "execution_flow",
+      "failure_signal",
+      "debug_evidence_plan",
+      "verification_gate"
+    ],
+    "checklist": {
+      "scene_boundary": true,
+      "entity": true,
+      "relation": true,
+      "business_rule": true,
+      "decision_policy": true,
+      "execution_flow": true,
+      "failure_signal": true,
+      "debug_evidence_plan": true,
+      "verification_gate": true
+    },
+    "status": "draft"
+  },
+  "correction_loop": {
+    "triggers": [
+      "spec begins to include preview/open semantics",
+      "frontend starts caching ownership truth independently"
+    ],
+    "actions": [
+      "move preview/open back to 133-02",
+      "tighten engine-owned ownership relation contract",
+      "attach debug evidence when ownership mapping becomes ambiguous"
+    ]
+  },
+  "verification": {
+    "gates": [
+      "scaffold-contract-review",
+      "ownership-boundary-review"
+    ]
+  }
+}

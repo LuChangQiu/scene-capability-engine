@@ -1,0 +1,98 @@
+{
+  "api_version": "sce.problem-domain-chain/v0.1",
+  "scene_id": "scene.sce-ide-companion",
+  "spec_id": "134-02-engineering-project-preview-payload",
+  "problem": {
+    "statement": "Engineering project readiness still needs one canonical preview payload instead of partial local synthesis.",
+    "scope": "Preview payload and reason codes only.",
+    "symptom": "Readiness state is not yet returned through one canonical preview payload."
+  },
+  "ontology": {
+    "entity": [
+      "engineering_preview",
+      "readiness_reason"
+    ],
+    "relation": [
+      "engineering_preview->readiness_reason"
+    ],
+    "business_rule": [
+      "no local readiness synthesis"
+    ],
+    "decision_policy": [
+      "reuse the current preview path"
+    ],
+    "execution_flow": [
+      "request preview payload by app id"
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "One preview payload will make engineering readiness rendering stable across adapters."
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "type": "payload-drift",
+      "statement": "Preview fields may drift if step-state concerns are mixed into the payload."
+    }
+  ],
+  "decision_execution_path": [
+    {
+      "step": 1,
+      "decision": "lock the preview payload"
+    },
+    {
+      "step": 2,
+      "decision": "lock the reason codes"
+    },
+    {
+      "step": 3,
+      "decision": "bind the payload to the preview path"
+    }
+  ],
+  "research_coverage": {
+    "mode": "scene-closed-loop",
+    "required_dimensions": [
+      "scene_boundary",
+      "entity",
+      "relation",
+      "business_rule",
+      "decision_policy",
+      "execution_flow",
+      "failure_signal",
+      "debug_evidence_plan",
+      "verification_gate"
+    ],
+    "checklist": {
+      "scene_boundary": true,
+      "entity": true,
+      "relation": true,
+      "business_rule": true,
+      "decision_policy": true,
+      "execution_flow": true,
+      "failure_signal": true,
+      "debug_evidence_plan": true,
+      "verification_gate": true
+    },
+    "status": "draft"
+  },
+  "correction_loop": {
+    "triggers": [
+      "preview starts to include step state",
+      "reason codes become free-form text"
+    ],
+    "actions": [
+      "keep step state in the open/import spec",
+      "keep the reason-code set fixed",
+      "attach debug evidence when preview state and source state diverge"
+    ]
+  },
+  "verification": {
+    "gates": [
+      "preview-payload-review",
+      "preview-reason-code-review"
+    ]
+  }
+}

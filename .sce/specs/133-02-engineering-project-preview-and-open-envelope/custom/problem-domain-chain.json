@@ -1,0 +1,102 @@
+{
+  "api_version": "sce.problem-domain-chain/v0.1",
+  "scene_id": "scene.sce-ide-companion",
+  "spec_id": "133-02-engineering-project-preview-and-open-envelope",
+  "problem": {
+    "statement": "SCE needs one canonical engineering project preview and open/import result envelope so IDE and CLI stop inferring readiness from partial engineering commands.",
+    "scope": "Engineering project preview plus open/import result semantics, excluding scaffold and ownership extension.",
+    "symptom": "Readiness and next-step meaning still have to be reconstructed from separate engineering commands."
+  },
+  "ontology": {
+    "entity": [
+      "app",
+      "engineering_project",
+      "workspace"
+    ],
+    "relation": [
+      "app->engineering_project",
+      "engineering_project->workspace"
+    ],
+    "business_rule": [
+      "adapters do not synthesize readiness truth"
+    ],
+    "decision_policy": [
+      "reuse current engineering command semantics"
+    ],
+    "execution_flow": [
+      "define preview",
+      "define reason codes",
+      "define open/import envelope"
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "A canonical preview/open contract will remove frontend ambiguity without requiring a full engineering subsystem rewrite."
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "type": "scope-mixing",
+      "statement": "Scaffold and ownership work may broaden this spec again if not kept separate."
+    }
+  ],
+  "decision_execution_path": [
+    {
+      "step": 1,
+      "decision": "preview/open envelope first"
+    },
+    {
+      "step": 2,
+      "decision": "scaffold and ownership move to the next child spec"
+    },
+    {
+      "step": 3,
+      "decision": "preview and open/import share one canonical reason-code vocabulary"
+    }
+  ],
+  "research_coverage": {
+    "mode": "scene-closed-loop",
+    "required_dimensions": [
+      "scene_boundary",
+      "entity",
+      "relation",
+      "business_rule",
+      "decision_policy",
+      "execution_flow",
+      "failure_signal",
+      "debug_evidence_plan",
+      "verification_gate"
+    ],
+    "checklist": {
+      "scene_boundary": true,
+      "entity": true,
+      "relation": true,
+      "business_rule": true,
+      "decision_policy": true,
+      "execution_flow": true,
+      "failure_signal": true,
+      "debug_evidence_plan": true,
+      "verification_gate": true
+    },
+    "status": "draft"
+  },
+  "correction_loop": {
+    "triggers": [
+      "preview contract grows to include scaffold behavior",
+      "adapters still need to infer step meaning from command order"
+    ],
+    "actions": [
+      "keep scaffold concerns in 133-03",
+      "tighten the result envelope",
+      "attach debug evidence for ambiguous readiness mapping"
+    ]
+  },
+  "verification": {
+    "gates": [
+      "preview-contract-review",
+      "open-envelope-review"
+    ]
+  }
+}

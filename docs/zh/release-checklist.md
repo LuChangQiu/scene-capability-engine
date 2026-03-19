@@ -67,11 +67,19 @@ npm pack --dry-run
 可选扫描：
 
 ```bash
+npm run audit:magicball-engineering-contract
+npm run audit:magicball-project-contract
+
 rg -n "yourusername|support@example.com" README.md README.zh.md docs docs/zh -S
 
 # canonical 仓库链接扫描（应返回空）
 rg -n "github.com/scene-capability-engine/sce" README.md README.zh.md docs START_HERE.txt INSTALL_OFFLINE.txt -S -g "!docs/release-checklist.md" -g "!docs/zh/release-checklist.md"
 ```
+
+额外预期：
+
+- `audit:magicball-engineering-contract` 通过，确保活跃的 MagicBall 入口文档与 `scene delivery`、`engineering preview/ownership`、`open/import/scaffold` 契约保持一致。
+- `audit:magicball-project-contract` 通过，确保活跃的 MagicBall 入口文档与 `project portfolio`、`project target resolve`、`project supervision show` 契约保持一致。
 
 ---
 

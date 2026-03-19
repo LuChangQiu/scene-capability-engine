@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "spec_id": "134-05-engineering-ownership-relation-extension",
+  "scene_id": "scene.sce-ide-companion",
+  "issue_statement": "Engineering projection still lacks one canonical ownership relation shape and explicit unknown-link handling.",
+  "expected_outcome": "SCE defines one ownership relation shape for later projection work without introducing a parallel ownership registry.",
+  "impact_scope": "engineering ownership projection, app/workspace/device relation modeling, later state-tier work",
+  "reproduction_steps": [
+    "Review current engineering projection semantics",
+    "Observe that ownership links are not yet normalized into one stable relation shape",
+    "Observe that adapters would otherwise guess or duplicate ownership state locally"
+  ],
+  "forbidden_workarounds": [
+    "Do not create an adapter-owned ownership registry",
+    "Do not widen delivery projection scope inside this spec"
+  ]
+}

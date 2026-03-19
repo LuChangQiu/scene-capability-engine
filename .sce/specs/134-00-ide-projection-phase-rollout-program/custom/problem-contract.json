@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "spec_id": "134-00-ide-projection-phase-rollout-program",
+  "scene_id": "scene.sce-ide-companion",
+  "issue_statement": "The current IDE projection planning line still contains child specs that are too broad for direct implementation.",
+  "expected_outcome": "SCE records one ordered `134-*` rollout program with bounded child specs and clear phase dependencies.",
+  "impact_scope": "IDE projection planning, delivery column rollout, engineering project contract rollout",
+  "reproduction_steps": [
+    "Assess the current broad child specs with `sce spec strategy assess`",
+    "Observe that each child spec still reads as multi-spec work",
+    "Observe that delivery, preview, open/import, scaffold, and ownership scope are not yet separated tightly enough"
+  ],
+  "forbidden_workarounds": [
+    "Do not restart a broad mixed onboarding spec",
+    "Do not hide phase-2 work inside a phase-1 child spec"
+  ]
+}

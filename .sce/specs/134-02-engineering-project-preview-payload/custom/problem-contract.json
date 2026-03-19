@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "spec_id": "134-02-engineering-project-preview-payload",
+  "scene_id": "scene.sce-ide-companion",
+  "issue_statement": "Engineering project readiness still lacks one canonical preview payload and stable reason codes.",
+  "expected_outcome": "SCE returns one canonical preview payload from the existing engineering preview path.",
+  "impact_scope": "engineering project preview, readiness rendering, project panel support",
+  "reproduction_steps": [
+    "Call the current engineering preview path",
+    "Observe that readiness semantics are not yet normalized into one canonical payload",
+    "Observe that adapters still need to derive part of the state locally"
+  ],
+  "forbidden_workarounds": [
+    "Do not mix open/import step state into the preview payload",
+    "Do not move readiness truth into adapter-local state"
+  ]
+}

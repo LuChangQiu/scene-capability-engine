@@ -44,7 +44,9 @@ When opening an app page, MagicBall should call these commands in order:
 1. `sce mode application home --app <app-key> --json`
 2. `sce mode ontology home --app <app-key> --json`
 3. `sce mode engineering home --app <app-key> --json`
-4. `sce app engineering show --app <app-key> --json`
+4. `sce scene delivery show --scene <scene-id> --json`
+5. `sce app engineering preview --app <app-key> --json`
+6. `sce app engineering ownership --app <app-key> --json`
 
 ### Frontend State Rule
 
@@ -52,6 +54,8 @@ Treat each call as one step in a small boot pipeline.
 Do not issue step 2 before step 1 resolves.
 Do not issue step 3 before step 2 resolves.
 Do not issue step 4 before step 3 resolves.
+Do not issue step 5 before step 4 resolves.
+Do not issue step 6 before step 5 resolves.
 
 Recommended local state shape:
 
@@ -59,7 +63,7 @@ Recommended local state shape:
 interface ModeBootState {
   appKey: string
   bootStatus: 'idle' | 'loading' | 'partial' | 'ready' | 'failed'
-  activeStep: 'application-home' | 'ontology-home' | 'engineering-home' | 'engineering-show' | null
+  activeStep: 'application-home' | 'ontology-home' | 'engineering-home' | 'scene-delivery' | 'engineering-preview' | 'engineering-ownership' | null
   completedSteps: string[]
   lastError: string | null
 }
@@ -77,7 +81,9 @@ Recommended status copy:
 - step 1 loading: `Loading application view...`
 - step 2 loading: `Loading ontology view...`
 - step 3 loading: `Loading engineering view...`
-- step 4 loading: `Loading engineering workspace details...`
+- step 4 loading: `Loading delivery evidence...`
+- step 5 loading: `Loading engineering readiness...`
+- step 6 loading: `Loading ownership relation...`
 
 ### Failure Handling
 
@@ -85,7 +91,7 @@ If a step fails:
 - preserve all previously loaded payloads
 - store the exact failing command and stderr text
 - show a retry action for the failed step only
-- do not automatically restart the full four-step sequence unless the app context changed
+- do not automatically restart the full six-step sequence unless the app context changed
 
 Recommended retry behavior:
 - retry the failed step once on explicit user action
@@ -213,7 +219,9 @@ App Selected
   -> application home
   -> ontology home
   -> engineering home
-  -> engineering show
+  -> scene delivery
+  -> engineering preview
+  -> engineering ownership
 
 Ontology Tab Opened
   -> ontology home

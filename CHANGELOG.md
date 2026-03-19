@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.58] - 2026-03-19
+
+### Added
+- Added `sce scene delivery show --scene <scene-id> --json` as the canonical delivery projection envelope for MagicBall/IDE engineering surfaces.
+- Added canonical `sce app engineering preview|ownership|open|import|scaffold` read/result contracts, plus corresponding MagicBall-facing contract docs and audits.
+- Added `sce project portfolio show --json`, `sce project target resolve --json`, and `sce project supervision show --project <project-id> --json` for phase-1 multi-project roster, routing preflight, and project-scoped supervision.
+- Added MagicBall multi-project contract documentation and `audit:magicball-project-contract` so release/publish flow now checks project portfolio/target/supervision doc drift.
+
+### Changed
+- MagicBall entry docs, CLI examples, frontend mapping, checklist, issue tracker, README, and release checklist now explicitly include multi-project shell integration through `project portfolio / target resolve / supervision`.
+- Prepublish release gating now also enforces MagicBall multi-project contract consistency alongside the existing engineering contract audit.
+
 ## [3.6.57] - 2026-03-17
 
 ### Added

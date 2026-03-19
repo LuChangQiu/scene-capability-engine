@@ -1,0 +1,99 @@
+{
+  "api_version": "sce.problem-domain-chain/v0.1",
+  "scene_id": "scene.sce-ide-companion",
+  "spec_id": "134-00-ide-projection-phase-rollout-program",
+  "problem": {
+    "statement": "The IDE projection line needs one tighter rollout program because the current child specs still span too much scope for direct implementation.",
+    "scope": "Program-level rollout planning for the phase-1 and phase-2 contract set.",
+    "symptom": "Broad child specs still assess as multi-spec work instead of implementation-sized specs."
+  },
+  "ontology": {
+    "entity": [
+      "rollout_program",
+      "child_spec",
+      "phase"
+    ],
+    "relation": [
+      "rollout_program->child_spec_dependency"
+    ],
+    "business_rule": [
+      "each child spec owns one bounded contract"
+    ],
+    "decision_policy": [
+      "phase-1 ships before phase-2"
+    ],
+    "execution_flow": [
+      "define child spec order and dependency"
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "A tighter rollout portfolio will let the actual implementation start without reopening broad planning every round."
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "type": "scope-drift",
+      "statement": "A child spec may start absorbing adjacent concerns again if dependency edges are not explicit."
+    }
+  ],
+  "decision_execution_path": [
+    {
+      "step": 1,
+      "decision": "freeze one master rollout program"
+    },
+    {
+      "step": 2,
+      "decision": "split bounded child specs by contract"
+    },
+    {
+      "step": 3,
+      "decision": "ship phase-1 before later extensions"
+    }
+  ],
+  "research_coverage": {
+    "mode": "scene-closed-loop",
+    "required_dimensions": [
+      "scene_boundary",
+      "entity",
+      "relation",
+      "business_rule",
+      "decision_policy",
+      "execution_flow",
+      "failure_signal",
+      "debug_evidence_plan",
+      "verification_gate"
+    ],
+    "checklist": {
+      "scene_boundary": true,
+      "entity": true,
+      "relation": true,
+      "business_rule": true,
+      "decision_policy": true,
+      "execution_flow": true,
+      "failure_signal": true,
+      "debug_evidence_plan": true,
+      "verification_gate": true
+    },
+    "status": "draft"
+  },
+  "correction_loop": {
+    "triggers": [
+      "a child spec grows into mixed onboarding scope",
+      "phase-2 work blocks the phase-1 gate"
+    ],
+    "actions": [
+      "move the concern to the correct child spec",
+      "keep phase-2 deferred",
+      "attach debug evidence when a child spec boundary is violated"
+    ]
+  },
+  "verification": {
+    "gates": [
+      "child-spec-boundary-review",
+      "strategy-fit-review"
+    ]
+  }
+}

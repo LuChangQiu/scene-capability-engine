@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "spec_id": "134-04-engineering-project-scaffold-result",
+  "scene_id": "scene.sce-ide-companion",
+  "issue_statement": "Engineering scaffold work still lacks one canonical result contract with explicit repeated-run behavior.",
+  "expected_outcome": "SCE exposes one scaffold result contract with counts, workspace path, and overwrite policy.",
+  "impact_scope": "engineering project scaffold feedback, setup reporting, later project bootstrap flows",
+  "reproduction_steps": [
+    "Run or review current engineering scaffold behavior",
+    "Observe that one stable result contract is not yet defined",
+    "Observe that repeated-run setup outcome is not normalized into one contract"
+  ],
+  "forbidden_workarounds": [
+    "Do not redefine preview or open/import semantics in this spec",
+    "Do not hide repeated-run state behind silent success"
+  ]
+}

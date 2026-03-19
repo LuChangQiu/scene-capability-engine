@@ -1,0 +1,101 @@
+{
+  "api_version": "sce.problem-domain-chain/v0.1",
+  "scene_id": "scene.sce-ide-companion",
+  "spec_id": "133-01-scene-delivery-projection-read-model",
+  "problem": {
+    "statement": "SCE needs one canonical delivery projection read model for the IDE Delivery column instead of frontend heuristics across mixed files and evidence.",
+    "scope": "Scene-scoped delivery projection for phase-1 IDE Delivery column and CLI JSON inspection.",
+    "symptom": "Delivery-governance information is available only through mixed files and evidence sources, forcing frontend synthesis."
+  },
+  "ontology": {
+    "entity": [
+      "delivery_projection",
+      "delivery_record",
+      "scene"
+    ],
+    "relation": [
+      "delivery_record->scene_or_spec_scope"
+    ],
+    "business_rule": [
+      "frontend must not own parallel delivery truth"
+    ],
+    "decision_policy": [
+      "use one scene-scoped JSON command"
+    ],
+    "execution_flow": [
+      "define envelope",
+      "map sources",
+      "publish command contract"
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "A single delivery projection payload will make IDE integration more stable than reconstructing delivery semantics in frontend state."
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "type": "identity-drift",
+      "statement": "Handoff or acceptance identity may stay unstable if provisional ids are not marked explicitly."
+    }
+  ],
+  "decision_execution_path": [
+    {
+      "step": 1,
+      "decision": "scene-scoped projection is the phase-1 transport"
+    },
+    {
+      "step": 2,
+      "decision": "release/handoff sources are reused as linked evidence where canonical ids are missing"
+    },
+    {
+      "step": 3,
+      "decision": "frontend consumes one payload instead of synthesizing delivery truth locally"
+    }
+  ],
+  "research_coverage": {
+    "mode": "scene-closed-loop",
+    "required_dimensions": [
+      "scene_boundary",
+      "entity",
+      "relation",
+      "business_rule",
+      "decision_policy",
+      "execution_flow",
+      "failure_signal",
+      "debug_evidence_plan",
+      "verification_gate"
+    ],
+    "checklist": {
+      "scene_boundary": true,
+      "entity": true,
+      "relation": true,
+      "business_rule": true,
+      "decision_policy": true,
+      "execution_flow": true,
+      "failure_signal": true,
+      "debug_evidence_plan": true,
+      "verification_gate": true
+    },
+    "status": "draft"
+  },
+  "correction_loop": {
+    "triggers": [
+      "frontend requests layout-specific fields",
+      "record identity cannot be explained canonically"
+    ],
+    "actions": [
+      "keep field adapter-owned",
+      "mark identity provisional",
+      "attach debug evidence for mismatched source mapping"
+    ]
+  },
+  "verification": {
+    "gates": [
+      "projection-schema-review",
+      "scope-linkage-review"
+    ]
+  }
+}

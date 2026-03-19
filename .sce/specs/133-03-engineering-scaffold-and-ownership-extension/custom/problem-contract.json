@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "spec_id": "133-03-engineering-scaffold-and-ownership-extension",
+  "scene_id": "scene.sce-ide-companion",
+  "issue_statement": "Scaffold and ownership semantics are still needed upstream, but they should not widen the first preview/open or Delivery projection rollout.",
+  "expected_outcome": "SCE exposes one canonical scaffold result and one ownership relation extension point without blocking phase-1 IDE projection work.",
+  "impact_scope": "engineering scaffold behavior, workspace relation semantics, later IDE/CLI onboarding enhancement",
+  "reproduction_steps": [
+    "Read the broader onboarding drafts",
+    "Observe that scaffold and ownership are mixed with preview/open semantics",
+    "Observe that this makes rollout order and implementation scope unstable"
+  ],
+  "forbidden_workarounds": [
+    "Do not make frontend store long-lived ownership truth to compensate",
+    "Do not let scaffold semantics block the first preview/open or Delivery projection rollout"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "spec_id": "134-01-scene-delivery-projection-envelope-and-command",
+  "scene_id": "scene.sce-ide-companion",
+  "issue_statement": "The IDE Delivery column still has no single engine-owned payload and command for delivery state.",
+  "expected_outcome": "SCE exposes one scene delivery payload and one scene command that returns it in JSON.",
+  "impact_scope": "delivery projection, delivery column support, scene-scoped inspection",
+  "reproduction_steps": [
+    "Attempt to render the Delivery column from current mixed evidence files",
+    "Observe that one canonical payload is missing",
+    "Observe that the adapter would need to reconstruct delivery state locally"
+  ],
+  "forbidden_workarounds": [
+    "Do not build a permanent adapter-owned delivery registry",
+    "Do not turn read-only delivery projection into write behavior in this spec"
+  ]
+}

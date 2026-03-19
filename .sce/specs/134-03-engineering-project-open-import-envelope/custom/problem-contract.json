@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "spec_id": "134-03-engineering-project-open-import-envelope",
+  "scene_id": "scene.sce-ide-companion",
+  "issue_statement": "Engineering open/import still lack one canonical ordered result envelope.",
+  "expected_outcome": "SCE returns one canonical result envelope from the existing engineering open/import paths.",
+  "impact_scope": "engineering open/import feedback, action result rendering, project panel actions",
+  "reproduction_steps": [
+    "Run the current engineering open or import path",
+    "Observe that one canonical ordered result envelope is not yet guaranteed",
+    "Observe that adapters still need to infer action meaning from partial output"
+  ],
+  "forbidden_workarounds": [
+    "Do not redefine preview readiness in this spec",
+    "Do not hide non-applicable step state by dropping steps silently"
+  ]
+}

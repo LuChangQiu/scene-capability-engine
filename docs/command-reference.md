@@ -411,6 +411,10 @@ sce scene workspace list --json
 sce scene workspace show --workspace sales --json
 sce scene workspace apply --workspace sales --json
 
+# Scene delivery projection
+sce scene delivery show --scene scene.demo --json
+sce scene delivery show --scene scene.demo --spec 01-00-demo --json
+
 # Configure and sync remote registries
 sce app registry status --json
 sce app registry configure --bundle-index-url <path-or-url> --service-index-url <path-or-url> --json
@@ -428,9 +432,14 @@ sce app install-state list --json
 sce app install-state list --install-status installed --json
 
 # Engineering projection
+sce app engineering preview --app customer-order-demo --json
+sce app engineering ownership --app customer-order-demo --json
+sce app engineering open --app customer-order-demo --json
+sce app engineering import --app customer-order-demo --json
 sce app engineering show --app customer-order-demo --json
 sce app engineering attach --app customer-order-demo --repo <repo-url> --branch main --json
 sce app engineering hydrate --app customer-order-demo --json
+sce app engineering scaffold --app customer-order-demo --overwrite-policy missing-only --json
 sce app engineering activate --app customer-order-demo --json
 
 # Three-mode home projections
@@ -2648,6 +2657,69 @@ sce repo health --json
 
 Overall Health: 2 healthy, 1 unhealthy
 ```
+
+---
+
+## Project Portfolio And Supervision
+
+#### `sce project portfolio show`
+
+Inspect the canonical caller-visible project roster across registered workspaces and the current unregistered `.sce` project when applicable.
+
+**Usage:**
+```bash
+sce project portfolio show [options]
+```
+
+**Options:**
+- `--workspace <name>` - Resolve caller context against one registered workspace without switching the global active workspace
+- `--json` - Output the canonical `ProjectPortfolioProjection`
+
+**Behavior:**
+- Reuses registered workspace visibility from multi-workspace state
+- Marks inaccessible or partial projects explicitly instead of dropping them
+- Reuses project-local session governance signals to summarize active sessions and last activity
+
+#### `sce project target resolve`
+
+Resolve one target project for cross-project flows without mutating active workspace selection.
+
+**Usage:**
+```bash
+sce project target resolve [options]
+```
+
+**Options:**
+- `--request <text>` - Routing request text
+- `--current-project <id>` - Caller asserted current project id
+- `--workspace <name>` - Resolve caller context against one registered workspace
+- `--device <id>` - Opaque caller device id
+- `--tool-instance-id <id>` - Opaque caller tool instance id
+- `--json` - Output the canonical `ProjectTargetResolution`
+
+**Behavior:**
+- Returns `current-project`, `resolved-other-project`, `ambiguous`, or `unresolved`
+- Echoes caller context used during resolution
+- Returns alternative candidates for ambiguous matches
+
+#### `sce project supervision show`
+
+Inspect one project-scoped supervision snapshot with blocked, handoff, risk, and active items.
+
+**Usage:**
+```bash
+sce project supervision show --project <id> [options]
+```
+
+**Options:**
+- `--project <id>` - Visible project id from the portfolio projection
+- `--cursor <cursor>` - Best-effort checkpoint input; phase-1 still returns a full snapshot
+- `--json` - Output the canonical `ProjectSupervisionProjection`
+
+**Behavior:**
+- Reuses project-local session governance, spec governance, and report artifacts
+- Preserves scene/spec/event drillback fields when evidence is available
+- Returns an opaque snapshot cursor for polling without pretending to expose a raw event stream
 
 ---
 

@@ -12,12 +12,61 @@ This checklist is meant for:
 ## Scope
 
 Current checklist covers:
-1. app selection and mode switching
-2. application mode adaptation
-3. ontology mode adaptation
-4. engineering mode adaptation
-5. write authorization handling
-6. demo app verification
+1. multi-project workspace shell
+2. app selection and mode switching
+3. application mode adaptation
+4. ontology mode adaptation
+5. engineering mode adaptation
+6. write authorization handling
+7. demo app verification
+
+## Phase 0: Multi-project Workspace Shell
+
+### Task 0.1
+Load the engine-owned project roster before building a multi-project shell.
+
+Command:
+```bash
+sce project portfolio show --json
+```
+
+Done when:
+- project switcher is driven by `projects[]`
+- current project marker comes from `activeProjectId`
+- degraded or inaccessible projects are rendered explicitly
+
+### Task 0.2
+Use `projectId` as the frontend multi-project route token.
+
+Done when:
+- registered projects do not depend on path heuristics in the UI
+- frontend no longer rebuilds project identity from local workspace cache alone
+
+### Task 0.3
+Preflight free-text cross-project requests before opening a project-bound assistant or orchestration flow.
+
+Command:
+```bash
+sce project target resolve --request "<text>" --current-project <project-id> --json
+```
+
+Done when:
+- `current-project` and `resolved-other-project` are handled separately
+- `ambiguous` shows a candidate chooser instead of silent auto-selection
+- unresolved routing preserves request text and reason code for clarification
+
+### Task 0.4
+Render project health from the project-scoped supervision snapshot.
+
+Command:
+```bash
+sce project supervision show --project <project-id> --json
+```
+
+Done when:
+- blocked / handoff / risk / active counters come from backend summary directly
+- drillback panels use `items[]` directly
+- frontend does not present `cursor` as a raw event-stream offset
 
 ## Phase 1: App Entry And Mode Switching
 
@@ -55,7 +104,7 @@ sce mode engineering home --app customer-order-demo --json
 Done when:
 - all three mode entry pages are driven by these commands
 - frontend no longer reconstructs runtime/ontology/engineering binding itself
-- frontend loads them sequentially in this order: application -> ontology -> engineering -> engineering show
+- frontend loads them sequentially in this order: application -> ontology -> engineering -> scene delivery -> engineering preview -> engineering ownership
 - frontend does not switch these four reads back to parallel loading until `Issue 001` is explicitly closed in `docs/magicball-integration-issue-tracker.md`
 
 ## Phase 2: Application Mode
@@ -263,15 +312,20 @@ Wire engineering workspace flow.
 
 Commands:
 ```bash
-sce app engineering show --app customer-order-demo --json
+sce app engineering preview --app customer-order-demo --json
+sce app engineering ownership --app customer-order-demo --json
+sce app engineering open --app customer-order-demo --json
+sce app engineering import --app customer-order-demo --json
 sce app engineering attach --app customer-order-demo --repo <repo-url> --branch main --json
 sce app engineering hydrate --app customer-order-demo --json
+sce app engineering scaffold --app customer-order-demo --overwrite-policy missing-only --json
 sce app engineering activate --app customer-order-demo --json
 ```
 
 Done when:
-- MagicBall can detect attached/not-attached state
-- MagicBall can trigger attach/hydrate/activate
+- MagicBall can detect readiness via preview without client-side field synthesis
+- MagicBall can render conservative ownership relation without guessing missing links
+- MagicBall can trigger attach/hydrate/scaffold/activate
 - active engineering workspace path is shown in UI
 
 ## Phase 5: Write Authorization
@@ -301,6 +355,7 @@ Commands that matter now:
 - `sce app registry configure`
 - `sce app engineering attach`
 - `sce app engineering hydrate`
+- `sce app engineering scaffold`
 - `sce app engineering activate`
 - `sce app runtime install`
 - `sce app runtime activate`

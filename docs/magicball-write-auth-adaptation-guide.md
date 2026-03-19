@@ -64,6 +64,7 @@ Current implemented write flows in SCE imply these practical action families:
 - `app:registry:configure`
 - `app:engineering:attach`
 - `app:engineering:hydrate`
+- `app:engineering:scaffold`
 - `app:engineering:activate`
 - `app:runtime:install`
 - `app:runtime:activate`
@@ -174,6 +175,7 @@ Recommended UI steps:
 | Update registry config | `sce app registry configure` | `app:registry:configure` |
 | Attach engineering project | `sce app engineering attach` | `app:engineering:attach` |
 | Hydrate engineering workspace | `sce app engineering hydrate` | `app:engineering:hydrate` |
+| Scaffold engineering workspace baseline | `sce app engineering scaffold` | `app:engineering:scaffold` |
 | Activate engineering workspace | `sce app engineering activate` | `app:engineering:activate` |
 | Install runtime release | `sce app runtime install` | `app:runtime:install` |
 | Activate runtime release | `sce app runtime activate` | `app:runtime:activate` |
@@ -205,7 +207,7 @@ sce auth grant --scope app:runtime:uninstall --reason "remove non-active install
 
 ### Multiple scopes if one workflow batches mutations
 ```bash
-sce auth grant --scope app:engineering:attach,app:engineering:hydrate,app:engineering:activate --reason "initialize engineering workspace" --json
+sce auth grant --scope app:engineering:attach,app:engineering:hydrate,app:engineering:scaffold,app:engineering:activate --reason "initialize engineering workspace" --json
 ```
 
 ## How MagicBall Should Pass Lease To SCE

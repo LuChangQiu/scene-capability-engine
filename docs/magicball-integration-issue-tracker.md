@@ -25,9 +25,11 @@ SCE changes completed and now available for MagicBall:
 - `mode application home --app ... --json`
 - `mode ontology home --app ... --json`
 - `mode engineering home --app ... --json`
+- `scene delivery show`
 - `app registry status/configure/sync*`
 - `app runtime show/releases/install/activate/uninstall`
-- `app engineering show/attach/hydrate/activate`
+- `app engineering preview/ownership/open/import/show/attach/hydrate/scaffold/activate`
+- `project portfolio show/target resolve/supervision show`
 - `pm requirement/tracking/planning/change/issue` data plane
 - `ontology er/br/dl` + `ontology triad summary`
 - `ontology seed list/show/apply`
@@ -38,14 +40,17 @@ SCE changes completed and now available for MagicBall:
 1. consume `mode * home` as the top-level source for the three modes
 2. consume `device current`, `app collection list/show/apply`, `scene workspace list/show/apply`, and `app install-state list` as the local device/install baseline
 3. consume `pm`, `ontology`, and `assurance` table payloads
-4. wire runtime install/activate/uninstall and engineering attach/hydrate/activate actions
-5. use demo app: `customer-order-demo`
+4. wire runtime install/activate/uninstall and engineering attach/hydrate/scaffold/activate actions
+5. treat `project portfolio / target resolve / supervision` as the default multi-project shell truth
+6. use demo app: `customer-order-demo`
 
 ### Related SCE docs
 - `docs/magicball-sce-adaptation-guide.md`
 - `docs/magicball-write-auth-adaptation-guide.md`
 - `docs/magicball-adaptation-task-checklist-v1.md`
 - `docs/magicball-mode-home-and-ontology-empty-state-playbook.md`
+- `docs/magicball-engineering-projection-contract.md`
+- `docs/magicball-project-portfolio-contract.md`
 - `docs/magicball-frontend-state-and-command-mapping.md`
 - `docs/magicball-ui-surface-checklist.md`
 - `docs/magicball-integration-doc-index.md`
@@ -54,6 +59,7 @@ SCE changes completed and now available for MagicBall:
   - current entry docs vs secondary references vs historical drafts are now separated in `docs/magicball-integration-doc-index.md`
   - serialized `mode * home` loading as the safe default during `Issue 001` verification
   - `fallback + optional seed apply` as the recommended default for fresh-project ontology UX under `Issue 003`
+  - multi-project roster / routing / supervision contract is now captured in `docs/magicball-project-portfolio-contract.md`
 
 ### Next Needed From MagicBall
 1. treat the current doc set as stable and move into feedback-driven integration using the current entry docs
@@ -95,7 +101,9 @@ Related commands that were being loaded together:
 - `sce mode application home --app customer-order-demo --json`
 - `sce mode ontology home --app customer-order-demo --json`
 - `sce mode engineering home --app customer-order-demo --json`
-- `sce app engineering show --app customer-order-demo --json`
+- `sce scene delivery show --scene scene.customer-order-demo --json`
+- `sce app engineering preview --app customer-order-demo --json`
+- `sce app engineering ownership --app customer-order-demo --json`
 
 MagicBall action taken:
 - Changed mode-home loading from parallel to sequential in local store.
@@ -103,7 +111,9 @@ MagicBall action taken:
   1. application home
   2. ontology home
   3. engineering home
-  4. engineering show
+  4. scene delivery show
+  5. engineering preview
+  6. engineering ownership
 
 SCE action taken:
 - Added short read retry handling for retryable sqlite lock errors on app/mode/pm/ontology/assurance read paths.

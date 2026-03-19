@@ -1,0 +1,98 @@
+{
+  "api_version": "sce.problem-domain-chain/v0.1",
+  "scene_id": "scene.sce-ide-companion",
+  "spec_id": "134-01-scene-delivery-projection-envelope-and-command",
+  "problem": {
+    "statement": "The IDE Delivery column still needs one canonical delivery payload and one scene command instead of local reconstruction.",
+    "scope": "Delivery projection envelope and command only.",
+    "symptom": "Delivery data is still assembled from mixed evidence instead of one engine-owned payload."
+  },
+  "ontology": {
+    "entity": [
+      "delivery_projection",
+      "delivery_query"
+    ],
+    "relation": [
+      "delivery_query->delivery_projection"
+    ],
+    "business_rule": [
+      "no adapter-owned delivery truth"
+    ],
+    "decision_policy": [
+      "one json command returns one payload"
+    ],
+    "execution_flow": [
+      "request delivery projection from scene scope"
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "One scene payload will remove the need for local delivery reconstruction."
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "type": "scope-drift",
+      "statement": "Payload fields may drift if unstable data is treated as canonical."
+    }
+  ],
+  "decision_execution_path": [
+    {
+      "step": 1,
+      "decision": "lock the payload shape"
+    },
+    {
+      "step": 2,
+      "decision": "lock explicit scope links"
+    },
+    {
+      "step": 3,
+      "decision": "return the payload from one scene command"
+    }
+  ],
+  "research_coverage": {
+    "mode": "scene-closed-loop",
+    "required_dimensions": [
+      "scene_boundary",
+      "entity",
+      "relation",
+      "business_rule",
+      "decision_policy",
+      "execution_flow",
+      "failure_signal",
+      "debug_evidence_plan",
+      "verification_gate"
+    ],
+    "checklist": {
+      "scene_boundary": true,
+      "entity": true,
+      "relation": true,
+      "business_rule": true,
+      "decision_policy": true,
+      "execution_flow": true,
+      "failure_signal": true,
+      "debug_evidence_plan": true,
+      "verification_gate": true
+    },
+    "status": "draft"
+  },
+  "correction_loop": {
+    "triggers": [
+      "a field has no stable source",
+      "scope links require file-name guessing"
+    ],
+    "actions": [
+      "mark the field provisional",
+      "omit the field until the source is stable",
+      "attach debug evidence for source or scope mismatch"
+    ]
+  },
+  "verification": {
+    "gates": [
+      "delivery-envelope-review",
+      "delivery-command-review"
+    ]
+  }
+}
