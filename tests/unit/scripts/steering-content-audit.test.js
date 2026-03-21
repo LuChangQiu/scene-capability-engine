@@ -115,6 +115,23 @@ describe('steering-content-audit script', () => {
     expect(result.warning_count).toBe(0);
   });
 
+  test('does not fail when CURRENT_CONTEXT.md is absent in a clean checkout', async () => {
+    await writeSteeringProject(tempDir);
+    await fs.remove(path.join(tempDir, '.sce', 'steering', 'CURRENT_CONTEXT.md'));
+
+    const result = auditSteeringContent({ projectPath: tempDir });
+
+    expect(result.passed).toBe(true);
+    expect(result.error_count).toBe(0);
+    expect(result.warning_count).toBe(1);
+    expect(result.violations).toEqual([
+      expect.objectContaining({
+        rule: 'missing_optional_context',
+        file: 'CURRENT_CONTEXT.md'
+      })
+    ]);
+  });
+
   test('flags line budgets and stale context history', async () => {
     await writeSteeringProject(tempDir, {
       'CURRENT_CONTEXT.md': [

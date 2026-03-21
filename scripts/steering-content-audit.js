@@ -186,6 +186,10 @@ function pushViolation(violations, severity, file, rule, message, suggestion) {
   });
 }
 
+function isOptionalCurrentContextFile(fileName) {
+  return fileName === 'CURRENT_CONTEXT.md';
+}
+
 function auditSteeringContent(options = {}) {
   const projectPath = path.resolve(options.projectPath || process.cwd());
   const packageJsonPath = path.join(projectPath, 'package.json');
@@ -206,6 +210,17 @@ function auditSteeringContent(options = {}) {
   for (const fileName of fileNames) {
     const absolutePath = path.join(steeringDir, fileName);
     if (!fs.existsSync(absolutePath)) {
+      if (isOptionalCurrentContextFile(fileName)) {
+        pushViolation(
+          violations,
+          'warning',
+          fileName,
+          'missing_optional_context',
+          `${fileName} is absent in this checkout; clean-room repositories may omit personal current context until active local work begins.`,
+          'Create CURRENT_CONTEXT.md locally when active work starts, but keep it out of Git-tracked release state.'
+        );
+        continue;
+      }
       pushViolation(
         violations,
         'error',

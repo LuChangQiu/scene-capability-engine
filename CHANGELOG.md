@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.63] - 2026-03-21
+
+### Fixed
+- Relaxed `audit:steering` so a clean-room checkout no longer hard-fails release validation just because the gitignored personal file `.sce/steering/CURRENT_CONTEXT.md` is absent.
+
 ## [3.6.62] - 2026-03-21
 
 ### Removed
