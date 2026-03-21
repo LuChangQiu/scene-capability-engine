@@ -117,7 +117,6 @@ SCE 现在在时间线命令中增加：
 ## 4. 最小接口清单
 
 - `sce studio events --job <job-id> --json`
-- `sce studio events --job <job-id> --openhands-events <path> --json`
 - `sce timeline list --limit 20 --json`
 - `sce timeline show <snapshot-id> --json`
 

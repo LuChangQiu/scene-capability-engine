@@ -160,7 +160,7 @@ SCE 默认是强治理的。
 如果你要对接 IDE、AI 助手或前端，优先关注这些接口面：
 
 - `sce studio plan|generate|apply|verify|release`
-- `sce studio events --openhands-events <path>`
+- `sce studio events`
 - `sce task ref|show|rerun`
 - `sce timeline save|list|show|restore`
 - `sce capability inventory`
@@ -235,5 +235,5 @@ MIT，见 [LICENSE](LICENSE)。
 
 ---
 
-**版本**：3.6.61
-**最后更新**：2026-03-20
+**版本**：3.6.62
+**最后更新**：2026-03-21

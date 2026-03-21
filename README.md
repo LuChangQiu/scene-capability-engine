@@ -155,7 +155,7 @@ SCE is opinionated by default.
 For IDEs, AI shells, or custom frontends, the most important SCE surfaces are:
 
 - `sce studio plan|generate|apply|verify|release`
-- `sce studio events --openhands-events <path>`
+- `sce studio events`
 - `sce task ref|show|rerun`
 - `sce timeline save|list|show|restore`
 - `sce capability inventory`
@@ -230,5 +230,5 @@ MIT. See [LICENSE](LICENSE).
 
 ---
 
-**Version**: 3.6.61
-**Last Updated**: 2026-03-20
+**Version**: 3.6.62
+**Last Updated**: 2026-03-21

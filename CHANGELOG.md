@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.62] - 2026-03-21
+
+### Removed
+- Removed the OpenHands-specific `sce studio events --openhands-events <path>` bridge so current SCE no longer exposes a vendor-specific event-ingestion path in the active CLI surface.
+
 ## [3.6.61] - 2026-03-20
 
 ### Added

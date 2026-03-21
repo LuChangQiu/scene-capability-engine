@@ -744,8 +744,6 @@ sce studio resume --job <job-id> --json
 
 # Inspect recent stage events
 sce studio events --job <job-id> --limit 50 --json
-# Map OpenHands raw events into the same task-stream contract
-sce studio events --job <job-id> --openhands-events ./openhands-events.json --json
 
 # Rollback a job after apply/release
 sce studio rollback --job <job-id> --reason "manual-check-failed" --json
@@ -779,7 +777,6 @@ Studio JSON output now includes a stable UI-oriented task stream contract (in ad
 - `task.evidence[]`: structured evidence references
 - `task.feedback_model`: human-facing task feedback (`problem`, `execution`, `diagnosis`, `evidence`, `next_step`, `mb_status`)
 - `event[]`: raw audit event stream (`studio events` also keeps legacy `events[]` for compatibility)
-- `studio events --openhands-events <path>` switches `source_stream=openhands` and maps OpenHands raw events to the same task contract fields.
 - hierarchical task reference lookup/rerun:
   - `sce task show --ref <SS.PP.TT> --json`
   - `sce task rerun --ref <SS.PP.TT> [--dry-run] --json`
