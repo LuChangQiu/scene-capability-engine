@@ -140,8 +140,16 @@ interface ProjectOnboardingImportResult {
   generated_at: string
   success: boolean
   preview: LocalProjectCandidateInspection
+  publication: {
+    status: 'published' | 'pending' | 'not_published'
+    visibleInPortfolio: boolean
+    rootDir: string | null
+    projectId: string | null
+    workspaceId: string | null
+    publishedAt?: string
+  }
   steps: Array<{
-    key: 'register' | 'attach' | 'hydrate' | 'activate' | 'scaffold'
+    key: 'register' | 'attach' | 'hydrate' | 'publish' | 'activate' | 'scaffold'
     status: 'done' | 'skipped' | 'pending' | 'failed'
     reasonCode?: string
     detail?: string
@@ -155,6 +163,7 @@ interface ProjectOnboardingImportResult {
 - Use `project onboarding import` when the user picks a local root directly; do not fake an app-library item just to enter onboarding.
 - If `kind=workspace-backed`, reuse returned `projectId/workspaceId` directly and avoid synthesizing a second registry identity.
 - If `kind=local-sce-candidate`, present it as a partial local project until onboarding import registers it.
+- Treat `publication.visibleInPortfolio=true` as the engine-owned signal that a follow-up `project portfolio show` refresh should already expose the imported project.
 - Render `reasonCodes` directly in CLI/IDE receipts; do not replace them with frontend-only heuristics.
 
 ## 2. Target Resolution
@@ -256,7 +265,7 @@ interface ProjectSupervisionItem {
 
 1. Load `sce project portfolio show --json` when entering the multi-project shell.
 2. When the user selects a local root manually, preflight it with `sce project candidate inspect --root <path> --json`.
-3. If the root is not yet portfolio-backed, import it through `sce project onboarding import --root <path> --json`.
+3. If the root is not yet portfolio-backed, import it through `sce project onboarding import --root <path> --json`, then trust `publication` plus a fresh portfolio refresh instead of keeping a shadow imported-project registry.
 4. Store `activeProjectId` and render a project switcher from `projects[]`.
 5. When the user enters a cross-project free-text request, preflight with `sce project target resolve --json`.
 6. After project selection or successful resolution, load `sce project supervision show --project <project-id> --json`.

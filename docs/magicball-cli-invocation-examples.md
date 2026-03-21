@@ -32,6 +32,7 @@ sce project supervision show --project workspace:customer-order-demo --json
 
 Expected use:
 - build project switcher from engine-owned roster
+- treat `project onboarding import` `publication.visibleInPortfolio=true` as the signal to refresh the roster immediately
 - preflight cross-project free-text routing before assistant/orchestration actions
 - render one project-scoped health summary without replaying raw event streams
 

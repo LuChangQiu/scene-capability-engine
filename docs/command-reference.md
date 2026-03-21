@@ -2710,8 +2710,9 @@ sce project onboarding import --root <path> [options]
 
 **Behavior:**
 - Accepts a local root as the primary onboarding target without app-bundle-first indirection
-- Reuses the canonical ordered step envelope (`register`, `attach`, `hydrate`, `activate`, `scaffold`)
-- Registers onboarded roots into the workspace-backed portfolio without inventing a second registry
+- Reuses the canonical ordered step envelope (`register`, `attach`, `hydrate`, `publish`, `activate`, `scaffold`)
+- Publishes explicit `publication` state so adapters can distinguish import success from canonical portfolio visibility
+- Registers onboarded roots into the workspace-backed portfolio before success returns in the default phase-1 path, without inventing a second registry
 
 #### `sce project target resolve`
 

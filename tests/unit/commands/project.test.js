@@ -339,12 +339,25 @@ describe('project portfolio show command', () => {
       expect.objectContaining({ key: 'attach', status: 'done' }),
       expect.objectContaining({ key: 'hydrate', status: 'done' }),
       expect.objectContaining({
+        key: 'publish',
+        status: 'done',
+        reasonCode: 'project.onboarding.published'
+      }),
+      expect.objectContaining({
         key: 'activate',
         status: 'skipped',
         reasonCode: 'project.onboarding.import_no_activate'
       }),
       expect.objectContaining({ key: 'scaffold', status: 'done' })
     ]);
+    expect(payload.publication).toEqual(expect.objectContaining({
+      status: 'published',
+      visibleInPortfolio: true,
+      rootDir: importRoot.replace(/\\/g, '/'),
+      projectId: 'workspace:candidate-import',
+      workspaceId: 'candidate-import',
+      publishedAt: payload.generated_at
+    }));
     expect(await fs.pathExists(path.join(importRoot, '.sce'))).toBe(true);
 
     const registeredWorkspace = await stateManager.getWorkspace('candidate-import');
@@ -370,8 +383,17 @@ describe('project portfolio show command', () => {
     expect(payload.steps).toEqual(expect.arrayContaining([
       expect.objectContaining({ key: 'register', status: 'done' }),
       expect.objectContaining({ key: 'hydrate', status: 'done', reasonCode: 'project.sce.present' }),
+      expect.objectContaining({ key: 'publish', status: 'done', reasonCode: 'project.onboarding.published' }),
       expect.objectContaining({ key: 'scaffold', status: 'skipped', reasonCode: 'project.onboarding.scaffold_reused' })
     ]));
+    expect(payload.publication).toEqual(expect.objectContaining({
+      status: 'published',
+      visibleInPortfolio: true,
+      rootDir: localRoot.replace(/\\/g, '/'),
+      projectId: 'workspace:existing-local-import',
+      workspaceId: 'existing-local-import',
+      publishedAt: payload.generated_at
+    }));
   });
 
   test('resolves current project when no routing request is provided', async () => {

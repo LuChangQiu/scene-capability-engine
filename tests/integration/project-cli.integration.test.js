@@ -259,14 +259,24 @@ describe('project CLI integration', () => {
         kind: 'workspace-backed',
         workspaceId: 'local-import-root',
         projectId: 'workspace:local-import-root'
+      }),
+      publication: expect.objectContaining({
+        status: 'published',
+        visibleInPortfolio: true,
+        rootDir: importRoot.replace(/\\/g, '/'),
+        workspaceId: 'local-import-root',
+        projectId: 'workspace:local-import-root',
+        publishedAt: expect.any(String)
       })
     }));
     expect(payload.steps).toEqual(expect.arrayContaining([
       expect.objectContaining({ key: 'register', status: 'done' }),
       expect.objectContaining({ key: 'attach', status: 'done' }),
       expect.objectContaining({ key: 'hydrate', status: 'done' }),
+      expect.objectContaining({ key: 'publish', status: 'done', reasonCode: 'project.onboarding.published' }),
       expect.objectContaining({ key: 'scaffold', status: 'done' })
     ]));
+    expect(payload.publication.publishedAt).toBe(payload.generated_at);
     expect(await fs.pathExists(path.join(importRoot, '.sce'))).toBe(true);
 
     const portfolioResult = await runCli(['project', 'portfolio', 'show', '--json'], {
@@ -281,5 +291,11 @@ describe('project CLI integration', () => {
         workspaceId: 'local-import-root'
       })
     ]));
+    const importedProject = portfolio.projects.find((item) => item.projectId === payload.publication.projectId);
+    expect(importedProject).toEqual(expect.objectContaining({
+      projectId: payload.publication.projectId,
+      workspaceId: payload.publication.workspaceId,
+      projectRoot: payload.publication.rootDir
+    }));
   });
 });
