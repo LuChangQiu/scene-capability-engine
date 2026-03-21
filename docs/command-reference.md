@@ -2,8 +2,8 @@
 
 > Quick reference for all `sce` commands
 
-**Version**: 3.6.52
-**Last Updated**: 2026-03-16
+**Version**: 3.6.65
+**Last Updated**: 2026-03-22
 
 ---
 

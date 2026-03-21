@@ -251,6 +251,6 @@ A Spec is a complete feature definition with three parts:
 ---
 
 **Project Type**: Spec-driven development  
-**sce Version**: 3.6.64  
-**Last Updated**: 2026-03-21
+**sce Version**: 3.6.65  
+**Last Updated**: 2026-03-22
 **Purpose**: Guide AI tools to work effectively with this project

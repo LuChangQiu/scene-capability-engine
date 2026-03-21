@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.65] - 2026-03-22
+
+### Added
+- Added explicit `publish` step and `publication` metadata to `sce project onboarding import --root <path> --json`, so adapters can distinguish onboarding success from canonical portfolio visibility without keeping a shadow imported-project registry.
+- Added Specs `137-00` through `140-03` to formalize the vendor-neutral external agent runtime direction, local agent checkpoint contract, and staged rollout boundaries.
+
+### Changed
+- Updated MagicBall-facing project contract docs and CLI examples so onboarding now declares portfolio publication semantics directly and phase-1 adapters can refresh the canonical project roster immediately.
+- Expanded `audit:release-docs` coverage to include `docs/command-reference.md`, `docs/README.md`, and `docs/zh/README.md`, reducing the chance of release metadata drifting in active documentation indexes and command docs.
+
 ## [3.6.64] - 2026-03-21
 
 ### Fixed

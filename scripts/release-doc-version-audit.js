@@ -22,6 +22,30 @@ const RELEASE_DOCS = [
     updatedPattern: /\*\*最后更新\*\*[：:]\s*(\d{4}-\d{2}-\d{2})/
   },
   {
+    file: 'docs/command-reference.md',
+    label: 'docs/command-reference.md',
+    versionField: 'Version',
+    versionPattern: /\*\*Version\*\*:\s*([^\s]+)/,
+    updatedField: 'Last Updated',
+    updatedPattern: /\*\*Last Updated\*\*:\s*(\d{4}-\d{2}-\d{2})/
+  },
+  {
+    file: 'docs/README.md',
+    label: 'docs/README.md',
+    versionField: 'Version',
+    versionPattern: /\*\*Version\*\*:\s*([^\s]+)/,
+    updatedField: 'Last Updated',
+    updatedPattern: /\*\*Last Updated\*\*:\s*(\d{4}-\d{2}-\d{2})/
+  },
+  {
+    file: 'docs/zh/README.md',
+    label: 'docs/zh/README.md',
+    versionField: '版本',
+    versionPattern: /\*\*版本\*\*[：:]\s*([^\s]+)/,
+    updatedField: '最后更新',
+    updatedPattern: /\*\*最后更新\*\*[：:]\s*(\d{4}-\d{2}-\d{2})/
+  },
+  {
     file: '.sce/README.md',
     label: '.sce/README.md',
     versionField: 'sce Version',

@@ -72,7 +72,7 @@ This hub keeps only the high-value entry points for adopting, integrating, and s
 
 ---
 
-**Version**: 3.6.34
-**Last Updated**: 2026-03-08
+**Version**: 3.6.65
+**Last Updated**: 2026-03-22
 
 
